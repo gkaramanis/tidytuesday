@@ -1,1 +1,1 @@
-[alt text](./women-workplace.png)
+[](women-workplace.png)
