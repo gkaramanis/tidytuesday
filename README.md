@@ -1,3 +1,3 @@
 # tidytuesday
 
-Code and graphs for [#tidytuesday](https://github.com/rfordatascience/tidytuesday)
+Code and plots for [#tidytuesday](https://github.com/rfordatascience/tidytuesday)
