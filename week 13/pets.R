@@ -27,10 +27,15 @@ ggplot(lic, aes(month)) +
   theme_minimal() +
   labs(
     title = "Number of licenses issued per month",
-    subtitle = "since 2003",
+    subtitle = "in Seattle, since 2003",
     caption = toupper("source: data.seattle.gov")
     ) +
-  xlab("Month") +
-  ylab("Licenses issued (log)") +
+  xlab("month") +
+  ylab("licenses issued (sqrt)") +
   annotation_raster(catpng, ymin = 4, ymax= 30,
-                    xmin = 1, xmax = 3)
+                    xmin = 1, xmax = 3) +
+  theme(
+    text = element_text(size=20),
+    legend.title = element_blank(),
+    plot.margin=unit(c(1, 1, 1, 1),"cm")
+  )
