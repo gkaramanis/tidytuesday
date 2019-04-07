@@ -21,9 +21,8 @@ rain$DATE <- as.Date(rain$DATE)
 colnames(rain)[1] <- "date"
 
 # plot
-ggplot(bike_traffic, aes(date, value)) +
-  geom_point() +
-  geom_point(data=rain, color = "blue") +
+ggplot() +
+  geom_path(data=rain, aes(date, value*5000), color = "blue", alpha = 0.6) +
+  geom_point(data=bike_traffic, aes(date, value)) +
   scale_x_date() +
-  scale_y_continuous(sec.axis = sec_axis(~./10000))
-
+  scale_y_continuous(sec.axis = sec_axis(~./5000)) 
