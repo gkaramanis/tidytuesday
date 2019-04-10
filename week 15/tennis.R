@@ -50,5 +50,5 @@ title <- ggdraw() +
   theme(panel.background = element_rect(color = "white", fill = "darkgreen"))
 pp <- plot_grid(p1, p2, ncol = 2)
 tpp <- plot_grid(title, pp, nrow = 2,  rel_heights = c(0.1, 1, 1))
-save_plot("./week 15/img/tennis.png", tpp, base_aspect_ratio = 1.4)
+save_plot("./week 15/tennis.png", tpp, base_aspect_ratio = 1.4)
 # crop 1 pixel in post-processing
