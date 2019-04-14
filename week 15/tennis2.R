@@ -24,24 +24,24 @@ winRatio$ratio <- round(winRatio$ratio*100, digits=0)
 pal <- wes_palette("BottleRocket2")
 
 ggplot(winRatio, aes(x = player)) +
-  geom_bar(aes(y = winner), stat = "identity", fill = pal[4]) +
-  geom_bar(aes(y = -finalist), stat = "identity", fill = pal[2]) +
+  geom_bar(aes(y = winner), stat = "identity", fill = pal[4], width = 0.1) +
+  geom_point(aes(y = winner), size = 2.5, color = pal[4]) +
+  geom_bar(aes(y = -finalist), stat = "identity", fill = pal[2], width = 0.1) +
+  geom_point(aes(y = -finalist), size = 2.5, color = pal[2]) +
   annotate("text",
            x = winRatio$player,
-           y = winRatio$winner - 0.7,
+           y = winRatio$winner,
            label = winRatio$winner,
            size = 1,
            color = "white",
-           family = "IBM Plex Mono",
-           hjust = 0) +
+           family = "IBM Plex Mono") +
   annotate("text",
            x = winRatio$player,
-           y = -winRatio$finalist + 0.7,
+           y = -winRatio$finalist,
            label = winRatio$finalist,
            size = 1,
            color = "white",
-           family = "IBM Plex Mono",
-           hjust = 1) +
+           family = "IBM Plex Mono") +
   annotate("text",
            x = winRatio$player,
            y = winRatio$yjust,
