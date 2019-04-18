@@ -1,0 +1,18 @@
+library(tidyverse)
+
+```
+trade <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-16/trade.csv")
+```
+
+
+trade %>%
+  mutate(in_billions = trade_deficit / 1e9, employment = manufacture_employment/1e5 ) %>%
+  ggplot() +
+  geom_line(aes(year, in_billions), alpha = 0.8, fill = "#1380A1") +
+  ylim(-400, 250) +
+  xlim (2010, 2016) +
+  geom_line(aes(year, employment), alpha = 0.8, fill = "#555555")
+
+
+trade %>%
+  predict(year, in_billions)
