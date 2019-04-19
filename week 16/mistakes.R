@@ -16,37 +16,37 @@ p1 <- ggplot() +
   # plot "predictions" first
   geom_line(data = newYears, aes(year, trade_deficit),
             linetype="dotted", size = 1, alpha = 0.4, color = "red") +
-  #geom_line(data = newYears, aes(year, employment),
-  #          linetype="dotted", size = 2, alpha = 0.4, color = "red") +
-  # actual numbers
   geom_line(data = trade, aes(year, in_billions),
             size = 1, color = "#1380A1") +
   ylim(260, 400) +
   xlim (2010, 2016) +
   # reduction arrow
   geom_curve(aes(x = 2015, y = 360, xend = 2015.8, yend = 320), 
-  colour = "#555555", size = 0.5, curvature = 0.5, 
-  arrow = arrow(length = unit(0.03, "npc"), ends = "last")) +
-  geom_label(aes(x = 2013, y = 305), label = "Deficit decreased by $47.9 billion\n(86 % of the predicted deficit)", 
-  hjust = 0, vjust = 0.5, colour = "#555555", 
-  fill = "white", label.size = NA, size = 4) +
+             colour = "#555555", size = 0.5, curvature = 0.5, 
+             arrow = arrow(length = unit(0.03, "npc"), ends = "last")) +
+  geom_label(aes(x = 2013, y = 305),
+             label = "Deficit decreased by $47.9 billion\n(86 % of the 2016 projected deficit)", 
+             hjust = 0, vjust = 0.5, colour = "#555555", 
+             fill = "white", label.size = NA, size = 4) +
   # prediction arrow
-  geom_curve(aes(x = 2014.8, y = 390, xend = 2015.6, yend = 375), 
+  geom_curve(aes(x = 2014.8, y = 390, xend = 2015.9, yend = 375), 
              colour = "red", size = 0.5, curvature = -0.2, 
              arrow = arrow(length = unit(0.03, "npc"), ends = "last")) +
-  geom_label(aes(x = 2012.5, y = 390), label = "Predicted deficit increase", 
+  geom_label(aes(x = 2013.4, y = 390),
+             label = "Projected increase", 
              hjust = 0, vjust = 0.5, colour = "red", 
              fill = "white", label.size = NA, size = 4) +
-  labs(title = "The big decrease in US trade deficit with China", x = "", y = "", size = 2) +
+  labs(title = "The 2016 decrease in US trade deficit with China",
+       x = "", y = "", size = 2) +
   theme(panel.grid.minor = element_blank()) +
   theme_bw() +
   theme(
-  plot.title = element_text(size = 14)
+    plot.title = element_text(size = 13)
   )
-#  ggsave("mistakes.png", dpi = 600, height = 3, width = 4)
-  
+#  ggsave("./week 16/mistakes.png", dpi = 600, height = 3, width = 4)
 
-# original code by @theotheredgar
+
+# original code by @theotheredgar, with minor changes for cowplot
 # https://mobile.twitter.com/theotheredgar/status/1118668150780907520  
 p2 <- trade %>%
    mutate(in_billions = -(trade_deficit / 1e9) ) %>%
@@ -70,5 +70,11 @@ p2 <- trade %>%
     theme_bw() 
 
 pp <- plot_grid(p2, p1, ncol = 2)
-#tpp <- plot_grid(title, pp, nrow = 2,  rel_heights = c(0.1, 1, 1))
-save_plot("worse.png", pp, base_aspect_ratio = 3)
+
+title <- ggdraw() +
+  draw_label("Original", x = 0.25, y = 0.5, size = 13, fontface = 'bold') +
+  draw_label("Worse", x = 0.77, y = 0.5, size = 13, fontface = 'bold')
+
+tpp <- plot_grid(title, pp, nrow = 2,  rel_heights = c(0.1, 1, 1))
+save_plot("./week 16/worse.png", tpp, base_aspect_ratio = 3)
+
