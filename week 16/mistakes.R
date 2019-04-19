@@ -37,7 +37,7 @@ p1 <- ggplot() +
              hjust = 0, vjust = 0.5, colour = "red", 
              fill = "white", label.size = NA, size = 4) +
   labs(title = "The 2016 decrease in US trade deficit with China",
-       x = "", y = "", size = 2) +
+       caption = toupper("Data: The Economist | Graphic: @geokaramanis"), x = "", y = "", size = 2) +
   theme(panel.grid.minor = element_blank()) +
   theme_bw() +
   theme(
@@ -61,10 +61,11 @@ p2 <- trade %>%
     geom_curve(x = 2002, y = 110, xend = 2004.5, yend = 200, 
                colour = "#555555", size=0.5, curvature = -0.5, 
                arrow = arrow(length = unit(0.03, "npc"), ends = "both")) +
-    geom_label(x = 1997.5, y = 190, label = "Deficit doubled", 
+    geom_label(x = 1997.4, y = 190, label = "Deficit doubled", 
                hjust = 0, vjust = 0.5, colour = "#555555", 
                fill = "white", label.size = NA, size = 4) +
-    labs(title = "US trade deficit with China in good, $bn", x = "", y = "") +
+    labs(title = "US trade deficit with China in good, $bn",
+         caption = toupper("Data: The Economist | Graphic: @theotheredgar"), x = "", y = "") +
     scale_y_continuous(breaks = c(0, 100, 200, 300), labels = c("0", "-100", "-200", "-300")) +
     theme(panel.grid.minor = element_blank()) +
     theme_bw() 
