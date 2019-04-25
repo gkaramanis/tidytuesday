@@ -19,7 +19,7 @@ p1 <- ggplot() +
   geom_line(data = trade, aes(year, in_billions),
             size = 1, color = "#1380A1") +
   ylim(260, 400) +
-  xlim (2010, 2016) +
+  xlim(2010, 2016) +
   # reduction arrow
   geom_curve(aes(x = 2015, y = 360, xend = 2015.8, yend = 320), 
              colour = "#555555", size = 0.5, curvature = 0.5, 
