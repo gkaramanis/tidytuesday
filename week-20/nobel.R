@@ -50,9 +50,7 @@ nobel_winners %>%
   ggsave("./week-20/nobel.png", width = 5.5, height = 6)
 
 
-
-
-# Death countries of the most Nobel Laureates that have
+# Top Death countries of the Nobel Laureates that have
 # a different birth country
 #
 # nobel_winners %>% 
