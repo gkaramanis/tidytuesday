@@ -27,9 +27,8 @@ nobel_winners %>%
   mutate(
     colour = case_when(
       death_country == "United States of America" ~ "#FF2B4F",
-      death_country == "Germany" ~ "#003399",
-      death_country == "United Kingdom" ~ "#3686d3",
       death_country == "Germany" ~ "#fcab27",
+      death_country == "United Kingdom" ~ "#3686d3",
       death_country == "France" ~ "#88398a",
       death_country == "Switzerland" ~ "#20d4bc",
       T ~ "gray60"
@@ -51,7 +50,7 @@ nobel_winners %>%
   scale_alpha_manual(values = c(0.1, 0.2), guide = F) +
   scale_size_manual(values = c(0.1, 0.4), guide = F) +
   labs(title = "Birth and death countries of Nobel laureates that were born and died in different countries",
-       subtitle = "USA, W. Germany, UK, Germany, France and Switzerland have the most",
+       subtitle = "USA, Germany, UK, France and Switzerland have the most",
        x = "Death country", y = "Birth country",
        caption = "\nSource: Kaggle | Graphic: Georgios Karamanis / @geokaramanis") +
   theme_minimal() +
@@ -70,10 +69,9 @@ nobel_winners %>%
 # Top Death countries of the Nobel Laureates that have
 # a different birth country
 #
-# nobel_winners %>% 
-#   filter(!is.na(death_country)) %>% 
-#   mutate(diffCountry = ifelse(birth_country == death_country, 0, 1)) %>% 
-#   group_by(death_country) %>% 
-#   tally(diffCountry) %>% 
+# nobel_winners %>%
+#   filter(!is.na(death_country)) %>%
+#   mutate(diffCountry = ifelse(birth_country == death_country, 0, 1)) %>%
+#   group_by(death_country) %>%
+#   tally(diffCountry) %>%
 #   arrange(desc(n))
-         
