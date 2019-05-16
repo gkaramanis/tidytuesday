@@ -31,6 +31,7 @@ nobel_winners %>%
   scale_x_discrete() +
   scale_y_discrete() +
   scale_color_identity() +
+  scale_size_identity() +
   scale_alpha_manual(values = c(0.1, 0.2), guide = F) +
   scale_size_manual(values = c(0.1, 0.4), guide = F) +
   labs(title = "Birth and death countries of Nobel laureates that were born and died in different countries",
