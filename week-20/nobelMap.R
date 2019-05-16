@@ -73,9 +73,9 @@ ggplot(nobelLL, aes(
   scale_color_identity() +
   scale_alpha_manual(values = c(0.3, 0.5), guide = FALSE) +
   scale_size_manual(values = c(0.05, 0.1), guide = FALSE) +
-  labs(title = "Birth and death countries of Nobel laureates that were born and died in different countries",
-       subtitle = "Arrow heads show the death country (USA, W. Germany, UK, Germany, France and Switzerland are the most common)", 
-       caption = "\nSource: Kaggle | Graphic: Georgios Karamanis / @geokaramanis") +
+  labs(title = "   USA, W. Germany, UK, Germany, France and Switzerland are the most common death countries",
+       subtitle = "    of Nobel laureates that were born in a different country (arrow heads point to the death country)", 
+       caption = "\nSource: Kaggle | Graphic: Georgios Karamanis / @geokaramanis    ") +
   worldmap +
   coord_cartesian(ylim = c(-50, 105)) +
   geom_curve(aes(x = fromLong, y = fromLat,
