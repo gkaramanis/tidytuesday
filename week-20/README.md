@@ -9,6 +9,7 @@ Plot on world map. Countries cleaned and changed to match current countries
 
 Shared prizes by category (poster versions!)
 
+|    |   |   |
 | ------------- | ------------- | ------------- |
 |![](nobelShared-Medicine.png) | ![](nobelShared-Chemistry.png) | ![](nobelShared-Physics.png)
 |![](nobelShared-Literature.png) | ![](nobelShared-Peace.png) | ![](nobelShared-Economics.png)
