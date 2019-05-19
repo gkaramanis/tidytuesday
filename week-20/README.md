@@ -14,5 +14,3 @@ Shared prizes by category (poster versions!)
 ![](nobelShared-Literature.png)
 ![](nobelShared-Peace.png)
 ![](nobelShared-Economics.png)
-
-
