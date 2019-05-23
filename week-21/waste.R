@@ -41,4 +41,4 @@ mismanaged_vs_gdp %>%
     plot.caption = element_text(size = 5, vjust = -3)
   )
 
-ggsave("./week-21/waste.png", height = 7, width = 5)
+ggsave("./week-21/waste.png", height = 10, width = 5)
