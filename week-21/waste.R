@@ -11,6 +11,7 @@ mismanaged_vs_gdp %>%
   top_n(30, percapita_mismanaged_kg_pp_pd) %>% 
   mutate(bar = map2(0.01, percapita_mismanaged_kg_pp_pd, seq, by = 0.008)) %>% 
   unnest(bar) %>% 
+  # Icons made by Freepik from www.flaticon.com 
   mutate(plastic = sample(c("https://cdn1.iconfinder.com/data/icons/fitness-icon-collection/100/plastic-128.png",
                             "https://image.flaticon.com/icons/png/128/81/81940.png",
                             "https://image.flaticon.com/icons/png/128/1758/1758890.png",
