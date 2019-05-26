@@ -18,7 +18,7 @@ mismanaged_vs_gdp %>%
              y = total_population_gapminder,
              size = g_pp_pd)) +
   geom_point() +
-  geom_image(aes(image = plastic), color = "royalblue1", size = 0.04) +
+  geom_image(aes(image = plastic), color = "royalblue1") +
   scale_y_log10()
 
 ggsave("./week-21/waste2.png")
