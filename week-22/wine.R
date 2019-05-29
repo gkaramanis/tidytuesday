@@ -1,6 +1,6 @@
 library(tidyverse)
-library(ggrepel)
 library(tidytext)
+library(ggrepel)
 
 wine_ratings <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-28/winemag-data-130k-v2.csv")
 
@@ -22,9 +22,12 @@ wineWords %>%
   group_by(taster_name) %>%
   slice(seq_len(3)) %>% 
   ggplot() +
-  geom_text(aes(label = word, color = word,
+  geom_text_repel(aes(label = word, color = word,
                  x = freq, y = taster_name)) +
-  theme_minimal()
-  
-  
+  theme_minimal() +
+  theme(
+    text = element_text(family = "IBM Plex Sans", size = 8)
+  )
+
+ggsave("wine.png")  
   
