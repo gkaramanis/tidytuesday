@@ -1,5 +1,6 @@
 library(tidyverse)
 library(ggimage)
+library(ggforce)
 
 wine_ratings <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-28/winemag-data-130k-v2.csv")
 
@@ -17,7 +18,7 @@ food <- tribble(
   "meat",      "pork",
   "meat",      "veal",
   "meat",      "lamb",
-  "desserts",  "desserts",
+  "dessert",  "dessert",
   "seafood",   "seafood",
   "seafood",      "fish",
   "seafood",    "shrimp",
@@ -41,6 +42,8 @@ pairings <- wine_ratings %>%
   distinct() %>% 
   # keep the two variables
   select("variety", "description") %>% 
+  # rename Corvina, Rondinella, Molinara to Valpolicella
+  mutate(variety = str_replace_all(variety, "Corvina, Rondinella, Molinara", "Valpolicella")) %>% 
   # keep reviews that contain "pair* with" 
   filter(str_detect(description, "pair\\w*\\b with")) %>%
   # keep the varieties with more than X reviews
@@ -58,40 +61,46 @@ pairings <- wine_ratings %>%
   left_join(., food, by = c("found" = "example")) %>%
   # number variety groups
   group_by(variety) %>% 
-  mutate(varietyNr = group_indices()*2) %>% 
+  mutate(varietyNr = group_indices()*2-0.5) %>% 
   ungroup() %>% 
   # number type groups
   group_by(type) %>% 
   mutate(typeNr = group_indices()) %>% 
-  ungroup() 
+  ungroup() %>% 
+  # images
+  mutate(bottleImg = "./week-22/img/bottle.png",
+         foodImg = paste("./week-22/img/", type, ".png", sep = ""),
+         bottleColor = ifelse(variety == "Chardonnay" | variety == "White Blend", "#5e1224", "#e3c979"))
 
-
-# images
-bottle <- c("./week-22/img/bottle.png")
-  
   
 ggplot() +
   
-  geom_curve(data=pairings,
+  geom_diagonal(data=pairings,
              aes(x = varietyNr, y = 10,
                  xend = typeNr, yend = 1,
                  color = varietyNr),
              curvature = -0.1,
-             size = 0.1,
+             size = 0.2, 
              alpha = 0.4) +
   
-  geom_image(aes(image = bottle, 
+  geom_image(aes(image = unique(pairings$bottleImg), 
                  x = unique(pairings$varietyNr), 
                  y = 11.6)) +
   
+  geom_image(aes(image = unique(pairings$foodImg), 
+                 x = unique(pairings$typeNr), 
+                 y = 0.4), size = 0.05) +
+  
   geom_text(aes(label = unique(pairings$variety),
-                x = unique(pairings$varietyNr), y = 10.5),
+                x = unique(pairings$varietyNr), y = 10.4),
             size = 2) +
   
-  # scale_y_discrete(expand = c(0, 1.2)) +
+  expand_limits(y = c(1, 13)) +
+  scale_color_identity() +
   
-  labs(title = "Wine pairings mentioned in reviews",
-       subtitle = "top 5 wine varieties paired with 9 food types") +
+  labs(title = "Top 5 wine varieties paired with 9 food types",
+       subtitle = "as mentioned by tasters in reviews",
+       caption = "Source: XXX | Graphic: Georgios Karamanis") +
   
   theme_void() +
   theme(
@@ -105,8 +114,7 @@ ggplot() +
   )
 
 
-ggsave("./week-22/wine.png", height = 5, width = 4)
+ggsave("./week-22/wine.png", height = 5, width = 4, dpi = 600)
 
-# Corvina, Rondinella, Molinara -> Valpolicella
 # write.csv(pairings$description, file = "winePairings.csv")
   
