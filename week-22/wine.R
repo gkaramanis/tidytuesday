@@ -6,18 +6,18 @@ wine_ratings <- readr::read_csv("https://raw.githubusercontent.com/rfordatascien
 
 food <- tribble(
    ~type, ~example,
-  "cured meat",    "salami",
-  "pasta",     "pasta",
-  "pasta",     "spaghetti",
-  "pasta",     "lasagna",
-  "mushroom",  "mushroom",
-  "meat",      "meat",
-  "meat",      "sausage",
-  "meat",      "beef",
-  "meat",      "hamburger",
-  "meat",      "pork",
-  "meat",      "veal",
-  "meat",      "lamb",
+  "meat & cured meat",    "salami",
+  "pasta & pizza",     "pasta",
+  "pasta & pizza",     "spaghetti",
+  "pasta & pizza",     "lasagna",
+  "vegetables & mushrooms",  "mushroom",
+  "meat & cured meat",      "meat",
+  "meat & cured meat",      "sausage",
+  "meat & cured meat",      "beef",
+  "meat & cured meat",      "hamburger",
+  "meat & cured meat",      "pork",
+  "meat & cured meat",      "veal",
+  "meat & cured meat",      "lamb",
   "dessert",  "dessert",
   "seafood",   "seafood",
   "seafood",      "fish",
@@ -29,11 +29,11 @@ food <- tribble(
   "cheese",    "mozzarella",
   "poultry",   "poultry",
   "poultry",   "chicken",
-  "vegetables", "vegetable",
-  "vegetables", "tomato",
-  "vegetables", "eggplant",
-  "vegetables",     "salad",
-  "pizza", "pizza" 
+  "vegetables & mushrooms", "vegetable",
+  "vegetables & mushrooms", "tomato",
+  "vegetables & mushrooms", "eggplant",
+  "vegetables & mushrooms",     "salad",
+  "pasta & pizza", "pizza" 
   )
 
 pairings <- wine_ratings %>%
@@ -65,39 +65,54 @@ pairings <- wine_ratings %>%
   ungroup() %>% 
   # number type groups
   group_by(type) %>% 
-  mutate(typeNr = group_indices()) %>% 
+  mutate(typeNr = group_indices()*1.5-0.5) %>% 
   ungroup() %>% 
-  # images
-  mutate(bottleImg = "./week-22/img/bottle.png",
+  rowwise() %>%
+  # images and colors
+  mutate(
          foodImg = paste("./week-22/img/", type, ".png", sep = ""),
-         bottleColor = ifelse(variety == "Chardonnay" | variety == "White Blend", "#5e1224", "#e3c979"))
+         bottleColor = ifelse(variety == "Chardonnay" | variety == "White Blend", "#D4C52D", "#5e1224"),
+         nudge = runif(1)/5)
 
   
 ggplot() +
-  
-  geom_diagonal(data=pairings,
-             aes(x = varietyNr, y = 10,
-                 xend = typeNr, yend = 1,
-                 color = varietyNr),
-             curvature = -0.1,
-             size = 0.2, 
+  # plot pairings
+  geom_diagonal(data = pairings,
+             aes(x = varietyNr + nudge, y = 10,
+                 xend = typeNr + nudge, yend = 1, colour = bottleColor),
+             size = 0.2,
+             strength = 0.6,
+             lineend = "butt",
              alpha = 0.4) +
   
-  geom_image(aes(image = unique(pairings$bottleImg), 
-                 x = unique(pairings$varietyNr), 
-                 y = 11.6)) +
-  
-  geom_image(aes(image = unique(pairings$foodImg), 
-                 x = unique(pairings$typeNr), 
-                 y = 0.4), size = 0.05) +
-  
+  # bottle icons
+  geom_image(aes(image = "./week-22/img/bottle.png",
+  color = "#D4C52D",
+                 x = c(1.5, 9.5),
+                 y = 11.3)) +
+  geom_image(aes(image = "./week-22/img/bottle.png",
+  color = "#5e1224",
+                 x = c(3.5, 5.5, 7.5),
+                 y = 11.3)) +                
+  # food icons
+  geom_image(aes(image = unique(pairings$foodImg),
+                 x = unique(pairings$typeNr),
+                 y = 0.3), size = 0.05) +
+  # variety and food names
   geom_text(aes(label = unique(pairings$variety),
-                x = unique(pairings$varietyNr), y = 10.4),
-            size = 2) +
-  
+                x = unique(pairings$varietyNr),
+                y = 12.8),
+            size = 1.8,
+            family = "IBM Plex Serif") +
+  geom_text(aes(label = unique(pairings$type),
+                x = unique(pairings$typeNr),
+                y = -0.4),
+            size = 1.4,
+            family = "IBM Plex Serif") +
+
   expand_limits(y = c(1, 13)) +
   scale_color_identity() +
-  
+
   labs(title = "Top 5 wine varieties paired with 9 food types",
        subtitle = "as mentioned by tasters in reviews",
        caption = "Source: XXX | Graphic: Georgios Karamanis") +
@@ -105,14 +120,13 @@ ggplot() +
   theme_void() +
   theme(
     legend.position =  "",
-    plot.background = element_rect(fill = "#ebd9a0", colour = "lightgoldenrod3"),
+    plot.background = element_rect(fill = "#F0EFF1", colour = "#F0EFF1"),
     plot.margin = unit(c(1, 1, 1, 1), "cm"),
-    text = element_text(family = "IBM Plex Sans", size = 8),
+    text = element_text(family = "IBM Plex Serif", size = 8),
     plot.title = element_text(face = "bold", vjust = 8),
     plot.subtitle = element_text(vjust = 9),
     plot.caption = element_text(size = 4, vjust = -3)
   )
-
 
 ggsave("./week-22/wine.png", height = 5, width = 4, dpi = 600)
 
