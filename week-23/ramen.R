@@ -48,6 +48,6 @@ ggplot() +
     panel.background = element_rect(fill = "#0881A3", color = "#0881A3"),
   )
 
-ggsave("./week-23/ramen.png", height = 7, width = 5)
+ggsave("./week-23/ramen.png", height = 7, width = 5, dpi = 300)
 
 
