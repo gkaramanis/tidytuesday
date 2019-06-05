@@ -32,7 +32,7 @@ ggplot() +
   # ramen               
   geom_col(data = shio, aes(n, stars), width = 0.5, fill = "khaki") +
   
-  scale_y_reverse(limits = c(8, -6), breaks = c(1, 2, 3, 4, 5),
+  scale_y_reverse(limits = c(8, -5), breaks = c(1, 2, 3, 4, 5),
   position = "right") +
   
   # title, subtitle and caption
