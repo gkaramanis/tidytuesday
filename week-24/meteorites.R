@@ -14,6 +14,7 @@ coords2continent = function(points)
   indices$ADMIN  #returns country name
   }
 
+
 fellMeteo <- meteorites %>%
   drop_na() %>%
   filter(fall == "Fell") %>% 
@@ -30,26 +31,33 @@ fellMeteo <- meteorites %>%
   filter(sumFell > 21) %>% 
   mutate(countryNr = group_indices())
 
-
+countriesList <- fellMeteo %>%
+  distinct(country, countryNr, countryLat)
 
 fellMeteo %>% 
-  ggplot(aes(countryNr + lat/100, 3)) +
-  geom_segment(aes(xend = countryNr + lat/100,
-                   yend = 15 - sumFell/100,
-                   size = 1),
-               alpha = 0.5,
-               color = "orange") +
+  ggplot(aes(countryNr + lat/50, 3)) +
+  geom_rect(aes(xmin = 0, ymin = 0, xmax = 29, ymax = 3)) +
+  geom_segment(aes(xend = countryNr + lat/50,
+                   yend = 3 + (2020 - year)/100),
+                   size = 0.25, alpha = 0.5, color = "orange") +
   geom_point(aes(size = mass),
-             color = "orangered",
-             alpha = 0.5) +
+             color = "orangered", fill = "red",
+             alpha = 0.2, shape = 21) +
+  geom_text(data = countriesList, aes(countryNr + countryLat/50, 2.8, label = country),
+             color = "white", hjust = 1, size = 1, angle = 90) +    
+  scale_size(range = c(0, 10)) +                 
   theme_minimal() +
+  xlim(0, 29) +
   ylim(0, 15) +
-  coord_polar() +
+  coord_polar(start = -pi/2.4) +
+  theme_void() +
   theme(
-    axis.text.x = element_text(angle = 60, hjust = 1)
+    legend.position = "top",
+    panel.background = element_rect(fill = "midnightblue"),
+    plot.margin = margin(0, -30, -17, -30, "cm")
   ) +
 
-ggsave("./week-24/meteorites.png")
+ggsave("./week-24/meteorites.png", dpi = 600)
 
 
 
