@@ -16,7 +16,7 @@ stars <- data.frame(s = runif(100, min = 0.1, max = 0.7))
 world <- map_data("world") %>%
   filter(group < 32 | group > 132)
 
-ggplot(top10, aes(x = x, y = y - 0.3)) +
+ggplot(top10, aes(x = x, y = y - 0.1)) +
   # stars
   geom_jitter(data = stars,
               aes(2, -1.2), width = 2.5, height = 1,
@@ -26,15 +26,15 @@ ggplot(top10, aes(x = x, y = y - 0.3)) +
   geom_point(aes(size = mass), color = "darkorange") +
   
   # meteorite name
-  geom_text(aes(y = y + 0.02,
+  geom_text(aes(y = y + 0.22,
                 label = toupper(name)), size = 2.5, color = "white",
             family = "IBM Plex Sans Bold") +
   # meteorite mass
-  geom_text(aes(y = y + 0.10,
+  geom_text(aes(y = y + 0.31,
                 label = paste(mass/1000000, "tons", sep = " ")), size = 2.5, color = "orange",
             family = "IBM Plex Sans Bold") +
   # year
-  geom_text(aes(y = y + 0.19,
+  geom_text(aes(y = y + 0.39,
                 label = year), size = 2.5, color = "white",
             family = "IBM Plex Sans Italic") +
             
@@ -51,7 +51,12 @@ ggplot(top10, aes(x = x, y = y - 0.3)) +
     size = 10, hjust = 0.5, lineheight = 0.8,
     color = "orange", family = "IBM Plex Sans Bold"
   ) +
-  
+  geom_text(
+    aes(x = 2, y = -0.7,
+        label = "Name, mass and year found or observed\nRanked by mass"),
+    size = 3, hjust = 0.5, lineheight = 0.8,
+    color = "white", family = "IBM Plex Sans Light"
+  ) +
   
   # map
   geom_polygon(data = world, aes(2 + long/100,
@@ -84,3 +89,4 @@ ggplot(top10, aes(x = x, y = y - 0.3)) +
   ggsave("./week-24/meteorites.png",
          height = 8,
          width = 5)
+,
