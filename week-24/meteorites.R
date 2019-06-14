@@ -54,19 +54,19 @@ ggplot(top10, aes(x = x, y = y - 0.1)) +
   geom_text(
     aes(x = 2, y = -0.7,
         label = "Name, mass and year found or observed\nRanked by mass"),
-    size = 3, hjust = 0.5, lineheight = 0.8,
+    size = 3, hjust = 0.5, lineheight = 0.9,
     color = "white", family = "IBM Plex Sans Light"
   ) +
   
   # map
-  geom_polygon(data = world, aes(2 + long/100,
-                                 2.5 - lat/120,
+  geom_polygon(data = world, aes(1.9 + long/80,
+                                 2.8 - lat/96,
                                  group = group),
                fill = "grey50", color = "grey30", size = 0.05) +
-  geom_point(aes(2 + long/100, 2.5 - lat/120),
+  geom_point(aes(1.9 + long/80, 2.8 - lat/96),
     alpha = 1, color = "darkorange") +
-  geom_text_repel(aes(2 + long/100,
-                2.5 - lat/120,
+  geom_text_repel(aes(1.9 + long/80,
+                2.8 - lat/96,
                 label = name), color = "white",
                 family = "IBM Plex Sans Italic",
             size = 2) +
