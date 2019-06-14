@@ -72,7 +72,7 @@ ggplot(top10, aes(x = x, y = y - 0.1)) +
             size = 2) +
   # caption
   geom_text(aes(x = 2, y = 3.5,
-                label = "Source: NASA | Graphics: Georgios Karamanis"),
+                label = "Source: NASA | Graphic: Georgios Karamanis"),
             color = "grey50", family = "IBM Plex Sans Light", size = 1.8) +
   
   scale_y_reverse() +
@@ -89,4 +89,3 @@ ggplot(top10, aes(x = x, y = y - 0.1)) +
   ggsave("./week-24/meteorites.png",
          height = 8,
          width = 5)
-,
