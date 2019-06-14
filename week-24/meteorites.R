@@ -1,64 +1,86 @@
 library(tidyverse)
-#library(sp)
-library(rworldmap)
+library(ggrepel)
 
 meteorites <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-06-11/meteorites.csv")
 
-# https://stackoverflow.com/questions/21708488/get-country-and-continent-from-longitude-and-latitude-point-in-r
-coords2continent = function(points)
-  {  
-  countriesSP <- getMap(resolution='low')
-  pointsSP = SpatialPoints(points, proj4string = CRS(proj4string(countriesSP)))  
-  indices = over(pointsSP, countriesSP)
-  # indices$REGION # returns continent
-  indices$ADMIN  #returns country name
-  }
+top10 <- meteorites %>%
+  top_n(10, mass) %>%
+  arrange(-mass) %>%
+  mutate(x = (row_number()- 1) %% 5,
+         y = ((row_number() - 1) %/% 5)
+         )
+# stars
+stars <- data.frame(s = runif(100, min = 0.1, max = 0.7))
 
+# world without Antarctica
+world <- map_data("world") %>%
+  filter(group < 32 | group > 132)
 
-fellMeteo <- meteorites %>%
-  drop_na() %>%
-  filter(fall == "Fell") %>% 
-  select(long, lat) %>% 
-  mutate(country = coords2continent(.)) %>%
-  mutate(country = str_replace_all(country, "United States of America", "U.S.A.")) %>% 
-  drop_na() %>% 
-  left_join(., meteorites) %>% 
-  group_by(country) %>% 
-  mutate(medianMass = median(mass)/1000,
-         sumFell = sum(n()),
-         countryLat = mean(lat),
-         countryLong = mean(long)) %>% 
-  filter(sumFell > 21) %>% 
-  mutate(countryNr = group_indices())
-
-countriesList <- fellMeteo %>%
-  distinct(country, countryNr, countryLat)
-
-fellMeteo %>% 
-  ggplot(aes(countryNr + lat/50, 3)) +
-  geom_rect(aes(xmin = 0, ymin = 0, xmax = 29, ymax = 3)) +
-  geom_segment(aes(xend = countryNr + lat/50,
-                   yend = 3 + (2020 - year)/100),
-                   size = 0.25, alpha = 0.5, color = "orange") +
-  geom_point(aes(size = mass),
-             color = "orangered", fill = "red",
-             alpha = 0.2, shape = 21) +
-  geom_text(data = countriesList, aes(countryNr + countryLat/50, 2.8, label = country),
-             color = "white", hjust = 1, size = 1, angle = 90) +    
-  scale_size(range = c(0, 10)) +                 
-  theme_minimal() +
-  xlim(0, 29) +
-  ylim(0, 15) +
-  coord_polar(start = -pi/2.4) +
-  theme_void() +
-  theme(
-    legend.position = "top",
-    panel.background = element_rect(fill = "midnightblue"),
-    plot.margin = margin(0, -30, -17, -30, "cm")
+ggplot(top10, aes(x = x, y = y - 0.3)) +
+  # stars
+  geom_jitter(data = stars,
+              aes(2, -1.2), width = 2.5, height = 1,
+              size = stars$s, color = "white", alpha = stars$s) +
+  
+  # meteorites          
+  geom_point(aes(size = mass), color = "darkorange") +
+  
+  # meteorite name
+  geom_text(aes(y = y + 0.02,
+                label = toupper(name)), size = 2.5, color = "white",
+            family = "IBM Plex Sans Bold") +
+  # meteorite mass
+  geom_text(aes(y = y + 0.10,
+                label = paste(mass/1000000, "tons", sep = " ")), size = 2.5, color = "orange",
+            family = "IBM Plex Sans Bold") +
+  # year
+  geom_text(aes(y = y + 0.19,
+                label = year), size = 2.5, color = "white",
+            family = "IBM Plex Sans Italic") +
+            
+  # title         
+  geom_text(
+    aes(x = 2, y = -1.5,
+        label = "THE TEN\nBIGGEST\n\nON EARTH"),
+    size = 10, hjust = 0.5, lineheight = 0.8,
+    color = "white", family = "IBM Plex Sans Bold"
   ) +
+  geom_text(
+    aes(x = 2, y = -1.358,
+        label = "METEORITES"),
+    size = 10, hjust = 0.5, lineheight = 0.8,
+    color = "orange", family = "IBM Plex Sans Bold"
+  ) +
+  
+  
+  # map
+  geom_polygon(data = world, aes(2 + long/100,
+                                 2.5 - lat/120,
+                                 group = group),
+               fill = "grey50", color = "grey30", size = 0.05) +
+  geom_point(aes(2 + long/100, 2.5 - lat/120),
+    alpha = 1, color = "darkorange") +
+  geom_text_repel(aes(2 + long/100,
+                2.5 - lat/120,
+                label = name), color = "white",
+                family = "IBM Plex Sans Italic",
+            size = 2) +
+  # caption
+  geom_text(aes(x = 2, y = 3.5,
+                label = "Source: NASA | Graphics: Georgios Karamanis"),
+            color = "grey50", family = "IBM Plex Sans Light", size = 1.8) +
+  
+  scale_y_reverse() +
+  coord_cartesian(xlim = c(-0.5, 4.5),
+                  ylim = c(3.5,-2)) +
+  scale_size(range = c(7, 20)) +
 
-ggsave("./week-24/meteorites.png", dpi = 600)
-
-
-
-
+  theme_void() +
+  theme(plot.background = element_rect(color = "midnightblue",
+                                        fill = "midnightblue"),
+        legend.position = "none"
+        ) +
+  
+  ggsave("./week-24/meteorites.png",
+         height = 8,
+         width = 5)
