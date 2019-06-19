@@ -28,7 +28,7 @@ confusedSplit <- split(confused, f = confused$pair)
 p1 <- ggplot(confusedSplit$A, aes(year, how_many_counted, group = species)) +
   geom_area(aes(fill = species), alpha = 0.9) +
   labs(title = "What did I just see?",
-       subtitle = "Observations of three pairs of commonly confused bird species\nduring the Christmas Bird Count in Hamilton, Ontario") +
+       subtitle = "Observations of three pairs of commonly confused bird species\nat the Christmas Bird Counts in Hamilton, Ontario, between 1921 and 2017") +
   scale_y_continuous(position = "right", breaks = c(0, 400)) +
   scale_fill_manual(values = c("#0072cf", "#ffe71a")) +
   theme(
@@ -114,5 +114,5 @@ p3 <- ggplot(confusedSplit$C, aes(year, how_many_counted, group = species)) +
 
 g <- arrangeGrob(p1, p2, p3, heights = c(4.5, 3, 3.5))
 
-ggsave(here("week-25", "xBirdCounts.png"), g, height = 11, width = 7)
+ggsave(here("week-25", "xBirdCounts.png"), g, height = 11, width = 7, dpi = 300)
 
