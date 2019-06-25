@@ -8,9 +8,10 @@ city_count <- ufo_sightings %>%
   group_by(city_area) %>% 
   summarise(total = n(), first_encounter = min(date_time)) %>% 
   top_n(n = 10, total) %>% 
-  arrange(desc(total)) %>%
   mutate(year = as.numeric(substr(first_encounter, 5, 9)),
-         city_area = str_to_title(city_area))
+         city_area = str_to_title(city_area),
+         city_area = fct_reorder(city_area, -total))
+  
 
 ggplot(city_count) +
   geom_segment(aes(x = city_area, y = year, 
@@ -19,10 +20,10 @@ ggplot(city_count) +
                color = "orange1") +
   # icon by https://www.iconfinder.com/korawan_m
   geom_image(aes(image = here("week-26", "img", "saucer.png"),
-                 x = city_area, y = year - 4.5),
-             asp = 1.5, size = 0.08, color = "purple3") +
+                 x = city_area, y = year - 2.2),
+             asp = 1.2, size = 0.05, color = "purple3") +
   geom_text(aes(label = year,
-                x = city_area, y = year - 13),
+                x = city_area, y = year - 8),
             color = "grey30", family = "IBM Plex Mono") +
   geom_text(aes(label = total,
                 x = city_area, y = 2017.7),
@@ -33,7 +34,7 @@ ggplot(city_count) +
   # guides(size = guide_legend(nrow = 1, title = "total encounters")) +
   theme_minimal() +
   theme(
-    plot.background = element_rect(fill = "grey90",
+    plot.background = element_rect(fill = "#e0e7f3",
                                    colour = "grey90"),
     panel.grid = element_blank(),
     legend.position = "",
@@ -41,9 +42,11 @@ ggplot(city_count) +
                               size = 14),
     axis.title = element_blank(),
     axis.text.y = element_blank(),
-    axis.text.x = element_text(margin = margin(-10, 0, 0, 0),
+    axis.text.x = element_text(margin = margin(-22, 0, 0, 0),
                                family = "IBM Plex Sans Medium",
-                               size = 12)
+                               size = 10, hjust = 0.1),
+    plot.margin = unit(c(1, 1, 1, 1), "cm"),
+    plot.title = element_text(margin = margin(0, 0, 2, 0))
   ) +
 
-  ggsave(here("week-26", "ufo.png"))
+  ggsave(here("week-26", "ufo.png"), width = 10, height = 8)
