@@ -49,7 +49,7 @@ ggplot(hoax) +
     legend.position = "None",
     panel.grid = element_blank(),
     plot.margin = unit(c(1, 1, 0.6, 0.8),"cm"),
-    plot.background = element_rect(fill = "#454c92"),
+    plot.background = element_rect(fill = "#454c92", color = "#454c92"),
     plot.title = element_text(color = "#9fee98",
                               family = "IBM Plex Sans"), 
     plot.subtitle = element_text(color = "grey90", 
