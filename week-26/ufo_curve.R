@@ -7,7 +7,6 @@ ufo_sightings <- readr::read_csv("https://raw.githubusercontent.com/rfordatascie
 hoax <- ufo_sightings %>%
   mutate(hoax = ifelse(grepl("hoax", tolower(description)), 1, 0),
         n = 1:n()) %>% 
-  # filter(grepl("hoax", tolower(description))) %>% 
   mutate(date_documented = as.Date(date_documented, "%m/%d/%Y"),
          date_time = as.Date(date_time, "%m/%d/%Y")) %>% 
   select(date_time, date_documented) %>%
@@ -23,11 +22,7 @@ hoax <- ufo_sightings %>%
       ym2 = as.Date(paste(ym2, "01", sep = ""), "%Y%m%d")
     )
 
-hoax %>% 
-  # distinct(date_time, date_documented) %>% 
-  # sample_n(1000) %>% 
-
-ggplot() +
+ggplot(hoax) +
   geom_curve(aes(x = as.Date("1990-01-01"), y = ym1, 
                   xend = ym2, yend = as.Date("1900-01-01"),
                   size = n),
@@ -44,10 +39,10 @@ ggplot() +
                date_labels = "%Y", expand = c(0,0)) +
   labs(
     title = "UFO sightings reported to NUFORC",
-    subtitle = "Date of sighting vs date documented",
+    subtitle = "Date the event took place vs date it was documented",
     caption = "Source: NUFORC | Graphics: Georgios Karamanis",
     x = "Date documented",
-    y = "Date of sighting"
+    y = "Date occurred"
   ) +
   theme_minimal() + 
   theme(
@@ -56,14 +51,14 @@ ggplot() +
     plot.margin = unit(c(1, 1, 0.6, 0.8),"cm"),
     plot.background = element_rect(fill = "#454c92"),
     plot.title = element_text(color = "#9fee98",
-                              family = "IBM Plex Sans Bold"), 
+                              family = "IBM Plex Sans"), 
     plot.subtitle = element_text(color = "grey90", 
                                  margin = margin(0, 0, 30, 0)),
     plot.caption = element_text(family = "IBM Plex Sans ExtraLight",
                                 color = "grey90",
                                 margin = margin(30, 0, 0, 0)),
     axis.text = element_text(color = "#9fee98",
-                             family = "IBM Plex Mono ExtraLight"),
+                             family = "IBM Plex Mono Light"),
     axis.title.x  = element_text(margin = margin(20, 0, 0, 0)),
     axis.title.y  = element_text(margin = margin(0, 20, 0, 0)),
     text = element_text(family = "IBM Plex Sans",
