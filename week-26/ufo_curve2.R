@@ -31,7 +31,8 @@ ggplot(hoax) +
   scale_size_continuous(range = c(0.1, 0.6)) +        
   scale_x_date(breaks = as.Date(c("1920-01-01", "1940-01-01", "1960-01-01",
                                   "1980-01-01", "2000-01-01", "2020-01-01")),
-               date_labels = "%Y", expand = c(0,0)) +
+               date_labels = "%Y", expand = c(0,0),
+               sec.axis = sec_axis(~ .)) +
   labs(
     title = "UFO sightings reported to NUFORC",
     subtitle = "Date the event took place vs date it was documented",
@@ -55,11 +56,12 @@ ggplot(hoax) +
     axis.text = element_text(color = "#9fee98",
                              family = "IBM Plex Mono Light"),
     axis.title.x  = element_text(margin = margin(20, 0, 0, 0)),
-    axis.title.y  = element_text(margin = margin(0, 20, 0, 0)),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
     text = element_text(family = "IBM Plex Sans",
                         color = "white",
                         size = 12)
   ) +
    
-  ggsave(here("week-26", "ufo_curve2.png"), height = 9, width = 7)
+  ggsave(here("week-26", "ufo_curve2.png"), height = 9, width = 5)
 
