@@ -23,19 +23,14 @@ hoax <- ufo_sightings %>%
     )
 
 ggplot(hoax) +
-  geom_curve(aes(x = as.Date("1990-01-01"), y = ym1, 
-                  xend = ym2, yend = as.Date("1900-01-01"),
+  geom_curve(aes(x = ym1, y = 5, 
+                  xend = ym2, yend = 0,
                   size = n),
-                  curvature = -0.4, color = "white",
+                  curvature = 0.1, color = "white",
             alpha = 0.1) +
   scale_size_continuous(range = c(0.1, 0.6)) +        
-  scale_x_date(breaks = as.Date(c("1998-01-01", "2002-01-01",
-                                  "2006-01-01", "2010-01-01",
-                                  "2014-01-01")),
-               date_labels = "%Y", expand = c(0,0)) +
-  scale_y_date(breaks = as.Date(c("1920-01-01", "1940-01-01",
-                                  "1960-01-01", "1980-01-01",
-                                  "2000-01-01", "2014-01-01")),
+  scale_x_date(breaks = as.Date(c("1920-01-01", "1940-01-01", "1960-01-01",
+                                  "1980-01-01", "2000-01-01", "2020-01-01")),
                date_labels = "%Y", expand = c(0,0)) +
   labs(
     title = "UFO sightings reported to NUFORC",
@@ -66,5 +61,5 @@ ggplot(hoax) +
                         size = 12)
   ) +
    
-  ggsave(here("week-26", "ufo_curve.png"), height = 9, width = 7)
+  ggsave(here("week-26", "ufo_curve2.png"), height = 9, width = 7)
 
