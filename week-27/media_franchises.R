@@ -11,44 +11,35 @@ top_games <- media_franchises %>%
   filter(original_media == "Video game" &
            revenue_category == "Video Games/Games") %>%
   distinct() %>% 
-  top_n(10, revenue) %>% 
+  filter(revenue >= 10) %>% 
   mutate(
-    # franchise = str_replace_all(franchise, c("é" = "e", "&" = "AND")),
     franchise = str_replace_all(franchise, " (?=\\w)", "\n"),
-    coins = map2(0, revenue, seq, by = 1),
-    # year_created = case_when(
-    #   franchise == "Final Fantasy" ~ 1987.7,
-    #   T ~ year_created
-    # )
+    coins = map2(0, revenue, seq, by = 1)
     ) %>%
   arrange(year_created) %>%
   unnest(coins) 
 
-# top_games_uniq <- top_games %>% 
-#   distinct(franchise, revenue)
-
-## original total revenue by all media types, not just the games themselves!
 rev_plot <- ggplot(top_games, aes(coins,
-              factor(fct_reorder(franchise, year_created, .desc = TRUE)))) +
-  geom_image(aes(image = coin_img), size = 0.03, asp = 0.8) +
-  scale_x_continuous(labels = c("0", "10", "20", "30", ""),
-                     limits =  c(0, 40)) +
+              factor(fct_reorder(franchise, revenue)))) +
+  geom_image(aes(image = coin_img), size = 0.035, asp = 1.2) +
+  scale_x_continuous(labels = c("0", "10", "20", "30"),
+                     limits =  c(0, 32)) +
   labs(
-  #   title = "Top 10 video games with the higher revenue",
-  #   subtitle = "shown only revenue of games",
-  #   caption = "Source: Wikipedia | Graphic: Georgios Karamanis",
     x = "Revenue in billion dollars"
   ) +
   theme_minimal() +
   theme(
-    plot.background = element_rect(fill = "#5099FF", color = "#5099FF"),
+    plot.background = element_rect(fill = "darkblue", color = "darkblue"),
     text = element_text(size = 8, family = "Press Start 2P"),
-    axis.text.x = element_text(color = "yellow"),
-    axis.title.x = element_text(color = "yellow"),
+    axis.text.x = element_text(color = "magenta1"),
+    axis.title.x = element_text(color = "blue",
+                                margin = margin(20, 0, 0, 0)),
     axis.title.y = element_blank(),
-    axis.text.y = element_text(color = "white"),
-    panel.grid.minor = element_blank(),
-    panel.grid.major.x = element_line(color = "yellow",
+    axis.text.y = element_text(color = "white", size = 7),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_line(color = "blue",
+                                      size = 0.1),
+    panel.grid.major.x = element_line(color = "blue",
                                       size = 0.2),
     panel.grid.major.y = element_blank(),
   )
@@ -59,23 +50,24 @@ year_plot <- top_games %>%
   ggplot(aes(1, year_created)) +
   geom_text_repel(aes(x = 1,
                       label = franchise),
-                  hjust = 1, direction = "y", nudge_x = -0.5,
+                  hjust = 1, direction = "y", nudge_x = -1,
                   segment.alpha	= 0, color = "white",
-                  size = 2, family = "Press Start 2P") +
+                  size = 2.5, family = "Press Start 2P") +
   geom_text(aes(x = 2.5, label = year_created), check_overlap = TRUE,
-            family = "Press Start 2P", size = 2, color = "yellow") +
-  geom_point() +
-  geom_path() +
-  xlim(-8, 4) +
+            family = "Press Start 2P", size = 2.5, color = "magenta1") +
+  geom_path(size = 0.2, color = "blue") +
+  geom_point(color = "yellow") +
+  xlim(-8, 5) +
   scale_y_reverse() +
   labs(
-    x = "Year created"
+    x = "Year of inception"
   ) +
   theme_minimal() +
   theme(
-    plot.background = element_rect(fill = "#5099FF", color = "#5099FF"),
-    axis.title.x = element_text(size = 8, color = "yellow",
-                                family = "Press Start 2P"),
+    plot.background = element_rect(fill = "darkblue", color = "darkblue"),
+    axis.title.x = element_text(size = 8, color = "blue",
+                                family = "Press Start 2P",
+                                margin = margin(20, 0, 0, 0)),
     axis.text = element_blank(),
     panel.grid = element_blank(),
     axis.title.y = element_blank()
@@ -84,25 +76,24 @@ year_plot <- top_games %>%
 p <- plot_grid(rev_plot, year_plot, rel_widths = c(1.5, 1)) +
   theme(
   plot.margin = margin(10, 30, 10, 30),
-  plot.background = element_rect(fill = "#5099FF", color = "#5099FF")
+  plot.background = element_rect(fill = "darkblue", color = "darkblue")
   )
 
 
 title <- ggdraw() +
-  draw_label("Top 10 video games with the higher revenue",
-             size = 10, fontfamily = "Press Start 2P") +
+  draw_label("Video game franchises with a revenue of $10 billion\nor more from sales of the actual video games ",
+             size = 11, fontfamily = "Press Start 2P", colour = "white") +
   theme(
-    plot.background = element_rect(fill="#5099FF", color = "#5099FF")
+    plot.background = element_rect(fill="darkblue", color = "darkblue")
   )
 
 caption <- ggdraw() +
   draw_label("Source: Wikipedia | Graphic: Georgios Karamanis",
-             size = 7, fontfamily = "Press Start 2P") +
+             size = 6.5, fontfamily = "Press Start 2P", colour = "white") +
   theme(
-    plot.background = element_rect(fill="#5099FF", color = "#5099FF")
+    plot.background = element_rect(fill="darkblue", color = "darkblue")
   )
 
-plot_grid (title, p, caption, ncol = 1, rel_heights = c(0.1, 1, 0.1)) +
+plot_grid(title, p, caption, ncol = 1, rel_heights = c(0.2, 1, 0.15)) +
 ggsave(here("week-27", "media_franchises.png"),
-          dpi = 300, height = 6, width = 8)
-  
+          dpi = 300, height = 7, width = 10)
