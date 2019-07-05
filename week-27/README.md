@@ -4,4 +4,4 @@ https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-02
 A plot meant to be a poster:
 ![](media_franchises_circles.png)
 Enhance!
-![](media_frachises_circles_zoom.png)
+![](media_franchises_circles_zoom.png)
