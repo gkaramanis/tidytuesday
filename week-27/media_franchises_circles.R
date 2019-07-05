@@ -40,7 +40,7 @@ ggplot() +
     legend.position = "none",
     plot.background = element_rect(fill = "#fff5ba", color = "#fff5ba"),
     plot.margin = margin(0, 50, 0, 50),
-    strip.text.x = element_text(size = 1.8),
+    strip.text.x = element_text(size = 1),
     plot.title = element_text(family = "Space Mono Bold",
                               size = 11, hjust = 0.5,
                               margin = margin(30, 0, 5, 0)),
@@ -87,6 +87,6 @@ l <- tribble(
 ggdraw() +
   draw_plot(p) +
   draw_plot(l, x = 0.35, y = 0.11, width = 0.52, height = 0.1) +
-  ggsave(here("week-27", "media_frachises_circles.png"),
-    height = 6.65, width = 5, dpi = 600)
+  ggsave(here("week-27", "media_franchises_circles.png"),
+    height = 6.35, width = 5, dpi = 900)
 
