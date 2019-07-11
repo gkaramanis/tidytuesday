@@ -51,7 +51,7 @@ ggplot(winloss) +
     legend.text = element_text(color = "grey60", size = 6,
                                family = "IBM Plex Mono"),
     legend.title = element_blank(),
-    plot.margin = margin(20, 40, 20, 40),
+    plot.margin = margin(20, 60, 20, 60),
     panel.grid = element_blank(),
     axis.text.x = element_text(color = "grey70", size = 7,
                                family = "IBM Plex Mono"),
