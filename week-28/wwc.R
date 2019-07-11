@@ -27,29 +27,38 @@ ggplot(winloss) +
   geom_text(aes(label = team, x = -1, y = 0),
     hjust = 1, size = 3, check_overlap = TRUE,
     family = "IBM Plex Mono Bold") +
-  geom_image(x = -9, y = 0, asp = 20, size = 0.04,
+  geom_image(x = -10, y = 0, asp = 20, size = 0.04,
              aes(image = here("week-28", "flags", paste0(team, ".png")))) +
-  #
-  scale_fill_manual(values = c("#bf212f", "#264b96", "#27b376")) +
+  # Scales
+  scale_fill_manual(values = c("#8c5358", "#465675", "#27b376"),
+    labels = c("loss", "draw", "win")) +
   coord_fixed(xlim = c(-10, 50)) +
   scale_x_continuous(breaks = c(10, 30, 50)) +
-  scale_alpha_continuous(range = c(0.3, 1)) +
+  scale_alpha_continuous(range = c(1, 1), guide = F) +
   # Title, subtitle and caption
   labs(
-    title = "Wins, draws and losses for all the teams that have taken part in\nthe Women's World Cup from 1991 to 2019",
-    subtitle = "USA have the most total wins (42), followed by Germany (31) and Norway (23). USA have the\ntwo longest winning streaks (12 and 11) and Norway the third longest (10). Germany hold the\nlongest undefeated streak (15), USA the second (14) and third one (11).",
-    caption = "Source: data.world | Graphic: Georgios Karamanis"
+    title = "Wins, draws and losses for the teams that have taken part in\nthe Women's World Cup from 1991 to 2019",
+    subtitle = "USA have the most total wins (42), followed by Germany (31) and Norway (23). USA have the\ntwo longest winning streaks (12 and 11) and Norway the third longest (10). Germany hold the\nlongest undefeated streak (15), USA the second and third one (14 and 11).",
+    caption = "Source: data.world | Graphic: Georgios Karamanis",
+    x = "Number of matches played in WWC"
   ) +
   facet_wrap(~ team, ncol = 2) +
   theme_minimal() +
   theme(
-    legend.position = "none",
-    plot.margin = margin(20, 0, 20, 0),
+    plot.background = element_rect(fill = "grey97", color = "white"),
+    legend.position = "top",
+    legend.key.size = unit(0.35, "line"),
+    legend.text = element_text(color = "grey60", size = 6,
+                               family = "IBM Plex Mono"),
+    legend.title = element_blank(),
+    plot.margin = margin(20, 40, 20, 40),
     panel.grid = element_blank(),
     axis.text.x = element_text(color = "grey70", size = 7,
                                family = "IBM Plex Mono"),
     axis.text.y = element_blank(),
-    axis.title = element_blank(),
+    axis.title.x = element_text(color = "grey60", size = 7,
+                               family = "IBM Plex Mono"),
+    axis.title.y = element_blank(),
     plot.title = element_text(size = 11, family = "IBM Plex Serif Medium"),
     plot.subtitle = element_text(size = 8, family = "IBM Plex Sans",
                                  margin = margin(0, 0, 25, 0)),
@@ -61,6 +70,3 @@ ggplot(winloss) +
   # http://www.storytellingwithdata.com/blog/2019/6/27/power-pairing-color-words
   ggsave(here("week-28", "wwc.png"),
          width = 6, height = 6)
-
-
-  
