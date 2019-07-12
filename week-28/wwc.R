@@ -3,11 +3,8 @@ library(ggimage)
 library(here)
 
 wwc_outcomes <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-09/wwc_outcomes.csv")
-codes <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-09/codes.csv")
 
 winloss <- wwc_outcomes %>%
-  # add_count(team, name = "team_t") %>% 
-  # mutate(team = fct_reorder(team, team_t, .desc = T)) %>% 
   group_by(team) %>%
   mutate(
     game_n = row_number(),
