@@ -49,7 +49,7 @@ ggplot(rfds) +
   labs(
     title = "R for Data Science Online Learning Community: Messages in public channels on Slack",
     subtitle = "The yellow points indicate the day of the month with the most messages and the blue lines the office hours",
-    caption = "source: R4DS | plot: Georgios Karamanis"
+    caption = "source: R4DS Slack | graphic: Georgios Karamanis"
   ) +
   facet_grid(month ~ year, labeller = as_labeller(m_labels)) +
   # Top days
