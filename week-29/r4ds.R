@@ -26,7 +26,8 @@ office_hours <- office_hours %>%
     day = format(as.Date(date), "%d"),
     month = format(as.Date(date), "%m"),
     year = format(as.Date(date), "%Y"),
-    )
+    ) %>%
+    left_join(., rfds)
 
 # Facet labels
 m_labels <- c("01" = "January", "02" = "February",
@@ -38,23 +39,30 @@ m_labels <- c("01" = "January", "02" = "February",
               "2017" = "2017", "2018" = "2018", "2019" = "2019") 
 
 ggplot(rfds) +
+
   # Office hours
   geom_segment(data = office_hours,
-               aes(x = day, xend = day, y = 0, yend = 150),
+               aes(x = day, xend = day, y = 200, yend = messages_in_public_channels),
                size = 0.3, color = "#36C5F0", alpha = 0.25) +
+  # geom_point(data = office_hours, aes(day, messages_in_public_channels),
+  #           alpha = 0.7, color = "#36C5F0", size = 1.2) +
+  
   # Messages
   geom_line(aes(day, messages_in_public_channels,
                 group = fct_rev(yearmonth)),
             color = "white", size = 0.3) +
+            
+  # Top days
+  geom_point(data = annot, aes(day, messages_in_public_channels),
+   color = "#ECB22E", size = 0.7) +
+  # geom_segment(data = annot, aes(x = day, y = messages_in_public_channels, xend = day, yend = 0),
+  #  color = "#ECB22E", size = 0.7) +
   labs(
     title = "R for Data Science Online Learning Community: Messages in public channels on Slack",
     subtitle = "The yellow points indicate the day of the month with the most messages and the blue lines the office hours",
     caption = "source: R4DS Slack | graphic: Georgios Karamanis"
   ) +
   facet_grid(month ~ year, labeller = as_labeller(m_labels)) +
-  # Top days
-  geom_point(data = annot, aes(day, messages_in_public_channels),
-    color = "#ECB22E", size = 0.7) +
   theme_void() +
   theme(
     plot.background = element_rect(fill = "#4A154B",
