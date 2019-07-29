@@ -1,0 +1,12 @@
+aircraft_component,birds_number_struck,birds_percentage_of_total_struck,birds_number_damaged,birds_percentage_of_total_damaged,terrestrialmammals_number_struck,terrestrialmammals_percentage_of_total_struck,terrestrialmammals_number_damaged,terrestrialmammals_percentage_of_total_damaged
+Windshield,26167,16,1087,6,9,0,17,1
+Nose,23381,14,1171,7,116,4,109,5
+Wing/rotor,22703,14,4229,24,316,11,325,16
+Other,21248,13,1415,8,384,13,290,14
+Radome,19863,12,1654,9,19,1,17,1
+Engines,19401,12,4787,27,182,6,177,9
+Fuselage,19070,12,764,4,147,5,154,8
+Landing gear,7244,4,573,3,1355,46,494,24
+Propeller,3454,2,287,2,339,11,306,15
+Tail,2065,1,722,4,62,2,84,4
+Light,1074,1,762,4,48,2,54,3
