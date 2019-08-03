@@ -55,7 +55,7 @@ overpriced_games <- video_games %>%
 # reorder games, descending price
 overpriced_games$game <- reorder(overpriced_games$game, overpriced_games$price)
 
-# dunction to wrap subtitle
+# function to wrap subtitle
 wrapper <- function(x, ...) 
 {
   paste(strwrap(x, ...), collapse = "\n")
