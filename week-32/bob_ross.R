@@ -118,21 +118,14 @@ bob %>%
   geom_image(aes(image = here("week-32", "elements", img_element), 0, 0), size = 1) +
   geom_text(aes(label = paste(season, episode, sep = "-"),
                 x = -32, y = 32),
-            family = "Silkscreen", size = 2, hjust = 0) +
+            family = "Silkscreen", size = 3, hjust = 0) +
   coord_fixed(xlim = c(-32, 32), ylim =  c(-32, 32)) +
-  facet_grid(season ~ episode) +
-  labs(title = "Bob Ross - painting by the elements (The big picture)") +
-  theme_void(base_family = "Silkscreen Bold") +
+  facet_wrap( ~ n, ncol = 13) +
+  theme_void() +
   theme(
     strip.text = element_blank(),
-    plot.title = element_text(size = 20, margin = margin(0, 0, 40, 0)),
     panel.border = element_rect(color = "grey90", fill = NA),
     plot.margin = margin(20, 20, 20, 20)
   ) +
   ggsave(here("week-32", "img_plot", paste0("massive", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
-         width = 12, height = 28, dpi = 320)
-
-# theme_void(base_size, bas e_family)
-# rmd
-# https://medium.com/nightingale/the-process-of-familiarity-an-interview-with-nicholas-rougeux-c30f1a1b2f8?source=rss----356ca48206e6---4
-# https://twitter.com/praveenpjose/status/1155724143184113665
+         width = 16, height = 10, dpi = 320)
