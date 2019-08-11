@@ -3,6 +3,7 @@
 Code and plots for [#tidytuesday](https://github.com/rfordatascience/tidytuesday)
 
 Highlights: <br>
+<a href="week-32"><img src="week-32/bob_ross.png" width="200"></a>
 <a href="week-30"><img src="week-30/wildlife.png" width="200"></a>
 <a href="week-28"><img src="week-28/wwc.png" width="200"></a>
 <a href="week-27"><img src="week-27/media_franchises.png" width="200"></a>
