@@ -1,5 +1,4 @@
 library(shiny)
-library(here)
 library(tidyverse)
 library(ggimage)
 
@@ -32,6 +31,7 @@ bob <- bob_ross %>%
     select(-exists) %>%
     # sort
     arrange(SE) %>%
+    mutate(SE = paste0(SE, " - ", title)) %>% 
     # rename elements
     mutate(
         element = case_when(
@@ -60,35 +60,34 @@ bob <- bob_ross %>%
     filter(element %in% draw_elements)
 
 ui <- fluidPage(
+    includeCSS("styles.css"),
     verticalLayout(
-        h4("Bob Ross"),
+        h4("Bob Ross - Painting by the elements"),
+        plotOutput("paintingPlot", height = "300px"),
         selectInput("episodeInput", "Select episode:",
-                    choices = bob$title,
+                    choices = bob$SE,
                     selected = T,
                     width = "100%"),
-        plotOutput("paintingPlot", height = "300px"),
         tableOutput("elementsTable")
+        )
     )
-)
+
 server <- function(input, output) {
     output$paintingPlot <- renderPlot({
         bob %>% 
-            filter(title == input$episodeInput) %>% 
+            filter(SE == input$episodeInput) %>% 
             ggplot() +
-            geom_image(aes(image = here("week-32", "elements", img_element), 0, 0), size = 1) +
-            geom_text(aes(label = paste(season, episode, sep = "-"),
-                          x = -32, y = 32),
-                      family = "Silkscreen", size = 3, hjust = 0) +
+            geom_image(aes(image = (paste0("elements/", img_element)), 0, 0), size = 1) +
             coord_fixed(xlim = c(-32, 32), ylim =  c(-32, 32)) +
             theme_void()
     }, bg="transparent")
     
     output$elementsTable <- renderTable(
         bob %>% 
-            filter(title == input$episodeInput) %>% 
-            select(element),
+            filter(SE == input$episodeInput) %>% 
+            select("Elements drawn" = "element"),
         
-        colnames = T, digits = 1, width = "100%"
+        colnames = T, width = "100%"
     )
 }
 

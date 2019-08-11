@@ -1,0 +1,40 @@
+@font-face {
+    font-family: Silkscreen;
+    src: url('fonts/slkscr.ttf') format('ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Silkscreen;
+    src: url('fonts/slkscr.ttf') format('ttf');
+    font-weight: bold;
+}
+
+h4 {
+  font-family: 'Silkscreen', Monaco, monospace;
+  font-weight: bold;
+  text-align: center;
+}
+
+body {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  font-family: 'Silkscreen', Monaco, monospace;
+  color: black;
+  font-size: 16px;
+}
+
+.table>tbody>tr>td {
+    border: 0;
+}
+
+.table>thead>tr>th {
+    border: 0;
+}
+
+.shiny-table.spacing-s > tbody > tr > td {
+      padding-top: 1px;
+      padding-bottom: 1px;
+}

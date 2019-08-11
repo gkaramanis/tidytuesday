@@ -1,0 +1,12 @@
+name: bob_ross
+title: bob_ross
+username:
+account: karamanis
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1079718
+bundleId: 2309422
+url: https://karamanis.shinyapps.io/bob_ross/
+when: 1565539747.93195
+asMultiple: FALSE
+asStatic: FALSE
