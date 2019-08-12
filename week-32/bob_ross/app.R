@@ -62,7 +62,7 @@ bob <- bob_ross %>%
 ui <- fluidPage(
     includeCSS("styles.css"),
     verticalLayout(
-        h4("Bob Ross - Painting by the elements"),
+        h3("Bob Ross - Painting by the elements"),
         plotOutput("paintingPlot", height = "300px"),
         selectInput("episodeInput", "Select episode:",
                     choices = bob$SE,
@@ -77,7 +77,7 @@ server <- function(input, output) {
         bob %>% 
             filter(SE == input$episodeInput) %>% 
             ggplot() +
-            geom_image(aes(image = (paste0("elements/", img_element)), 0, 0), size = 1) +
+            geom_image(aes(image = (paste0("www/elements/", img_element)), 0, 0), size = 1) +
             coord_fixed(xlim = c(-32, 32), ylim =  c(-32, 32)) +
             theme_void()
     }, bg="transparent")
