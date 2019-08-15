@@ -1,0 +1,55 @@
+---
+title: "Roman Emperors"
+author: "Georgios Karamanis"
+date: "8/13/2019"
+output:
+  html_document:
+    theme: paper
+highlight: textmate
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.width = 16, fig.height = 10)
+```
+
+```{r libraries, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(here)
+library(lubridate)
+```
+
+```{r data}
+emperors <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-08-13/emperors.csv")
+```
+
+```{r data-prep}
+# BCE dates
+emperors %>% 
+  mutate(
+    birth = case_when(
+			index <= 3 ~ update(birth, year = -year(birth)),
+			TRUE ~ birth
+			)
+			)
+```
+
+
+
+```{r plot}
+ggplot(emperors) +
+  geom_rect(aes(xmin = birth, ymin = index - 0.25, xmax = death, ymax = index + 0.25), fill = "grey50") +
+  geom_rect(aes(xmin = reign_start, ymin = index - 0.25, xmax = reign_end, ymax = index + 0.25), fill = "green") +
+		# cause of death as icon/label
+		# background bands = dynasties
+		scale_y_reverse() +
+		theme_minimal()
+```
+
+```{r}
+ggsave(here("week-33", "img_plot", paste0("emperors", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
+         dpi = 320)
+```
+
