@@ -36,9 +36,9 @@ age_emperors <- emperors %>%
 # big table
 p1 <- ggplot(age_emperors) +
   # box for dynasty
-  geom_rect(aes(xmin = -1, ymin = -1, xmax = 1, ymax = 1, fill = dynasty)) +
+  geom_rect(aes(xmin = -1, ymin = -1, xmax = 1, ymax = 1, fill = dynasty), color = "white") +
   # bar for era
-  geom_rect(aes(xmin = -1, ymin = 0.9, xmax = 1, ymax = 1, fill = era)) +
+  geom_rect(aes(xmin = -1, ymin = 0.8, xmax = 1, ymax = 1, fill = era), color = "white") +
   # full name
   geom_text(aes(label = name, x = -0.65, y = 0.45), hjust = 0,
             size = 2, family = ("Cinzel"), color = "white") +
@@ -81,8 +81,8 @@ p1 <- ggplot(age_emperors) +
 # legend 
 p2 <- ggplot(subset(age_emperors, index == 1)) +
   # dynasty and era
-  geom_rect(aes(xmin = -1, ymin = -1, xmax = 1, ymax = 1), fill = "#AF6458") +
-  geom_rect(aes(xmin = -1, ymin = 0.9, xmax = 1, ymax = 1), fill = "#855C75") +
+  geom_rect(aes(xmin = -1, ymin = -1, xmax = 1, ymax = 1), fill = "#AF6458", color = "white") +
+  geom_rect(aes(xmin = -1, ymin = 0.8, xmax = 1, ymax = 1), fill = "#855C75", color = "white") +
   # text
   geom_text(aes(label = name, x = -0.65, y = 0.45), hjust = 0,
             size = 3, family = ("Cinzel"), color = "white") +
@@ -92,9 +92,9 @@ p2 <- ggplot(subset(age_emperors, index == 1)) +
                 x = -0.7, y = -0.5), hjust = 0,
             size = 8, family = ("Cinzel"), color = "grey90") +
   # legend of legend
-  geom_label(aes(x = -1.1, y = 0.90, hjust = 1,
+  geom_label(aes(x = -1.1, y = 0.9, hjust = 1,
                      label = "Era"), size = 4,  family = ("Cinzel"), fontface = "bold", fill = "#855C75", color = "white", label.r = unit(0, "lines")) +
-  geom_label(aes(x = -1.1, y = 0.7, hjust = 1,
+  geom_label(aes(x = -1.1, y = 0.68, hjust = 1,
                      label = "Dynasty"), size = 4,  family = ("Cinzel"), fontface = "bold", fill = "#AF6458", color = "white", label.r = unit(0, "lines")) +
   geom_text(aes(x = -1.1, y = 0.45, hjust = 1,
                      label = "Full Name"), size = 4,  family = ("Cinzel"), color = "black") +
@@ -104,7 +104,6 @@ p2 <- ggplot(subset(age_emperors, index == 1)) +
                      label = "Age at Death | Reign Duration\n(in years)"), size = 4,  family = ("Cinzel"), color = "black") +
   
   coord_fixed(xlim = c(-4, 1), ylim = c(-1, 1)) +
-  scale_fill_carto_d(palette = "Antique", name = "Eras and Dynasties") +
   theme_void() +
   theme(
     legend.position = "none"
