@@ -4,3 +4,6 @@ https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-08-06
 
 All the paintings:
 ![](bob_ross_big.png)
+
+Making of:
+![](bob_ross.mp4)
