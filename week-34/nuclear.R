@@ -41,7 +41,7 @@ ggplot() +
   # annotations
   geom_vline(xintercept = 1963, colour = "grey40", size = 1) +
   geom_vline(xintercept = 1996, colour = "grey40", size = 1) +
-  geom_rich_text(data = annot,
+  geom_richtext(data = annot,
                  aes(label = label, x = x, y = y,
                      hjust = hjust), vjust = 1, size = 5,
                      family = "IBM Plex Sans", show.legend = FALSE,
