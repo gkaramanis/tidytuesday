@@ -90,7 +90,7 @@ ggplot() +
     plot.caption = element_text(family = "IBM Plex Sans Light", margin = margin(30, 0, 0, 0))
   ) +
   
-  ggsave(here::here("week-34", "img_plot", paste0("nuclear", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
-    width = 16, height = 12, dpi = 320,
+  ggsave(here::here("week-34", "nuclear.png"),
+    width = 16, height = 12, dpi = 320
   )
 
