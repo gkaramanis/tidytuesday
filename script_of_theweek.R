@@ -1,1 +1,1 @@
-eval(parse(text="source(\"./week-35/simpsons.R\")"))
+eval(parse(text="source(\"./week-35/simpsons_curves.R\")"))
