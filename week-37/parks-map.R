@@ -37,7 +37,8 @@ ggplot() +
   guides(fill = guide_legend(title.position = "top",
                              title = "Amusement park injuries:\nThe most common device category reported by state", label.hjust = 0,
                              title.hjust = 0, nrow = 1,
-                             label.position = "bottom")) +
+                             label.position = "bottom",
+                             override.aes = list(color = "grey50"))) +
   # palette, make NA grey80
   scale_fill_simpsons( na.value = "grey80",
                 limits = legend_items) +
@@ -51,6 +52,7 @@ ggplot() +
     legend.position = "top",
     legend.title = element_text(size = 32, color = "grey10", family = "IBM Plex Sans Medium"),
     legend.text = element_text(color = "grey30", hjust = 0, lineheight = 0.8),
+    legend.key = element_rect(fill = 'white', color = NA),
     legend.key.width = unit(35, "points"),
     legend.key.height = unit(7, "points")
   ) +
