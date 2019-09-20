@@ -53,15 +53,15 @@ pv_ch %>%
     legend.position = "top",
     legend.title = element_text(size = 20, color = "grey20"),
     legend.margin = margin(0, 0, 20, 0),
-    plot.background = element_rect(fill = "grey70", color = NA),
-    strip.background = element_rect(fill = "grey70", color = NA),
+    plot.background = element_rect(fill = "grey80", color = NA),
+    strip.background = element_rect(fill = "grey80", color = NA),
     strip.text = element_text(family = "IBM Plex Sans Bold", color = "grey30",
                                hjust = 1, vjust = 1),
     plot.title = element_text(size = 28, color = "grey20", family = "IBM Plex Sans Medium"),
     plot.subtitle = element_text(size = 20, color = "grey20"),
     plot.caption = element_text(size = 8, color = "grey30", margin = margin(20, 0, 0, 0)),
     axis.text.x = element_text(family = "IBM Plex Mono", size = 7, color = "grey40"),
-    panel.grid.major.x = element_line(color = "grey65"),
+    panel.grid.major.x = element_line(color = "grey75"),
     plot.margin = margin(20, 20, 20, 20)
   ) +
 
