@@ -15,26 +15,27 @@ pv_ch <- park_visits %>%
   filter(unit_name != "Denali National Preserve") %>% 
   mutate(
     mean_visitors = mean(visitors),
-    mean_pct = visitors/mean_visitors
+    mean_pct = log10(visitors/mean_visitors)
     ) %>% 
   add_tally()
 
 
 ggplot(pv_ch) +
   geom_segment(aes(x = year, xend = year,
-                   y = 0, yend = 0.5, color = mean_pct), size = 1.4) +
+                   y = 0, yend = 0.5, color = cut_number(mean_pct, 10)), size = 1.4) +
   scale_x_continuous(breaks = seq(1910, 2010, 20), expand = expand_scale(add = c(5, 1))) +
   scale_y_continuous(expand = c(0.05, 0.25)) +
   facet_wrap(vars(fct_reorder(unit_name, -n)), ncol = 3) +
-  scale_color_viridis(option = "plasma", labels = percent) +
+  scale_color_viridis(option = "plasma", discrete = TRUE) +
   labs(
     title = "National Park Visits, 1904–2016",
     subtitle = "Percentage of all-time average number of visits, by year",
     caption = "Source: dataisplural/data.world | Graphic: Georgios Karamanis"
   ) +
-  guides(color = guide_colorbar(
-    title.position = "top",
-    label.position = "top",
+  guides(color = guide_legend(
+    # title.position = "top",
+    label.position = "bottom",
+    nrow = 1,
     title = NULL,
     barwidth = 20,
     barheight = 0.5
