@@ -27,7 +27,7 @@ clean_school <- school_diversity %>%
 
 
 ggplot(clean_school) +
-  # "axes" and "gridlines"
+  # "axes" and "gridlines" ---------------------------------------------------------------
   annotate(
     "segment",
     x = seq(0, 100, 10), y = 19, 
@@ -45,13 +45,13 @@ ggplot(clean_school) +
     color = "grey55",
     alpha = 0.9
   ) +
-  # grey bars and bar labels
+  # grey bars and bar labels, years ---------------------------------------------------------------
   annotate(
     "rect",
     xmin = 0,
     ymin = seq(20, 5, -3),
     xmax = 100,
-    ymax = seq(19, 4, -3),
+    ymax = seq(18.5, 3.5, -3),
     color = "#cdd4db",
     fill = "#cdd4db"
   ) +
@@ -65,101 +65,121 @@ ggplot(clean_school) +
     size = 4.5,
     alpha = 0.7
   ) +
-  # 1 - aian
+  annotate(
+    "text",
+    x = 99.75,
+    y = seq(19.75, 4.75, -3),
+    label = c(1995),
+    family = "IBM Plex Sans Light",
+    hjust = 1,
+    size = 4,
+    alpha = 0.15
+  ) +
+  annotate(
+    "text",
+    x = 99.75,
+    y = seq(18.75, 3.75, -3),
+    label = c(2017),
+    family = "IBM Plex Sans Light",
+    hjust = 1,
+    size = 4,
+    alpha = 0.15
+  ) +
+  #  1 - aian --------------------------------------------------------------- 
   geom_segment(aes(
     x = aian_1,
     y = 20,
     xend = aian_2,
-    yend =  19,
+    yend =  18.5,
     color = st
   ),
   size = 0.2) +
   geom_text(
     data = subset(clean_school, aian_2 > 3),
-    aes(x = aian_2, y = 18.7, label = st, color = st),
+    aes(x = aian_2, y = 18.2, label = st, color = st),
     family = "IBM Plex Sans",
     size = 3.5,
     alpha = 0.7
   ) +
-  # 2 - asian
+  # 2 - asian ---------------------------------------------------------------
   geom_segment(aes(
     x = asian_1,
     y = 17,
     xend = asian_2,
-    yend =  16,
+    yend =  15.5,
     color = st
   ), size = 0.2) +
   geom_text(
     data = subset(clean_school, asian_2 > 50),
-    aes(x = asian_2, y = 15.7, label = st, color = st),
+    aes(x = asian_2, y = 15.2, label = st, color = st),
     family = "IBM Plex Sans",
     size = 3.5,
     alpha = 0.7
   ) +
-  # 3 - black
+  # 3 - black ---------------------------------------------------------------
   geom_segment(aes(
     x = black_1,
     y = 14,
     xend = black_2,
-    yend =  13,
+    yend =  12.5,
     color = st
   ), size = 0.2) +
   geom_text(
     data = subset(clean_school, black_2 > 5),
-    aes(x = black_2, y = 12.7, label = st, color = st),
+    aes(x = black_2, y = 12.2, label = st, color = st),
     family = "IBM Plex Sans",
     size = 3.5,
     alpha = 0.7
   ) +
-  # 4 - hispanic
+  # 4 - hispanic ---------------------------------------------------------------
   geom_segment(aes(
     x = hispanic_1,
     y = 11,
     xend = hispanic_2,
-    yend =  10,
+    yend =  9.5,
     color = st
   ), size = 0.2) +
   geom_text(
     data = subset(clean_school, hispanic_2 > 19),
-    aes(x = hispanic_2, y = 9.7, label = st, color = st),
+    aes(x = hispanic_2, y = 9.2, label = st, color = st),
     family = "IBM Plex Sans",
     size = 3.5,
     alpha = 0.7
   ) +
-  # 5 - white
+  # 5 - white ---------------------------------------------------------------
   geom_segment(aes(
     x = white_1,
     y = 8,
     xend = white_2,
-    yend =  7,
+    yend =  6.5,
     color = st
   ), size = 0.2) +
   geom_text(
     data = subset(clean_school, white_2 < 39),
-    aes(x = white_2, y = 6.7, label = st, color = st),
+    aes(x = white_2, y = 6.2, label = st, color = st),
     family = "IBM Plex Sans",
     size = 3.5,
     alpha = 0.7
   ) +
-  # 6 - multi
+  # 6 - multi ---------------------------------------------------------------
   geom_segment(aes(
     x = multi_2,
-    y = 4.1,
+    y = 3.6,
     xend = multi_2,
-    yend =  4,
+    yend =  3.5,
     color = st
   ), size = 0.2) +
   geom_text(
     data = subset(clean_school, multi_2 > 13),
-    aes(x = multi_2, y = 3.7, label = st, color = st),
+    aes(x = multi_2, y = 3.2, label = st, color = st),
     family = "IBM Plex Sans",
     size = 3.5,
     alpha = 0.7
   ) +
-  # plot title, scales and theme
+  # plot title, scales and theme ---------------------------------------------------------------
   labs(
     title = "Changes in proportion of students' racial groups from the 1994-1995 to the 2016-2017 school year",
-    subtitle = "Showing change in median value by state. Multiracial was not a category in 1994-1995",
+    subtitle = "Showing change in median value by state. Multiracial was not a category in 1995",
     caption = "Source: The Washington Post | Graphic: Georgios Karamanis"
   ) +
   scale_color_viridis_d(option = "inferno") +
@@ -173,6 +193,7 @@ ggplot(clean_school) +
     plot.subtitle = element_text(hjust = 1, margin = margin(10, 0, 20, 0), color = "grey25")
   ) +
   ggsave(
-    here::here("week-39", "figures", "temp", paste0("school-diversity", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
+    here::here("week-39", "figures", "temp", paste0("school-diversity-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
     width = 12, height = 9, dpi = 320
     )
+
