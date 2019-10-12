@@ -40,7 +40,6 @@ ggplot(meets, aes(date, weight, color = lift, fill = lift)) +
     plot.title = element_text(family = "IBM Plex Sans Bold", size = 18, hjust = 0.5),
     plot.subtitle = element_text(family = "IBM Plex Sans Medium", size = 16, hjust = 0.5),
     strip.text = element_text(family = "IBM Plex Sans Bold", size = 16),
-    strip.background = element_rect(fill = "grey97", color = NA),
     plot.margin = margin(20, 20, 20, 20),
     axis.title = element_blank(),
     axis.text = element_text(color = "grey70"),
