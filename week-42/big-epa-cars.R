@@ -38,6 +38,8 @@ ggplot() +
   geom_rect(aes(xmin = -0.75, ymin = 0, xmax = 2.75, ymax = 105), fill = "grey20") +
   # city street line
   geom_segment(aes(x = 1, y = 0, xend = 1, yend = 105), size = 2, color = "grey90", linetype = 2) +
+  # city label
+  geom_text(aes(x = -1.6, y = 1, label = "CITY"), size = 8, color = "grey90", alpha = 0.4, family = "IBM Plex Sans Medium", angle = 90, hjust = "left") +
   
   # highway background
   geom_rect(aes(xmin = 8, ymin = 0, xmax = 17, ymax = 105), fill = "brown4") +
@@ -45,6 +47,8 @@ ggplot() +
   geom_rect(aes(xmin = 12.25, ymin = 0, xmax = 15.75, ymax = 105), fill = "grey20") +
   # highway road line
   geom_segment(aes(x = 14, y = 0, xend = 14, yend = 105), size = 2, color = "grey90", linetype = "longdash") +
+  # highway label
+  geom_text(aes(x = 16.6, y = 1, label = "HIGHWAY"), size = 8, color = "grey90", alpha = 0.4, family = "IBM Plex Sans Medium", angle = 90, hjust = "left") +
   
   # city cars
   geom_image(data = city_race, aes(x = lane, y = city_mpg_median, image = car), size= .05, asp = 0.6) +
@@ -61,7 +65,7 @@ ggplot() +
   # y axis between roads
   geom_text(aes(x = 7.5, y = seq(0, 100, 10)), label = seq(0, 100, 10), family = "IBM Plex Mono Light", size = 6, color = "black") +
   geom_text(aes(x = 7.5, y = seq(5, 95, 10)), label = seq(5, 95, 10), family = "IBM Plex Mono Light", size = 6, color = "grey50") +
-  geom_text(aes(x = 7.5, y = -2, label = "MPG/MPGe"), family = "IBM Plex Mono Light", size = 6, color = "black") +
+  geom_text(aes(x = 7.5, y = -3, label = "MPG/MPGe"), family = "IBM Plex Mono Light", size = 6, color = "black") +
   
   # title and theme
   xlim(-2, 17) +
