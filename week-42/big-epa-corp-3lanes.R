@@ -43,7 +43,7 @@ ggplot() +
   geom_text(aes(x = 4, y = 1, label = "CITY"), size = 16, color = "grey70", alpha = 0.2, family = "IBM Plex Sans Medium", angle = 90, hjust = "left") +
   
   # highway background
-  geom_rect(aes(xmin = 14, ymin = 0, xmax = 27, ymax = 105), fill = "brown4") +
+  geom_rect(aes(xmin = 14, ymin = 0, xmax = 26, ymax = 105), fill = "brown4") +
   # highway 
   geom_rect(aes(xmin = 18, ymin = 0, xmax = 23.75, ymax = 105), fill = "grey20") +
   # highway road lines
@@ -70,7 +70,7 @@ ggplot() +
   geom_text(aes(x = 13.5, y = -3, label = "MPG/MPGe"), family = "IBM Plex Mono Light", size = 6, color = "black") +
   
   # title and theme
-  scale_x_continuous(limits = c(1, 27), expand = c(0, 0)) +
+  scale_x_continuous(limits = c(1, 26), expand = c(0, 0)) +
   labs(
     title = "Tesla is the leading car brand in energy efficiency",
     subtitle = "Top 10 most energy efficient brands in city and highway driving.\nRanking is based on calculated median MPG and MPGe of all\nmodels made by every car manufacturer since 1984.",
