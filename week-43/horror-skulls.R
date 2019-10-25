@@ -57,7 +57,7 @@ l <- ggplot() +
   geom_regon(data = subset(horror_month, !is.na(cast)), aes(x0 = 0, y0 = 0, sides = 8, r = 12, angle = 0), fill = NA, color = "purple4") +
   geom_regon(data = subset(horror_month, !is.na(cast)), aes(x0 = 0, y0 = 0, sides = 8, r = 10, angle = 0), fill = NA, color = "purple4") +
   geom_regon(data = subset(horror_month, !is.na(cast)), aes(x0 = 0, y0 = 0, sides = 8, r = 8, angle = 0), fill = NA, color = "purple4") +
-  geom_shadowtext(aes(x = 5.5, y = -6, label = "Cast Members\nListed by IMDB"), hjust = 0, color = "darkorchid4", family = "Feast of Flesh BB", size = 7, lineheight = 0.7) +
+  geom_shadowtext(aes(x = 5.5, y = -6, label = "Cast Members\nListed by IMDB"), hjust = 0, color = "darkorchid4", family = "Feast of Flesh BB", size = 6.5, lineheight = 0.7) +
   # skull with jaw
   annotation_custom(
     xsplineGrob(
