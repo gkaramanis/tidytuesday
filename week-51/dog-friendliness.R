@@ -65,6 +65,6 @@ ggplot(fuzzy_dogs) +
   ) +
   
   ggsave(
-    here::here("week-51", "plots", "temp", paste0("dog-friednliness", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 12, width = 12
+    here::here("week-51", "plots", "temp", paste0("dog-friendliness", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 12, width = 12
   )
  
