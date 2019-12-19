@@ -33,8 +33,9 @@ ggplot() +
     plot.title = element_text(family = "IBM Plex Sans Bold", size = 24, hjust = 0.5, margin = margin(0, 0, 10, 0)),
     plot.caption = element_text(margin = margin(5, 0, 0, 0)),
     panel.border = element_rect(colour = "black", fill= NA, size= 0.5)
-  ) +
-ggsave(
-      here::here("week-49", "plots", "temp", paste0("tickets-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10, width = 10
-      )
+  )
+# 
+# ggsave(
+#       here::here("week-49", "plots", "temp", paste0("tickets-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10, width = 10
+#       )
  
