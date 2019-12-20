@@ -40,8 +40,8 @@ ggplot(fuzzy_dogs) +
   geom_point(aes(x = child_friendliness, y = cat_friendliness), size = 10, color = "#fff44f") +
   geom_image(aes(x = child_friendliness, y = cat_friendliness, image = paste0(here("week-51", "png"), "/", filename)), size = 0.05) +
   geom_label_repel(aes(x = child_friendliness, y = cat_friendliness, label = breed_primary.y), force = 6, point.padding = 3, box.padding = 1.2, segment.color = "black", segment.size = 0.2, fill = "black", color = "#fff44f", family = "IBM Plex Sans Bold", size = 4) +
-  annotate("text", x = -0.05, y = 0.32, label = toupper("Child- and cat-friendliness\nof 30 dog breeds, as\nassessed* on Petfinder.com,\nfor adoptable dogs\nsince 2003"), hjust = 0, vjust = 1, lineheight = 0.9, size = 8, family = "IBM Plex SAns Bold") +
-  annotate("text", x = -0.05, y = 0.12, label = toupper("*Based on presumed primary breed,\nas percentage of friendly to total number\nassessed for every breed"), hjust = 0, vjust = 1, lineheight = 0.9, size = 5, family = "IBM Plex SAns Bold") +
+  annotate("text", x = -0.05, y = 0.32, label = toupper("Child- and cat-friendliness\nof 30 dog breeds, as\nassessed* on Petfinder.com,\nfor adoptable dogs\nsince 2003"), hjust = 0, vjust = 1, lineheight = 0.9, size = 8, family = "IBM Plex Sans Bold") +
+  annotate("text", x = -0.05, y = 0.12, label = toupper("*Based on presumed primary breed,\nas percentage of friendly to total number\nassessed for every breed"), hjust = 0, vjust = 1, lineheight = 0.9, size = 5, family = "IBM Plex Sans Bold") +
   
   labs(
     caption = "Source: Petfinder.com via The Pudding | Graphic: Georgios Karamanis\nIcons made by Freepik from www.flaticon.com",
