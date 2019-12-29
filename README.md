@@ -5,6 +5,7 @@ Code and plots for [#tidytuesday](https://github.com/rfordatascience/tidytuesday
 Highlights (click on image to go to code): <br>
 <div class="row"> 
   <div class="column">
+	<a href="week-51"><img src="week-51/plots/dog-friendliness.png"></a>
   	<a href="week-42"><img src="week-42/figures/big-epa-cars-mpgrace-3lanes.png"></a>
 	<a href="week-40"><img src="week-40/figures/pizza-likert.png"></a>
 	<a href="week-33"><img src="week-33/emperors_table.png"></a>
