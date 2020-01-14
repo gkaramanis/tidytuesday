@@ -30,7 +30,7 @@ p <- ggplot(passwords_freq) +
   theme(
     legend.position = 'none',
     plot.background = element_rect(fill = "black", color = NA),
-    axis.text.y = element_text(color = "green3", family = "Press Start 2P", size = 11),
+    axis.text.y = element_text(color = "green3", family = "Press Start 2P", size = 10),
     plot.title = element_text(color = "green3", family = "Press Start 2P", margin = margin(0, 0, 10, 0), hjust = 1),
     plot.caption = element_text(color = "green3", family = "Press Start 2P"),
     plot.margin = margin(30, 40, 30, 40)
