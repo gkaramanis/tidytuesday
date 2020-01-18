@@ -28,7 +28,7 @@ ggplot(bsplines) +
   coord_fixed() +
   labs(
     title = toupper("Strength of passwords by category"),
-    subtitle = "Every 'circle' is a password, stroke size and color represent its strength",
+    subtitle = "Every 'circle' is a password. Radius, stroke width, and color represent its strength.",
     caption = "Source: Information is Beautiful | Graphic: Georgios Karamanis"
   ) +
   theme_void(base_family = "IBM Plex Mono") +
