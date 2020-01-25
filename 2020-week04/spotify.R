@@ -28,7 +28,7 @@ ggplot(spotify) +
   scale_x_date(expand = c(0.002, 0.002), breaks = as.Date(c("1960-01-01", "1970-01-01", "1980-01-01", "1990-01-01", "2000-01-01", "2010-01-01", "2020-01-01")), date_labels = "%Y") +
   facet_wrap(vars(variable), scales = "free_y", ncol = 1) +
   labs(
-    title = toupper("Evolution of accousticness, liveness, and speechiness\nof Spotify songs through the years"),
+    title = toupper("Evolution of acousticness, liveness, and speechiness\nof Spotify songs through the years"),
     subtitle = "",
     caption = "Source: Spotify | Graphic: Georgios Karamanis"
   ) +
