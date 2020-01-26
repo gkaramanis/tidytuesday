@@ -39,7 +39,7 @@ spotify %>%
   scale_colour_manual(values = wes_palette("Zissou1", 15, type = "continuous"), guide = FALSE) +
   
   labs(
-    title = "Artists with the longer span of album releases on Spotify",
+    title = "Artists with the longest span of album releases on Spotify",
     caption = "Source: Spotify | Graphic: Georgios Karamanis"
   ) +
   
