@@ -57,7 +57,7 @@ spotify %>%
     plot.margin = margin(20, 20, 20, 80)
   ) +
   
-  ggsave(here::here("2020-week04", "plots", paste0("spotify-artists-", ".png")), dpi = 320, height = 10, width = 14)
+  ggsave(here::here("2020-week04", "plots", paste0("spotify-artists", ".png")), dpi = 320, height = 10, width = 14)
   
 
 
