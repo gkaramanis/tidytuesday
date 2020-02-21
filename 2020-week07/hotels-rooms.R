@@ -10,7 +10,7 @@ hotels <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 
 # hexagon
 hex_x <- c(0, 0.87, 0.87, 0, -0.87, -0.87)
-hex_y <- cy(-1, -0.5, 0.5, 1, 0.5, -0.5)
+hex_y <- c(-1, -0.5, 0.5, 1, 0.5, -0.5)
 
 # calculate sums and percentages by month
 rooms <- hotels %>% 
