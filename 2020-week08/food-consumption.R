@@ -25,7 +25,7 @@ ggplot(food_co2) +
                 xmax = co2/25, ymax = n*2 + 0.7), fill = "black", color = NA) +
   geom_text(aes(-40.5, n*4, label = country), family = "JetBrains Mono Bold", color = "white", hjust = 0, size = 8.5, check_overlap = TRUE) +
   geom_text(aes(co2/25-1, n*2, label = co2), family = "JetBrains Mono Medium", color = "white", hjust = 1, size = 4, check_overlap = TRUE) +
-  annotate("text", 85, 17, label = "Co2 emission by country\n(Kg CO2/person/year)", family = "IBM Plex Sans Bold", color = "black", hjust = 1, size = 13, lineheight = 0.9) +
+  annotate("text", 85, 17, label = "Total food carbon footprint\nKg CO2/person/year", family = "IBM Plex Sans Bold", color = "black", hjust = 1, size = 13, lineheight = 0.9) +
   annotate("text", 1, -9.5, label = "Source: nu3 | Graphic: Georgios Karamanis", family = "IBM Plex Sans", color = "black", hjust = 0, size = 4, lineheight = 0.9) +
   scale_x_continuous(breaks = seq(0, 80, 20), labels = seq(0, 2000, 500)) +
   theme_minimal(base_family = "JetBrains Mono Medium") +
