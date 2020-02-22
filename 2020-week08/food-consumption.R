@@ -1,6 +1,5 @@
 library(tidyverse)
 library(here)
-# library(rtweet)
 
 food_consumption <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-18/food_consumption.csv')
 
@@ -41,8 +40,6 @@ ggplot(food_co2) +
     plot.margin = margin(20, 20, 20, 20)
   ) +
   ggsave(here::here("2020-week08", "plots", "food-consumption.png"), dpi = 320, width = 12, height = 8)
-  # post to twitter and blog 
-
 
 
 
