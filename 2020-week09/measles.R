@@ -24,8 +24,8 @@ measles_counties <- measles %>%
 
 ggplot(measles_counties) +
   geom_polygon(aes(long, lat, group = group, fill = mmr_color), color = "#0B0C0B", size = 0.1) +
-  annotate("text", -124, 28, label = "*Data for more than 46,000 schools in 704\ncounties in 32 states. 119 counties (16.9%)\nhad a mean vaccination rate lower than 90%\nand 119 counties had 90% or higher.", hjust = 0, family = "IBM Plex Sans") +
-  annotate("text", -124, 25, label = "Source: The Wall Street Journal | Graphic: Georgios Karamanis", hjust = 0, size = 2.5, family = "IBM Plex Sans Light") +
+  annotate("text", -124, 27, label = "*Data for more than 46,000 schools in 704\ncounties in 32 states. 119 counties (16.9%) had\na mean vaccination rate lower than 90% (red)\nand 585 counties had 90% or higher (blue).", hjust = 0, family = "IBM Plex Sans") +
+  annotate("text", -124, 24, label = "Source: The Wall Street Journal | Graphic: Georgios Karamanis", hjust = 0, size = 2.5, family = "IBM Plex Sans Light") +
   coord_map() +
   scale_fill_identity() +
   labs(title = "1 in 6 counties* have a mean vaccination rate for MMR <span style = 'color:#DB3A2F;'>below 90%</span>") +
