@@ -2,18 +2,18 @@ library(tidyverse)
 library(ggtext)
 library(here)
 
-measles <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-25/measles.csv')
+measles <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-25/measles.csv")
 
 counties <- map_data("county")
 
-measles_counties <- measles %>% 
-  filter(lng < 0) %>% 
-  filter(mmr > 0) %>% 
-  mutate(county = tolower(county)) %>% 
-  group_by(county) %>% 
+measles_counties <- measles %>%
+  filter(lng < 0) %>%
+  filter(mmr > 0) %>%
+  mutate(county = tolower(county)) %>%
+  group_by(county) %>%
   summarise(county_mean = mean(mmr, na.rm = TRUE)) %>%
-  ungroup() %>% 
-  full_join(counties, by = c("county" = "subregion")) %>% 
+  ungroup() %>%
+  full_join(counties, by = c("county" = "subregion")) %>%
   mutate(
     mmr_color = case_when(
       county_mean > 89.999 ~ "#275D8E",
@@ -33,5 +33,5 @@ ggplot(measles_counties) +
   theme(
     plot.title = element_markdown(size = 20, hjust = 0.5, face = "bold"),
     plot.margin = margin(20, 20, 20, 20)
-    ) +
+  ) +
   ggsave(here::here("2020-week09", "plots", "measles.png"), dpi = 320, width = 12, height = 8)
