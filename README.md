@@ -2,11 +2,11 @@
 
 Code and plots for [#tidytuesday](https://github.com/rfordatascience/tidytuesday)  
 
-First year:
+First year (March 2019 - February 2020)
 ---
 ![](52.png)  
 
-###Highlights (click on image to go to code): <br>
+### Highlights (click on image to go to code): <br>
 ---
 <div class="row"> 
   <div class="column">
