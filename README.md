@@ -1,10 +1,13 @@
 # tidytuesday
 
-Code and plots for [#tidytuesday](https://github.com/rfordatascience/tidytuesday)
+Code and plots for [#tidytuesday](https://github.com/rfordatascience/tidytuesday)  
+
+First year:
 ---
-![](52.png)
+![](52.png)  
+
+###Highlights (click on image to go to code): <br>
 ---
-Highlights (click on image to go to code): <br>
 <div class="row"> 
   <div class="column">
   	<a href="2020-week08"><img src="2020-week08/plots/food-consumption.png"></a>
