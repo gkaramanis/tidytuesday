@@ -4,7 +4,7 @@ Code and plots for submissions to the [#tidytuesday](https://github.com/rfordata
 
 ### First year (March 2019 - February 2020)
 ---
-![](52.png)  
+![](52-weeks/52.png)  
 
 ### Highlights (click on image to go to code): <br>
 ---
