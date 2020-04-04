@@ -60,7 +60,7 @@ ggplot(hex_glass) +
   coord_fixed() +
   facet_wrap(vars(year), nrow = 2) +
   labs(
-    title = "Beer produced in <span style='color:white'>kegs</span><br>and <span style='color:#f28e1c'>bottle and cans</span>",
+    title = "Beer produced in <span style='color:white'>kegs</span><br>and <span style='color:#f28e1c'>bottles and cans</span>",
     subtitle = "Million barrels per year",
     caption = "Source: Alcohol and Tobacco Tax and Trade Bureau | Graphic: Georgios Karamanis"
   ) +
