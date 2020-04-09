@@ -10,24 +10,24 @@ tdf_winners <- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
 
 tdf_table <- tdf_winners %>% 
   mutate(
-    wins_consecutive = with(rle(winner_name), rep(lengths, times = lengths)),
+    wins_consecutive = with(rle(winner_name), rep(lengths, times = lengths)), # count consecutive wins for bold names
     year = year(start_date),
-    year_labels = ifelse(year %% 10 == 0, glue("**{year}**"), year),
-    year_group = case_when(
+    year_labels = ifelse(year %% 10 == 0, glue("**{year}**"), year), # make year labels, every year ending in 0 is bold
+    year_group = case_when(  # make 3 year groups, before/after World Wars
     year < 1915 ~ 1,
     year > 1915 & year < 1940 ~ 2,
     TRUE ~ 3),
     avg_speed = distance / time_overall,
-    country_code = countrycode(nationality, origin = "country.name", destination = "iso3c"),
-    winner_annot = ifelse(wins_consecutive > 2, glue("**{winner_name} ({country_code})**"), glue("{winner_name} ({country_code})"))
+    country_code = countrycode(nationality, origin = "country.name", destination = "iso3c"), # 3-letter country codes
+    winner_annot = ifelse(wins_consecutive > 2, glue("**{winner_name} ({country_code})**"), glue("{winner_name} ({country_code})")) # make name labels, bold for winners with >2 consecutive wins
     ) %>%
   group_by(year_group) %>% 
   mutate(
     n_annot = row_number(),
-    annot = ifelse((n_annot - 2) %% 3 == 0, TRUE, FALSE)
+    annot = ifelse((n_annot - 2) %% 3 == 0, TRUE, FALSE) # this is to annotate every third year in the plots with points and values, starting from the second year in every group
     ) %>% 
   ungroup() %>% 
-  add_row(year = c(1915, 1916, 1917, 1918, 1940, 1941, 1942, 1943)) %>%
+  add_row(year = c(1915, 1916, 1917, 1918, 1940, 1941, 1942, 1943)) %>% # add dummy rows between the year groups
   arrange(year) %>% 
   mutate(n = row_number())
 
