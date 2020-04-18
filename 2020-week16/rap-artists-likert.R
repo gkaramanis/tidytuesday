@@ -4,6 +4,8 @@ library(ggimage)
 library(ggtext)
 library(futurevisions)
 
+# Data downloaded from http://datawrapper.dwcdn.net/kOlSQ/5/
+
 rankings <- read_csv(here::here("2020-week16", "data", "data-kOlSQ.csv")) %>% 
   clean_names() %>% 
   select(title_artist = song_artist, img = spotify_thumb_sm, 3:15) %>% 
@@ -13,6 +15,7 @@ rankings <- read_csv(here::here("2020-week16", "data", "data-kOlSQ.csv")) %>%
     title_artist = str_remove(title_artist, "!\\[\\].+"),
     title_artist = str_replace(title_artist, "\\*\\* ", "\\*\\*"),
     img = ifelse(str_detect(img, "data"), NA, img),
+    img = ifelse(str_detect(title, "Shook"), "https://i.scdn.co/image/ab67616d00004851a2203fa0656cede30f879b97", img), # fix image for this track
     title = fct_reorder(title, critic_rating),
     n_1 = n1,
     n_2_5 = n2 + n3 + n4 + n5
