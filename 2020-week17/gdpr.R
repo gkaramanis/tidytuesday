@@ -57,7 +57,7 @@ ggplot() +
   # red arrows
     geom_polygon(data = price_arrows, aes(x = arrow_x, y = arrow_y, group = name), fill = "#BA4E35", colour = NA, alpha = 0.8) +
   # title and caption
-  annotate("richtext", x = -25, y = 80, hjust = 0, vjust = 1,
+  annotate("richtext", x = -26, y = 80, hjust = 0, vjust = 1,
            label = "**Total amount of GDPR fines<br>by country**<br><span style = 'font-size:12pt'>Fine prices rounded to nearest million or thousand euro</span><br><span style = 'font-size:8pt'>Source: Privacy Affairs | Graphic: Georgios Karamanis</span>",
            family = "IBM Plex Serif", size = 8, lineheight = 1.1, fill = NA, label.color = NA) +
   theme_void() +
