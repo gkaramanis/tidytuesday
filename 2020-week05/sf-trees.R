@@ -11,8 +11,8 @@ streets <- sf_trees %>%
   add_count(street) %>% 
   filter(n > 1000)
   
-san_francisco <- getbb("San Francisco")%>%
-  opq()%>%
+san_francisco <- getbb("San Francisco") %>%
+  opq() %>%
   add_osm_feature(key = "highway", value = c("residential", "living_street", "unclassified", "service", "footway")) %>%
   osmdata_sf()
 
