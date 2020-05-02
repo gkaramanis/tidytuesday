@@ -37,9 +37,9 @@ ggplot(total_grosses_df) +
   theme_void(base_family = "IBM Plex Sans") +
   theme(
     strip.text = element_blank(),
-    plot.background = element_rect(fill = "grey10", colour = NA),
+    plot.background = element_rect(fill = "grey10", colour = "grey10"),
     plot.title = element_text(colour = "white", size = 30, family = "Avenir Next Condensed Bold", hjust = 0.5, margin = margin(20, 0, 50, 0)),
     plot.caption = element_text(colour = "#C93255", size = 8, hjust = 0.5, margin = margin(30, 0, 0, 0)),
     plot.margin = margin(20, 50, 20, 50)
   ) +
-  ggsave(here::here("2020-week18", "plots", "temp", paste0("broadway-spotlight-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12.9, height = 10.9)
+  ggsave(here::here("2020-week18", "plots", "temp", paste0("broadway-spotlight-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12.9, height = 10.877)
