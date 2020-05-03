@@ -25,9 +25,9 @@ ggplot(total_grosses_df) +
   geom_polygon(aes(x1, y1), fill = "#C93255", alpha = 0.4) +
   geom_polygon(aes(x2, y2), fill = "#C93255", alpha = 0.4) +
   geom_polygon(aes(x3, y3), fill = "#C93255", alpha = 0.4) +
-  geom_tile(aes(0, -12, width = total_gross * 50, height = 1), fill = "#D6AA41", colour = NA) +
-  geom_text(aes(0, -19, label = paste0("$", round(total_gross, 1), "M")), hjust = 0.5, vjust = 1, colour = "#D6AA41", family = "IBM Plex Mono", size = 5) +
-  geom_text(aes(0, -40, label = show_label), hjust = 0.5, vjust = 1, colour = "grey95", family = "IBM Plex Sans Bold", size = 6) +
+  geom_tile(aes(0, -16, width = total_gross * 50, height = 1), fill = "#D6AA41", colour = NA) +
+  geom_text(aes(0, -25, label = paste0("$", round(total_gross, 1), "B")), hjust = 0.5, vjust = 1, colour = "#D6AA41", family = "IBM Plex Mono", size = 5) +
+  geom_text(aes(0, -45, label = show_label), hjust = 0.5, vjust = 1, colour = "grey95", family = "IBM Plex Sans Bold", size = 6) +
   facet_wrap(vars(fct_reorder(show, -total_gross)), nrow = 2) +
   coord_fixed(ylim = c(-60, 170), clip = "off") +
   labs(
