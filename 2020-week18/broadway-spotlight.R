@@ -8,6 +8,7 @@ total_grosses_df <- grosses %>%
   summarise(total_gross = sum(weekly_gross)/1e9) %>% 
   top_n(10, total_gross) %>% 
   arrange(-total_gross) %>% 
+  # Calculate points for the spotlights
   rowwise() %>% 
   mutate(
     x1 = list(c(-total_gross, -total_gross * 1.5, total_gross / 2) * 25),
@@ -16,16 +17,20 @@ total_grosses_df <- grosses %>%
     y2 = list(c(0, total_gross * 3, 0) * 25),
     x3 = list(c(-total_gross / 2, total_gross * 1.5, total_gross) * 25),
     y3 = list(c(0, total_gross * 4, 0) * 25),
+    # wrap show name
     show_label = str_wrap(show, width = 12)
   ) %>% 
   unnest(c(x1, y1, x2, y2, x3, y3))
 
 ggplot(total_grosses_df) +
+  # draw the spotlights
   geom_ellipse(aes(x0 = 0, y0 = 0, a = total_gross * 25, b = total_gross * 5, angle = 0), fill = "#C93255", colour = NA) +
   geom_polygon(aes(x1, y1), fill = "#C93255", alpha = 0.4) +
   geom_polygon(aes(x2, y2), fill = "#C93255", alpha = 0.4) +
   geom_polygon(aes(x3, y3), fill = "#C93255", alpha = 0.4) +
+  # line for total gross
   geom_tile(aes(0, -16, width = total_gross * 50, height = 1), fill = "#D6AA41", colour = NA) +
+  # labels
   geom_text(aes(0, -25, label = paste0("$", round(total_gross, 1), "B")), hjust = 0.5, vjust = 1, colour = "#D6AA41", family = "IBM Plex Mono", size = 5) +
   geom_text(aes(0, -45, label = show_label), hjust = 0.5, vjust = 1, colour = "grey95", family = "IBM Plex Sans Bold", size = 6) +
   facet_wrap(vars(fct_reorder(show, -total_gross)), nrow = 2) +
