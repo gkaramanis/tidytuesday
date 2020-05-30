@@ -22,13 +22,13 @@ black_cocktails <- cocktails %>%
 ggplot(black_cocktails) +
   geom_segment(aes(x = 0, y = -50, xend = 0, yend = ingr_y - 20), size = 0.4, colour = "#E0B35B") +
 # left --------------------------------------------------------------------
-  geom_curve(data = subset(iba_cocktails, ingr_x < 0), aes(x = 0, y = ingr_y - 20, xend = ingr_x * 40, yend = ingr_y), size = 0.4, colour = "#E0B35B") +
-  geom_curve(data = subset(iba_cocktails, ingr_x < 0), aes(x = 0, y = ingr_y - 20, xend = ingr_x * 40, yend = ingr_y), curvature = -0.5, size = 0.4, colour = "#E0B35B") +
-  geom_text(data = subset(iba_cocktails, ingr_x < 0), aes(x = ingr_x * 40, y = ingr_y, label = ingredient), hjust = 1, nudge_x = -15, size = 2, family = "Produkt Light", colour = "grey70") +
+  geom_curve(data = subset(black_cocktails, ingr_x < 0), aes(x = 0, y = ingr_y - 20, xend = ingr_x * 40, yend = ingr_y), size = 0.4, colour = "#E0B35B") +
+  geom_curve(data = subset(black_cocktails, ingr_x < 0), aes(x = 0, y = ingr_y - 20, xend = ingr_x * 40, yend = ingr_y), curvature = -0.5, size = 0.4, colour = "#E0B35B") +
+  geom_text(data = subset(black_cocktails, ingr_x < 0), aes(x = ingr_x * 40, y = ingr_y, label = ingredient), hjust = 1, nudge_x = -15, size = 2, family = "Produkt Light", colour = "grey70") +
 # right -------------------------------------------------------------------
-  geom_curve(data = subset(iba_cocktails, ingr_x > 0), aes(x = 0, y = ingr_y - 20, xend = ingr_x * 40, yend = ingr_y), curvature = -0.5, size = 0.4, colour = "#E0B35B") +
-  geom_curve(data = subset(iba_cocktails, ingr_x > 0), aes(x = 0, y = ingr_y - 20, xend = ingr_x * 40, yend = ingr_y), size = 0.4, colour = "#E0B35B") +
-  geom_text(data = subset(iba_cocktails, ingr_x > 0), aes(x = ingr_x * 40, y = ingr_y, label = ingredient), hjust = 0, nudge_x = 15, size = 2, family = "Produkt Light", colour = "grey70") +
+  geom_curve(data = subset(black_cocktails, ingr_x > 0), aes(x = 0, y = ingr_y - 20, xend = ingr_x * 40, yend = ingr_y), curvature = -0.5, size = 0.4, colour = "#E0B35B") +
+  geom_curve(data = subset(black_cocktails, ingr_x > 0), aes(x = 0, y = ingr_y - 20, xend = ingr_x * 40, yend = ingr_y), size = 0.4, colour = "#E0B35B") +
+  geom_text(data = subset(black_cocktails, ingr_x > 0), aes(x = ingr_x * 40, y = ingr_y, label = ingredient), hjust = 0, nudge_x = 15, size = 2, family = "Produkt Light", colour = "grey70") +
 # -------------------------------------------------------------------------
   coord_fixed(xlim = c(-200, 200)) +
   facet_wrap(vars(drink), nrow = 3, strip.position = "bottom") +
