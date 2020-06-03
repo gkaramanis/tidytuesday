@@ -1,5 +1,4 @@
 library(tidyverse)
-library(shadowtext)
 library(ggimage)
 library(ggtext)
 
