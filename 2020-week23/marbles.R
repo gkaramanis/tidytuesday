@@ -1,6 +1,7 @@
 library(tidyverse)
 library(ggimage)
 library(ggtext)
+library(magick)
 
 marbles <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-06-02/marbles.csv')
 
@@ -78,3 +79,7 @@ ggplot(marbles_points) +
   ) +
   ggsave(here::here("2020-week23", "plots", "temp", paste0("marbles-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 14, width = 12)
 
+# Trim image
+image_read(here::here("2020-week23", "plots", "marbles.png")) %>% 
+  image_trim(.) %>% 
+  image_write(., here::here("2020-week23", "plots", "marbles.png"))
