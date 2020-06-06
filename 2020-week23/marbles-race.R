@@ -26,6 +26,7 @@ teams <- tribble(
 ) %>% 
   mutate(
     team_n = row_number(),
+    # for the legend:
     team_x = rep(c(1, 2), each = 8),
     team_y = rep(1:8, length.out = 16) + rep(c(-0.2, 0.2), each = 8)
     )
@@ -49,16 +50,17 @@ marbles_times <- marbles %>%
   ungroup() %>% 
   left_join(teams)
 
+# For highlighting the winner marbles
 winners <- marbles_times %>% 
   group_by(race) %>% 
   slice_min(time_s)
 
+# Standings with total points
 top32 <- marbles_times %>% 
   group_by(marble_name) %>%
   mutate(points_total = sum(points)) %>% 
   ungroup() %>% 
   distinct(marble_name, points_total, team_colour) %>% 
-  # slice_max(points_total, n = 20) %>% 
   arrange(desc(points_total)) %>% 
   mutate(
     position = row_number(),
@@ -66,7 +68,7 @@ top32 <- marbles_times %>%
     )
 
 ggplot(marbles_times) +
-  # Place indicator for all marbles
+  # Place indicators for all marbles
   geom_segment(aes(x = time_pct, y = -race_n - 0.23, xend = time_pct, yend = -race_n), colour = "grey60") +
   # Line for winner
   geom_segment(data = winners, aes(x = time_pct, y = -race_n, xend = time_pct, yend = -race_n - 0.45), colour = "grey20") +
@@ -89,7 +91,7 @@ ggplot(marbles_times) +
   annotate("tile", x = 1.0022 + 0.001 * rep(0:1, length = 38), y = -seq(0.8, 8.2, by = 0.2), height = 0.2, width = 0.001) +
   # Standings
   geom_text(data = top32, aes(x = 1.007, y = -top32_y, label = paste0(position, ". ", marble_name, " ", points_total, "p"), hjust = 0, colour = team_colour), family = "IBM Plex Sans Condensed Medium") +
-  # Scales and theme
+  # Title, scales and theme
   labs(
     title = "Marbula One 2020",
     subtitle = "Middle: Results of the 8 races with name and time of the winning (highlighted) marble.\nLeft: Team names and colours. Right: Final standings with total points.",
@@ -106,6 +108,6 @@ ggplot(marbles_times) +
     plot.subtitle = element_text(family = "IBM Plex Serif Medium", size = 16, hjust = 0.5, margin = margin(20, 0, 0, 0)),
     plot.caption = element_text(family = "IBM Plex Sans", hjust = 0.5)
   ) +
-  ggsave(here::here("2020-week23", "plots", "temp", paste0("marbles-race-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10, width = 15)
+  ggsave(here::here("2020-week23", "plots", "marbles-race-"), dpi = 320, height = 10, width = 15)
 
   
