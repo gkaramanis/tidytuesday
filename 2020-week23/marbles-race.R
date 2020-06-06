@@ -53,7 +53,7 @@ winners <- marbles_times %>%
   group_by(race) %>% 
   slice_min(time_s)
 
-top10 <- marbles_times %>% 
+top32 <- marbles_times %>% 
   group_by(marble_name) %>%
   mutate(points_total = sum(points)) %>% 
   ungroup() %>% 
@@ -62,7 +62,7 @@ top10 <- marbles_times %>%
   arrange(desc(points_total)) %>% 
   mutate(
     position = row_number(),
-    top10_y = position / 4 + 0.5
+    top32_y = position / 4 + 0.5
     )
 
 ggplot(marbles_times) +
@@ -88,7 +88,7 @@ ggplot(marbles_times) +
   # Finish line
   annotate("tile", x = 1.0022 + 0.001 * rep(0:1, length = 38), y = -seq(0.8, 8.2, by = 0.2), height = 0.2, width = 0.001) +
   # Standings
-  geom_text(data = top10, aes(x = 1.007, y = -top10_y, label = paste0(position, ". ", marble_name, " ", points_total, "p"), hjust = 0, colour = team_colour), family = "IBM Plex Sans Condensed Medium") +
+  geom_text(data = top32, aes(x = 1.007, y = -top32_y, label = paste0(position, ". ", marble_name, " ", points_total, "p"), hjust = 0, colour = team_colour), family = "IBM Plex Sans Condensed Medium") +
   # Scales and theme
   labs(
     title = "Marbula One 2020",
