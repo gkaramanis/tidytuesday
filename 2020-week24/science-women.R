@@ -35,12 +35,6 @@ science_w <- science_names %>%
 		i = (birth_arc - 2020 - 90 - 8) * pi / 190,
   )
 
-# year_labels = tibble(
-#   year = c(seq(1850, 2000, by = 50)),
-#   x = 10 * cos((year - 2020 - 90) * pi / 190),
-#   y = -10 * sin((year - 2020 - 90) * pi / 190)
-# )
-
 ggplot(science_w) +
   # Female symbol
   geom_arc(aes(x0 = 0, y0 = 0, r = 17, start = 0, end = 2 * pi), size = 65, colour = "black", n = 1800) +
