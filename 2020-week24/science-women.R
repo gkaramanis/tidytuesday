@@ -48,9 +48,9 @@ ggplot(science_w) +
 	geom_segment(aes(x = 0, y = -20, xend = 0, yend = -45), size = 50, colour = "black") +
   # Year labels
   geom_segment(aes(x = 0, y = 9, xend = 0, yend = 10), size = 0.5, colour = "grey60", lineend = "round") + 
-	geom_text(aes(x = 0, y = 8, label = "2020"), colour = "grey60", family = "DIN Condensed Bold") + 
+	geom_text(aes(x = 0, y = 8, label = "2020"), colour = "grey50", family = "DIN Condensed Bold") + 
 	geom_segment(aes(x = 0, y = -9, xend = 0, yend = -10), size = 0.5, colour = "grey60", lineend = "round") + 
-	geom_text(aes(x = 0, y = -8, label = "1830"), colour = "grey60", family = "DIN Condensed Bold") + 
+	geom_text(aes(x = 0, y = -8, label = "1830"), colour = "grey50", family = "DIN Condensed Bold") + 
   # geom_segment(data = year_labels, aes(x = -x, y = y, xend = -x * 2.4, yend = y * 2.4), size = 0.5, colour = "grey60", lineend = "round") +
   # geom_segment(data = year_labels, aes(x = x, y = y, xend = -x, yend = y), size = 0.5, colour = "grey90", lineend = "round") +
   # geom_shadowtext(data = year_labels, aes(0, y, label = year), family = "IBM Plex Sans Bold", colour = "black", bg.colour = "white", bg.r = 0.4) +
@@ -61,7 +61,7 @@ ggplot(science_w) +
 	# n labels
 	geom_text(data = subset(science_w, n < 12), aes(x = (12 - n + 11) * cos(i), y = -(12 - n + 11) * sin(i), label = n, colour = colour), family = "DIN Condensed Bold") +
 	geom_text(data = subset(science_w, n > 11), aes(x = -n * cos(i), y = -n	* sin(i), label = n, colour = colour), family = "DIN Condensed Bold") +
-  # Names
+  # Names left and right
   geom_text(data = subset(science_w, n < 12), aes(x = -30, y = seq(20, -40, length.out = 11), label = paste0(n, ". ", full_name)), colour = "black",  family = "DIN Condensed Bold", hjust = 1, size = 8) +
 	geom_text(data = subset(science_w, n < 12), aes(x = -30, y = seq(17.5, -42.5, length.out = 11), label = birthdeath), colour = "grey50", family = "DIN Condensed Bold", hjust = 1, size = 8) +
   geom_text(data = subset(science_w, n > 11), aes(x = 30, y = seq(20, -40, length.out = 11), label = paste0(n, ". ", full_name)), colour = "black",  family = "DIN Condensed Bold", hjust = 0, size = 8) +
