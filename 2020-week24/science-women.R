@@ -43,7 +43,7 @@ science_w <- science_names %>%
 
 ggplot(science_w) +
   # Female symbol
-  geom_arc(aes(x0 = 0, y0 = 0, r = 17, start = 0, end = 2 * pi), size = 65, colour = "black", n = 1200) +
+  geom_arc(aes(x0 = 0, y0 = 0, r = 17, start = 0, end = 2 * pi), size = 65, colour = "black", n = 1800) +
   geom_segment(aes(x = -12, y = -33, xend = 12, yend = -33), size = 50, colour = "black") +
 	geom_segment(aes(x = 0, y = -20, xend = 0, yend = -45), size = 50, colour = "black") +
   # Year labels
