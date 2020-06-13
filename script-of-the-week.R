@@ -1,1 +1,1 @@
-eval(parse(text="source(\"./2020-week23/marbles.R\")"))
+eval(parse(text="source(\"./2020-week24/science-women-arc.R\")"))
