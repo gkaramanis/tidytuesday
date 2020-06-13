@@ -45,9 +45,6 @@ ggplot(science_w) +
 	geom_text(aes(x = 0, y = 8, label = "2020"), colour = "grey50", family = "DIN Condensed Bold") + 
 	geom_segment(aes(x = 0, y = -9, xend = 0, yend = -10), size = 0.5, colour = "grey60", lineend = "round") + 
 	geom_text(aes(x = 0, y = -8, label = "1830"), colour = "grey50", family = "DIN Condensed Bold") + 
-  # geom_segment(data = year_labels, aes(x = -x, y = y, xend = -x * 2.4, yend = y * 2.4), size = 0.5, colour = "grey60", lineend = "round") +
-  # geom_segment(data = year_labels, aes(x = x, y = y, xend = -x, yend = y), size = 0.5, colour = "grey90", lineend = "round") +
-  # geom_shadowtext(data = year_labels, aes(0, y, label = year), family = "IBM Plex Sans Bold", colour = "black", bg.colour = "white", bg.r = 0.4) +
   # Left arcs, "12 -" is to reverse order
   geom_arc(data = subset(science_w, n < 12), aes(x0 = 0, y0 = 0, r = 12 - n + 11, start = -a, end = -b, colour = colour), size = 3) +
   # Right arcs
@@ -73,5 +70,5 @@ ggplot(science_w) +
 	  plot.background = element_rect(fill = "white", colour = "white"),
 	  plot.margin = margin(20, 20, 20, 20)
 	) +
-  ggsave(here::here("2020-week24", "plots", "temp", paste0("science-women", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 11.5, width = 16)
+  ggsave(here::here("2020-week24", "plots", "science-women.png"), dpi = 320, height = 11.5, width = 16)
 
