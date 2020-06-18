@@ -43,4 +43,4 @@ ggplot(decade_routes) +
     axis.text.y = element_text(colour = "red", family = "DIN Condensed Bold", hjust = 0, size = 8, margin = margin(0, 0, 0, 5)),
     plot.margin = margin(20, 20, 20, 20)
   ) +
-  ggsave(here::here("2020-week25", "plots", "temp", paste0("slavery-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  ggsave(here::here("2020-week25", "plots", "slavery.png")), dpi = 320)
