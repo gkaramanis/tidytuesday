@@ -1,6 +1,6 @@
 # tidytuesday
 
-Code and plots for submissions to the [#tidytuesday](https://github.com/rfordatascience/tidytuesday) challenge  
+Code and plots of the submissions to the [#tidytuesday](https://github.com/rfordatascience/tidytuesday) challenge  
 
 ### First year (March 2019 - February 2020)
 ---
