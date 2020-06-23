@@ -1,0 +1,38 @@
+U.S.A. unspecified	1862
+Europe	8861
+Gulf states	21785
+French Caribbean unspecified	26291
+Puerto Rico	26884
+Northern U.S.	26955
+French Guiana	30599
+Trinidad / Tobago	44003
+Montserrat / Nevis	46845
+Brazil unspecified	54040
+St. Vincent	58907
+Rio de la Plata	67246
+Other British Caribbean	72134
+British Guiana	72685
+Guadeloupe	72872
+Danish West Indies	108998
+Dominica	110045
+Chesapeake	127668
+Grenada	128689
+St. Kitts	134148
+Antigua	138038
+Amazonia	142231
+Dutch Caribbean	150076
+Other Spanish Americas	152742
+Africa	155568
+Carolinas / Georgia	210477
+Martinique	216911
+Spanish Circum-Caribbean	267498
+Dutch Guianas	294653
+Barbados	493162
+Saint-Domingue	773543
+Cuba	778541
+Pernambuco	853833
+Jamaica	1019595
+Bahia	1550354
+South-east Brazil	2263914
+
+Total	10702653
