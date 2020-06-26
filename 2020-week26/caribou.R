@@ -7,14 +7,14 @@ locations <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/
 movement <- locations %>% 
   filter(study_site != "Hart Ranges") %>% 
   mutate(
-    season = fct_rev(season),
-    longitude = round(longitude, 2),
+    season = fct_rev(season), # reverse seasons
+    longitude = round(longitude, 2), # round long, lat to reduce number of points
     latitude = round(latitude, 2)
   ) %>% 
   distinct(season, study_site, longitude, latitude)
 
-
 # In summer, most of the SPNC migrate towards the central core of the Rocky Mountains where they use alpine and subalpine habitat. The exception to this general pattern is that some caribou in the B.C. portion of the Narraway range remain in low-elevation boreal forest habitat throughout the summer (Figure 4). The result of this movement to the central core of the Rocky Mountains is that some of the east side herds can overlap with west side herds during the summer. Most of the caribou calve in mountainous habitats and this behaviour is thought to be in part a strategy to avoid predators. Use of high-elevation habitat during the summer provides some spatial separation between caribou and grey wolves because grey wolves live primarily at lower elevations and feed on other ungulate species.
+# Source: see caption
 
 ggplot(movement) +
   geom_point(aes(longitude, latitude, group = study_site, colour = study_site), size = 0.1) +
