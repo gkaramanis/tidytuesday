@@ -1,5 +1,4 @@
 library(tidyverse)
-library(lubridate)
 library(gghighlight)
 
 locations <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-06-23/locations.csv')
