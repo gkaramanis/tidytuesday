@@ -29,15 +29,15 @@ cup <- data.frame(
 
 ggplot(varieties) +
 # Aroma -------------------------------------------------------------------
-  geom_path(aes(x = 0.15 * cos(3 * y + a), y = y, group = variety), size = 1, lineend = "round", colour = lighten("#6f4e37", 0.4), alpha = 0.9) +
-	geom_path(aes(x = -0.15 + 0.2 * cos(2 * y), y = y1, group = variety), linetype = "longdash", alpha = 0.2, colour = "grey80", lineend = "round") +
-	geom_path(aes(x = 0.2 + 0.15 * cos(1.8 * y + a), y = y2, group = variety), linetype = "longdash", alpha = 0.2, colour = "grey80", lineend = "round") +
+  geom_path(aes(x = 0.15 * cos(3 * y + a), y = y, group = variety), size = 1, lineend = "round", colour = "#ffeacd", alpha = 0.8) +
+	geom_path(aes(x = -0.15 + 0.2 * cos(2 * y), y = y1, group = variety), linetype = "longdash", alpha = 0.25, colour = "grey80", lineend = "round") +
+	geom_path(aes(x = 0.2 + 0.15 * cos(1.8 * y + a), y = y2, group = variety), linetype = "longdash", alpha = 0.3, colour = "grey80", lineend = "round") +
   geom_text(aes(x = 0, y = mean + 1.25, label = (round(mean, 1))), colour = "#ffeacd", family = "DIN Condensed Bold", size = 6) +
 # Aftertaste --------------------------------------------------------------
 	geom_segment(aes(x = 0, y = 0, xend = 0, yend = -after_mean), size = 2, lineend = "round", colour = darken("#6f4e37", 0.2)) +
   geom_text(aes(x = 0, y = -after_mean - 0.75, label = round(after_mean, 1)), colour = darken("#6f4e37", 0.5), family = "DIN Condensed Bold", size = 5) +
 # Cups --------------------------------------------------------------------
-  geom_polygon(data = cup, aes(x, y), size = 7, colour = "#6f4e37", fill = "#6f4e37") + # "shadow"
+  geom_polygon(data = cup, aes(x, y), size = 7, colour = "#77563f", fill = "#77563f") + # "shadow"
 	geom_polygon(data = cup, aes(x, y), size = 4, colour = "grey95", fill = "grey95") +
 	geom_text(aes(x = 0, y = 0.55, label = variety), colour = "black", family = "DIN Condensed Bold", vjust = 1, lineheight = 1, size = 4.5, check_overlap = TRUE) +
 # Theme, etc --------------------------------------------------------------
@@ -50,7 +50,7 @@ ggplot(varieties) +
     ) +
 	theme_void(base_family = "DIN Condensed Bold") +
 	theme(
-		  plot.background = element_rect(fill = "#6f4e37", colour = NA),
+		  plot.background = element_rect(fill = "#77563f", colour = NA),
 			panel.spacing = unit(1.4, "lines"),
 			strip.text = element_blank(),
 			plot.title = element_text(hjust = 0.5, size = 28),
