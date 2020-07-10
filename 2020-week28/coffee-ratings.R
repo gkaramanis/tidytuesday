@@ -43,7 +43,7 @@ ggplot(varieties) +
 	geom_path(aes(x =  variety_n + 0.12 + 0.12 * cos(1.8 * y + a), y = y2, group = variety), linetype = "longdash", alpha = 0.4, colour = "#dfd3c3", lineend = "round") +
 # Aroma label -------------------------------------------------------------
   geom_text(aes(x = variety_n - 0.2, y = mean, label = (round(mean, 1))), colour = "#f0ece3", family = "DIN Condensed Bold", size = 6) +
-  geom_pointrange(aes(x = variety_n - 0.37, y = mean, ymin = mean + sd, ymax = mean - sd), size = 0.4, fatten = 2, colour = darken("#f0ece3")) +
+  geom_pointrange(aes(x = variety_n - 0.4, y = mean, ymin = mean + sd, ymax = mean - sd), size = 0.4, fatten = 2, colour = darken("#f0ece3")) +
 # Cups ---------------------------------------------------------------------
   geom_bspline_closed(data = cups, aes(x, y, group = n), fill = NA, colour = "grey10") +
 # Variety label -----------------------------------------------------------
