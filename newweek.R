@@ -1,7 +1,6 @@
 library(lubridate)
 
 newscript <- readline(prompt = "Name of script: ")
-# which_week <- menu(c("Current", "Next"), title = "Which week?") - 1
 
 # Get date of next Tuesday
 i = wday(Sys.Date(), week_start = 1)
@@ -20,6 +19,7 @@ readme_text <- paste0(
   newscript,
   ".png)")
 write(as.character(readme_text), file(readme))
+close(readme)
 
 # Create script file
 script_file <- paste0(folder, "/", newscript, ".R")
@@ -34,7 +34,17 @@ script_text <- paste0(
   '-\", format(Sys.time(), \"%Y%m%d_%H%M%S\"), \".png\")), dpi = 320)'
 )
 write(as.character(script_text), file(script_file))
+close(script_file)
 
-# Open files to edit
+# Update script-of-the-week
+sotw <- file("script-of-the-week.R", "wt")
+sotw_text <- paste0(
+  'eval(parse(text="source(\"./',
+  script_file,
+  '\")"))'
+)
+writeLines(sotw_text, sotw)
+close(sotw)
+
+# Open script and start having fun!
 file.edit(script_file)
-file.edit(readme)
