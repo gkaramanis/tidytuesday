@@ -87,10 +87,10 @@ ggplot(penguin) +
   geom_text(data = med, aes(x = 70, y = 300 * species_n, label = paste0(median_depth, " mm")), size = 4, hjust = 0, family = fam1) +
 # Recorded tiles ----------------------------------------------------------
   geom_tile(data = recorded, aes(x * 20 + 300, -y * 20 + 300 * species_n, width = 19, height = 19), colour = NA, fill = "grey10") +
-  geom_text(data = recorded, aes(300, -30 + 300 * species_n, label = n), check_overlap = TRUE, colour = "white", size = 16, family = fam1b, hjust = 0) +
+  geom_text(data = recorded, aes(300, -30 + 300 * species_n, label = n), check_overlap = TRUE, colour = "white", size = 14, family = fam1b, hjust = 0) +
   annotate("text", 290, 930, label = "Recorded penguins by species", hjust = 0, family = fam2l, size = 4) +
 # Species labels ----------------------------------------------------------
-  geom_text(aes(-350, 40 + 300 * species_n, label = species), check_overlap = TRUE, hjust = 0, family = fam2, size = 9) +
+  geom_text(aes(-350, 40 + 300 * species_n, label = species), check_overlap = TRUE, hjust = 0, family = fam2, size = 10) +
 # Scales, theme, etc ------------------------------------------------------
   labs(title = "Palmer Penguins",
        subtitle = "Median length of flipper, length and depth of bill,\nof 342 penguins recorded between 2007 and 2009",
