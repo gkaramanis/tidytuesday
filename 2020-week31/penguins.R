@@ -74,9 +74,10 @@ ggplot(penguin) +
   geom_bspline_closed(aes(x, y + 300 * species_n, group = species), n = 300, fill = "grey10") +
 # White parts -------------------------------------------------------------
   geom_bspline_closed(data = whites, aes(x, y + 300 * species_n, group = interaction(species_n, part)), fill = "white") +
+# Black band for chinstrap
+  annotate("path", x = c(-55, -30, 0), y = c(600, 590, 580), size = 0.8, lineend = "butt", colour = "black") +
 # Eyes --------------------------------------------------------------------
   geom_ellipse(aes(x0 = -32, y0 = 300 * species_n, a = 6, b = 4, angle = 0), fill = "black", colour = "white") +
-  
 # Flipper lines and labels ------------------------------------------------
   geom_errorbar(data = med, aes(xmin = -131 - median_flipper, xmax = -131, y = -50 + 300 * species_n, width = 10)) +
 	geom_text(data = med, aes(x = -131 - median_flipper / 2, y = -25 + 300 * species_n, label = paste0(median_flipper, " mm")), family = fam1, size = 5) +
