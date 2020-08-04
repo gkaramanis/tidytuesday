@@ -19,7 +19,6 @@ readme_text <- paste0(
   newscript,
   ".png)")
 write(as.character(readme_text), file(readme))
-close(readme)
 
 # Create script file
 script_file <- paste0(folder, "/", newscript, ".R")
@@ -31,17 +30,18 @@ script_text <- paste0(
   folder,
   '\", \"plots\", \"temp\", paste0(\"',
   newscript,
-  '-\", format(Sys.time(), \"%Y%m%d_%H%M%S\"), \".png\")), dpi = 320)'
+  '-\", format(Sys.time(), \"%Y%m%d_%H%M%S\"), \".png\")), dpi = 320)',
+  '\n',
+  'gg_embed()'
 )
 write(as.character(script_text), file(script_file))
-close(script_file)
 
 # Update script-of-the-week
 sotw <- file("script-of-the-week.R", "wt")
 sotw_text <- paste0(
-  'eval(parse(text="source(\"./',
+  'eval(parse(text="source(\\"./',
   script_file,
-  '\")"))'
+  '\\")"))'
 )
 writeLines(sotw_text, sotw)
 close(sotw)
