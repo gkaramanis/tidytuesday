@@ -1,6 +1,8 @@
 library(tidyverse)
 library(ggforce)
 
+source("/Users/georgios/Documents/Projects/R/ggembed/ggembed-functions.R")
+
 penguins.csv <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv')
 
 med <- penguins.csv %>% 
@@ -104,4 +106,4 @@ ggplot(penguin) +
     plot.subtitle = element_text(family = fam2l, size = 12, hjust = 0.5, margin = margin(0, 0, 10, 0)),
     plot.caption = element_text(family = fam2l, size = 7, hjust = 0.5, margin = margin(10, 0, -15, 0))
   ) +
-  ggsave(here::here("2020-week31", "plots", "penguins.png"), dpi = 320, height = 8, width = 8)
+  ggsave(here::here("2020-week31", "plots", "penguins-ggembed.png"), dpi = 320, height = 8, width = 8)

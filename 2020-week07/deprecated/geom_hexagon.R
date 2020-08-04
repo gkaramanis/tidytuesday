@@ -16,6 +16,3 @@ geom_hexagon <- function(mapping = NULL, data = NULL, geom = "polygon", position
     params = list(na.rm = na.rm, ...)
   )
 }
-
-ggplot() +
-  geom_hexagon(aes(2, 2))
