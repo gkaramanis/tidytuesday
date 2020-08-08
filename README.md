@@ -10,10 +10,10 @@ Code and plots of the submissions to the [#tidytuesday](https://github.com/rford
 ---
 <div class="row"> 
   <div class="column">
+  	<a href="2020-week31"><img src="2020-week31/plots/penguins.png"></a>
 	<a href="2020-week15"><img src="2020-week15/plots/tour-de-france.png"></a>
   	<a href="2020-week08"><img src="2020-week08/plots/food-consumption.png"></a>
   	<a href="2020-week07"><img src="2020-week07/plots/hotels-rooms.png"></a>
-  	<a href="2020-week05"><img src="2020-week05/plots/sf-tree-trunks.png"></a>
   	<a href="2020-week03"><img src="2020-week03/plots/passwords-bsplines.png"></a>
 	<a href="week-51"><img src="week-51/plots/dog-friendliness.png"></a>
 	<a href="week-40"><img src="week-40/figures/pizza-likert.png"></a>
