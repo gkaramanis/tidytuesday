@@ -12,16 +12,11 @@ scene_shots <- avatar %>%
   regex_left_join(shots, by=c("scene_description" = "string")) %>% 
   distinct(id, shot, .keep_all = TRUE) %>% 
   filter(!is.na(shot)) %>% 
-  count(book_num, chapter_num, shot) %>% 
+  add_count(book_num, chapter_num, shot) %>% 
   group_by(book_num, chapter_num) %>% 
   mutate(total = sum(n), freq = n / total)
 
 ggplot(scene_shots) +
-  geom_bar(aes(fill = shot, y = n, x = chapter_num), position = "stack", stat = "identity") +
-  facet_wrap(vars(book_num), ncol = 1) +
-  ggsave(paste0("temp/avatar-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png"), dpi = 320)
-
-ggplot(scene_shots) +
-  geom_stream(aes(x = chapter_num, y = n, fill = shot), method = "density") +
+  geom_stream(aes(x = chapter_num, y = n, fill = type), method = "density") +
   facet_wrap(vars(book_num), ncol = 1) +
   ggsave(paste0("temp/avatar-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png"), dpi = 320)
