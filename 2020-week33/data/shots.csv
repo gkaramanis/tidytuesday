@@ -1,0 +1,31 @@
+shot,string,type
+wide,long shot,range
+wide,wide shot,range
+close-up,close shot,range
+close-up,close-up,range
+close-up,close up,range
+close-up,closeup,range
+close-up,closes up,range
+panning,pans\s,movement
+panning,panning,movement
+point-of-view,point of view,pov
+over-the-shoulder,over the shoulder,pov
+overhead,overhead shot,pov
+overhead,overhead wide shot,pov
+overhead,overhead view,pov
+frontal,frontal view,angle
+side view,side-view,angle
+side view,side view,angle
+back view,back-view,angle
+aerial,bird view,angle
+aerial,bird's eye view,angle
+aerial,aerial\s,angle
+ground level,ground-level,angle
+ground level,ground level,angle
+zoom,zoom,movement
+zoom,zooms,movement
+zoom,zooming,movement
+cut,cut to,editing
+cut,cuts to,editing
+cut,cutting back,editing
+fade,fades\s,editing

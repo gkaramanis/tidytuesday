@@ -9,7 +9,7 @@ next_tuesday <- Sys.Date() + (7 - i + 2) %% 7
 # Get ISO week, create new week folder and plot subfolder
 which_week <- isoweek(next_tuesday)
 folder <- paste0("2020-week", which_week) 
-dir.create(file.path("temp"), recursive = TRUE)
+dir.create(file.path(folder), recursive = TRUE)
 
 # Create README 
 readme <- paste0(folder, "/README.md")
@@ -26,8 +26,8 @@ file.create(script_file)
 script_text <- paste0(
   'library(tidyverse)',
   '\n\n',
-  'ggsave(here::here(\"',
-  '\", \"temp\", paste0(\"',
+  'ggsave(here::here(',
+  '\"temp\", paste0(\"',
   newscript,
   '-\", format(Sys.time(), \"%Y%m%d_%H%M%S\"), \".png\")), dpi = 320)',
   '\n',
