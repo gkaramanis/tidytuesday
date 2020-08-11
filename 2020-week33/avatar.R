@@ -1,5 +1,6 @@
 library(tidyverse)
 library(fuzzyjoin)
+library(ggstream)
 
 avatar <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-11/avatar.csv')
 scene_description <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-11/scene_description.csv')
@@ -16,5 +17,11 @@ scene_shots <- avatar %>%
   mutate(total = sum(n), freq = n / total)
 
 ggplot(scene_shots) +
-  geom_jitter(aes(chapter_num, book_num, colour = shot)) +
-  ggsave(here::here("temp", paste0("avatar-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  geom_bar(aes(fill = shot, y = n, x = chapter_num), position = "stack", stat = "identity") +
+  facet_wrap(vars(book_num), ncol = 1) +
+  ggsave(paste0("temp/avatar-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png"), dpi = 320)
+
+ggplot(scene_shots) +
+  geom_stream(aes(x = chapter_num, y = n, fill = shot), method = "density") +
+  facet_wrap(vars(book_num), ncol = 1) +
+  ggsave(paste0("temp/avatar-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png"), dpi = 320)
