@@ -65,6 +65,7 @@ f1b <- "Canela Text Bold"
 f2 <- "Proxima Nova"
 f2b <- "Proxima Nova Bold"
 f3 <- "IBM Plex Sans Condensed Medium"
+f3b <- "IBM Plex Sans Condensed Bold"
 
 pal <- c("#47607E", "#96A7B2", "#6788A5", "#D7664B", "#20527D")
 
@@ -77,7 +78,7 @@ ggplot(totals) +
   
   geom_text(data = continents_2018, aes(x = ent_n * 100 - 300, y = 306, label = entity), family = f1b, hjust = 0, stat = "unique") +
   geom_text(data = continents_2018, aes(x = ent_n * 100 - 300, y = 305 - crop_n * 10, label = crop), family = f2, hjust = 0) +
-  geom_text(data = continents_2018, aes(x = ent_n * 100 - 255, y = 305 - crop_n * 10, label = round(pct * 100, 1)), family = f2b, hjust = 0, color = "#D76549") +
+  geom_text(data = continents_2018, aes(x = ent_n * 100 - 235, y = 305 - crop_n * 10, label = format(round(pct * 100, 1), nsmall = 1)), family = f3b, hjust = 1, color = "#D76549") +
   geom_segment(aes(x = -200, y = 263, xend = 266, yend = 263)) +
   annotate("rect", xmin = -202, ymin = 320, xmax = -143, ymax = 330, fill = "black") +
   annotate("text", x = -200, y = 325, hjust = 0, label = toupper("Top 3 key crops"), family = f3, color = "#EFE1C7", size = 3) +
