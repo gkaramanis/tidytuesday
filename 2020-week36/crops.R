@@ -2,8 +2,10 @@ library(tidyverse)
 library(janitor)
 library(colorspace)
 
+# Data
 key_crop_yields <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/key_crop_yields.csv')
 
+# Top 3 crops by continent 2018
 continents_2018 <- key_crop_yields %>% 
   clean_names() %>% 
   filter(is.na(code)) %>%
@@ -22,23 +24,29 @@ continents_2018 <- key_crop_yields %>%
   group_by(entity) %>% 
   mutate(crop_n = row_number())
     
-
+# Cubes for totals
 totals <- continents_2018 %>% 
   distinct(entity, total) %>% 
   rowwise() %>% 
   mutate(
+    # squares for totals
     x = list(c(0, 0, total, total)),
     y = list(c(0, total, total, 0)),
+    # transform to a 2:1 "isometric" projection
+    # make a bottom square
     isox_bottom = list(x - y),
     isoy_bottom = list((x + y) / 2),
+    # and then a top square
     isox_top = list(isox_bottom),
     isoy_top = list(isoy_bottom + total),
+    # select parts of the squares to make a 3d cube 
     isox = list(c(isox_bottom[c(2, 1, 4)], isox_top[c(4, 3, 2)])),
     isoy = list(c(isoy_bottom[c(2, 1, 4)], isoy_top[c(4, 3, 2)]))
   )  %>% 
   ungroup() %>% 
   unnest(c(isox, isoy)) %>% 
   select(-isox_bottom, -isoy_bottom, -isox_top, -isoy_top) %>% 
+  # "coordinates" for the continents
   mutate(
     x = case_when(
       entity == "Europe" ~ 50,
@@ -60,6 +68,7 @@ totals <- continents_2018 %>%
   mutate(label_y = max(isoy)) %>% 
   ungroup()
 
+# fonts
 f1 <- "Canela Text"
 f1b <- "Canela Text Bold"
 f2 <- "Proxima Nova"
@@ -67,28 +76,37 @@ f2b <- "Proxima Nova Bold"
 f3 <- "IBM Plex Sans Condensed Medium"
 f3b <- "IBM Plex Sans Condensed Bold"
 
+# palette
 pal <- c("#47607E", "#96A7B2", "#6788A5", "#D7664B", "#20527D")
 
 ggplot(totals) +
+  # Cubes
   geom_polygon(aes(x = isox + x, y = isoy + y, group = entity, fill = entity, color = entity), size = 1) +
+  # Continent labels
   geom_text(aes(x = x - 20, y = y + label_y + 44, label = entity), hjust = 1, stat = "unique", family = f1b, size = 5) +
   geom_text(aes(x = x - 20, y = y + label_y + 30, label = paste0(round(total, 1), " tonnes/ha")), hjust = 1, stat = "unique", family = f1, size = 4.5, lineheight = 0.9) +
+  # Line from cube to label
   geom_segment(aes(x = x - 20, y = y + label_y + 21, xend = x - 20, yend = y + label_y - 20), size = 0.15) +
   geom_segment(aes(x = x - 35, y = y + label_y + 21, xend = x - 20, yend = y + label_y + 21), size = 0.15) +
-  
+  # Table
+  # Continents
   geom_text(data = continents_2018, aes(x = ent_n * 100 - 300, y = 306, label = entity), family = f1b, hjust = 0, stat = "unique") +
+  # Crops
   geom_text(data = continents_2018, aes(x = ent_n * 100 - 300, y = 305 - crop_n * 10, label = crop), family = f2, hjust = 0) +
+  # Perecentage
   geom_text(data = continents_2018, aes(x = ent_n * 100 - 235, y = 305 - crop_n * 10, label = format(round(pct * 100, 1), nsmall = 1)), family = f3b, hjust = 1, color = "#D76549") +
+  # Divider
   geom_segment(aes(x = -200, y = 263, xend = 266, yend = 263)) +
   annotate("rect", xmin = -202, ymin = 320, xmax = -143, ymax = 330, fill = "black") +
+  # Table title
   annotate("text", x = -200, y = 325, hjust = 0, label = toupper("Top 3 key crops"), family = f3, color = "#EFE1C7", size = 3) +
   annotate("text", x = -138, y = 325, hjust = 0, label = toupper("by percentage of total key crop yield"), family = f3, size = 3, color = "black") +
-  
+  # Plot title
   annotate("text", x = -115, y = -90, label = "2018", size = 30, family = f1b) +
   annotate("text", x = -115, y = -135, label = toupper("Total key crop yield"), size = 6.5, family = f3b) +
-  
+  # Captions
   labs(caption = toupper("Source: Our World in Data | Graphic: Georgios Karamanis")) +
-  
+  # Scales and theme
   scale_fill_manual(breaks = c("Americas", "Europe", "Africa", "Asia", "Oceania"), values = pal) +
   scale_color_manual(breaks = c("Americas", "Europe", "Africa", "Asia", "Oceania"), values = darken(pal)) +
   # coord_fixed() +
