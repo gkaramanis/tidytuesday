@@ -25,6 +25,7 @@ gt(friends_table) %>%
     columns = 2:last_col(),
     colors = scales::col_numeric(
       palette = c("red", "yellow", "darkgreen"),
+			na.color = "white",
       domain = c(5.5, 10)
       )
   ) %>% 
