@@ -36,7 +36,7 @@ ggplot(libraries) +
   facet_geo(vars(state)) +
   labs(
     title = "Change in public spending on libraries from 1997 to 2016",
-    subtitle = "Thousands of dollars spent per child, adjusted for inflation",
+    subtitle = "Dollars spent per child, adjusted for inflation",
     caption = "Source: Urban Institute | Graphic: Georgios Karamanis"
   ) +
   coord_cartesian(clip = "off", expand = FALSE) +
