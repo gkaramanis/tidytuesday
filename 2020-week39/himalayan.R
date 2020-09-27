@@ -76,7 +76,7 @@ waf_plot <- function(data, rows){
 plot_1 <- waf_plot(data = deaths_1, rows = 1)
 plot_2 <- waf_plot(data = deaths_2, rows = 2)
 plot_3 <- waf_plot(data = deaths_3, rows = 8)
-plot_3b <- add_sub(plot_3, "Source; The Himalayan Database | Graphic: Georgios Karamanis", size = 8, fontfamily = f1, color = "grey20")
+plot_3b <- add_sub(plot_3, "Source: The Himalayan Database | Graphic: Georgios Karamanis", size = 8, fontfamily = f1, color = "grey20")
 
 
 plot_peaks <- ggplot(by_peak) +
