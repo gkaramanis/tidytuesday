@@ -119,12 +119,13 @@ charts_wide %>%
   ) %>% 
   cols_label(
     img = "",
-    title_artist = html("Album<br><span style='color:#8086A0'>Artist</span>"),
-    released_rerelease = html("Release date<br><span style='color:#8086A0'>re-release</span>"),
+    title_artist = html("<div style='text-align:left;'>Album<br><span style='color:#8086A0'>Artist</span></div>"),
+    released_rerelease = html("<div style='text-align:left;'>Release date<br><span style='color:#8086A0'>re-release</span></div>"),
     all_formats = "Formats"
   ) %>%  
   tab_source_note(html("Source: Billboard, Table: Georgios Karamanis, Icons (modified): Font Awesome, CC BY 4.0 License<br>", formats_list)) %>% 
   tab_options(
     column_labels.text_transform = "uppercase",
     table.font.color = "#344072"
-  )
+  ) %>% 
+  gtsave(here::here("2020-week40", "plots", "beyonce-swift.png"), zoom = 1, expand = 20)
