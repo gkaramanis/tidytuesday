@@ -127,5 +127,5 @@ charts_wide %>%
   tab_options(
     column_labels.text_transform = "uppercase",
     table.font.color = "#344072"
-  ) %>% 
-  gtsave(here::here("2020-week40", "plots", "beyonce-swift.png"), zoom = 1, expand = 20)
+  ) 
+  # gtsave(here::here("2020-week40", "plots", "beyonce-swift.png"), zoom = 2, expand = 20)
