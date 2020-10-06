@@ -30,8 +30,7 @@ script_text <- paste0(
   '\"temp\", paste0(\"',
   newscript,
   '-\", format(Sys.time(), \"%Y%m%d_%H%M%S\"), \".png\")), dpi = 320)',
-  '\n',
-  'gg_embed()'
+  '\n'
 )
 write(as.character(script_text), file(script_file))
 
