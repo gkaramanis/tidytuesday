@@ -36,4 +36,4 @@ anim <- ggplot(w_turb) +
   theme() +
   transition_states(t)
 
-anim_save(animation = anim, filename = here::here("2020-week44", "plots", "wind_turbine_animation.gif"), renderer = gifski_renderer(), width = 1536, height = 512)
+anim_save(animation = anim, filename = here::here("2020-week44", "plots", "wind_turbine_animation.gif"), renderer = gifski_renderer(), width = 1536, height = 512, fps = 30)
