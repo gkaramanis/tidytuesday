@@ -20,7 +20,7 @@ p <- ggplot(ikea) +
 
 b <- ggplot() +
   # box
-  geom_rect(aes(xmin = 0, xmax = 400, ymin = 0, ymax = 150), fill = NA, color = "grey20", size = 0.75) +
+  geom_rect(aes(xmin = 0, xmax = 400, ymin = 10, ymax = 150), fill = NA, color = "grey20", size = 0.75) +
   # data set
   annotate("text", x = 50, y = 130, label = "DÄTA SET", family = f1b) +
   geom_image(aes(50, 70, image = "2020-week45/img/tidytuesday.png"), asp = 2.5, size = 0.16) +
@@ -30,7 +30,7 @@ b <- ggplot() +
   annotate("text", x = 185, y = 105, label = "x 1", family = f1m, size = 6) +
   geom_image(aes(150, 70, image = "2020-week45/img/ggplot2.png"), asp = 2.5, size = 0.14) +
   # divider
-  annotate("segment", x = 210, y = 130, xend = 210, yend = 20, size = 0.75) +
+  annotate("segment", x = 210, y = 130, xend = 210, yend = 25, size = 0.75) +
   # point
   annotate("text", x = 250, y = 130, label = "PÖINT", family = f1b) +
   annotate("point", x = runif(10, 235, 265), y = runif(10, 60, 100), alpha = runif(10, 0.4, 1)) +
