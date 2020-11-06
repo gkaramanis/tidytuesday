@@ -23,12 +23,12 @@ b <- ggplot() +
   geom_rect(aes(xmin = 0, xmax = 400, ymin = 10, ymax = 150), fill = NA, color = "grey20", size = 0.75) +
   # data set
   annotate("text", x = 50, y = 130, label = "DÄTA SET", family = f1b) +
-  geom_image(aes(50, 70, image = "2020-week45/img/tidytuesday.png"), asp = 2.5, size = 0.16) +
+  geom_image(aes(50, 70, image = "2020-week45/img/tidytuesday.png"), asp = 2.7, size = 0.16) +
   annotate("text", x = 90, y = 100, label = "x 1", family = f1m, size = 6) +
   # ggplot
   annotate("text", x = 150, y = 130, label = "GGPLOT", family = f1b) +
   annotate("text", x = 185, y = 105, label = "x 1", family = f1m, size = 6) +
-  geom_image(aes(150, 70, image = "2020-week45/img/ggplot2.png"), asp = 2.5, size = 0.14) +
+  geom_image(aes(150, 70, image = "2020-week45/img/ggplot2.png"), asp = 2.7, size = 0.14) +
   # divider
   annotate("segment", x = 210, y = 130, xend = 210, yend = 25, size = 0.75) +
   # point
