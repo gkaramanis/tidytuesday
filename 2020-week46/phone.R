@@ -34,7 +34,7 @@ ggplot(phones) +
   geom_text(aes(-8, -10 - decade * 2.5, label = paste0("'", str_sub(decade, -2, -1), "s")), size = 10, stat = "unique", family = "Futura Bold", color = "darkseagreen", alpha = 0.8) +
   labs(
     title = toupper("The fall of landline"),
-    subtitle = "Icon shows majority of phone subscriptions (landline or mobile,  median values by country and decade)",
+    subtitle = "Icon shows if the majority of phone subscriptions is landline or mobile,  median values by country and decade",
     caption = "Source: OurWorldInData.org | Graphic: Georgios Karamanis)"
     ) +
   coord_cartesian(clip = "off") +
