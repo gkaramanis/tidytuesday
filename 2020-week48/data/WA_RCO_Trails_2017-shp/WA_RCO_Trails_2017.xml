@@ -1,0 +1,2744 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>20150710</pubdate>
+                <title>Washington State Trails</title>
+                <geoform>vector digital data</geoform>
+                <othercit>The 2017 Washington State Trails Database contains line features and use attributes which have been aggregated and standardized from many public (federal, state, and local entities) and some approved private sources. This database spans multiple time periods and has been collected and developed by management authorities using different methods, scales, and technologies.</othercit>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>In 2007, Washington State legislators requested a trails database, but funding to complete that statewide project was not made available at the time.In 2009, the Federal Government outlined the need for trails database schema in their Data Standards Review Committee, stressing the efficiency in management decisions that a streamlined database can provide. “The collection, storage and management of trail related data are important components of everyday business activities in many federal and state land-managing agencies, trail organizations and businesses. From a management perspective, trails data must often mesh closely with other types of infrastructure, resource and facility enterprise data.” In 2014, the Washington State Office of the Chief Information Officer's (OCIO) Geospatial Program Office acquired a Nonhighway and Off-Road Vehicle Activities (NOVA) Program grant through the Washington State Recreation and Conservation Office (RCO) giving the OCIO initial funding to develop a statewide trails database based on Federal Geographic Data Committee standards. Using the same standard for all trails data will allow land managers and recreational users throughout the state to access and use the data regardless of administrative boundary. "Data standards will make it easier for trail information to be accessed and exchanged and used by more than one individual agency or group…Ease in sharing data increases the capability for enhanced and consistent mapping, inventory, monitoring, conditions assessment, maintenance, costing, budgeting, information retrieval, and summary reporting for internal and external needs.”Along with streamlining data and facilitating efficiency in management practices across agencies, the database will provide a source of trails information that is open and free to the public. Additional details about the project can be found here: http://www.rco.wa.gov/recreation/WashingtonStateTrailsMap.shtml</abstract>
+            <purpose>The 2017 Washington State Trails Database contains line features and use attributes which have been aggregated and standardized from many public (federal, state, and local entities) and some approved private sources. This database spans multiple time periods and has been collected and developed by management authorities using different methods, scales, and technologies.</purpose>
+            <supplinf>The 2017 Washington State Trails Database contains line features and use attributes which have been aggregated and standardized from many public (federal, state, and local entities) and some approved private sources. This database spans multiple time periods and has been collected and developed by management authorities using different methods, scales, and technologies.</supplinf>
+        </descript>
+        <timeperd>
+            <timeinfo>
+                <rngdates>
+                    <begdate>20141231</begdate>
+                    <enddate>20150630</enddate>
+                </rngdates>
+            </timeinfo>
+            <current>Publication Date</current>
+        </timeperd>
+        <status>
+            <progress>In work</progress>
+            <update>Unknown</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-124.798416</westbc>
+                <eastbc>-116.75226</eastbc>
+                <northbc>49.041175</northbc>
+                <southbc>45.501135</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>recreation</themekey>
+                <themekey>Washington State</themekey>
+                <themekey>transportation</themekey>
+                <themekey>trails</themekey>
+            </theme>
+            <theme>
+                <themekt>ISO 19115 Topic Categories</themekt>
+                <themekey>transportation</themekey>
+            </theme>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>Washington's Public Records Disclosure Act (RCW 42.56) was adopted by initiative of the people in 1972 to open government records to the public. The Washington State Office of the Chief Information Officer (OCIO) believes in the importance of the public’s right to know about its operations and activities. This data should not be construed, expressed or implied, as legal advice or legal opinion on any specific facts or circumstances. OCIO discloses this data “as is” without any warranty, and OCIO expressly disclaims all expressed or implied warranties of merchantability and fitness for a particular use.This database is currently in development. Source data was obtained from several organizations at various times and has been modified to meet Federal Trail Data Standards.Every effort has been made to ensure that the data represented is accurate. However, no guarantee can be made regarding the accuracy, reliability, or timeliness of the data.The data may contain typographical errors and other inadvertent inaccuracies or omissions, and the data may not reflect recent management and geographic changes or seasonal closures and maintenance conditions. It is for representative map purposes only. Anyone who uses and relies on any data from this database or on maps created using this data does so at his/her own risk. The OCIO is not liable for the data provided in this database and strongly advises checking with appropriate trail management organizations for current environmental conditions and trail status as part of trip planning and preparation. The data provided in this database should not be construed as a trail guide. By accessing and using this data, the user agrees to indemnify, hold harmless from any claim or demand directed at the OCIO, removing the OCIO from any claim, losses, liabilities, and cost and expense of defense, directly or indirectly made by any third party that arises in connection with use of this data. In no event shall the OCIO be liable to any user or any other person, organization, business, or website, for any loss of measurable or immeasurable economic or personal value due to the presence of this database or the use of its data. Access to this database may be suspended, discontinued, or altered, in part or in whole, at any time, for any reason, with or without prior notice, at the discretion of the OCIO. </useconst>
+        <datacred>WA RCO, WA OCIO</datacred>
+        <native>Version 6.2 (Build 9200) ; Esri ArcGIS 10.5.1.7333</native>
+    </idinfo>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>String</sdtstype>
+                <ptvctcnt>14247</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>WA_Trail_2017</enttypl>
+                <enttypd>Displays Washington State Trails data as polylines.</enttypd>
+                <enttypds>Washington State Geospatial Program Office</enttypds>
+            </enttyp>
+            <attr>
+                <attrlabl>MOTORCYCLE</attrlabl>
+                <attrdef>Indicates whether motorcycles are allowed. Includes any other motorized two-wheeled vehicles on which the two wheels are inline, not side by side.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Motorcycles not allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Motorcycles allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether motorcycle use is allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>ATV</attrlabl>
+                <attrdef>Indicates whether ATV use is allowed. ATVs are off-highway vehicles (OHVs) less than or equal to 50" with three or more low pressure tires, handle-bar steering, and a seat designed to be straddled by an operator.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether ATV use is allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>ATV use is allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>ATV use is not allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Coordinates defining the features.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>last_edited_user</attrlabl>
+                <attrdef>The identity of the user who last updated the record.</attrdef>
+                <attrdefs>Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>FOUR_WHEEL_DRIVE</attrlabl>
+                <attrdef>Indicates whether four-wheel drive vehicles are allowed. Four-wheel drive vehicles are motorized vehicles designed for or capable of cross country travel on or immediately over land, and greater than 50" in width.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Four-wheel drive vehicles not allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether four-wheel drive vehicle use is allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Four-wheel drive vehicles allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>SPC_MGT_AR_COMMENTS</attrlabl>
+                <attrdef>The name of the management area (or areas) the trail or trail segment specifically crosses, if any. Can hold multiple values.</attrdef>
+                <attrdefs>Federal Trail Data Standards, Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>NAT_TR_DES</attrlabl>
+                <attrdef>The national designation assigned to the trail or trail segment. Populate only if applicable.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NRT - NATIONAL RECREATIONAL TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL SCENIC TRAIL - PACIFIC NORTHWEST</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>MILLENNIUM LEGACY TRAIL WASHINGTON - JOHN WAYNE PIONEER</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL MILLENNIUM TRAIL - CASCADIA MARINE</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL HISTORIC TRAIL - LEWIS AND CLARK</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL SCENIC TRAIL - PACIFIC CREST</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>ACCESS_STA</attrlabl>
+                <attrdef>Accessibility guideline compliance status (via American Disability Act or ADA) for the trail or trail segment designed for HIKER/PEDESTRIAN use.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NOT ACCESSIBLE</edomv>
+                        						
+                        <edomvd>Trail determined ineligible to meet current agency accessibility guidelines</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NOT EVALUATED</edomv>
+                        						
+                        <edomvd>Trail not evaluated for accessibility</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>ACCESSIBLE</edomv>
+                        						
+                        <edomvd>Trail meets current agency accessibility guidelines</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>QA_STATUS</attrlabl>
+                <attrdef>Status of linework and attribute editing.</attrdef>
+                <attrdefs>Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>6</edomv>
+                        						
+                        <edomvd>Returned for correction</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>3</edomv>
+                        						
+                        <edomvd>Attributes completed</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>4</edomv>
+                        						
+                        <edomvd>Editor QA completed</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>2</edomv>
+                        						
+                        <edomvd>Linework completed</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>1</edomv>
+                        						
+                        <edomvd>No work performed</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>7</edomv>
+                        						
+                        <edomvd>Complete</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>5</edomv>
+                        						
+                        <edomvd>Accepted by QA Manager</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>created_user</attrlabl>
+                <attrdef>The user who originally created (or recreated) the record.</attrdef>
+                <attrdefs>Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>REVIEW_FLAG</attrlabl>
+                <attrdef>Is additional review required</attrdef>
+                <attrdefs>Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Additional review required</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Additional review not required</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Review status unknown</edomvd>
+                        						
+                        <edomvds>Washington State Geospatial Program Office</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>AGENCY_DATA_SOURCE_COMMENTS</attrlabl>
+                <attrdef>Notes added by editor pertaining to data, sometimes including site links referencing where the data or attribute information was obtained.</attrdef>
+                <attrdefs>Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>AGENCY_DATA_SOURCE_GEO</attrlabl>
+                <attrdef>Agency or entity that created the dataset where the original geometry was sourced from. Can hold multiple values.</attrdef>
+                <attrdefs>Federal Trail Data Standards, Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>GlobalID</attrlabl>
+                <attrdef>A universal unique identifier used to track changes in features and assigned by the geodatabase when a row is created. This field is not editable and is automatically populated when it is added for existing data.</attrdef>
+                <attrdefs>Washington State Geospatial Program Office, ESRI</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>OBJECTID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>created_date</attrlabl>
+                <attrdef>The date and time the record was created (or recreated).</attrdef>
+                <attrdefs>Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>CROSS_COUNTRY_SKI</attrlabl>
+                <attrdef>Indicates whether cross country skiing is allowed. Includes ski mountaineering and hiking downhill skiing/snowboarding when not supported by mechanized vehicles.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Cross country skiing allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Cross country skiing not allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether cross country skiing is allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>TR_STATUS</attrlabl>
+                <attrdef>Current physical state of trail or trail segment.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>PLANNED</edomv>
+                        						
+                        <edomvd>Planned or proposed trail identified by an appropriate management decision</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>UNKNOWN</edomv>
+                        						
+                        <edomvd>Unknown status</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>EXISTING</edomv>
+                        						
+                        <edomvd>A trail that physically exists</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>DECOMMISSIONED</edomv>
+                        						
+                        <edomvd>A trail that is no longer needed and has been removed from service</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>MOTORIZED_WATERCRAFT</attrlabl>
+                <attrdef>Indicates whether self-propelled motorized watercraft are allowed. Includes all types of self-propelled motorized watercraft when floating. Excludes amphibious vehicles if any wheel or track is in contact with the ground/substrate.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Self-propelled motorized watercraft not allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether self-propelled motorized watercraft use is allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Self-propelled motorized watercraft allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>SNOWMOBILE</attrlabl>
+                <attrdef>Indicates whether snowmobiles are allowed. Snowmobiles are motorized over-snow vehicles that operate on a track, use one or more skis for steering, have handle bar steering, and a seat designed to be straddled by the operator.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Snowmobiles allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Snowmobiles not allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether snowmobile use is allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>BICYCLE</attrlabl>
+                <attrdef>Indicates whether bicycles and/or mountain bikes allowed.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Bicycles and/or mountain bikes are not allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether bicycle/mountain bike use is allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Bicycles and/or mountain bikes allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>DOG_SLED</attrlabl>
+                <attrdef>Indicates whether snow sleds pulled by dogs allowed.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Snow sleds pulled by dogs not allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Snow sleds pulled by dogs allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether dog sled use is allowed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>TR_SYS</attrlabl>
+                <attrdef>The travel network with which the trail or trail segment belongs (if applicable). Populate only if applicable or known.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>OTHER</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>TRIBAL TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL PARK SERVICE SYSTEM TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>STATE GOVERNMENT TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>COUNTY / PARISH / BOROUGH TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>UNKNOWN</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL FOREST SYSTEM TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>OTHER FEDERAL TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>PRIVATE TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>BUREAU OF LAND MANAGEMENT TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>LOCAL GOVERNMENT TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL WILDLIFE REFUGE SYSTEM TRAIL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>TR_LENGTH</attrlabl>
+                <attrdef>Length of the trail or trail segment in miles. Calculated value (SHAPE_Length / 5280).</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>HIKER_PEDESTRIAN</attrlabl>
+                <attrdef>Indicates whether hiking and backpacking allowed.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether hiking/backpacking use are allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Hiking and backpacking not allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Hiking and backpacking allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>TR_NM</attrlabl>
+                <attrdef>Official name of trail (if any).</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>PR_TR_MNTR_COMMENTS</attrlabl>
+                <attrdef>Provides information (usually a name) that defines the identity of the primary maintainer. Can contain multiple values.</attrdef>
+                <attrdefs>Federal Trail Data Standards, Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>REVIEW_COMMENTS</attrlabl>
+                <attrdef>Pertains specifically to flagged data. Contains notes about edits needed, particularly linework changes.</attrdef>
+                <attrdefs>Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>NOT_SPECIFIED</attrlabl>
+                <attrdef>The trail's specific use categories are not defined by the sources available. (See Managed Use Category in the Federal Trail Data Standards, pg. 22.)</attrdef>
+                <attrdefs>Washington State Geospatial Program Office, Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>-</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>-</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>-</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>PACK_AND_SADDLE</attrlabl>
+                <attrdef>Indicates whether horses (riding) and/or packing stock allowed.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Horses (riding) and/or packing stock allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Horses (riding) and/or packing stock not allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether horses and/or packing stock uses are allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>TR_NUM</attrlabl>
+                <attrdef>Number of trail (if applicable). Primarily used for US Forest Service trails that don't have names or have both names and numbers.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>NON_MOTORIZED_WATERCRAFT</attrlabl>
+                <attrdef>Indicates whether non-motorized watercraft allowed. Includes all types of non-motorized watercraft, if floating--canoes, kayaks, inflatable open-top rafts, rowboats, etc.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Non-motorized watercraft not allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether non-motorized watercraft use is allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Non-motorized watercraft allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>SNOWSHOE</attrlabl>
+                <attrdef>Indicates whether snowshoeing allowed.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Unknown</edomv>
+                        						
+                        <edomvd>Unknown whether snowshoe use is allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yes</edomv>
+                        						
+                        <edomvd>Snowshoeing allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>No</edomv>
+                        						
+                        <edomvd>Snowshoeing not allowed.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>PR_TR_MNTR</attrlabl>
+                <attrdef>The agency or group having primary maintenance responsibility for the trail or trail segment. Usually the same as the managing organization, but can include trail user groups, volunteers, communities, etc.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>FEDERAL AVIATION ADMINISTRATION</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>LOCAL GOVERNMENT</edomv>
+                        						
+                        <edomvd>Town, Township, Municipal Agency (City or other local civic government), County</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>FOREST SERVICE</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>US ARMY CORPS OF ENGINEERS</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>TRIBAL</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>UNKNOWN</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>STATE</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>PRIVATE</edomv>
+                        						
+                        <edomvd>Nongovernmental agency, entity, or individual</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>OTHER FEDERAL AGENCY</edomv>
+                        						
+                        <edomvd>Federal agency other than those specifically listed</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>BUREAU OF RECLAMATION</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>BUREAU OF LAND MANAGEMENT</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NONGOVERNMENTAL ORGANIZATION</edomv>
+                        						
+                        <edomvd>Nonprofit organization</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL PARK SERVICE</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>FISH AND WILDLIFE SERVICE</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>DEPARTMENT OF ENERGY</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>DEPARTMENT OF DEFENSE</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>VOLUNTEER</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>COMMERCIAL USER</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>BUREAU OF INDIAN AFFAIRS</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>SPC_MGT_AR</attrlabl>
+                <attrdef>Land area of special management concern or interest which the trail or trail segment crosses. Populate only if applicable.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL RESERVE</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL NATURAL LANDMARK</edomv>
+                        						
+                        <edomvd>Identified by either the Secretary of Agriculture or the Secretary of the Interior</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL MONUMENT</edomv>
+                        						
+                        <edomvd>Congressionally designated area or proclaimed by the President</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL SCENIC AREA</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL PARK</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>OUTSTANDING NATURAL AREA</edomv>
+                        						
+                        <edomvd>Agency administrative designation</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>SCENIC</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>AREA OF CRITICAL ENVIRONMENTAL CONCERN</edomv>
+                        						
+                        <edomvd>BLM agency-identified area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL CONSERVATION AREA</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>INVENTORIED ROADLESS AREA</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL RECREATION AREA</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL SCENIC BYWAY</edomv>
+                        						
+                        <edomvd>Administrative designation</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>UNROADED AREA</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>OTHER</edomv>
+                        						
+                        <edomvd>Other federal, state, or local designation</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>DESIGNATED WILDERNESS AREA</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>RECREATION</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL HISTORIC LANDMARK</edomv>
+                        						
+                        <edomvd>Identified by the Secretary of the Interior</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL OUTSTANDING NATURAL AREA</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>WESTERN HEMISPHERE SHOREBIRD RESERVE NETWORK</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>SPECIAL RECREATION MANAGEMENT AREA</edomv>
+                        						
+                        <edomvd>Agency administrative designation</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>RESEARCH NATURAL AREA</edomv>
+                        						
+                        <edomvd>Agency administrative designation</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>UNITED NATIONS BIOSPHERE RESERVE</edomv>
+                        						
+                        <edomvd>Designated by UNESCO</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>WILD AND SCENIC STUDY RIVER</edomv>
+                        						
+                        <edomvd>Congressionally authorized for study</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>WILD</edomv>
+                        						
+                        <edomvd>Congressionally designated area</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>PUBLIC USE NATURAL AREA</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>WILDERNESS STUDY AREA</edomv>
+                        						
+                        <edomvd>Congressionally authorized for study</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>WORLD HERITAGE SITE</edomv>
+                        						
+                        <edomvd>Administrative designation</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL BACKCOUNTRY BYWAY</edomv>
+                        						
+                        <edomvd>Administrative designation</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIONAL HISTORIC SITE</edomv>
+                        						
+                        <edomvd>not given</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>TR_SURFC</attrlabl>
+                <attrdef>Predominant trail surface type or material.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>SNOW</edomv>
+                        						
+                        <edomvd>Snow</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>WATER</edomv>
+                        						
+                        <edomvd>Water</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>IMPORTED LOOSE MATERIAL - SAND/GRAVEL</edomv>
+                        						
+                        <edomvd>Imported uncompacted gravel, pea gravel, sand</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>NATIVE MATERIAL</edomv>
+                        						
+                        <edomvd>Native surface material</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>CHUNK WOOD - WOODCHIPS</edomv>
+                        						
+                        <edomvd>Shredded /chipped wood or bark</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>OTHER</edomv>
+                        						
+                        <edomvd>Other trail surface types (boardwalk, paver block, geogrid, etc)</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>CONCRETE</edomv>
+                        						
+                        <edomvd>Concrete</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>UNKNOWN</edomv>
+                        						
+                        <edomvd>Predominant trail surface is unknown.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>IMPORTED COMPACTED MATERIAL - CLAY</edomv>
+                        						
+                        <edomvd>Imported compacted aggregate or clay</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>ASPHALT</edomv>
+                        						
+                        <edomvd>Asphalt</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>AGENCY_DATA_SOURCE_ATT</attrlabl>
+                <attrdef>Agency or entity that provided the source information used to populate the attribute fields. Can hold multiple values.</attrdef>
+                <attrdefs>Federal Trail Data Standards, Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>COUNTY</attrlabl>
+                <attrdef>The name of the county the trail passes through. Trails that retain their identity while passing through more than one or multiple counties are assigned the 'various' class.</attrdef>
+                <attrdefs>Federal Trail Data Standards, Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Whatcom</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Stevens</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Skagit</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>King</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>various</edomv>
+                        						
+                        <edomvd>Trails that retain their identity while passing through more than one or multiple counties are assigned the 'various' class.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Adams</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Benton</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Pacific</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Thurston</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Lewis</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Okanogan</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Lincoln</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Mason</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Pierce</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Klickitat</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Yakima</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Snohomish</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Spokane</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Whitman</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>SanJuan</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Asotin</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>WallaWalla</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Kittitas</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Clark</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Chelan</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Franklin</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Douglas</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Wahkiakum</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Clallam</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Grant</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>PendOreille</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Cowlitz</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Columbia</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Skamania</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Island</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Jefferson</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Garfield</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Ferry</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>GraysHarbor</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <attrdomv>
+                    					
+                    <edom>
+                        						
+                        <edomv>Kitsap</edomv>
+                        						
+                        <edomvd>The trail or trail segment resides wholly within this county.</edomvd>
+                        						
+                        <edomvds>Federal Trail Data Standards</edomvds>
+                        					
+                    </edom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>last_edited_date</attrlabl>
+                <attrdef>The date the records were last updated in Greenwich Mean Time.</attrdef>
+                <attrdefs>Washington State Geospatial Program Office</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>TR_ALT_NM</attrlabl>
+                <attrdef>Alternate trail name (if applicable). Mainly for trails that switch names or are known by other names.</attrdef>
+                <attrdefs>Federal Trail Data Standards</attrdefs>
+                <attrdomv>
+                    					
+                    <udom>Unique value with no associated domains.</udom>
+                    				
+                </attrdomv>
+                <begdatea>2014-12-31</begdatea>
+                <enddatea>2015-06-30</enddatea>
+                <attrmfrq>012</attrmfrq>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.STLength()</attrlabl>
+            </attr>
+        </detailed>
+    </eainfo>
+    <metainfo>
+        <metd>20180627</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Washington State Office of the Chief Information Officer (OCIO), Geospatial Program Office</cntorg>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>mailing</addrtype>
+                    <address>PO Box 42440</address>
+                    <city>Olympia</city>
+                    <state>WA</state>
+                    <postal>98504-2440</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>360.902.0407</cntvoice>
+                <cntvoice>360.407.8700</cntvoice>
+                <cntemail>ocio@ocio.wa.gov</cntemail>
+                <cntemail>admin@watech.wa.gov</cntemail>
+                <cntinst>Now part of Washington Technology Solutions (WaTech). Informational point of contact only.</cntinst>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>
