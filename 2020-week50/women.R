@@ -26,7 +26,7 @@ ggplot(women_angle) +
   geom_segment(data = subset(women_angle, name == "Unsung hero"), aes(x = 0.68 * x, y = 0.68 * y, xend = x - 0.02, yend = y, color = category), size = 1.1) +
   coord_fixed(clip = "off", xlim = c(-1.8, 1.8), ylim = c(-1.8, 1.8)) +
   scale_color_manual(values = c('#e6194B', '#4363d8', '#f58231', '#911eb4', '#800000')) +
-  annotate("text", x = 0, y = 0, label = "BBC Top 100\n\n\n\nWomen of 2020", family = "DIN Condensed Bold", size = 13, lineheight = 1) +
+  annotate("text", x = 0, y = 0, label = "BBC's 100\n\n\n\nWomen of 2020", family = "DIN Condensed Bold", size = 13, lineheight = 1) +
   labs(
     caption = "Data: BBC | Graphic: Georgios Karamanis"
   ) +
