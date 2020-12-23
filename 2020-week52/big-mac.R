@@ -42,14 +42,14 @@ f2 <- "Canela Text"
 
 p <- ggplot(big_dotplot_bin) +
   geom_text(aes(x = x_mid, y = y, label = icon, color = color), family = "MapGlyphs", size = 6) +
-  geom_text(aes(x = x_mid, y = y, label = name), size = 2, vjust = 1, nudge_y = -0.03, family = f1) +
+  geom_text(aes(x = x_mid, y = y, label = name), size = 2, vjust = 1, nudge_y = -0.04, family = f1) +
   geom_vline(xintercept = 0, color = col4) +
   facet_wrap(vars(year), ncol = 1, strip.position = "left") +
   scale_color_identity() +
   scale_x_continuous(labels = label_percent()) +
   labs(
     title = "The Big Mac index",
-    caption = "Source: The Economist | Graphic: Georgios Karamanis",
+    caption = "Source: The Economist | Graphic: Georgios Karamanis\nMap Icons by MapGlyphs.com",
     x = "Raw index, relative to the US dollar"
     ) +
   theme_minimal(base_family = f2) +
