@@ -1,0 +1,357 @@
+icon,country,css,unicode
+,Afghanistan,map-af,\ue707
+,Albania,map-al,\ue673
+,Algeria,map-dz,\ue6ba
+,American Samoa,map-as,\ue74d
+,Andorra,map-ad,\ue65b
+,Angola,map-ao,\ue6b2
+,Anguilla,map-ai,\ue730
+,Antarctica,map-aq,\ue691
+,Antigua and Barbuda,map-ag,\ue763
+,Argentina,map-ar,\ue63c
+,Argentina - Alternative,map-ar-alt,\ue73a
+,Armenia,map-am,\ue697
+,Aruba,map-aw,\ue733
+,Ascension Island,map-sh-ai,\ue756
+,Australia,map-au,\ue635
+,Australian Capital Territory,map-au-ac,\ue6a5
+,New South Wales,map-au-nw,\ue6a2
+,Northern Territory,map-au-nt,\ue69f
+,Queensland,map-au-ql,\ue6a0
+,South Australia,map-au-sa,\ue6a1
+,Tasmania,map-au-ts,\ue6a4
+,Victoria,map-au-vc,\ue6a3
+,Western Australia,map-au-wa,\ue69e
+,Austria,map-at,\ue67b
+,Azerbaijan,map-az,\ue698
+,Bahamas,map-bs,\ue63f
+,Bahrain,map-bh,\ue710
+,Bangladesh,map-bd,\ue6fe
+,Barbados,map-bb,\ue688
+,Belarus,map-by,\ue66e
+,Belgium,map-be,\ue67d
+,Belize,map-bz,\ue640
+,Benin,map-bj,\ue726
+,Bermuda,map-bm,\ue739
+,Bhutan,map-bt,\ue6ff
+,Bolivia,map-bo,\ue63d
+,Bonaire,map-bq,\ue732
+,Bosnia and Herzegovina,map-ba,\ue66b
+,Botswana,map-bw,\ue6b4
+,Bouvet Island,map-bv,\ue73b
+,Brazil,map-br,\ue63e
+,British Indian Ocean Territory,map-io,\ue75b
+,British Virgin Islands,map-vg,\ue72d
+,Brunei Darussalam,map-bn,\ue6eb
+,Bulgaria,map-bg,\ue674
+,Burkina Faso,map-bf,\ue6b3
+,Burundi,map-bi,\ue71a
+,Cambodia,map-kh,\ue6f1
+,Cameroon,map-cm,\ue6b9
+,Canada,map-ca,\ue641
+,Alberta,map-ca-ab,\ue6aa
+,British Columbia,map-ca-bc,\ue6a7
+,Manitoba,map-ca-mb,\ue6ac
+,New Brunswick,map-ca-nb,\ue699
+,Newfoundland and Labrador,map-ca-nl,\ue6b0
+,Northwest Territories,map-ca-nt,\ue6a8
+,Nova Scotia,map-ca-ns,\ue6b1
+,Nunavut,map-ca-nu,\ue6a9
+,Ontario,map-ca-on,\ue6ad
+,Prince Edward Island,map-ca-pe,\ue6af
+,Quebec,map-ca-qc,\ue6ae
+,Saskatchewan,map-ca-sk,\ue6ab
+,Yukon,map-ca-yt,\ue6a6
+,Cape Verde,map-cv,\ue717
+,Cayman Islands,map-ky,\ue737
+,Central African Republic,map-cf,\ue6b6
+,Chad,map-td,\ue6d2
+,Chile,map-cl,\ue642
+,China,map-cn,\ue70b
+,Christmas Island,map-cx,\ue74c
+,Cocos Islands,map-cc,\ue74a
+,Colombia,map-co,\ue643
+,Comoros,map-km,\ue75e
+,Congo,map-cg,\ue6b7
+,Cook Islands,map-ck,\ue743
+,Costa Rica,map-cr,\ue644
+,Croatia,map-hr,\ue66a
+,Cuba,map-cu,\ue645
+,Curacao,map-cw,\ue731
+,Cyprus,map-cy,\ue667
+,Czech Republic,map-cz,\ue676
+,Democratic Republic of the Congo,map-cd,\ue6b5
+,Denmark,map-dk,\ue67a
+,Djibouti,map-dj,\ue719
+,Dominica,map-dm,\ue689
+,Dominican Republic,map-do,\ue646
+,East Timor,map-tl,\ue6ed
+,Ecuador,map-ec,\ue647
+,Egypt,map-eg,\ue6bb
+,El Salvador,map-sv,\ue656
+,Equatorial Guinea,map-gq,\ue718
+,Eritrea,map-er,\ue71e
+,Estonia,map-ee,\ue661
+,Ethiopia,map-et,\ue6bc
+,Falkland Islands,map-fk,\ue648
+,Faroe Islands,map-fo,\ue695
+,Fiji,map-fj,\ue636
+,Finland,map-fi,\ue666
+,France,map-fr,\ue683
+,French Guiana,map-gf,\ue649
+,French Polynesia,map-pf,\ue73d
+,French Southern and Antarctic Lands,map-tf,\ue692
+,Gabon,map-ga,\ue6bd
+,Gambia,map-gm,\ue721
+,Georgia,map-ge,\ue696
+,Germany,map-de,\ue684
+,Ghana,map-gh,\ue724
+,Gibraltar,map-gi,\ue751
+,Globe of Africa,map-glb-af,\ue6ec
+,Globe of Antarctica,map-glb-an,\ue6f8
+,Globe of Asia,map-glb-as,\ue6e6
+,Globe of Europe,map-glb-eu,\ue6e8
+,Globe of North America,map-glb-na,\ue6f6
+,Globe of Oceania,map-glb-oc,\ue6fc
+,Globe of South America,map-glb-sa,\ue6f4
+,Globe of the Americas,map-glb-am,\ue6ea
+,Globe of the Arctic,map-glb-ar,\ue6ee
+,Globe of the Atlantic Ocean,map-glb-at,\ue6f2
+,Globe of the Middle East,map-glb-me,\ue6fa
+,Globe of the Pacific Ocean,map-glb-pa,\ue6f0
+,Greece,map-gr,\ue679
+,Greenland,map-gl,\ue663
+,Grenada,map-gd,\ue68a
+,Guadeloupe,map-gp,\ue68b
+,Guam,map-gu,\ue74b
+,Guatemala,map-gt,\ue64a
+,Guernsey,map-gg,\ue761
+,Guinea,map-gn,\ue6be
+,Guinea-Bissau,map-gw,\ue720
+,Guyana,map-gy,\ue64b
+,Haiti,map-ht,\ue64d
+,Heard Island and McDonald Islands,map-hm,\ue693
+,Honduras,map-hn,\ue64c
+,Hong Kong,map-hk,\ue753
+,Hungary,map-hu,\ue670
+,Iceland,map-is,\ue686
+,India,map-in,\ue702
+,Indonesia,map-id,\ue6e7
+,Iran,map-ir,\ue6c0
+,Iraq,map-iq,\ue6bf
+,Ireland,map-ie,\ue685
+,Ireland - Alternative,map-ie-alt,\ue754
+,Isle of Man,map-im,\ue760
+,Israel,map-il,\ue70c
+,Italy,map-it,\ue682
+,Ivory Coast,map-ci,\ue6b8
+,Jamaica,map-jm,\ue64e
+,Japan,map-jp,\ue6f7
+,Jersey,map-je,\ue75f
+,Jordan,map-jo,\ue6c1
+,Kazakhstan,map-kz,\ue70a
+,Kenya,map-ke,\ue6c2
+,Kiribati,map-ki,\ue744
+,Kosovo,map-xk,\ue668
+,Kuwait,map-kw,\ue70f
+,Kyrgyzstan,map-kg,\ue705
+,Laos,map-la,\ue6f5
+,Latvia,map-lv,\ue660
+,Lebanon,map-lb,\ue70e
+,Lesotho,map-ls,\ue71c
+,Liberia,map-lr,\ue723
+,Libya,map-ly,\ue6c3
+,Liechtenstein,map-li,\ue65c
+,Lithuania,map-lt,\ue65f
+,Luxembourg,map-lu,\ue65d
+,Macau,map-mo,\ue75c
+,Macedonia,map-mk,\ue66d
+,Madagascar,map-mg,\ue6c5
+,Malawi,map-mw,\ue6c8
+,Malaysia,map-my,\ue6e9
+,Maldives,map-mv,\ue759
+,Mali,map-ml,\ue6c6
+,Malta,map-mt,\ue65a
+,Marshall Islands,map-mh,\ue75d
+,Martinique,map-mq,\ue68c
+,Mauritania,map-mr,\ue6c7
+,Mauritius,map-mu,\ue75a
+,Mayotte,map-yt,\ue762
+,Mexico,map-mx,\ue64f
+,Micronesia,map-fm,\ue740
+,Moldova,map-md,\ue671
+,Monaco,map-mc,\ue72a
+,Mongolia,map-mn,\ue703
+,Montenegro,map-me,\ue66c
+,Montserrat,map-ms,\ue735
+,Morocco,map-ma,\ue6c4
+,Mozambique,map-mz,\ue6c9
+,Myanmar,map-mm,\ue727
+,Namibia,map-na,\ue6ca
+,Nauru,map-nr,\ue742
+,Nepal,map-np,\ue700
+,Netherlands,map-nl,\ue67c
+,New Caledonia,map-nc,\ue637
+,New Zealand,map-nz,\ue638
+,Nicaragua,map-ni,\ue650
+,Niger,map-ne,\ue6cb
+,Nigeria,map-ng,\ue6cc
+,Niue,map-nu,\ue73e
+,Norfolk Island,map-nf,\ue749
+,North Korea,map-kp,\ue6fd
+,Northern Mariana Islands,map-mp,\ue747
+,Norway,map-no,\ue664
+,Oman,map-om,\ue712
+,Pakistan,map-pk,\ue706
+,Palau,map-pw,\ue73f
+,Panama,map-pa,\ue651
+,Papua New Guinea,map-pg,\ue639
+,Paraguay,map-py,\ue654
+,Peru,map-pe,\ue652
+,Philippines,map-ph,\ue6e5
+,Pitcairn,map-pn,\ue73c
+,Poland,map-pl,\ue67f
+,Portugal,map-pt,\ue680
+,Portugal - Alternative,map-pt-alt,\ue74f
+,Puerto Rico,map-pr,\ue653
+,Qatar,map-qa,\ue711
+,Reunion,map-re,\ue716
+,Romania,map-ro,\ue672
+,Russia,map-ru,\ue662
+,Rwanda,map-rw,\ue715
+,Saint Barthelemy,map-bl,\ue72f
+,Saint Helena,map-sh-sh,\ue757
+,Saint Kitts and Nevis,map-kn,\ue738
+,Saint Lucia,map-lc,\ue68f
+,Saint Martin,map-mf,\ue736
+,Saint Pierre and Miquelon,map-pm,\ue68d
+,Saint Vincent and the Grenadines,map-vc,\ue68e
+,Samoa,map-ws,\ue74e
+,San Marino,map-sm,\ue72b
+,Sao Tome and Principe,map-st,\ue729
+,Saudi Arabia,map-sa,\ue6cd
+,Senegal,map-sn,\ue6cf
+,Serbia,map-rs,\ue669
+,Seychelles,map-sc,\ue758
+,Sierra Leone,map-sl,\ue722
+,Singapore,map-sg,\ue72c
+,Sint Maarten,map-sx,\ue734
+,Slovakia,map-sk,\ue675
+,Slovenia,map-si,\ue66f
+,Solomon Islands,map-sb,\ue63a
+,Somalia,map-so,\ue6d0
+,South Africa,map-za,\ue6d5
+,South Georgia and the South Sandwich Islands,map-gs,\ue694
+,South Korea,map-kr,\ue6fb
+,South Sudan,map-ss,\ue6d1
+,Spain,map-es,\ue681
+,Spain - Alternative,map-es-alt,\ue750
+,Sri Lanka,map-lk,\ue701
+,State of Palestine,map-ps,\ue70d
+,Sudan,map-sd,\ue6ce
+,Suriname,map-sr,\ue655
+,Svalbard and Jan Mayen,map-sj,\ue65e
+,Swaziland,map-sz,\ue71b
+,Sweden,map-se,\ue665
+,Switzerland,map-ch,\ue67e
+,Syria,map-sy,\ue728
+,Taiwan,map-tw,\ue6f9
+,Tajikistan,map-tj,\ue704
+,Tanzania,map-tz,\ue6d4
+,Thailand,map-th,\ue6ef
+,Togo,map-tg,\ue725
+,Tokelau,map-tk,\ue741
+,Tonga,map-to,\ue745
+,Trinidad and Tobago,map-tt,\ue657
+,Tristan da Cunha,map-sh-tc,\ue755
+,Tunisia,map-tn,\ue6d3
+,Turkey,map-tr,\ue678
+,Turkmenistan,map-tm,\ue708
+,Turks and Caicos Islands,map-tc,\ue690
+,Tuvalu,map-tv,\ue746
+,Uganda,map-ug,\ue71f
+,Ukraine,map-ua,\ue677
+,United Arab Emirates,map-ae,\ue714
+,United Kingdom,map-uk,\ue687
+,England,map-uk-en,\ue69b
+,Northern Ireland,map-uk-ni,\ue69d
+,Scotland,map-uk-sc,\ue69a
+,Wales,map-uk-wa,\ue69c
+,United States,map-us,\ue600
+,Alaska,map-us-ak,\ue601
+,Alabama,map-us-al,\ue602
+,Arizona,map-us-az,\ue604
+,Arkansas,map-us-ar,\ue603
+,California,map-us-ca,\ue605
+,Colorado,map-us-co,\ue606
+,Connecticut,map-us-ct,\ue607
+,Delaware,map-us-de,\ue608
+,District of Columbia,map-us-dc,\ue634
+,Florida,map-us-fl,\ue609
+,Georgia,map-us-ga,\ue60a
+,Hawaii,map-us-hi,\ue60b
+,Idaho,map-us-id,\ue60d
+,Illinois,map-us-il,\ue60e
+,Indiana,map-us-in,\ue60f
+,Iowa,map-us-ia,\ue60c
+,Kansas,map-us-ks,\ue610
+,Kentucky,map-us-ky,\ue611
+,Louisiana,map-us-la,\ue612
+,Maine,map-us-me,\ue615
+,Maryland,map-us-md,\ue614
+,Massachusetts,map-us-ma,\ue613
+,Michigan,map-us-mi,\ue616
+,Minnesota,map-us-mn,\ue617
+,Mississippi,map-us-ms,\ue619
+,Missouri,map-us-mo,\ue618
+,Montana,map-us-mt,\ue61a
+,Nebraska,map-us-ne,\ue61d
+,Nevada,map-us-nv,\ue621
+,New Hampshire,map-us-nh,\ue61e
+,New Jersey,map-us-nj,\ue61f
+,New Mexico,map-us-nm,\ue620
+,New York,map-us-ny,\ue622
+,North Carolina,map-us-nc,\ue61b
+,North Dakota,map-us-nd,\ue61c
+,Ohio,map-us-oh,\ue623
+,Oklahoma,map-us-ok,\ue624
+,Oregon,map-us-or,\ue625
+,Pennsylvania,map-us-pa,\ue626
+,Rhode Island,map-us-ri,\ue627
+,South Carolina,map-us-sc,\ue628
+,South Dakota,map-us-sd,\ue629
+,Tennessee,map-us-tn,\ue62a
+,Texas,map-us-tx,\ue62b
+,Utah,map-us-ut,\ue62c
+,Vermont,map-us-vt,\ue62e
+,Virginia,map-us-va,\ue62d
+,Washington,map-us-wa,\ue62f
+,West Virginia,map-us-wv,\ue631
+,Wisconsin,map-us-wi,\ue630
+,Wyoming,map-us-wy,\ue632
+,United States - Alternative,map-us-alt,\ue633
+,Uruguay,map-uy,\ue658
+,US Virgin Islands,map-vi,\ue72e
+,Uzbekistan,map-uz,\ue709
+,Vanuatu,map-vu,\ue63b
+,Vatican City,map-va,\ue752
+,Venezuela,map-ve,\ue659
+,Vietnam,map-vn,\ue6f3
+,Wallis and Futuna,map-wf,\ue748
+,Western Sahara,map-eh,\ue71d
+,World,map-wrld,\ue6d8
+,Africa,map-wrld-af,\ue6dd
+,Antarctic,map-wrld-an,\ue6e4
+,Asia,map-wrld-as,\ue6db
+,Central America,map-wrld-ca,\ue6d9
+,Europe,map-wrld-eu,\ue6de
+,Middle East,map-wrld-me,\ue6dc
+,North America,map-wrld-na,\ue6e0
+,Oceania,map-wrld-oc,\ue6e2
+,South America,map-wrld-sa,\ue6e1
+,Southeast Asia,map-wrld-se,\ue6da
+,The Americas,map-wrld-am,\ue6df
+,World - Alternative,map-wrld-alt,\ue6e3
+,Yemen,map-ye,\ue713
+,Zambia,map-zm,\ue6d6
+,Zimbabwe,map-zw,\ue6d7
