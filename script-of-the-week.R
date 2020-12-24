@@ -1,1 +1,1 @@
-eval(parse(text="source(\"./2020-week51/plots/ninja-warrior.R\")"))
+eval(parse(text="source(\"./2020-week52/big-mac.R\")"))
