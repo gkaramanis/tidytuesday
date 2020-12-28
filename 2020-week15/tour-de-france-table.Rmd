@@ -1,0 +1,129 @@
+---
+title: "Tour de France Winners"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+library(tidyverse)
+library(lubridate)
+library(countrycode)
+library(glue)
+library(reactable)
+library(htmltools)
+
+tdf_winners <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-07/tdf_winners.csv')
+
+tdf_table <- tdf_winners %>% 
+  mutate(
+    wins_consecutive = with(rle(winner_name), rep(lengths, times = lengths)), # count consecutive wins for bold names
+    year = year(start_date),
+    year_labels = ifelse(year %% 10 == 0, glue("<b>{year}</b>"), year), # make year labels, every year ending in 0 is bold
+    year_group = case_when(  # make 3 year groups, before/after World Wars
+      year < 1915 ~ 1,
+      year > 1915 & year < 1940 ~ 2,
+      TRUE ~ 3),
+    avg_speed = round(distance / time_overall, 1),
+    time_overall = round(time_overall, 1),
+    country_code = countrycode(nationality, origin = "country.name", destination = "iso3c"), # 3-letter country codes
+    winner_annot = ifelse(wins_consecutive > 2, glue("<b>{winner_name} ({country_code})</b>"), glue("{winner_name} ({country_code})")) # make name labels, bold for winners with >2 consecutive wins
+  ) %>%
+  group_by(year_group) %>% 
+  mutate(
+    n_annot = row_number(),
+    annot = ifelse((n_annot - 2) %% 3 == 0, TRUE, FALSE) # this is to annotate every third year in the plots with points and values, starting from the second year in every group
+  ) %>% 
+  ungroup() %>% 
+  add_row(year = c(1915, 1916, 1917, 1918, 1940, 1941, 1942, 1943)) %>% # add dummy rows between the year groups
+  arrange(year) %>% 
+  mutate(n = row_number())
+
+bar_chart <- function(label, width = "100%", height = "10px", fill = "white", background = NULL) {
+  bar <- div(style = list(background = fill, width = width, height = height))
+  chart <- div(style = list(marginRight = "8px", background = background), bar)
+  div(style = list(display = "flex", alignItems = "center"), chart, label)
+}
+```
+
+```{r echo=FALSE}
+tbl <- function(data){
+  data %>% 
+  select(year_labels, distance, winner_annot, winner_team, avg_speed, time_overall) %>% 
+  mutate(year_labels2 = year_labels) %>% 
+  reactable(
+    pagination = FALSE,
+    width = 1024,
+    theme = reactableTheme(
+      backgroundColor = "#F3F2EE",
+      rowStyle = list(
+        "border-top" = "1px dotted #555",
+        "font-size" = "8px"
+      )
+    ),
+    style = list(fontFamily = "monospace", whiteSpace = "pre"),
+    columns = list(
+      year_labels = colDef(
+        name = "YEAR",
+        html = TRUE,
+        width = 50
+      ),
+      year_labels2 = colDef(
+        name = "YEAR",
+        html = TRUE,
+        width = 50,
+        align = "right"
+      ),
+      distance = colDef(
+        name = "DISTANCE",
+        cell = function(value) {
+          value <- value
+          bar_chart(value, width = if_else(is.na(value), 0, value / 8000 * 100), fill = "#7DDDB6")
+        },
+        align = "left"
+      ),
+      winner_annot = colDef(
+        name = "WINNER",
+        html = TRUE,
+        # width = 220
+      ),
+      winner_team = colDef(
+        name = "TEAM",
+        html = TRUE,
+        # width = 280
+      ),
+      avg_speed = colDef(
+        name = "AVERAGE SPEED",
+        cell = function(value) {
+          value <- value
+          bar_chart(value, width = if_else(is.na(value), 0, value / 60 * 100), fill = "#7DDDB6")
+        },
+        align = "left"
+      ),
+      time_overall = colDef(
+        name = "TOTAL TIME",
+        cell = function(value) {
+          value <- value
+          bar_chart(value, width = if_else(is.na(value), 0, value / 300 * 100), fill = "#FCDF33")
+        },
+        align = "left"
+      )
+    )
+  )
+}
+
+tbl1 <- tbl(data = subset(tdf_table, year_group == 1))
+tbl2 <- tbl(data = subset(tdf_table, year_group == 2))
+tbl3 <- tbl(data = subset(tdf_table, year_group == 3))
+
+div(
+  tbl1,
+  div("1915-1918 Tour suspended because of Word War I"),
+  tbl2,
+  div("1940-1946 Tour suspended because of Word War II"),
+  tbl3,
+  pre("Source: alastairrushworth/tdf & kaggle.com/jaminliu | Table: Georgios Karamanis", style = list("font-size:5px; border:0px;"))
+)
+```
