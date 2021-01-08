@@ -8,14 +8,14 @@ next_tuesday <- Sys.Date() + (7 - i + 2) %% 7
 
 # Get ISO week, create new week folder and plot subfolder
 which_week <- isoweek(next_tuesday)
-folder <- paste0("2020-week", which_week) 
+folder <- paste0("2021/", "2021-week", which_week) 
 dir.create(file.path(paste0(folder, "/plots")), recursive = TRUE)
 
 # Create README 
 readme <- paste0(folder, "/README.md")
 file.create(readme)
 readme_text <- paste0(
-  "https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/", next_tuesday, "\n\n![](plots/",
+  "https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/", next_tuesday, "\n\n![](plots/",
   newscript,
   ".png)")
 write(as.character(readme_text), file(readme))
