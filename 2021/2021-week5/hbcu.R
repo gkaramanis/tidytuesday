@@ -25,7 +25,7 @@ ggplot(hbcu_all) +
   coord_fixed(ratio = 0.25, clip = "off", ylim = c(-3900, 1500)) +
   facet_wrap(vars(year), ncol = 4) +
   labs(
-    title = "Enrollment in <span style = 'color:#C53028'>public</span> and <span style = 'color:#994D83'>private</span> HBCU",
+    title = "Enrolment in <span style = 'color:#C53028'>public</span> and <span style = 'color:#994D83'>private</span> HBCU",
     subtitle = "Total number of students enrolled by year and percentage of female students",
     caption = "Source: HBCU | Graphic: Georgios Karamanis"
   ) +
