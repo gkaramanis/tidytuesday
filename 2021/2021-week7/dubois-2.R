@@ -61,6 +61,7 @@ l <- ggplot() +
 plot_grid(l, p, ncol = 1, rel_heights = c(0.25, 1)) +
   draw_text("AGE", x = 0.16, y = 0.79, family = f1, size = 10.5) +
   draw_text(c("15-40", "45-64", "65 AND OVER"), x = 0.26, y = c(0.702, 0.456, 0.208), family = f1, size = 5) +
+  draw_text("#DuBoisChallenge | Graphic: Georgios Karamanis", x = 0.5, y = 0.03, family = f1, size = 6) +
   ggsave(here::here("temp", paste0("dubois-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10.128, width = 8)
 
 
