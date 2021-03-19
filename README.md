@@ -6,7 +6,7 @@ Code and plots of the submissions to the [#tidytuesday](https://github.com/rford
 ---
 ![](yearly-roundup/52-weeks/52.png)  
 
-### First year (March 2020 - March 2021)
+### Second year (March 2020 - March 2021)
 ---
 ![](yearly-roundup/second-year/secondyear.png)  
 
