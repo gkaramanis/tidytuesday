@@ -54,9 +54,9 @@ p <- ggplot(nba2k, aes(x = month_year, y = value, fill = interaction(metric, gam
   geom_stream_label(family = f2bb, size = 6, color = gr2) +
   #title
   annotate("text", x = date("2016-09-01"), y = 75000,
-           label = "Average and peak number\nof players at the same time", hjust = 0, size = 9, color = gr2, family = f2b, lineheight = 0.8) +
+           label = "Average and peak number\nof players at the same time", hjust = 0, size = 9, color = gr1, family = f2b, lineheight = 0.8) +
   # caption
-  annotate("text", x = date("2016-12-01"), y = -110000, label = "Source: SteamCharts\nGraphic: Georgios Karamanis", size = 3, color = gr1, hjust = 0, family = f2) +
+  annotate("text", x = date("2016-12-01"), y = -110000, label = "Source: SteamCharts\nGraphic: Georgios Karamanis", size = 3, color = gr1, hjust = 0, family = f2, lineheight = 0.9) +
   # scales, theme
   scale_fill_manual(values = pal) +
   scale_y_continuous(labels = label_number_si(), breaks = breaks_width(25000), position = "right") +
