@@ -49,7 +49,7 @@ gr1 <- "grey85"
 gr2 <- "grey97"
 
 
-p <- ggplot(nba2k, aes(x = month_year, y = value, fill = interaction(metric, gamename), label = if_else(metric == "peak_avg_diff", gamename, ""))) +
+p <- ggplot(nba2k, aes(x = month_year, y = value, fill = interaction(desc(metric), gamename), label = if_else(metric == "avg", gamename, ""))) +
   geom_stream() +
   geom_stream_label(family = f2bb, size = 6, color = gr2) +
   #title
@@ -65,7 +65,6 @@ p <- ggplot(nba2k, aes(x = month_year, y = value, fill = interaction(metric, gam
     legend.position = "none",
     plot.background = element_rect(fill = bg, color = NA),
     panel.grid.major.x = element_line(size = 0.5, color = lighten(bg, 0.1)),
-    # panel.grid.major.y = element_line(size = 0.35, color = lighten(bg, 0.1)),
     axis.text.x = element_text(family = f1b, color = lighten(bg, 0.8), margin = margin(10, 0, 0, 0), size = 14),
     axis.text.y = element_text(family = f1b, color = lighten(bg, 0.8), size = 12, hjust = 0),
     plot.margin = margin(20, 20, 20, 20)
@@ -75,7 +74,7 @@ p <- ggplot(nba2k, aes(x = month_year, y = value, fill = interaction(metric, gam
 # legend
 pal_leg <- c(desaturate(pal[1:8]), pal[9:10])
 
-l <- ggplot(nba2k, aes(x = month_year, y = value, fill = interaction(metric, gamename), label = if_else(metric == "peak_avg_diff", gamename, ""))) +
+l <- ggplot(nba2k, aes(x = month_year, y = value, fill = interaction(desc(metric), gamename))) +
   geom_stream() +
   # annotatations
   annotate("linerange", x = date("2021-05-01"), ymin = - 117000, ymax = -38000, color = pal[10], size = 1) +
