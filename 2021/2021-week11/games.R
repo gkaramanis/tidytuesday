@@ -28,7 +28,6 @@ franchises <- games %>%
   filter(franchise != "")
 
 nba2k <- franchises %>% 
-  # left_join(franchise_games) %>% 
   filter(franchise == "NBA 2K") %>% 
   mutate(peak_avg_diff = peak - avg) %>% 
   pivot_longer(cols = c(avg, peak_avg_diff), names_to = "metric")
