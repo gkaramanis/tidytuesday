@@ -46,13 +46,13 @@ descrptors %>%
     ) %>% 
   tab_header(
     title = "Foundation Descriptors",
-    subtitle = "Words used to describe the colors of 107 brands and 328 products"
+    subtitle = "and words used to describe the colors of 107 brands and 328 products"
   ) %>% 
   tab_source_note(
     source_note = "Data: The Pudding · Graphic: Georgios Karamanis"
   ) %>% 
   cols_label(
-    descriptor = "first",
+    descriptor = "descriptor",
     hex_after_desc = "second word"
   ) %>% 
   tab_options(
