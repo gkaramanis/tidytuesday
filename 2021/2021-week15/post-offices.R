@@ -45,7 +45,7 @@ ggplot(po_plot) +
                  size = if_else(decade_disc == 1990, 1, 0.25),
                  color = if_else(decade_disc == 1990, "firebrick3", "grey10")
                  )) +
-  geom_text(aes(decade_disc, (label_y + 8) * dec_sign, label = paste0(decade_disc)), stat = "unique", family = f1b, size = 7) +
+  geom_text(aes(decade_disc, (label_y + 8) * dec_sign, label = paste0(decade_disc, "s")), stat = "unique", family = f1b, size = 7) +
   geom_text(aes(decade_disc, label_y * dec_sign, label = paste0(n_left, " left")), stat = "unique", family = f2c, color = "firebrick3", size = 4.5) +
   geom_linerange(aes(x = decade_disc,
                      ymin = (label_y - 10) * dec_sign,
