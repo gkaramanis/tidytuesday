@@ -39,7 +39,7 @@ ggplot(flix_g) +
   annotate("text", x = 1969.5, y = 67, label = "Title", color = "#E50914", hjust = 1, family = f1, fontface = "bold", size = 4.5) +
   annotate("text", x = c(1971, 1985), y = 62, label = c("year released", "year added"), color = "#E50914", family = f1, size = 4) +
   annotate("segment", x = c(1971, 1985), xend = c(1971, 1985),
-           y = 65, yend = 67, color = "#E50914", size = 0.5, linetype = "dashed") +
+           y = 63.5, yend = 67, color = "#E50914", size = 0.5, linetype = "dashed") +
   annotate("text", x = 1964.5, y = 72, label = "Source: Shivam Bansal/Kaggle · Graphic: Georgios Karamanis", hjust = 0, size = 4, family = f1, color = "grey50") +
   # scales, coord ----
   scale_x_continuous(breaks = seq(1960, 2020, by = 5), minor_breaks = seq(1960, 2020, by = 1), sec.axis = dup_axis()) +
