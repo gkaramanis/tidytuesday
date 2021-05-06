@@ -2,7 +2,6 @@ library(tidyverse)
 library(scales)
 library(sf)
 library(janitor)
-library(gridExtra)
 library(cowplot)
 
 water <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-04/water.csv')
@@ -58,7 +57,7 @@ p <- ggplot(ww) +
   facet_wrap(vars(water_source)) +
   labs(
     title = "Water Sources in Africa",
-    subtitle = "Number of type and country, according to data collected by WPDx",
+    subtitle = "Number of types by country, according to data collected by WPDx",
     caption = "Source: Water Point Data Exchange · Graphic: Georgios Karamanis"
        ) +
   theme_void() +
