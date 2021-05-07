@@ -52,7 +52,8 @@ p <- ggplot(ww) +
   geom_sf(data = africa, fill = "grey84", size = 0.2, color = "grey20") +
   geom_sf(aes(geometry = geometry, fill = n), color = "grey20", size = 0.3) +
   geom_sf_text(aes(geometry = geometry, label = iso2), size = 2, family = f1, color = "white") +
-  scale_fill_stepsn(colors = pal, n.breaks = 7, labels = unit_format(unit = "K", scale = 1e-3)) +
+  # scale_fill_stepsn(colors = pal, n.breaks = 7, labels = unit_format(unit = "K", scale = 1e-3)) +
+  scale_fill_stepsn(colors = pal, breaks = c(10, 100, 1000, 10000), trans = "log") +
   coord_sf() +
   facet_wrap(vars(water_source)) +
   labs(
@@ -87,3 +88,4 @@ ggdraw(p) +
     plot.background = element_rect(fill = "grey95", color = NA)
   ) +
   ggsave(here::here("temp", paste0("water-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)
+
