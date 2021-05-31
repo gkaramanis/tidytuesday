@@ -151,18 +151,3 @@ p <- (dp/np
 
 p +
   ggsave(here::here("temp", paste0("mario-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8, width = 12)
-
-# library(rtweet)
-# post_tweet(
-#   status = "my first rtweet #rstats",
-#   media = NULL,
-#   token = NULL,
-#   in_reply_to_status_id = NULL,
-#   destroy_id = NULL,
-#   retweet_id = NULL,
-#   auto_populate_reply_metadata = FALSE,
-#   media_alt_text = NULL,
-#   lat = NULL,
-#   long = NULL,
-#   display_coordinates = FALSE
-# )
