@@ -16,6 +16,7 @@ top_sp <- fishing %>%
   summarise(total = round(sum(values, na.rm = TRUE))) %>% 
   slice_max(n = 3, order_by = total) %>% 
   mutate(
+    total = round(total / 1000), # convert to million lbs
     i = row_number(),
     lake = paste0("Lake ", lake)
     ) %>% 
@@ -27,10 +28,11 @@ top_fishing <- fishing %>%
   mutate(lake = paste0("Lake ", lake)) %>% 
   inner_join(top_sp) %>% 
   mutate(
+		values = values / 1000, # convert to million lbs
     species_img = if_else(species == "Cisco and chubs", "chubs", tolower(species)),
     img = paste0(here::here("2021", "2021-week23", "data", "img"), "/", species_img, ".png"),
     lbl = paste0("**", i, ". ", species, "**", "<br>",
-                 format(total, big.mark = " "), " lbs.", if_else(species == "Blue Pike", "<br>(Total production 1915-2015)", ""))
+                 format(total, big.mark = " "), " million lbs.", if_else(species == "Blue Pike", "<br>(Total production 1915-2015)", ""))
     )
 
 # Lakes shapefiles
@@ -61,7 +63,7 @@ p <- ggplot(top_fishing) +
     blend_type = "in"
   ) +
   geom_richtext(aes(x = 1965, y = -2, label = lbl), stat = "unique", family = f1, fill = NA, label.color = NA, vjust = 1) +
-  scale_fill_gradientn(colors = pal, labels=function(x) format(x, big.mark = " "), name = "lbs.") +
+  scale_fill_gradientn(colors = pal, labels=function(x) format(x, big.mark = " "), name = "million lbs.") +
   facet_grid(rows = vars(i), cols = vars(lake)) +
   labs(
     title = "Commercial fish production in the Great Lakes 1915-2015",
