@@ -8,7 +8,7 @@ next_tuesday <- Sys.Date() + (7 - i + 2) %% 7
 
 # Get ISO week, create new week folder and plot subfolder
 which_week <- isoweek(next_tuesday)
-folder <- paste0("2021/", "2021-week", which_week) 
+folder <- paste0("2021/", "2021-week", formatC(which_week, width = 2, flag = "0")) 
 dir.create(file.path(paste0(folder, "/plots")), recursive = TRUE)
 
 # Create README 
