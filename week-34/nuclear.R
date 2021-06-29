@@ -88,9 +88,9 @@ ggplot() +
     plot.title = element_text(family = "IBM Plex Sans Bold", size = 36, margin = margin(0, 0, 10, 0)),
     plot.subtitle = element_text(size = 24, margin = margin(0, 0, 30, 0)),
     plot.caption = element_text(family = "IBM Plex Sans Light", margin = margin(30, 0, 0, 0))
-  ) +
-  
-  ggsave(here::here("week-34", "nuclear.png"),
+  ) 
+
+ggsave(here::here("week-34", "nuclear.png"),
     width = 16, height = 12, dpi = 320
   )
 

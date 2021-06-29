@@ -27,8 +27,9 @@ ggplot(parts_match) +
   # coord_flip() +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
   here::here("week-37", "figures", "temp", paste0("parks_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
   height = 8, width = 18, dpi = 320
 )

@@ -23,6 +23,7 @@ trails <- hike_data %>%
 
 ggplot(trails) +
   geom_col(aes(x = location, y = highpoint), width = 0.5) +
-  geom_tile(aes(x = location, y = gain, width = 0.7, height = 8)) +
-  ggsave(here::here("temp", paste0("washington-hiking-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  geom_tile(aes(x = location, y = gain, width = 0.7, height = 8)) 
+
+ggsave(here::here("temp", paste0("washington-hiking-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
 

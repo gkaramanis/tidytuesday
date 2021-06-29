@@ -38,5 +38,6 @@ tidy_anime %>%
     panel.background = element_rect(fill = "gray20"),
     panel.grid = element_blank(),
     text = element_text(family = "IBM Plex Sans", size = 6)
-  ) +
-  ggsave("./week 17/anime.png", dpi = 600, height = 4, width = 4)
+  ) 
+
+ggsave("./week 17/anime.png", dpi = 600, height = 4, width = 4)

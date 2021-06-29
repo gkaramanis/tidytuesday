@@ -41,8 +41,8 @@ top_games %>%
     text = element_text(family = "Karmatic Arcade"),
     axis.text.y = element_blank(),
     axis.title.y = element_blank()
-  ) +
-  
-  ggsave(here("week-27", "media_franchises.png"),
+  ) 
+
+ggsave(here("week-27", "media_franchises.png"),
           dpi = 300)
 

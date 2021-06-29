@@ -54,5 +54,6 @@ ggplot(windows) +
 		plot.title = element_text(family = "Atkinson Hyperlegible Bold", color = "grey90", size = 15.5),
 		plot.subtitle = element_markdown(color = "grey90", lineheight = 1),
 		plot.caption = element_text(hjust = 0.5, margin = margin(30, 0, 0, 0), size = 8, color = "#EFC242")
-  ) +
-  ggsave(here::here("temp", paste0("shelters-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 6.3, height = 6.4)
+  ) 
+
+ggsave(here::here("temp", paste0("shelters-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 6.3, height = 6.4)

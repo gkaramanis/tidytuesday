@@ -50,6 +50,7 @@ ggplot(nw_obstacles) +
   theme(
     legend.position = "none",
     plot.background = element_rect(fill = "#182240", color = NA)
-  ) +
-  ggsave(here::here("temp", paste0("ninja-warrior-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 9)
+  ) 
+
+ggsave(here::here("temp", paste0("ninja-warrior-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 9)
 

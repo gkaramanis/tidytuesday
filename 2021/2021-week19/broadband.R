@@ -44,5 +44,6 @@ guide = guide_colorsteps(title.position = "top"), "Difference in percentage poin
     legend.title = element_text(family = f2, size = 6, margin = margin(0, 0, 3, 0)),
     plot.background = element_rect(fill = "grey97", color = NA),
     plot.margin = margin(10, 0, 10, 0)
-  ) +
-  ggsave(here::here("temp", paste0("broadband-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 6)
+  ) 
+
+ggsave(here::here("temp", paste0("broadband-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 6)

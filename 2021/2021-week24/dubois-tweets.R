@@ -84,6 +84,7 @@ ggplot(tweets_tt) +
     plot.subtitle = element_text(family = f2, hjust = 0.5, margin = margin(0, 0, 20, 0), size = 14),
     plot.caption = element_text(family = f1, hjust = 0.5, margin = margin(10, 0, 0, 0)),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("temp", paste0("dubois-tweets-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8.25, width = 6)
+  ) 
+
+ggsave(here::here("temp", paste0("dubois-tweets-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8.25, width = 6)
 

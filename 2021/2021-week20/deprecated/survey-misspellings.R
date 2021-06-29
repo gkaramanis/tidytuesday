@@ -49,5 +49,6 @@ ggplot(usa_nodes, aes(x = x, next_x = next_x, node = node, next_node = next_node
   theme_void() +
   theme(
     legend.position = "none"
-  ) +
-  ggsave("~/Desktop/missp.png", dpi = 320, width = 12, height = 7)
+  ) 
+
+ggsave("~/Desktop/missp.png", dpi = 320, width = 12, height = 7)

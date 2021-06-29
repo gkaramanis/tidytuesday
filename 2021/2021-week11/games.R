@@ -97,6 +97,7 @@ steam_logo <- here::here("2021", "2021-week11", "img", "steam.png")
 ggdraw(p) +
   draw_plot(l, 0.1, 0.1, 0.275, 0.225) +
   draw_image(steam_logo, x = -0.4, y = 0.4, scale = 0.08) +
-  draw_image(nba2k_logo , x = -0.225, y = 0.4, scale = 0.25) +
-  ggsave(here::here("temp", paste0("games-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 7, width = 10)
+  draw_image(nba2k_logo , x = -0.225, y = 0.4, scale = 0.25) 
+
+ggsave(here::here("temp", paste0("games-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 7, width = 10)
 

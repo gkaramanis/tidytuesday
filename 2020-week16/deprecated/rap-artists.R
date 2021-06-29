@@ -31,5 +31,6 @@ ggplot(timeline) +
   theme(
     legend.position = "none",
     plot.background = element_rect(fill = "#F7F7F7", colour = NA)
-  ) +
-  ggsave(here::here("2020-week16", "plots", "temp", paste0("rap-artists-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 40, height = 40)
+  ) 
+
+ggsave(here::here("2020-week16", "plots", "temp", paste0("rap-artists-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 40, height = 40)

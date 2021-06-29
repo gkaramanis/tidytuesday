@@ -32,8 +32,9 @@ ggplot(ipf_d) +
   theme(
     plot.margin = margin(20, 20, 20, 20),
     axis.title = element_blank()
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-41", "figures", "temp", paste0("powerlifting-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
     width = 16, height = 10, dpi = 320
     )

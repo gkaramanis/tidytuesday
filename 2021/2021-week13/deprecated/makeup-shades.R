@@ -21,6 +21,7 @@ ggplot(exa_names) +
   scale_y_binned() +
   scale_color_identity() +
   coord_cartesian(clip = "off") +
-  theme_minimal() +
-  ggsave(here::here("temp", paste0("makeup-shades-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 7, height = 7)
+  theme_minimal() 
+
+ggsave(here::here("temp", paste0("makeup-shades-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 7, height = 7)
 

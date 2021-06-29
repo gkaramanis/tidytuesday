@@ -46,5 +46,6 @@ ggplot(total_grosses_df) +
     plot.title = element_text(colour = "white", size = 30, family = "Avenir Next Condensed Bold", hjust = 0.5, margin = margin(20, 0, 50, 0)),
     plot.caption = element_text(colour = "#C93255", size = 8, hjust = 0.5, margin = margin(30, 0, 0, 0)),
     plot.margin = margin(20, 50, 20, 50)
-  ) +
-  ggsave(here::here("2020-week18", "plots", "temp", paste0("broadway-spotlight-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 13.3, height = 11)
+  ) 
+
+ggsave(here::here("2020-week18", "plots", "temp", paste0("broadway-spotlight-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 13.3, height = 11)

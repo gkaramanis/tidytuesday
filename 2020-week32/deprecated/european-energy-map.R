@@ -69,6 +69,7 @@ ggplot(countries_sf) +
     plot.background = element_rect(fill = "#09283C"),
     strip.text = element_text(colour = "grey95"),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week32", "plots", "temp", paste0("european-energy-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 8)
+  ) 
+
+ggsave(here::here("2020-week32", "plots", "temp", paste0("european-energy-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 8)
 

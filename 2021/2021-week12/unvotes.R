@@ -51,6 +51,7 @@ ggplot(issues_freq) +
     plot.margin = margin(10, 10, 10, 10),
     plot.title = element_text(size = 11, margin = margin(0, 0, 25, 0), family = "IBM Plex Mono"),
     plot.caption = element_text(family = "IBM Plex Mono", size = 8)
-  ) +
-  ggsave(here::here("temp", paste0("unvotes-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 8, height = 7)
+  ) 
+
+ggsave(here::here("temp", paste0("unvotes-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 8, height = 7)
 

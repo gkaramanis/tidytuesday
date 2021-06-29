@@ -35,6 +35,7 @@ tidyA %>%
     # panel.grid = element_blank(),
     legend.position="none",
     text = element_text(family = "IBM Plex Sans", size = 6)
-  ) +
-  ggsave("/Users/Georgios/Documents/Projects/tidytuesday/week 17/anime2.png", dpi = 600, height = 6, width = 4)
+  ) 
+
+ggsave("/Users/Georgios/Documents/Projects/tidytuesday/week 17/anime2.png", dpi = 600, height = 6, width = 4)
 

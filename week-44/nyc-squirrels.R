@@ -45,8 +45,9 @@ ggplot(sq) +
     plot.background = element_rect(fill = NA, color = "darkslateblue"),
     plot.margin = margin(10, 10, 0, 10),
     plot.caption = element_text(family = "IBM Plex Sans", size = 7, color = "darkslateblue", vjust = 2.5)
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-44", "plots", "temp", paste0("nyc-squirrels-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 7, width = 7
     )
 

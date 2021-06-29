@@ -15,7 +15,7 @@ leaf <- data.frame(
 ggplot() +
   geom_arc(data = laurel, aes(x0 = 0, y0 = 0, r = r, start = start, end = end)) +
   geom_bspline_closed(data = leaf, aes(x, y), alpha = 0.5) +
-  coord_fixed() +
-  
-  ggsave(here::here("week-33", "img_plot", paste0("emperors", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
+  coord_fixed() 
+
+ggsave(here::here("week-33", "img_plot", paste0("emperors", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
          dpi = 320)

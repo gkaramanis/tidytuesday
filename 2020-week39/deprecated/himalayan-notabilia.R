@@ -40,5 +40,6 @@ ggplot(deaths_summits) +
   geom_text(data = peak_labels, aes(x = x, y = y, label = paste0(peak_name, " ", deaths_total, " (", death_rate, ")"), angle = a_total - 45), hjust = 0, nudge_x = 1, size = 2) +
   # scale_y_reverse() +
   coord_fixed(clip = "off") +
-  theme_void() +
-  ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  theme_void() 
+
+ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)

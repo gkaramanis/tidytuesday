@@ -41,8 +41,9 @@ ggplot(x_songs) +
   # scale_color_gradientn(colours = wes_palette("Zissou1", 100, type = "continuous")) + 
   scale_color_viridis(direction = -1, option="plasma") +
   guides(colour = guide_colorbar(reverse = TRUE)) +
-  theme_minimal(base_family = "IBM Plex Sans") +
-  ggsave(
+  theme_minimal(base_family = "IBM Plex Sans") 
+
+ggsave(
     here::here("week-52", "plots", "temp", paste0("christmas-fishbone-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 16, width = 12
   )
 

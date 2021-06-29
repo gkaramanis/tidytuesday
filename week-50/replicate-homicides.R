@@ -52,7 +52,8 @@ dat %>%
     axis.line.x = element_blank(),
     panel.grid.major.y = element_line(color = "grey60", size = 2),
     plot.margin = margin(0, 30, 15, 20)
-  ) +
+  ) 
+
 ggsave(
       here::here("week-50", "plots", "temp", paste0("replicate-homicides", ".png")), dpi = 320, width = 17.78, height = 10
       )

@@ -30,5 +30,6 @@ ggplot(top_20) +
     axis.text = element_text(color = c2),
     panel.grid.major.y = element_blank(),
     plot.background = element_rect(fill = c1, color = NA)
-  ) +
-  ggsave(here::here("count_geom", "plots", "top_20.png"), dpi = 320)
+  ) 
+
+ggsave(here::here("count_geom", "plots", "top_20.png"), dpi = 320)

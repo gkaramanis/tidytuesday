@@ -35,8 +35,9 @@ ggplot() +
     plot.title = element_text(family = "IBM Plex Sans Bold", size = 11, color = "white", margin = margin(0, 0, 0, 0)),
     plot.subtitle = element_text(family = "IBM Plex Sans", size = 8, color = "white", margin = margin(2, 0, 10, 0)),
     plot.caption = element_text(family = "IBM Plex Sans", size = 5, color = "grey50", margin = margin(10, 0, 0, 0))
-    ) +
-    ggsave(
+    ) 
+
+ggsave(
       here::here("week-47", "plots", "temp", paste0("nzbird-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8, width = 9
       )
  

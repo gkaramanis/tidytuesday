@@ -60,6 +60,7 @@ ggplot(commute_people, aes(fill = type, values = n)) +
     strip.text.x = element_text(size = 9, margin = margin(5, 0, 15, 0), hjust = 0.5),
     plot.title = element_text(family = "IBM Plex Sans Bold")
     ) +
-  guides(fill = guide_legend(reverse = TRUE)) +
-  ggsave(here::here("week-45", "plots", "temp", paste0("commute-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 8)
+  guides(fill = guide_legend(reverse = TRUE)) 
+
+ggsave(here::here("week-45", "plots", "temp", paste0("commute-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 8)
  

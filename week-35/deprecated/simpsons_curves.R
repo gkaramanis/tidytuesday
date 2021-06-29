@@ -21,8 +21,9 @@ ggplot(data = sim) +
   theme_void() +
   theme(
     plot.background = element_rect()
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-35", "figures", "temp", paste0("simpson_curves_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
     height = 10, width = 4, dpi = 320
  )

@@ -44,8 +44,8 @@ ggplot() +
       plot.subtitle = element_text(size = 24, hjust = 0.5),
       plot.caption = element_text(size = 12, hjust = 0.9,
                                   margin = margin(30, 30, 40, 0))
-    ) +
-  
+    ) 
+
 ggsave(
   here::here("week-35", "figures", "simpsons.png"),
   height = 13, width = 18, dpi = 320

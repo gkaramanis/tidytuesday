@@ -24,7 +24,8 @@ jb %>%
     plot.margin = margin(20, 20, 20, 20),
     plot.title = element_text(family = "Futura Medium Italic", size = 30, color = "#CCAD34", hjust = 1, margin = margin(10, 0, 20, 0)),
     plot.caption = element_text(family = "Futura Medium Italic", size = 10, color = "#CCAD34", hjust = 1, margin = margin(10, 0, 0, 0))
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-53", "plots", "temp", paste0("jb-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10
   )

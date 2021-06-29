@@ -46,6 +46,7 @@ ggplot(phones) +
     plot.subtitle = element_text(hjust = 0.5, family = "Atkinson Hyperlegible", color = "grey30", size = 7.5, margin = margin(0, 0, 10, 0)),
     plot.caption = element_text(hjust = 0, family = "Atkinson Hyperlegible", color = "grey35", size = 7.5, margin = margin(0, 0, 0, 10)),
     plot.margin = margin(10, 10, 10, 10)
-  ) +
-  ggsave(here::here("temp", paste0("phone-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 5.65)
+  ) 
+
+ggsave(here::here("temp", paste0("phone-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 5.65)
 

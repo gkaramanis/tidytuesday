@@ -20,6 +20,7 @@ occupancy <- shelters %>%
 
 ggplot(occupancy) +
   geom_line(aes(occupancy_year + occupancy_month/12, occupancy_rate)) +
-  ylim(0.8, 1) +
-  ggsave(here::here("temp", paste0("shelters-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  ylim(0.8, 1) 
+
+ggsave(here::here("temp", paste0("shelters-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
 

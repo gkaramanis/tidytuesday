@@ -35,5 +35,6 @@ ggplot(women_angle) +
 		legend.position = "none",
 		plot.background = element_rect(fill = "white", color = NA),
 		plot.caption = element_text(hjust = 0.5, family = "DIN Condensed Bold", margin = margin(-35, 0, 0, 0), color = "grey50", size = 12)
-	) +
-  ggsave(here::here("temp", paste0("women-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 12)
+	) 
+
+ggsave(here::here("temp", paste0("women-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 12)

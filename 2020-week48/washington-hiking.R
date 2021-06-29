@@ -70,6 +70,7 @@ ggplot() +
   theme(
     legend.position = "none",
     plot.background = element_rect(fill = "#102F29", color = NA)
-  ) +
-  ggsave(here::here("temp", paste0("washington-hiking-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 9)
+  ) 
+
+ggsave(here::here("temp", paste0("washington-hiking-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 9)
 

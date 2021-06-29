@@ -45,6 +45,7 @@ ggplot(rankings) +
     plot.background = element_rect(fill = "#a7a6ba", colour = NA),
     plot.caption = element_text(family = "IBM Plex Sans", size = 12, hjust = 0.96),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week16", "plots", "temp", paste0("rap-artists-likert-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 22, height = 16)
+  ) 
+
+ggsave(here::here("2020-week16", "plots", "temp", paste0("rap-artists-likert-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 22, height = 16)
 

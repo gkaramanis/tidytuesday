@@ -119,6 +119,7 @@ ggplot(w_turb_unnested) +
     plot.title = element_text(hjust = 0.5, size = 30, family = "Atkinson Hyperlegible Bold", color = col_grass),
     plot.subtitle = element_text(hjust = 0.5, size = 16, margin = margin(5, 0, 10, 0), color = "grey20"),
     plot.caption = element_text(color = "grey40")
-  ) +
-  ggsave(here::here("temp", paste0("wind-turbine-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 11)
+  ) 
+
+ggsave(here::here("temp", paste0("wind-turbine-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 11)
   

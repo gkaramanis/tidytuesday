@@ -108,8 +108,9 @@ title <- ggdraw() + draw_label("Bob Ross - painting by the elements",
 # p1+p2
 p <- plot_grid(p1, p2, rel_widths = c(2, 3))
 # title + (p1 + p2)
-plot_grid(title, p, ncol=1, rel_heights=c(0.1, 1)) +
-  ggsave(here("week-32", "img_plot", paste0("bob_ross", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
+plot_grid(title, p, ncol=1, rel_heights=c(0.1, 1)) 
+
+ggsave(here("week-32", "img_plot", paste0("bob_ross", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
          width = 16, height = 10, dpi = 320)
 
 # all the paintings
@@ -126,6 +127,7 @@ bob %>%
     strip.text = element_blank(),
     panel.border = element_rect(color = "grey90", fill = NA),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here("week-32", "img_plot", paste0("massive", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
+  ) 
+
+ggsave(here("week-32", "img_plot", paste0("massive", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
          width = 16, height = 10, dpi = 320)

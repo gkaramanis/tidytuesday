@@ -56,5 +56,6 @@ ggplot(movement_sigm) +
   # geom_text(aes(x = -116, y = deploy_off_type_y + 0.01, label = deploy_off_type)) +
   scale_color_viridis_d() +
   coord_sf(xlim = c(-126.8, -115.5), ylim = c(52, 57.5), expand = FALSE) +
-  theme_void() +
-  ggsave(here::here("2020-week26", "plots", "temp", paste0("caribou-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  theme_void() 
+
+ggsave(here::here("2020-week26", "plots", "temp", paste0("caribou-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)

@@ -64,7 +64,7 @@ ggplot(hoax) +
     text = element_text(family = "IBM Plex Sans",
                         color = "white",
                         size = 12)
-  ) +
-   
-  ggsave(here("week-26", "ufo_curve.png"), height = 9, width = 7)
+  ) 
+
+ggsave(here("week-26", "ufo_curve.png"), height = 9, width = 7)
 

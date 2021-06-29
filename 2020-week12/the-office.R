@@ -86,6 +86,7 @@ inset <- theoffice_toplot %>%
   )
 
 ggdraw(main) +
-  draw_plot(inset, x = 0.031, y = 0.445, width = 0.29, height = 0.4) +
-  ggsave(here::here("2020-week12", "plots", "the-office.png"), dpi = 320, width = 16, height = 12)
+  draw_plot(inset, x = 0.031, y = 0.445, width = 0.29, height = 0.4) 
+
+ggsave(here::here("2020-week12", "plots", "the-office.png"), dpi = 320, width = 16, height = 12)
     

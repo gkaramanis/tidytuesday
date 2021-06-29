@@ -19,6 +19,7 @@ hike_shp <- hike_data %>%
 ggplot(hike_shp) +
   geom_sf(data = wa) +
   geom_sf(aes(geometry = geometry), size = 0.15) +
-  theme_void() +
-  ggsave(here::here("temp", paste0("washington-hiking-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  theme_void() 
+
+ggsave(here::here("temp", paste0("washington-hiking-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
 

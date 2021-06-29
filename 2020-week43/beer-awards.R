@@ -44,6 +44,7 @@ p <- ggplot(beer_medals) +
   facet_wrap(vars(year), nrow = 1, strip.position = "bottom")
 
 ggdraw(p) +
-  draw_plot(a, x = -0.42, y = 0.23) +
-  ggsave(here::here("temp", paste0("beer-awards-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8.5, width = 7)
+  draw_plot(a, x = -0.42, y = 0.23) 
+
+ggsave(here::here("temp", paste0("beer-awards-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8.5, width = 7)
 

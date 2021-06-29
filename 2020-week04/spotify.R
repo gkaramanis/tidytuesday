@@ -44,7 +44,8 @@ ggplot(spotify) +
     plot.title = element_text(size = 20, color = "grey90", margin = margin(0, 0, 20, 0), hjust = 0.5),
     plot.caption = element_text(color = "grey50", margin = margin(20, 0, 0, 0)),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week04", "plots", "temp", paste0("spotify-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 8
+  ) 
+
+ggsave(here::here("2020-week04", "plots", "temp", paste0("spotify-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 8
 )
 

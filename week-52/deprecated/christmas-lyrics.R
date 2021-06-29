@@ -72,7 +72,8 @@ ggplot(blocks) +
   theme_minimal() +
   theme(
     axis.text.y = element_text()
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
         here::here("week-52", "plots", "temp", paste0("christmas-lyrics-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 20, height = 10
         )

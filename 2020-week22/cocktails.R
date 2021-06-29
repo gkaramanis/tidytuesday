@@ -43,8 +43,9 @@ ggplot(black_cocktails) +
     plot.title = element_text(family = "Publico Headline Black Italic", size = 36, hjust = 0.5, margin = margin(10, 0, 0, 0), colour = "#FFD700"),
     plot.caption = element_text(family = "Produkt Light", size = 7, hjust = 0.5, margin = margin(30, 0, 0, 0), colour = "grey60"),
     plot.margin = margin(20, 35, 20, 35)
-  ) +
-  ggsave(here::here("2020-week22", "plots", "cocktails.png"), dpi = 320, width = 11.5, height = 8)
+  ) 
+
+ggsave(here::here("2020-week22", "plots", "cocktails.png"), dpi = 320, width = 11.5, height = 8)
 
 image_read(here::here("2020-week22", "plots", "cocktails.png")) %>% 
   image_trim(.) %>% 

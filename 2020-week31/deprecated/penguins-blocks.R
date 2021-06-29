@@ -34,5 +34,6 @@ ggplot(med) +
   geom_linerange(data = white_grid, aes(x, ))
   coord_fixed() +
   facet_wrap(vars(species)) +
-  theme_void() +
-  ggsave(here::here("2020-week31", "plots", "temp", paste0("penguin-blocks-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  theme_void() 
+
+ggsave(here::here("2020-week31", "plots", "temp", paste0("penguin-blocks-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)

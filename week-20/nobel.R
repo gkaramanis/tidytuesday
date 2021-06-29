@@ -47,8 +47,9 @@ nobel_winners %>%
     text = element_text(family = "IBM Plex Sans", size = 5),
     plot.title = element_text(face = "bold"),
     plot.subtitle = element_text(vjust = 2)
-  ) +
-  ggsave("./week-20/nobel.png", width = 5.5, height = 6)
+  ) 
+
+ggsave("./week-20/nobel.png", width = 5.5, height = 6)
 
 
 # Top Death countries of the Nobel Laureates that have

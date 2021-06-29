@@ -120,7 +120,8 @@ legend <- ggplot() +
 
 # combine all plots and save
 plot_grid(city, legend, resort,  rel_heights = c(1, 0.3, 1),
-label_fontfamily = "JetBrains Mono Regular", hjust = 1, label_x = 0.96, label_y = 1, ncol = 1) +
-  ggsave(here::here("2020-week07", "plots", "hotels-rooms.png"), dpi = 320,
+label_fontfamily = "JetBrains Mono Regular", hjust = 1, label_x = 0.96, label_y = 1, ncol = 1) 
+
+ggsave(here::here("2020-week07", "plots", "hotels-rooms.png"), dpi = 320,
          width = 12, height = 12)
                  

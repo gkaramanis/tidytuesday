@@ -18,5 +18,6 @@ ggplot(deaths) +
   theme(
     strip.text = element_blank(),
     plot.background = element_rect(fill = darken("#c2b280", 0.2), color = NA)
-  ) +
-  ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 6)
+  ) 
+
+ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 6)

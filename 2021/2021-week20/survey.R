@@ -71,8 +71,9 @@ p <- ggplot(surv, aes(x = age, y = prop, width = age_count, fill = gender)) +
 
 ggdraw(p) +
   draw_label("Age group", x = 0.5, y = 0.845, fontfamily = f1m) +
-  draw_label("Participants", x = 0.5, y = 0.092, fontfamily = f1m) +
-  ggsave(here::here("temp", paste0("survey-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 9)
+  draw_label("Participants", x = 0.5, y = 0.092, fontfamily = f1m) 
+
+ggsave(here::here("temp", paste0("survey-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 9)
 
 # Plot as seen at
 # https://stackoverflow.com/questions/19233365/how-to-create-a-marimekko-mosaic-plot-in-ggplot2

@@ -45,6 +45,7 @@ hotel_countries %>%
   theme_void() +
   theme(
     legend.position = "bottom"
-  ) +
-  ggsave(here::here("2020-week07", "plots", "hotels-map.png"), dpi = 320)
+  ) 
+
+ggsave(here::here("2020-week07", "plots", "hotels-map.png"), dpi = 320)
 

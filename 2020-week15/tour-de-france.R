@@ -74,6 +74,7 @@ ggplot(tdf_table) +
     plot.background = element_rect(fill = "#F3F2EE", colour = NA),
     plot.margin = margin(20, 20, 20, 20),
     plot.title = element_text(hjust = 0.01, size = 28, family = "IBM Plex Sans Bold", margin = margin(0, 0, -8, 0))
-    ) +
-  ggsave(here::here("2020-week15", "plots", "temp", paste0("tour-de-france", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 11, height = 15)
+    ) 
+
+ggsave(here::here("2020-week15", "plots", "temp", paste0("tour-de-france", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 11, height = 15)
  

@@ -62,6 +62,7 @@ ggplot(bechdel_med) +
     plot.background = element_rect(fill = lighten("#5E92B3", 0.3), color = NA),
     plot.caption = element_text(family = "Graphik Light", hjust = 0.92, size = 7.5, margin = margin(0, 0, 10, 0)),
     plot.margin = margin(10, 0, 0, 10)
-  ) +
-  ggsave(here::here("temp", paste0("bechdel-test-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 6, width = 8)
+  ) 
+
+ggsave(here::here("temp", paste0("bechdel-test-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 6, width = 8)
 

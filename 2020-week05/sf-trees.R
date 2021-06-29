@@ -33,6 +33,7 @@ ggplot() +
     plot.background = element_rect(colour = NA, fill = "grey45"),
     plot.margin = margin(20, 40, 20, 80),
     plot.caption = element_text(family = "JetBrains Mono", margin = margin(20, 0, 0, 0))
-  ) +
-  ggsave(here::here("2020-week05", "plots", "sf-trees.png"), dpi = 320, width = 12.3, height = 7)
+  ) 
+
+ggsave(here::here("2020-week05", "plots", "sf-trees.png"), dpi = 320, width = 12.3, height = 7)
 

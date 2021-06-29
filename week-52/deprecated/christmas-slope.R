@@ -16,7 +16,8 @@ ggplot(x_songs) +
   # slope 2
   # geom_segment(aes(y = title, yend = title, x = release_year, xend = year)) +
   # curves
-    geom_curve(data = subset(x_songs, year != release_year), aes(y = 0, yend = 0, x = release_year, xend = year)) +
-  ggsave(
+    geom_curve(data = subset(x_songs, year != release_year), aes(y = 0, yend = 0, x = release_year, xend = year)) 
+
+ggsave(
     here::here("week-52", "plots", "temp", paste0("christmas-slope-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320
   )

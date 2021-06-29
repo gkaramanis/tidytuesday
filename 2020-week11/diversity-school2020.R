@@ -110,6 +110,7 @@ ggplot(diversity_flower) +
     plot.subtitle = element_text(margin = margin(0, 0, 55, 0), hjust = 0.5, size = 18, colour = "grey20"),
     plot.caption = element_text(margin = margin(40, 0, 0, 0), hjust = 0.5, colour = "grey20", family = "IBM Plex Sans Light"),
     plot.margin = margin(20, 20, 35, 20)
-  ) +
-  ggsave(here::here("2020-week11", "plots", "diversity-school2020.png"), dpi = 320, width = 15, height = 13.25)
+  ) 
+
+ggsave(here::here("2020-week11", "plots", "diversity-school2020.png"), dpi = 320, width = 15, height = 13.25)
     

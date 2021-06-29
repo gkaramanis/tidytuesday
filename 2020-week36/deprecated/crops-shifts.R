@@ -46,5 +46,6 @@ ggplot() +
     strip.text = element_text(family = f1, size = 9, hjust = 0, lineheight = 0.8),
     plot.background = element_rect(fill = "grey97", color = NA),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("temp", paste0("crops-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)
+  ) 
+
+ggsave(here::here("temp", paste0("crops-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)

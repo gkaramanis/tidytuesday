@@ -41,8 +41,9 @@ ggplot() +
   theme_void() +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-40", "figures", "temp", paste0("pizza-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png"))
     )
 

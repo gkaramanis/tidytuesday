@@ -84,8 +84,8 @@ ggplot(top10, aes(x = x, y = y - 0.1)) +
   theme(plot.background = element_rect(color = "midnightblue",
                                         fill = "midnightblue"),
         legend.position = "none"
-        ) +
-  
-  ggsave("./week-24/meteorites.png",
+        ) 
+
+ggsave("./week-24/meteorites.png",
          height = 8,
          width = 5)

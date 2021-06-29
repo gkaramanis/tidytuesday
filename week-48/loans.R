@@ -45,7 +45,7 @@ ggplot(outstanding_loans) +
     plot.title = element_text(family = "IBM Plex Mono Bold", size = 20),
     plot.subtitle = element_text(),
     plot.caption = element_text(margin = margin(10, 0, 0, 0))
-  ) +
+  ) 
 
 ggsave(
       here::here("week-48", "plots", "temp", paste0("loans-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10, width = 16

@@ -91,5 +91,6 @@ ggplot(birdPlot,
     text = element_text(family = "IBM Plex Sans", size = 6),
     plot.title = element_text(face = "bold"),
     plot.subtitle = element_text(vjust = 2)
-  ) +
-  ggsave("./week-18/birds2.png", width = 4, height = 4)
+  ) 
+
+ggsave("./week-18/birds2.png", width = 4, height = 4)

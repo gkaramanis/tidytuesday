@@ -13,6 +13,7 @@ ggplot(beer_medals, aes(area = n, fill = category)) +
   facet_wrap(vars(year)) +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(here::here("temp", paste0("beer-awards-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  ) 
+
+ggsave(here::here("temp", paste0("beer-awards-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
 

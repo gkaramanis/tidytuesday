@@ -34,7 +34,7 @@ ggplot() +
     plot.caption = element_text(family = "IBM Plex Sans",
                                 margin = margin(40, 0, 0, 0),
                                 color = "grey60", size = 14)
-  ) +
-  
-  ggsave(here("week-26", "ufo2.png"), width = 13, height = 8)
+  ) 
+
+ggsave(here("week-26", "ufo2.png"), width = 13, height = 8)
 

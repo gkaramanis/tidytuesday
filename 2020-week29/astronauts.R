@@ -84,6 +84,7 @@ ggplot(hrs_mission) +
     legend.position = "none",
     plot.background = element_rect(fill = pal[1], colour = NA),
     plot.margin = margin(10, 10, 10, 10)
-  ) +
-  ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 4.55, height = 5.7)
+  ) 
+
+ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 4.55, height = 5.7)
   

@@ -68,6 +68,7 @@ ggplot() +
     axis.text.x = element_text(hjust = 0.1, colour = "#343854"),
     axis.text.y = element_text(hjust = 1, colour = "#343854"),
     plot.margin = margin(40, 30, 40, 40)
-  ) +
-  ggsave(here::here("2020-week10", "plots", "hockey-bump.png"), dpi = 320, width = 16, height = 11)
+  ) 
+
+ggsave(here::here("2020-week10", "plots", "hockey-bump.png"), dpi = 320, width = 16, height = 11)
 

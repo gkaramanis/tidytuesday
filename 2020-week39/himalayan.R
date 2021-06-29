@@ -97,6 +97,7 @@ title <- ggdraw() +
 	theme(plot.margin = margin(15, 0, 0, 5))
 
 plot_grid(plot_peaks, title, plot_1, plot_2, plot_3b, ncol = 1, rel_heights = c(1.2, 0.3, 2.2, 0.9, 1.7)) +
-  theme(plot.background = element_rect(fill = "grey97", color = NA)) +
-  ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 12, width = 7)
+  theme(plot.background = element_rect(fill = "grey97", color = NA)) 
+
+ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 12, width = 7)
 

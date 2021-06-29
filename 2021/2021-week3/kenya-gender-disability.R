@@ -137,6 +137,7 @@ p2 <- ggplot(disability_ratios_counties) +
 set_null_device("png")
 
 ggdraw(p1) +
-  draw_plot(p2, scale = 0.785, x = 0.33, y = -0.03) +
-  ggsave(here::here("temp", paste0("kenya-gender-disability", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)
+  draw_plot(p2, scale = 0.785, x = 0.33, y = -0.03) 
+
+ggsave(here::here("temp", paste0("kenya-gender-disability", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)
 

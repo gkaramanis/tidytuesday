@@ -94,6 +94,7 @@ tiles <- ggplot(noisy) +
 source(here::here("2020-week30", "australian-pets-sf.R"))
 
 ggdraw(map) +
-  draw_plot(tiles) +
-  ggsave(here::here("2020-week30", "plots", "temp", paste0("australian-pets-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 8, height = 8)
+  draw_plot(tiles) 
+
+ggsave(here::here("2020-week30", "plots", "temp", paste0("australian-pets-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 8, height = 8)
  

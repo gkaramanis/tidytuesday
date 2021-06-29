@@ -109,8 +109,8 @@ p2 <- ggplot(subset(age_emperors, index == 1)) +
     legend.position = "none"
   ) 
 
-ggdraw(p1) + draw_plot(p2, 0.49, 0.81, 0.6, 0.15) +
-  
+ggdraw(p1) + draw_plot(p2, 0.49, 0.81, 0.6, 0.15) 
+
 ggsave(here::here("week-33", "img_plot", paste0("emperors", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
          # width = 15, height = 15, dpi = 320)
        width = 15, height = 15)

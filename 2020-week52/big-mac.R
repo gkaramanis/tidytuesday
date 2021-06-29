@@ -69,6 +69,7 @@ p <- ggplot(big_dotplot_bin) +
     )
 
 ggdraw(p) +
-  draw_label(label = "The Big Mac index is an informal way of measuring the purchasing power\nparity (PPP) between two currencies. The graph shows the exchange rate (binned)\nbetween each country's currency and the US dollar, in 2000 and 2020.", x = 0.42, y = 0.925, hjust = 0, vjust = 0, fontfamily = f2, size = 10, lineheight = 1) +
-  ggsave(here::here("temp", paste0("big-mac-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 10, height = 10)
+  draw_label(label = "The Big Mac index is an informal way of measuring the purchasing power\nparity (PPP) between two currencies. The graph shows the exchange rate (binned)\nbetween each country's currency and the US dollar, in 2000 and 2020.", x = 0.42, y = 0.925, hjust = 0, vjust = 0, fontfamily = f2, size = 10, lineheight = 1) 
+
+ggsave(here::here("temp", paste0("big-mac-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 10, height = 10)
 

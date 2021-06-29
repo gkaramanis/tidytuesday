@@ -61,6 +61,7 @@ l <- ggplot(artwork_legend) +
     )
 
 ggdraw(p) +
-  draw_plot(l, x = 0.33, y = 0.385, width = 0.365) +
-  ggsave(here::here("temp", paste0("art-collections-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 4.963, height = 10)
+  draw_plot(l, x = 0.33, y = 0.385, width = 0.365) 
+
+ggsave(here::here("temp", paste0("art-collections-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 4.963, height = 10)
 

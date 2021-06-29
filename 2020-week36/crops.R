@@ -116,5 +116,6 @@ ggplot(totals) +
     plot.background = element_rect(fill = "#EFE1C7", color = NA),
     plot.margin = margin(20, 22, 20, 22),
     plot.caption = element_text(family = f2, size = 8, hjust = 1)
-  ) +
-  ggsave(here::here("temp", paste0("crops-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 9)
+  ) 
+
+ggsave(here::here("temp", paste0("crops-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 9)

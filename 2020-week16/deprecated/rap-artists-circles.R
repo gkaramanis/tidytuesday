@@ -36,5 +36,6 @@ ggplot(timeline) +
     legend.position = "none",
     plot.background = element_rect(fill = "grey20", colour = NA),
     axis.text.x = element_text(size = 15, colour = "grey80", family = "IBM Plex Mono Bold")
-  ) +
-  ggsave(here::here("2020-week16", "plots", "temp", "rap-artists-circles.png"), dpi = 320, width = 16, height = 10)
+  ) 
+
+ggsave(here::here("2020-week16", "plots", "temp", "rap-artists-circles.png"), dpi = 320, width = 16, height = 10)

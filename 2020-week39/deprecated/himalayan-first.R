@@ -15,5 +15,6 @@ deaths <- members %>%
 ggplot(deaths) +
   geom_point(aes(deaths, summits)) +
   # coord_fixed() +
-  theme_void() +
-  ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  theme_void() 
+
+ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)

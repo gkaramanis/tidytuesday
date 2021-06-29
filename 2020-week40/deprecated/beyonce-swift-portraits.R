@@ -40,5 +40,6 @@ img_df_swift %>%
   scale_y_reverse() +
   coord_fixed(expand = FALSE) +
   theme_void() +
-  theme(legend.position = "none", plot.background = element_rect(fill = "grey90", color = NA)) +
-  ggsave(here::here("temp", paste0("beyonce-swift-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  theme(legend.position = "none", plot.background = element_rect(fill = "grey90", color = NA)) 
+
+ggsave(here::here("temp", paste0("beyonce-swift-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)

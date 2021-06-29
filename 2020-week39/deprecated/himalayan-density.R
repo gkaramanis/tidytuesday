@@ -12,5 +12,6 @@ members %>%
   scale_fill_manual(values = rev(carto.pal(pal1 = "taupe.pal", n1 = 14))) +
   facet_wrap(vars(season)) +
   # theme_void() +
-  theme(legend.position = "none") +
-  ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 9)
+  theme(legend.position = "none") 
+
+ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 9)

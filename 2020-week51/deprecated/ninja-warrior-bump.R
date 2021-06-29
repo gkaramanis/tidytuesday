@@ -9,6 +9,7 @@ ninja_warrior %>%
   theme_minimal() +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(here::here("temp", paste0("ninja-warrior-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 9)
+  ) 
+
+ggsave(here::here("temp", paste0("ninja-warrior-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 9)
 

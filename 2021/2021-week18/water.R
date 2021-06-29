@@ -86,6 +86,7 @@ ggdraw(p) +
   draw_plot(c, scale = 0.8, x = 0.15) +
   theme(
     plot.background = element_rect(fill = "grey95", color = NA)
-  ) +
-  ggsave(here::here("temp", paste0("water-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)
+  ) 
+
+ggsave(here::here("temp", paste0("water-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)
 

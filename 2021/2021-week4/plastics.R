@@ -49,6 +49,7 @@ bg <- here::here("2021", "2021-week4", "img", "bottles-w.png")
 
 ggdraw() + 
   draw_image(bg, scale = 1.1) +
-  draw_plot(p) +
-  ggsave(here::here("temp", paste0("plastics-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8.2, width = 12)
+  draw_plot(p) 
+
+ggsave(here::here("temp", paste0("plastics-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8.2, width = 12)
 

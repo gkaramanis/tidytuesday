@@ -105,5 +105,6 @@ ggplot(penguin) +
     plot.title = element_text(family = fam2, size = 30, hjust = 0.5, margin = margin(0, 0, 5, 0)),
     plot.subtitle = element_text(family = fam2l, size = 12, hjust = 0.5, margin = margin(0, 0, 10, 0)),
     plot.caption = element_text(family = fam2l, size = 7, hjust = 0.5, margin = margin(10, 0, -15, 0))
-  ) +
-  ggsave(here::here("2020-week31", "plots", "penguins-ggembed.png"), dpi = 320, height = 8, width = 8)
+  ) 
+
+ggsave(here::here("2020-week31", "plots", "penguins-ggembed.png"), dpi = 320, height = 8, width = 8)

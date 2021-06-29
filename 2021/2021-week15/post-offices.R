@@ -74,6 +74,7 @@ ggplot(po_plot) +
     legend.position = "none",
     plot.background = element_rect(fill = bg_col, color = NA),
     plot.margin = margin(0, 20, 0, 20)
-  ) +
-    ggsave(here::here("temp", paste0("post-offices-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 6.5)
+  ) 
+
+ggsave(here::here("temp", paste0("post-offices-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 6.5)
     

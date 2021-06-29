@@ -64,5 +64,6 @@ ggplot(cuts) +
     plot.background = element_rect(fill = bg, color = NA),
     plot.margin = margin(20, 25, 20, 25),
     plot.caption = element_text(family = f1, margin = margin(40, 0, 0, 0), size = 6.5, vjust = 0)
-  ) +
-	ggsave(here::here("temp", paste0("chopped-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 6)
+  ) 
+
+ggsave(here::here("temp", paste0("chopped-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 6)

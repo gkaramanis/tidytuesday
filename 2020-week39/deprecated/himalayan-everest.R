@@ -29,5 +29,6 @@ everest %>%
   ggplot() +
   geom_path(aes(x = year + x, y = y, group = year)) +
   # coord_fixed(clip = "off") +
-  # theme_void() +
-  ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  # theme_void() 
+
+ggsave(here::here("temp", paste0("himalayan-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)

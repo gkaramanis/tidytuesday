@@ -125,6 +125,7 @@ ggplot(euro_plants) +
     plot.margin = margin(50, 20, 70, 20),
     plot.background = element_rect(fill = "#F2F5F7", color = NA),
     plot.title = element_text(size = 18, family = "Produkt", hjust = 0.52, margin = margin(0, 0, 60, 0))
-  ) +
-  ggsave(here::here("temp", paste0("plants-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 8, height = 9)
+  ) 
+
+ggsave(here::here("temp", paste0("plants-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 8, height = 9)
 

@@ -58,5 +58,6 @@ ggplot(tournament_champions) +
     plot.title = element_text(family = f3bi, hjust = 0.5, size = 20, color = c2, margin = margin(0, 0, 7, 0)),
     plot.subtitle = element_markdown(family = f2, hjust = 0.5, size = 14, color = c3, margin = margin(0, 0, 15, 0), lineheight = 1.1),
     plot.caption = element_text(family = f1, hjust = 0.5, size = 9, color = c3, margin = margin(40, 0, 5, 0))
-  ) +
-  ggsave(here::here("temp", paste0("tournament-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 10)
+  ) 
+
+ggsave(here::here("temp", paste0("tournament-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 10)

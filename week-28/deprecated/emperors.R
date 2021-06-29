@@ -32,7 +32,7 @@ ggplot(age_emperors) +
 		theme(
 			plot.background = element_rect(fill = "#9a1d15", color = "#9a1d15"),
 			axis.text.y = element_text(color = "white")
-		) +
+		) 
 
 ggsave(here::here("week-33", "img_plot", paste0("emperors", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
         width = 12, height = 12, dpi = 320)

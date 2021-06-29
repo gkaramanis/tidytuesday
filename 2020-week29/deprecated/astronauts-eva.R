@@ -38,6 +38,7 @@ ggplot(astro_eva) +
   theme_void() +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-eva", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  ) 
+
+ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-eva", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
 

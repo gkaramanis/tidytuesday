@@ -119,8 +119,9 @@ c <- ggplot() +
 col1 <- plot_grid(tb, p1, ncol = 1, rel_heights = c(1, 1))
 row2 <- plot_grid(col1, p2, rel_widths = c(1.2, 2))
 
-plot_grid(t, row2, c, ncol = 1, rel_heights = c(0.07, 0.9, 0.02)) +
-  ggsave(
+plot_grid(t, row2, c, ncol = 1, rel_heights = c(0.07, 0.9, 0.02)) 
+
+ggsave(
     here::here("week-40", "figures", "temp", paste0("pizza-likert-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
     width = 14, height = 10, dpi = 320
     )

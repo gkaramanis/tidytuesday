@@ -43,5 +43,6 @@ ggplot(village_people) +
     plot.title = element_text(colour = "#F8D066", size = 28, family = "FinkHeavy", hjust = 0.5),
     plot.subtitle = element_text(colour = "white", size = 14, family = "Arial Rounded MT Bold", hjust = 0.5, margin = margin(15, 0, 0, 0)),
     plot.caption = element_text(colour = "#F8D066", size = 9, family = "FinkHeavy", hjust = 0.5)
-  ) +
-  ggsave(here::here("2020-week19", "plots", "temp", paste0("animal-crossing-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 8)
+  ) 
+
+ggsave(here::here("2020-week19", "plots", "temp", paste0("animal-crossing-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 8)

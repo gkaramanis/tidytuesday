@@ -94,6 +94,7 @@ caption <- ggdraw() +
     plot.background = element_rect(fill="darkblue", color = "darkblue")
   )
 
-plot_grid(title, p, caption, ncol = 1, rel_heights = c(0.2, 1, 0.15)) +
+plot_grid(title, p, caption, ncol = 1, rel_heights = c(0.2, 1, 0.15)) 
+
 ggsave(here("week-27", "media_franchises.png"),
           dpi = 300, height = 7, width = 10)

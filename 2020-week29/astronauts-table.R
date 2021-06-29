@@ -62,5 +62,6 @@ ggplot(astro_table) +
     plot.margin = margin(30, 10, 20, 10),
 		plot.title = element_text(family = family1b, margin = margin(0, 0, 5, 0)),
 		plot.caption = element_text(family = family1l, hjust = 0.5, colour = "grey70")
-  ) +
-  ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-table-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 7, height = 10)
+  ) 
+
+ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-table-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 7, height = 10)

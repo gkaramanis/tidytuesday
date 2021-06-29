@@ -38,8 +38,9 @@ ggplot(food_co2) +
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank(),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week08", "plots", "food-consumption.png"), dpi = 320, width = 12, height = 8)
+  ) 
+
+ggsave(here::here("2020-week08", "plots", "food-consumption.png"), dpi = 320, width = 12, height = 8)
 
 
 

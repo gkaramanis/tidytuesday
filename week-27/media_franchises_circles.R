@@ -86,7 +86,8 @@ l <- tribble(
 # plot and save
 ggdraw() +
   draw_plot(p) +
-  draw_plot(l, x = 0.35, y = 0.11, width = 0.52, height = 0.1) +
-  ggsave(here("week-27", "media_franchises_circles.png"),
+  draw_plot(l, x = 0.35, y = 0.11, width = 0.52, height = 0.1) 
+
+ggsave(here("week-27", "media_franchises_circles.png"),
     height = 6.35, width = 5, dpi = 900)
 

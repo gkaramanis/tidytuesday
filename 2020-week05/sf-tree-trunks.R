@@ -63,6 +63,7 @@ ggplot(trees) +
     plot.margin = margin(20, 26, 20, 26),
     plot.title = element_text(family = "IBM Plex Sans Bold", size = 18, margin = margin(0, 0, 20, 0), hjust = 0.5),
     plot.caption = element_text(family = "JetBrains Mono", margin = margin(20, 0, 0, 0), hjust = 0.5)
-  ) +
- ggsave(here::here("2020-week05", "plots", "sf-tree-trunks.png"), dpi = 320, width = 11, height = 8)
+  ) 
+
+ggsave(here::here("2020-week05", "plots", "sf-tree-trunks.png"), dpi = 320, width = 11, height = 8)
 

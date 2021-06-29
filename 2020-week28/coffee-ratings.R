@@ -67,8 +67,9 @@ ggplot(varieties) +
 			plot.subtitle = element_text(hjust = 0.5, size = 16, family = "IBM Plex Sans", margin = margin(10, 0, 0, 0), colour = "#f0ece3"),
 			plot.caption = element_text(family = "IBM Plex Sans Light", colour = "#f0ece3", size = 10, margin = margin(20, 0, 0, 0)),
 			plot.margin = margin(20, 20, 20, 20)
-		) +
-  ggsave(here::here("2020-week28", "plots", "coffee-ratings.png"), dpi = 320, width = 12, height = 7)
+		) 
+
+ggsave(here::here("2020-week28", "plots", "coffee-ratings.png"), dpi = 320, width = 12, height = 7)
 
 
 

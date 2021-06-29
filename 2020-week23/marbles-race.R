@@ -107,7 +107,8 @@ ggplot(marbles_times) +
     plot.title = element_text(family = "IBM Plex Sans Bold", size = 25, hjust = 0.5, margin = margin(20, 0, 0, 0)),
     plot.subtitle = element_text(family = "IBM Plex Serif Medium", size = 16, hjust = 0.5, margin = margin(20, 0, 0, 0)),
     plot.caption = element_text(family = "IBM Plex Sans", hjust = 0.5)
-  ) +
-  ggsave(here::here("2020-week23", "plots", "marbles-race-"), dpi = 320, height = 10, width = 15)
+  ) 
+
+ggsave(here::here("2020-week23", "plots", "marbles-race-"), dpi = 320, height = 10, width = 15)
 
   

@@ -118,6 +118,7 @@ p2 <- ggplot(year_attr) +
   )
 
 # cowplot ---------------------------------------------------------------
-plot_grid(p1, p2, ncol = 1, rel_heights = c(1, 0.6)) +
-  ggsave(here::here("temp", paste0("superbowl-ads-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 9)
+plot_grid(p1, p2, ncol = 1, rel_heights = c(1, 0.6)) 
+
+ggsave(here::here("temp", paste0("superbowl-ads-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 9)
 

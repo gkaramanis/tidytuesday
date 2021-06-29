@@ -69,6 +69,7 @@ ggplot(science_w) +
 	  legend.position = "none",
 	  plot.background = element_rect(fill = "white", colour = "white"),
 	  plot.margin = margin(20, 20, 20, 20)
-	) +
-  ggsave(here::here("2020-week24", "plots", "science-women.png"), dpi = 320, height = 11.5, width = 16)
+	) 
+
+ggsave(here::here("2020-week24", "plots", "science-women.png"), dpi = 320, height = 11.5, width = 16)
 

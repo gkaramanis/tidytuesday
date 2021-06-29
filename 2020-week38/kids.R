@@ -52,5 +52,6 @@ ggplot(libraries) +
     plot.title = element_text(size = 16, family = f1b, hjust = 0.5, margin = margin(10, 0, 0, 0)),
     plot.subtitle = element_text(size = 14, family = f1, hjust = 0.5, margin = margin(5, 0, 25, 0)),
     plot.caption = element_text(family = f1, hjust = 1, margin = margin(20, 0, 0, 0))
-  ) +
-  ggsave(here::here("temp", paste0("kids-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 8)
+  ) 
+
+ggsave(here::here("temp", paste0("kids-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 8)

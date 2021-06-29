@@ -62,9 +62,9 @@ ggplot(fuzzy_dogs) +
     axis.title.y = element_text(margin = margin(0, 20, 0, 0)),
     axis.text = element_text(size = 12, color = "#b1a600"),
     plot.caption = element_text(margin = margin(30, 0, 0, 0), color = "#b1a600")
-  ) +
-  
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-51", "plots", "temp", paste0("dog-friendliness", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 12, width = 12
   )
  

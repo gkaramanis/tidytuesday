@@ -72,8 +72,9 @@ ggplot(top_fishing) +
     plot.title = element_text(hjust = 0.5, size = 23, face = "bold", family = f2),
     plot.subtitle = element_text(hjust = 0.5, size = 16),
     plot.caption = element_text(hjust = 0.5, size = 10, color = "grey30", margin = margin(20, 0, 0, 0))
-  ) +
-  ggsave(here::here("2021", "2021-week23", "blog", "main.png"), dpi = 320, height = 12, width = 9)
+  ) 
+
+ggsave(here::here("2021", "2021-week23", "blog", "main.png"), dpi = 320, height = 12, width = 9)
 
 # background fish
 ggplot(top_fishing) +
@@ -103,8 +104,9 @@ ggplot(top_fishing) +
     plot.title = element_text(hjust = 0.5, size = 23, face = "bold", family = f2),
     plot.subtitle = element_text(hjust = 0.5, size = 16),
     plot.caption = element_text(hjust = 0.5, size = 10, color = "grey30", margin = margin(20, 0, 0, 0))
-  ) +
-  ggsave(here::here("2021", "2021-week23", "blog", "bg-fish.png"), dpi = 320, height = 12, width = 9)
+  ) 
+
+ggsave(here::here("2021", "2021-week23", "blog", "bg-fish.png"), dpi = 320, height = 12, width = 9)
 
 
 # ggfx with no background fish
@@ -143,8 +145,9 @@ ggplot(top_fishing) +
     plot.title = element_text(hjust = 0.5, size = 23, face = "bold", family = f2),
     plot.subtitle = element_text(hjust = 0.5, size = 16),
     plot.caption = element_text(hjust = 0.5, size = 10, color = "grey30", margin = margin(20, 0, 0, 0))
-  ) +
-  ggsave(here::here("2021", "2021-week23", "blog", "ggfx-fish-notheme.png"), dpi = 320, height = 12, width = 9)
+  ) 
+
+ggsave(here::here("2021", "2021-week23", "blog", "ggfx-fish-notheme.png"), dpi = 320, height = 12, width = 9)
 
 
 # lakes plot
@@ -157,8 +160,9 @@ ggplot() +
   geom_sf_text(data = subset(erie, COUNTRY == "USA"), aes(label = NAMEEN), family = f1, size = 2.25, fontface = "bold") +
   geom_sf_text(data = michigan, aes(label = NAMEEN), family = f1, size = 2.25, fontface = "bold") +
   geom_sf_text(data = subset(superior, COUNTRY == "USA"), aes(label = NAMEEN), family = f1, size = 2.25, fontface = "bold") +
-  theme_void() +
-  ggsave(here::here("2021", "2021-week23", "blog", "lakes-blue.png"), dpi = 320, height = 9, width = 9)
+  theme_void() 
+
+ggsave(here::here("2021", "2021-week23", "blog", "lakes-blue.png"), dpi = 320, height = 9, width = 9)
 
 
 # annotation
@@ -166,5 +170,6 @@ ggplot() +
   geom_path(aes(x = c(0, 0, 3, 3), y = c(0, 0.2, 0.2, 0)), color = "grey30", size = 0.4) +
   geom_text(aes(x = 1.5, y = 0.75, label = "The Alewife invasion"), family = f1, size = 3.5) +
   coord_fixed(clip = "off") +
-  theme_void() +
-  ggsave(here::here("2021", "2021-week23", "blog", "annotation.png"), dpi = 320, height = 2, width = 2)
+  theme_void() 
+
+ggsave(here::here("2021", "2021-week23", "blog", "annotation.png"), dpi = 320, height = 2, width = 2)

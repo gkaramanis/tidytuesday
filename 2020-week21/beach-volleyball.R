@@ -97,7 +97,8 @@ map_plot <- ggplot(santos) +
 
 ggdraw(map_plot) +
   draw_image(here::here("2020-week21", "img", "santos_50.png"), hjust = 0, x = -0.36, y = -0.05, scale = 0.7) +
-  draw_plot(table_plot, x = 0.12, y = 0.07, height = 0.45, width = 0.9) +
-  ggsave(here::here("2020-week21", "plots", "temp", paste0("beach-volleyball-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 7.5, width = 12)
+  draw_plot(table_plot, x = 0.12, y = 0.07, height = 0.45, width = 0.9) 
+
+ggsave(here::here("2020-week21", "plots", "temp", paste0("beach-volleyball-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 7.5, width = 12)
 
 

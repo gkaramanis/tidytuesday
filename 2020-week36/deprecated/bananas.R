@@ -15,5 +15,6 @@ crops <- key_crop_yields %>%
 
 ggplot(crops) +
   geom_col(aes(entity, value)) +
-  facet_wrap(vars(year), ncol = 1) +
-  ggsave(here::here("temp", paste0("crops-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)
+  facet_wrap(vars(year), ncol = 1) 
+
+ggsave(here::here("temp", paste0("crops-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10)

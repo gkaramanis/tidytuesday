@@ -78,6 +78,7 @@ ggplot(hrs_sum) +
   theme(
     legend.position = "none",
     plot.margin = margin(50, 50, 50, 50)
-  ) +
-  ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-spiro", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10, width = 10)
+  ) 
+
+ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-spiro", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10, width = 10)
 

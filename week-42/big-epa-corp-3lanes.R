@@ -83,8 +83,9 @@ ggplot() +
     plot.subtitle = element_text(size = 24, margin = margin(10, 0, 0, 0)),
     plot.caption = element_text(size = 12, color = "grey60", margin = margin(0, 40, 0, 0)),
     
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-42", "figures", "temp", paste0("big-epa-cars-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
     height = 19, width = 15, dpi = 320
   )

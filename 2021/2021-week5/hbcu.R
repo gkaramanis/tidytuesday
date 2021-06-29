@@ -38,6 +38,7 @@ ggplot(hbcu_all) +
     plot.title = element_markdown(color = "grey10"),
     plot.subtitle = element_text(family = "Graphik Compact", margin = margin(10, 0, 20, 0), color = "grey15"),
     plot.caption = element_text(family = "Graphik Compact Regular Italic", margin = margin(20, 0, 0, 0))
-  ) +
+  ) 
+
 ggsave(here::here("temp", paste0("hbcu-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 10, height = 13)
 

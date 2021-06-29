@@ -127,6 +127,7 @@ geom_point(data = subset(transit_se, end_year <= 2020), aes(end_year, y_alt * y_
   labs(caption = "Source: Transit Costs Project | Graphic: Georgios Karamanis")
 
 # Cowplot
-plot_grid(p_gr, p_se, ncol = 1, rel_heights = c(1, 0.926)) +
-  ggsave(here::here("temp", paste0("transit-cost-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9.34, width = 10)
+plot_grid(p_gr, p_se, ncol = 1, rel_heights = c(1, 0.926)) 
+
+ggsave(here::here("temp", paste0("transit-cost-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9.34, width = 10)
 

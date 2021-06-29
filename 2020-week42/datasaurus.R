@@ -23,6 +23,7 @@ p <- ggplot(dtsaurus, aes(x, y)) +
 ggdraw(p) +
   draw_label("Datasaurus Dozen", x = 0.33, y = 0.2, fontfamily = "Proxima Nova", fontface = "bold", size = 18, hjust = 0, color = "grey20") +
   draw_label("2D density estimates of the 13 datasets", x = 0.33, y = 0.165, fontfamily = "Proxima Nova", size = 16, hjust = 0, color = "grey20") +
-  draw_label("Source: Alberto Cairo | Graphic: Georgios Karamanis", x = 0.33, y = 0.05, fontfamily = "Proxima Nova", size = 10, hjust = 0, color = "grey40") +
-  ggsave(here::here("temp", paste0("datasaurus-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 7, height = 8)
+  draw_label("Source: Alberto Cairo | Graphic: Georgios Karamanis", x = 0.33, y = 0.05, fontfamily = "Proxima Nova", size = 10, hjust = 0, color = "grey40") 
+
+ggsave(here::here("temp", paste0("datasaurus-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 7, height = 8)
 

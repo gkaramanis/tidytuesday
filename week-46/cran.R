@@ -30,7 +30,8 @@ ggtern(cran_code, aes(blank, code, comment)) +
     plot.title = element_text(family = "IBM Plex Mono Bold"), 
     plot.subtitle = element_text(margin = margin(0, 0, 20, 0)),
     plot.caption = element_text(margin = margin(20, 0, 0, 0))
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-46", "plots", "temp", paste0("cran-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 7, width = 17
   )

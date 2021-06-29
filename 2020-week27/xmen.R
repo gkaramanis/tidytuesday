@@ -68,6 +68,7 @@ main_plot <- ggplot(emotions) +
 
 ggdraw() +
   draw_plot(main_plot) +
-  draw_image(logo, x = 0.015, y = 0.1, scale = 0.24) +
-  ggsave(here::here("2020-week27", "plots", "temp", paste0("xmen-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 9)
+  draw_image(logo, x = 0.015, y = 0.1, scale = 0.24) 
+
+ggsave(here::here("2020-week27", "plots", "temp", paste0("xmen-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 9)
 

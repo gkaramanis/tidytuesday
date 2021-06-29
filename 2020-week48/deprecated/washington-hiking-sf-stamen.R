@@ -21,5 +21,6 @@ hike_shp <- hike_data %>%
 ggmap(stamen) +
   geom_sf(data = hike_shp, aes(geometry =geometry), inherit.aes = FALSE) +
   coord_sf(crs = st_crs(4326)) +
-  theme_void() +
-  ggsave(here::here("temp", paste0("washington-hiking-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  theme_void() 
+
+ggsave(here::here("temp", paste0("washington-hiking-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)

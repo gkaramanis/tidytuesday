@@ -102,7 +102,7 @@ ggdraw(p) +
   draw_label(label = paste0("Tarzan Rope"), 0.444, 0.673, angle = 90, size = 9, color = "#D8282B", fontfamily = "JetBrains Mono Bold") +
   draw_label(label = paste0("Double Salmon Ladder"), 0.54, 0.58, angle = -90, size = 9, color = "#284C88", fontfamily = "JetBrains Mono Bold") +
   draw_label(label = paste0("Rope Climb"), 0.825, 0.62, angle = -90, size = 9, color = "#D8282B", fontfamily = "JetBrains Mono Bold") +
-  draw_label(label = paste0("Bungee Rope Climb"), 0.745, 0.59, angle = -90, size = 9, color = "#D8282B", fontfamily = "JetBrains Mono Bold") +
-  
-  ggsave(here::here("temp", paste0("ninja-warrior-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 8.5)
+  draw_label(label = paste0("Bungee Rope Climb"), 0.745, 0.59, angle = -90, size = 9, color = "#D8282B", fontfamily = "JetBrains Mono Bold") 
+
+ggsave(here::here("temp", paste0("ninja-warrior-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 8.5)
 

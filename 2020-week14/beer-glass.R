@@ -73,6 +73,7 @@ ggplot(hex_glass) +
     plot.subtitle = element_text(hjust = 0.5, size = 16, colour = "grey35", family = "IBM Plex Sans Bold", margin = margin(0, 0, 20, 0)),
     plot.caption = element_text(hjust = 0.5, colour = "white", family = "American Typewriter", size = 11, margin = margin(30, 0, 10, 0)),
     plot.margin = margin(20, 22, 20, 22)
-  ) +
-  ggsave(here::here("2020-week14", "plots", "beer-glass.png"), dpi = 320, width = 10.8, height = 12)
+  ) 
+
+ggsave(here::here("2020-week14", "plots", "beer-glass.png"), dpi = 320, width = 10.8, height = 12)
   

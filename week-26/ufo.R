@@ -73,6 +73,6 @@ ggplot(city_count) +
     plot.subtitle = element_text(family = "IBM Plex Sans"),
     plot.caption = element_text(margin = margin(40, 0, 0, 0),
                                 color = "grey60")
-  ) +
+  ) 
 
-  ggsave(here("week-26", "ufo.png"), width = 13, height = 8)
+ggsave(here("week-26", "ufo.png"), width = 13, height = 8)

@@ -149,5 +149,6 @@ p <- (dp/np
   (tp/sp + 
      plot_layout(heights = c(1, 1.05)))
 
-p +
-  ggsave(here::here("temp", paste0("mario-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8, width = 12)
+p 
+
+ggsave(here::here("temp", paste0("mario-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8, width = 12)

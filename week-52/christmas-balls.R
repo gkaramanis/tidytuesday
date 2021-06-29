@@ -47,8 +47,9 @@ ggplot(x_songs, aes(year, week_position)) +
     plot.subtitle = element_text(margin = margin(0, 0, 20, 0)),
     plot.caption = element_text(margin = margin(20, 0, 0, 0)),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-52", "plots", "temp", paste0("christmas-balls-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 10
   )
 

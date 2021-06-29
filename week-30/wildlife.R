@@ -102,6 +102,7 @@ ggplot(components, aes(x, y)) +
     plot.subtitle = element_text(family = "IBM Plex Serif", color = "white"),
     plot.caption  = element_text(family = "IBM Plex Sans"),
     plot.background = element_rect(color = "skyblue3", fill = "skyblue3")
-  ) +
-  ggsave(here("week-30", "img", paste0("wildlife", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
+  ) 
+
+ggsave(here("week-30", "img", paste0("wildlife", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
          width = 10, height = 8.32)

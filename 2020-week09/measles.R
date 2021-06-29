@@ -33,5 +33,6 @@ ggplot(measles_counties) +
   theme(
     plot.title = element_markdown(size = 20, hjust = 0.5, face = "bold"),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week09", "plots", "measles.png"), dpi = 320, width = 12, height = 8)
+  ) 
+
+ggsave(here::here("2020-week09", "plots", "measles.png"), dpi = 320, width = 12, height = 8)

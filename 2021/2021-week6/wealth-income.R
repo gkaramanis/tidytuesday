@@ -103,5 +103,6 @@ ggplot(data = income_change) +
     plot.title = element_text(size = 18),
     plot.subtitle = element_text(margin = margin(0, 0, 10, 0), family = f2),
     plot.caption = element_text(margin = margin(15, 0, 0, 0), size = 8)
-  ) +
-  ggsave(here::here("temp", paste0("wealth-income-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 10, height = 8)
+  ) 
+
+ggsave(here::here("temp", paste0("wealth-income-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 10, height = 8)

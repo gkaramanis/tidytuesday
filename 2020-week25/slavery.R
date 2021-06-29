@@ -42,5 +42,6 @@ ggplot(decade_routes) +
     panel.grid.minor.y = element_line(colour = "grey25", size = 0.1),
     axis.text.y = element_text(colour = "red", family = "DIN Condensed Bold", hjust = 0, size = 8, margin = margin(0, 0, 0, 5)),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week25", "plots", "slavery.png")), dpi = 320)
+  ) 
+
+ggsave(here::here("2020-week25", "plots", "slavery.png")), dpi = 320)

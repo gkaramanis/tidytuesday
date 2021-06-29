@@ -31,5 +31,6 @@ ggplot(missions) +
   geom_sigmoid(aes(x = 0.1, xend = 1.9, y = mission_n, yend = desc_n, group = interaction(desc_n, mission_n))) +
 	coord_polar() +
   theme_void() +
-  facet_wrap(vars(decade)) +
-  ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-sigm", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  facet_wrap(vars(decade)) 
+
+ggsave(here::here("2020-week29", "plots", "temp", paste0("astronauts-sigm", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)

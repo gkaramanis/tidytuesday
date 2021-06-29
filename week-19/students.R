@@ -38,5 +38,6 @@ ggplot(aes(student_ratio, edulit_ind)) +
   text = element_text(family = "IBM Plex Sans", size = 9),
   plot.title = element_text(face = "bold"),
   plot.subtitle = element_text(vjust = 2)
-) +
-  ggsave("./week-19/students.png", width = 6, height = 4)
+) 
+
+ggsave("./week-19/students.png", width = 6, height = 4)

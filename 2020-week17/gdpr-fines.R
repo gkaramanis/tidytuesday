@@ -64,6 +64,7 @@ ggplot() +
   theme(
     plot.margin = margin(20, 20, 20, 20)
   ) +
-  coord_sf(xlim = c(-27.5, 37.5), ylim = c(32.5, 82.5), expand = FALSE) +
-  ggsave(here::here("2020-week17", "plots", "temp", paste0("gdpr-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 11)
+  coord_sf(xlim = c(-27.5, 37.5), ylim = c(32.5, 82.5), expand = FALSE) 
+
+ggsave(here::here("2020-week17", "plots", "temp", paste0("gdpr-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 14, height = 11)
 

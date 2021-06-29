@@ -55,9 +55,9 @@ spotify %>%
     plot.title = element_text(family = "IBM Plex Sans Medium", hjust = 0.5, size = 20, color = "white", margin = margin(0, 0, 20, 0)),
     plot.caption = element_text(hjust = 0.5, size = 10, color = "white", margin = margin(40, 0, 0, 0)),
     plot.margin = margin(20, 20, 20, 80)
-  ) +
-  
-  ggsave(here::here("2020-week04", "plots", paste0("spotify-artists", ".png")), dpi = 320, height = 10, width = 14)
+  ) 
+
+ggsave(here::here("2020-week04", "plots", paste0("spotify-artists", ".png")), dpi = 320, height = 10, width = 14)
   
 
 

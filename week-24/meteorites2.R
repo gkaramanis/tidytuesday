@@ -55,7 +55,7 @@ fellMeteo %>%
     legend.position = "top",
     panel.background = element_rect(fill = "midnightblue"),
     plot.margin = margin(0, 0, -27, 0, "cm")
-  ) +
+  ) 
 
 ggsave("./week-24/meteorites.png", dpi = 600)
 

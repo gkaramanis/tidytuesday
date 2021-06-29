@@ -76,8 +76,9 @@ ggplot(marbles_points) +
     plot.background = element_rect(colour = "grey15", fill = "grey15"),
     plot.caption = element_text(family = "IBM Plex Sans", colour = "grey60"),
     plot.margin = margin(40, 25, 40, 25)
-  ) +
-  ggsave(here::here("2020-week23", "plots", "temp", paste0("marbles-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 14, width = 12)
+  ) 
+
+ggsave(here::here("2020-week23", "plots", "temp", paste0("marbles-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 14, width = 12)
 
 # Trim image
 image_read(here::here("2020-week23", "plots", "marbles.png")) %>% 

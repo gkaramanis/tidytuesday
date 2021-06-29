@@ -57,5 +57,6 @@ ggplot(flix_g) +
     panel.grid.major.x = element_line(color = "grey83", size = 0.25),
     panel.grid.minor.x = element_line(color = "grey85", size = 0.1),
     plot.caption = element_text(hjust = 0, color = "grey30")
-  ) +
-  ggsave(here::here("temp", paste0("netflix-titles-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 11, width = 8)
+  ) 
+
+ggsave(here::here("temp", paste0("netflix-titles-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 11, width = 8)

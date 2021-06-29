@@ -145,5 +145,6 @@ inset <- ggplot(subset(power_lines, country == "DE")) +
   ) 
 
 ggdraw(map) +
-  draw_plot(inset, x = -0.3, y = 0.25, scale = 0.3) +
-  ggsave(here::here("temp", paste0("european-energy-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 12)
+  draw_plot(inset, x = -0.3, y = 0.25, scale = 0.3) 
+
+ggsave(here::here("temp", paste0("european-energy-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 12)

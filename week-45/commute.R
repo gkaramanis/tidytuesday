@@ -30,8 +30,9 @@ ggplot() +
   geom_polygon(aes(x, y), fill = NA, color = "blue", size = 4) +
   coord_fixed(xlim = c(-1, 5), ylim = c(-1, 1.5)) +
   theme_void() +
-  facet_geo(~ state) +
-  ggsave(
+  facet_geo(~ state) 
+
+ggsave(
     here::here("week-45", "plots", "temp", paste0("commute-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png"))
     )
 

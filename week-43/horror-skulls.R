@@ -143,8 +143,9 @@ p
 
 ### Combine  ################## 
 ggdraw(p) +
-  draw_plot(l, 0.25, 0.25, 0.495, 0.495) +
-  ggsave(
+  draw_plot(l, 0.25, 0.25, 0.495, 0.495) 
+
+ggsave(
     here::here("week-43", "plots", "temp", paste0("horror-movies-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
     width = 14, height = 14, dpi = 320
   )

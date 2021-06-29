@@ -7,6 +7,7 @@ ggplot() +
   theme_void() +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(here::here("temp", paste0("bechdel-test-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8, width = 8)
+  ) 
+
+ggsave(here::here("temp", paste0("bechdel-test-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 8, width = 8)
 

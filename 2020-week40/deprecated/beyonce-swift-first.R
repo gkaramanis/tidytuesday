@@ -30,5 +30,6 @@ ggplot(beyonce_love) +
   scale_y_reverse() +
   coord_fixed(ratio = 2) +
   facet_wrap(vars(song_name)) +
-  theme_void() +
-  ggsave(here::here("temp", paste0("beyonce-swift-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 20, height = 15)
+  theme_void() 
+
+ggsave(here::here("temp", paste0("beyonce-swift-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 20, height = 15)

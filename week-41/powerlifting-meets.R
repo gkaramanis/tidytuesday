@@ -45,8 +45,9 @@ ggplot(meets, aes(date, weight, color = lift, fill = lift)) +
     axis.text = element_text(color = "grey70"),
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank()
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-41", "figures", "temp", paste0("powerlifting-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
     width = 16, height = 11, dpi = 320
   )

@@ -35,8 +35,9 @@ ggplot(rf_m) +
     axis.title.y = element_text(family = "IBM Plex Sans", size = 12),
     plot.title = element_text(family = "IBM Plex Sans Medium"),
     plot.caption = element_text(color = "grey40")
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("2020-week02", "plots", "temp", paste0("aus-fires-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 10, width = 12
   )
 

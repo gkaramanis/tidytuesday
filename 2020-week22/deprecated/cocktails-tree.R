@@ -38,8 +38,9 @@ ggraph(mygraph, layout = 'dendrogram', circular = TRUE) +
   theme_void() +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(here::here("2020-week22", "plots", "temp", paste0("cocktails-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  ) 
+
+ggsave(here::here("2020-week22", "plots", "temp", paste0("cocktails-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
 
 
 

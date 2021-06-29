@@ -50,6 +50,7 @@ b <- ggplot() +
   )
 
 plot_grid(p, b, ncol = 1, rel_heights = c(1, 0.55), align = "v") +
-  draw_label("IKEA FURNITURE", size = 36, x = 0.05, y = 0.93, hjust = 0, fontfamily = f1b) +
-  ggsave(here::here("temp", paste0("ikea-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 7, width = 7)
+  draw_label("IKEA FURNITURE", size = 36, x = 0.05, y = 0.93, hjust = 0, fontfamily = f1b) 
+
+ggsave(here::here("temp", paste0("ikea-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 7, width = 7)
 

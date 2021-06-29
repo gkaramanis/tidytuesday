@@ -69,6 +69,7 @@ annotate("richtext", x = 25, y = -8,
     plot.title = element_text(hjust = 0.5, family = "IBM Plex Serif Bold", size = 18, margin = margin(10, 0, 0, 0)),
     plot.caption = element_text(size = 6, hjust = 0),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week13", "plots", "tbi.png"), dpi = 300, width = 8, height = 6)
+  ) 
+
+ggsave(here::here("2020-week13", "plots", "tbi.png"), dpi = 300, width = 8, height = 6)
   

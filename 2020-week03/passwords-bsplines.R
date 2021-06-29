@@ -39,6 +39,7 @@ ggplot(bsplines) +
     plot.subtitle = element_text(size = 12, hjust = 0.5, margin = margin(0, 0, 50, 0)),
     plot.caption = element_text(size = 8,  color = "grey60", margin = margin(0, 0, 0, 0)),
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week03", "plots", "temp", paste0("passwords-bsplines-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 13, height = 8
+  ) 
+
+ggsave(here::here("2020-week03", "plots", "temp", paste0("passwords-bsplines-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 13, height = 8
 )

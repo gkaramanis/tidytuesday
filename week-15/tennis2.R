@@ -72,5 +72,6 @@ ggplot(winRatio, aes(x = player)) +
     text = element_text(family = "IBM Plex Sans", size = 6),
     axis.title = element_blank(),
     panel.grid.minor = element_blank()
-  ) +
-  ggsave("./week 15/tennis2.png", dpi = 600, height = 3, width = 4)
+  ) 
+
+ggsave("./week 15/tennis2.png", dpi = 600, height = 3, width = 4)

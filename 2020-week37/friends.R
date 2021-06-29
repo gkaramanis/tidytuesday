@@ -40,5 +40,6 @@ ggplot(words) +
     axis.text.y = element_text(family = "Friends", color = "grey97"),
     plot.margin = margin(20, 20, 20, 20),
     plot.title = element_text(family = "Friends", color = "grey97", size = 20, margin = margin(0, 0, 20, 0), hjust = 0.5)
-  ) +
-  ggsave(here::here("temp", paste0("friends-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 8, height = 9)
+  ) 
+
+ggsave(here::here("temp", paste0("friends-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 8, height = 9)

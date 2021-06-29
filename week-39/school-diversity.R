@@ -191,8 +191,9 @@ ggplot(clean_school) +
     plot.margin = margin(20, 20, 20, 20),
     plot.title = element_text(hjust = 1, family = "IBM Plex Sans Bold", color = "grey25"),
     plot.subtitle = element_text(hjust = 1, margin = margin(10, 0, 20, 0), color = "grey25")
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
     here::here("week-39", "figures", "temp", paste0("school-diversity-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
     width = 12, height = 9, dpi = 320
     )

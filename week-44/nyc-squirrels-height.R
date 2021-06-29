@@ -52,8 +52,9 @@ ggplot(cp_hect) +
     plot.title = element_text(size = 22, family = "IBM Plex Sans Bold", hjust = 0, margin = margin(0, 0, 10, 0)),
     plot.subtitle = element_text(size = 15, hjust = 0, margin = margin(0, 0, 40, 0)),
     plot.caption = element_text(size = 9, margin = margin(20, 0, 0, 0))
-    ) +
-  ggsave(
+    ) 
+
+ggsave(
     here::here("week-44", "plots", "temp", paste0("nyc-squirrels-height", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 12, width = 7
   )
 

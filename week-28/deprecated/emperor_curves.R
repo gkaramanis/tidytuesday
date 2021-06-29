@@ -34,9 +34,9 @@ theme_void() +
   theme(
     legend.position = "none",
     plot.background = element_rect(fill = "#9a1d15", color = "#9a1d15")
-  ) +
-  
-  ggsave(here::here("week-33", "img_plot", paste0("emperors", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
+  ) 
+
+ggsave(here::here("week-33", "img_plot", paste0("emperors", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
          width = 18, height = 6, dpi = 320)
 
 

@@ -78,8 +78,9 @@ ggplot(rfds) +
     plot.caption = element_text(family = "IBM Plex Sans Thin",
                                 color = "grey90",
                                 hjust = 0, margin = margin(25, 0, 0, 0))                      
-  ) +
-  ggsave(here("week-29", "r4ds.png"),
+  ) 
+
+ggsave(here("week-29", "r4ds.png"),
          width = 9, height = 9, dpi = 300)
   
 # Slack palette

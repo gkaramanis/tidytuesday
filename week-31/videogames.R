@@ -105,9 +105,9 @@ ggplot(overpriced_games) +
     plot.title = element_text(family = "IBM Plex Sans Condensed Bold", color = "#cecccf"),
     plot.subtitle = element_text(family = "IBM Plex Sans Condensed", color = "#cecccf", size = 8, margin = margin(10, 0, 20, 0)),
     plot.caption = element_text(family = "IBM Plex Sans", color = "#cecccf", size = 6)
-  ) +
-  
-  ggsave(here("week-31", "img", paste0("videogames", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), width = 8, height = 6, dpi = 320)
+  ) 
+
+ggsave(here("week-31", "img", paste0("videogames", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), width = 8, height = 6, dpi = 320)
   
 
 # https://medium.com/nightingale/the-process-of-familiarity-an-interview-with-nicholas-rougeux-c30f1a1b2f8?source=rss----356ca48206e6---4

@@ -71,6 +71,7 @@ countries_list_plot <- ggplot(countries_list) +
 
 ggdraw(map_plot) +
   draw_plot(major_rocks_plot, x = 0.005, y = 0.54, height = 0.2, width = 0.3) +
-  draw_plot(countries_list_plot, x = 0.79, y = 0.47, height = 0.24, width = 0.2) +
-  ggsave(here::here("2020-week20", "plots", "temp", paste0("volcano-eruptions-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 5.9)
+  draw_plot(countries_list_plot, x = 0.79, y = 0.47, height = 0.24, width = 0.2) 
+
+ggsave(here::here("2020-week20", "plots", "temp", paste0("volcano-eruptions-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 5.9)
 

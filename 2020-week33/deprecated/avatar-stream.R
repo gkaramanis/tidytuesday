@@ -33,5 +33,6 @@ ggplot(scene_shots) +
   geom_stream(aes(x = chapter_num, y = n, fill = shot), method = "density") +
   facet_grid(vars(type), vars(book_num)) +
   scale_fill_manual(values = pal, breaks = f) +
-	theme_minimal() +
-  ggsave(paste0("temp/avatar-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png"), dpi = 320, width = 9, height = 6)
+	theme_minimal() 
+
+ggsave(paste0("temp/avatar-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png"), dpi = 320, width = 9, height = 6)

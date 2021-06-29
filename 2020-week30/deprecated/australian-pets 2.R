@@ -96,8 +96,9 @@ ggplot(noisy) +
   theme(
     legend.position = "none",
     plot.margin = margin(20, 20, 20, 20)
-  ) +
-  ggsave(here::here("2020-week30", "plots", "temp", paste0("australian-pets-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
+  ) 
+
+ggsave(here::here("2020-week30", "plots", "temp", paste0("australian-pets-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
 
  
 

@@ -10,8 +10,9 @@ ggplot(safer_parks, aes(age_youngest, color = bus_type)) +
   facet_wrap(vars(bus_type)) +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(
+  ) 
+
+ggsave(
   here::here("week-37", "figures", "temp", paste0("parks_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")),
   height = 8, width = 18, dpi = 320
 )

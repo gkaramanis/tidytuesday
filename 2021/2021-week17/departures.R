@@ -73,7 +73,8 @@ ggplot(invol_legal) +
     axis.ticks.x = element_line(color = "grey10"),
     axis.ticks.length.x = unit(0.5, "line"),
     plot.caption = element_text(hjust = 0)
-  ) +
-  ggsave(here::here("temp", paste0("departures-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 9)
+  ) 
+
+ggsave(here::here("temp", paste0("departures-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 9)
 
 # cite article and version

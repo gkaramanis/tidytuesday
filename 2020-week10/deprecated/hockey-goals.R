@@ -42,6 +42,7 @@ ggplot(goals_timeline) +
     axis.title = element_blank(),
     axis.text.y = element_blank(),
     plot.margin = margin(20, 80, 20, 20)
-  ) +
-  ggsave(here::here("2020-week10", "plots", "hockey-goals.png"), dpi = 320, width = 16, height = 8)
+  ) 
+
+ggsave(here::here("2020-week10", "plots", "hockey-goals.png"), dpi = 320, width = 16, height = 8)
   

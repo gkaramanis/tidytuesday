@@ -36,6 +36,7 @@ ggraph(iba_graph, layout = "kk") +
   expand_limits(x = c(-1.4, 1.4), y = c(-1.4, 1.4)) +
   facet_edges(vars(drink)) +
   coord_fixed() +
-  theme_void(base_family = "IBM Plex Mono") +
-  ggsave(here::here("2020-week22", "plots", "temp", paste0("cocktails-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 18, height = 10)
+  theme_void(base_family = "IBM Plex Mono") 
+
+ggsave(here::here("2020-week22", "plots", "temp", paste0("cocktails-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 18, height = 10)
 

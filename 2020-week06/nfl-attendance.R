@@ -58,6 +58,7 @@ ggplot(attendance) +
     plot.subtitle = element_text(size = 12, hjust = 0.5, colour = "white", margin = margin(10, 0, 20, 0)),
     plot.caption = element_text(hjust = 0.5, colour = "white", margin = margin(20, 0, 0, 0)),
     plot.margin = margin(20, 20, 20, 110)
-  ) +
-  ggsave(here::here("2020-week06", "plots", "nfl-attendance.png"), dpi = 320,
+  ) 
+
+ggsave(here::here("2020-week06", "plots", "nfl-attendance.png"), dpi = 320,
          height = 8, width = 12)

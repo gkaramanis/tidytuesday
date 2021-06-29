@@ -24,7 +24,8 @@ ggplot(total_grosses) +
   theme_void(base_family = "IBM Plex Serif") +
   theme(
     plot.background = element_rect(fill = "black", colour = NA)
-  ) +
-  ggsave(here::here("2020-week18", "plots", "temp", paste0("broadway-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 6)
+  ) 
+
+ggsave(here::here("2020-week18", "plots", "temp", paste0("broadway-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 12, height = 6)
 
 

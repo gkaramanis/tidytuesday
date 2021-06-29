@@ -88,7 +88,8 @@ ggplot(nobelLL, aes(
     text = element_text(family = "IBM Plex Sans", size = 5),
     plot.title = element_text(face = "bold"),
     plot.subtitle = element_text(vjust = 2),
-  ) +
-  ggsave("./week-20/nobelMap.png", width = 6, height = 3.5)
+  ) 
+
+ggsave("./week-20/nobelMap.png", width = 6, height = 3.5)
 
 nobelLL %>% filter()

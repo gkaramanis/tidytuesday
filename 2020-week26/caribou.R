@@ -39,5 +39,6 @@ ggplot(movement) +
 		plot.title = element_text(family = "IBM Plex Serif Bold", colour = "white", size = 20, hjust = 0, lineheight = 1),
 		plot.subtitle = element_text(family = "IBM Plex Sans", colour = "white", size = 12, hjust = 0, lineheight = 1, margin = margin(10, 0, 50, 0)),
 		plot.caption = element_text(family = "IBM Plex Sans", colour = "grey80", size = 7, hjust = 1, margin = margin(30, 0, 10, 0))
-  ) +
-  ggsave(here::here("2020-week26", "plots", "temp", paste0("caribou-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 11)
+  ) 
+
+ggsave(here::here("2020-week26", "plots", "temp", paste0("caribou-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, height = 9, width = 11)

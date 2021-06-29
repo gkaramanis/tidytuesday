@@ -46,6 +46,7 @@ ggplot(iba_cocktails) +
   theme_void(base_family = "JetBrains Mono") +
   theme(
     legend.position = "none"
-  ) +
-  ggsave(here::here("2020-week22", "plots", "temp", paste0("cocktails-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 16, height = 6)
+  ) 
+
+ggsave(here::here("2020-week22", "plots", "temp", paste0("cocktails-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 16, height = 6)
 

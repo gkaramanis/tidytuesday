@@ -88,6 +88,7 @@ ggplot(brz_areas) +
     legend.position = "none",
     plot.margin = margin(20, 20, 20, 20),
     plot.background = element_rect(fill = bg_col, color = NA)
-  ) +
-  ggsave(here::here("temp", paste0("deforestation-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 6)
+  ) 
+
+ggsave(here::here("temp", paste0("deforestation-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320, width = 9, height = 6)
 
