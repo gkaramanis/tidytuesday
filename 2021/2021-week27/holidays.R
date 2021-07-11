@@ -85,3 +85,8 @@ ggplot(holiday_months) +
     plot.title = element_text(family = f2, size = 20, hjust = 0.5, margin = margin(0, 0, 20, 0)),
     plot.caption = element_text(family = f2, size = 8, hjust = 0.5, margin = margin(20, 0, 0, 0), color = "#936900")
   )
+
+# export gif
+# gg_playback(frame_duration = 0.15, image_resize = 1080)
+# convert to mp4 in terminal
+# ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" video.mp4
