@@ -81,8 +81,8 @@ ggplot(bmi, aes(x = weight_m, y = height_m)) +
     title = toupper("Olympic athletes are getting bigger"),
     subtitle = "Mean weight and height by sport at the 1960 and 2016 Summer Olympics. Values calculated\nfor athletes 20 years and older, compared to the BMI classification for the general population.",
     caption = "Source: Kaggle · Graphic: Georgios Karamanis",
-    x = "Height (cm)",
-    y = "Weight (kg)"
+    x = "Weight (kg)",
+    y = "Height (cm)"
   ) +
   theme_minimal(base_family = f2, base_size = 13) +
   theme(
