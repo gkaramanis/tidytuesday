@@ -42,7 +42,6 @@ sotw_text <- paste0(
   '\\")"))'
 )
 writeLines(sotw_text, sotw)
-close(sotw)
 
 # Open script and start having fun!
 file.edit(script_file)
