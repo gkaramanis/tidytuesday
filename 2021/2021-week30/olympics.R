@@ -10,6 +10,7 @@ gg_record(dir = "temp", device = "png", width = 10, height = 11, units = "in", d
 bmi <- olympics %>% 
   filter(age > 19) %>%
   filter(year == 2016 | year == 1960) %>%
+  filter(season == "Summer") %>% 
   mutate(
     bmi = weight / (height/100)^2,
     sex = if_else(sex == "F", "Women", "Men")
