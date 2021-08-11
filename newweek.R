@@ -24,7 +24,7 @@ write(as.character(readme_text), file(readme))
 script_file <- paste0(folder, "/", newscript, ".R")
 file.create(script_file)
 script_text <- paste0(
-  'library(tidyverse)',
+  'library(tidyverse)', '\n',
   'library(camcorder)',
   '\n\n',
   'gg_record(dir = "temp", device = "png", width = 10, height = 8, units = "in", dpi = 320)',
