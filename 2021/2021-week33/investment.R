@@ -3,8 +3,6 @@ library(camcorder)
 library(ggforce)
 library(scales)
 
-# Datawrapper dispatch!!!
-
 chain_investment <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-10/chain_investment.csv')
 
 digital_inv <- chain_investment %>% 
