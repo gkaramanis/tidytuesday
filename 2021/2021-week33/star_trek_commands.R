@@ -86,7 +86,7 @@ ggplot(freq_plot) +
     panel.grid.minor.x = element_line(color = "grey60", size = 0.05),
     panel.spacing.x = unit(2, "lines"),
     plot.title = element_text(size = 13.5, hjust = 0.5, family = f2, face = "bold"),
-    plot.subtitle = element_text(size = 15, hjust = 0, margin = margin(0, 0, 30, 0), lineheight = 0.95),
+    plot.subtitle = element_text(size = 15, hjust = 0, margin = margin(5, 0, 30, 0), lineheight = 0.95),
     plot.caption = element_text(size = 10, margin = margin(30, 0, 0, 0)),
     plot.margin = margin(0, 30, 0, 30),
     strip.text = element_text(size = 12, margin = margin(0, 0, 15, 0), family = f2)
