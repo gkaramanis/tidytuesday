@@ -71,7 +71,7 @@ ggplot(freq_plot) +
   facet_wrap(vars(char_type)) +
   labs(
     title = "Speech interactions in Star Trek: The Next Generation",
-    subtitle = str_wrap("Percentage frequency of letters in lines talked by computer and people (with the word 'computer' removed) compared to the English language average as calculated by the Cornell Math Explorers Club", 90),
+    subtitle = str_wrap("Percentage frequency of letters in lines spoken by computer and people (with the word 'computer' removed) compared to the English language average as calculated by the Cornell Math Explorers Club", 90),
     caption = "Source: SpeechInteraction.org, http://pi.math.cornell.edu/~mec\nGraphic: Georgios Karamanis"
   ) +
   theme_minimal(base_family = f1) +
