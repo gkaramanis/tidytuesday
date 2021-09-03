@@ -10,12 +10,9 @@ gg_record(dir = "temp", device = "png", width = 10.5, height = 12, units = "in",
 
 bird_baths <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-31/bird_baths.csv')
 
-# bbox <- st_bbox(c(xmin = 134, ymin = -22, xmax = 155, ymax = -40))
-
 ibra <- read_sf(here::here("2021", "2021-week35", "data", "IBRA7_regions_states", "IBRA7_regions_states.shp")) %>% 
   st_make_valid() %>% 
   st_simplify(dTolerance = 0.1)  
-  # st_crop(bbox)
 
 bb_totals <- bird_baths %>% 
   filter(!is.na(bioregions)) %>% 
@@ -82,12 +79,3 @@ ggplot() +
     plot.caption = element_text(hjust = 0, size = 11),
     plot.margin = margin(10, 20, 0, 20)
   )
-
-
-# export gif
-  # gg_playback(frame_duration = 0.15, image_resize = 1080)
-  # convert to mp4 in terminal
-  # Alfred
-
-# ggsave(here::here("temp", paste0("bird_baths-", format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), dpi = 320)
-
