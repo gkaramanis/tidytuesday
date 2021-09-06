@@ -63,7 +63,8 @@ ggplot(winloss) +
                                 family = "IBM Plex Mono",
                                 margin = margin(25, 0, 0, 0)),
     strip.text = element_blank()
-  ) +
+  )
+
   # http://www.storytellingwithdata.com/blog/2019/6/27/power-pairing-color-words
   ggsave(here("week-28", "wwc.png"),
          width = 6, height = 6, dpi = 300)
