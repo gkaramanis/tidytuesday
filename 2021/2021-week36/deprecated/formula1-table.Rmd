@@ -1,0 +1,65 @@
+---
+title: "Formula 1"
+output: html_document
+resource_files:
+  - '.'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+library(tidyverse)
+library(reactable)
+library(htmltools)
+```
+
+```{r prepare_data, message=FALSE, warning=FALSE, cache=TRUE}
+drivers <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-07/drivers.csv')
+races <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-07/races.csv')
+results <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-07/results.csv')
+constructors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-07/constructors.csv')
+constructor_results <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-07/constructor_results.csv')
+
+constructors_r <- constructors %>% 
+  left_join(constructor_results) %>% 
+  select(constructor = name, constr_nation = nationality, constructorId, raceId)
+
+races_clean <- races %>% 
+  select(raceId, year, date)
+
+joined <- drivers %>% 
+  mutate(full_name = paste(forename, surname)) %>% 
+  select(driverId, full_name, dob, driver_nation = nationality) %>% 
+  left_join(results) %>% 
+  select(-number, -resultId, -grid, -laps, -milliseconds, -statusId, -rank, -positionOrder, -fastestLap) %>% 
+  left_join(races_clean, by = "raceId") %>% 
+  left_join(constructors_r) %>%
+  arrange(date) %>% 
+  select(-contains("Id")) %>% 
+  mutate(across(where(is.character), ~na_if(., "\\N")))
+```
+
+```{r table, message=FALSE, warning=FALSE}
+tbl <- joined %>% 
+  reactable(
+    searchable = TRUE,
+    highlight = TRUE,
+    wrap = FALSE,
+    paginationType = "simple"
+    )
+```
+
+```{r output}
+div(
+  class = "movies",
+  tags$hr(),
+  tbl
+)
+```
+
+```{css}
+/* pkgdown articles */
+.contents {
+  width: 100%;
+  max-width: 940px;
+}
+```
