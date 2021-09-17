@@ -15,6 +15,7 @@ Code and plots of the submissions to the [#tidytuesday](https://github.com/rford
 <div class="row"> 
   <div class="column">
 	<a href="2021/2021-week8"><img src="2021/2021-week8/plots/employed.png"></a>
+	<a href="2021/2021-week36"><img src="2021/2021-week36/plots/formula1.png"></a>
   	<a href="2020/2020-week31"><img src="2020/2020-week31/plots/penguins.png"></a>
 	<a href="2020/2020-week15"><img src="2020/2020-week15/plots/tour-de-france.png"></a>
 	<a href="2021/2021-week1"><img src="2021/2021-week1/plots/transit-cost.png"></a>
