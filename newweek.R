@@ -32,7 +32,7 @@ script_text <- paste0(
   '# export gif
   # gg_playback(frame_duration = 0.15, image_resize = 1080)
   # convert to mp4 in terminal
-  # ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" makingof.mp4',
+  # ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p  makingof.mp4',
   '\n\n',
   '# ggsave(here::here(',
   '\"temp\", paste0(\"',
