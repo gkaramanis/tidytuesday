@@ -43,13 +43,13 @@ script_text <- paste0(
 write(as.character(script_text), file(script_file))
 
 # Update script-of-the-week
-sotw <- file("script-of-the-week.R", "wt")
-sotw_text <- paste0(
-  'eval(parse(text="source(\\"./',
-  script_file,
-  '\\")"))'
-)
-writeLines(sotw_text, sotw)
+# sotw <- file("script-of-the-week.R", "wt")
+# sotw_text <- paste0(
+#   'eval(parse(text="source(\\"./',
+#   script_file,
+#   '\\")"))'
+# )
+# writeLines(sotw_text, sotw)
 
 # Open script and start having fun!
 file.edit(script_file)
