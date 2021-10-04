@@ -9,12 +9,11 @@ gg_record(dir = "temp", device = "png", width = 10, height = 12, units = "in", d
 
 # Read in data
 papers <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/papers.csv')
-authors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/authors.csv')
 programs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/programs.csv')
 paper_programs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_programs.csv')
 
 # Palette
-pal <- wes_palette("Darjeeling1")[-3]
+pal <- wes_palette("Chevalier1")[c(4, 1:3)]
 
 # Join data and add colors
 pp <- programs %>%
@@ -35,20 +34,23 @@ pp <- programs %>%
   ungroup() %>% 
   left_join(paper_programs) %>% 
   left_join(papers)
+  
 
 # Count papers per year, remove 2021
-pp_date <- pp %>% 
-  add_count(year, program_category, program_desc) %>% 
+pp_year <- pp %>% 
+  add_count(year, program_desc) %>% 
+  complete(year, nesting(program_category, program_desc, cat_col, prog_col), fill = list(n = 0)) %>%
   filter(year < 2021) %>% 
   arrange(cat_id, prog_id) %>% 
-  distinct(year, program_category, program_desc, cat_col, prog_col, n)
+  distinct(year, program_category, program_desc, cat_col, prog_col, n) 
+  
 
 # Fonts
 f1 = "Piazzolla SC"
 
 # Common function for stream plot
 stream <- function(type) {
-  ggplot(pp_date, aes(x = year, y = n, fill = prog_col, color = colorspace::darken(cat_col, 0.2), label = program_desc)) +
+  ggplot(pp_year, aes(x = year, y = n, fill = prog_col, color = colorspace::darken(cat_col, 0.2), label = program_desc)) +
     geom_stream(type = type, size = 0.15, sorting = "onset") +
     scale_color_identity() +
     scale_fill_identity() +
@@ -66,9 +68,9 @@ p1 <- stream("ridge") +
   scale_x_continuous(position = "top") +
   labs(
     title = "NBER Working Papers, 1975-2020",
-    subtitle = "Number and proportion of papers distributed by the National Bureau of Economic\nResearch by program and program category",
+    subtitle = "Number and proportion of papers distributed by the National Bureau of Economic\nResearch, by program and program category",
     caption = "Source: NBER · Graphic: Georgios Karamanis",
-    x = "Number of papers"
+    y = "Number of papers"
   ) +
   theme(
     axis.title.x = element_blank(),
@@ -79,16 +81,16 @@ p1 <- stream("ridge") +
 
 # Annotations for p2
 annot <- data.frame(
-  x = c(2002.115, 1986.348, 2005.984, 2008.855),
-  y = c(0.91, 0.68, 0.28, 0.03),
+  x = c(2002.115, 1986.348, 2002.984, 2008.855),
+  y = c(0.91, 0.68, 0.31, 0.03),
   program_category = c("Finance", "Macro/International", "Micro", "Technical")
   ) %>% 
-  left_join(pp_date) %>% 
+  left_join(pp_year) %>% 
   distinct(x, y, program_category, cat_col)
 
 # Proportional plot
 p2 <- stream("proportional") +
-  geom_stream_label(aes(color = colorspace::darken(prog_col, 0.4)), type = "proportional", sorting = "onset", alpha = 0.7, family = f1, size = 3, hjust = "inward") +
+  geom_stream_label(aes(color = colorspace::darken(prog_col, 0.6)), type = "proportional", sorting = "onset", alpha = 0.7, family = f1, size = 3, hjust = "inward") +
   geom_text(data = annot, aes(x = x, y = y, label = program_category, color = colorspace::darken(cat_col, 0.4)), inherit.aes = FALSE, family = f1, fontface = "bold", size = 5) +
   ylab("Proportion of papers")
 
