@@ -39,6 +39,9 @@ pp <- programs %>%
 # Count papers per year, remove 2021
 pp_year <- pp %>% 
   add_count(year, program_desc) %>% 
+  # Complete with missing descriptions and give them a value of 0,
+  # otherwise the stream plot is not accurate, see:
+  # https://github.com/davidsjoberg/ggstream/issues/20
   complete(year, nesting(program_category, program_desc, cat_col, prog_col), fill = list(n = 0)) %>%
   filter(year < 2021) %>% 
   arrange(cat_id, prog_id) %>% 
