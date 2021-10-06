@@ -29,16 +29,16 @@ script_text <- paste0(
   '\n\n',
   'gg_record(dir = "temp", device = "png", width = 10, height = 8, units = "in", dpi = 320)',
   '\n\n',
-  '# export gif
-  # gg_playback(frame_duration = 0.15, image_resize = 1080)
-  # convert to mp4 in terminal
-  # ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p  makingof.mp4',
-  '\n\n',
-  '# ggsave(here::here(',
-  '\"temp\", paste0(\"',
-  newscript,
-  '-\", format(Sys.time(), \"%Y%m%d_%H%M%S\"), \".png\")), dpi = 320)',
-  '\n'
+  # '# export gif
+  # # gg_playback(frame_duration = 0.15, image_resize = 1080)
+  # # convert to mp4 in terminal
+  # # ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p  makingof.mp4',
+  # '\n\n',
+  # '# ggsave(here::here(',
+  # '\"temp\", paste0(\"',
+  # newscript,
+  # '-\", format(Sys.time(), \"%Y%m%d_%H%M%S\"), \".png\")), dpi = 320)',
+  # '\n'
 )
 write(as.character(script_text), file(script_file))
 
