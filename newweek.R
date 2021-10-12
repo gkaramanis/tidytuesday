@@ -28,7 +28,7 @@ script_text <- paste0(
   'library(camcorder)',
   '\n\n',
   'gg_record(dir = "temp", device = "png", width = 10, height = 8, units = "in", dpi = 320)',
-  '\n\n',
+  '\n\n'
   # '# export gif
   # # gg_playback(frame_duration = 0.15, image_resize = 1080)
   # # convert to mp4 in terminal
