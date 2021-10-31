@@ -12,29 +12,38 @@ ultra_rankings <- readr::read_csv('https://raw.githubusercontent.com/rfordatasci
 
 race <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv')
 
+# Colors
 pal <- c("#448D88", "#7900f1", "#F9F6F4") # men, women, background
 
+# Read in race results, distanced used to calculate pace later
 race_d <- race %>% 
   select(race_year_id, distance)
 
 ultra_d <- ultra_rankings %>% 
   left_join(race_d) %>% 
+  # filter out runners with missing data
   filter(!is.na(nationality) & !is.na(time) & distance > 0 & !is.na(gender) & age > 0) %>% 
+  # to fix one nationality
   mutate(nationality = toupper(nationality)) %>% 
   group_by(nationality, gender) %>% 
-  summarise(nationality, gender, med_pace = median(time_in_seconds/distance)) %>% 
+  # calculate median pace by nationality and gender (all distances inlcuded)
+  summarise(nationality, gender, med_pace = median(time_in_seconds/distance)) %>%
   ungroup() %>% 
   distinct() %>% 
+  # pivot wider for easier plotting of lollipops
   pivot_wider(names_from = gender, values_from = med_pace) %>% 
   mutate(
+    # difference of median pace between men and women
     g_diff = M - W,
+    # arrange by pace difference
     nationality = fct_reorder(nationality, g_diff),
+    # x and hjust for nationality labels
     x = ifelse(g_diff > 0, -10, 10),
     hjust = ifelse(g_diff > 0, 1, 0)
-    # color = ifelse(g_diff > 0, pal[1], pal[2])
     ) %>% 
   filter(!is.na(g_diff))
 
+# Fonts
 f1 = "Roboto Condensed"
 f2 = "Avenir Black"
 f3 = "Montserrat Black"
@@ -51,15 +60,18 @@ annot <- data.frame(
   size = c(20, 20, 26, 5.5, 4)
 )
 
+# For time labels
 format_hm <- function(sec) str_sub(format(sec), start = -5L)
 
 p1 <- ggplot(ultra_d) +
+  # lollilops
   geom_segment(aes(x = 0, xend = g_diff, y = nationality, yend = nationality), alpha = 0.9) +
   geom_point(aes(x = g_diff, y = nationality), size = 2, shape = 21, fill = "grey40") +
+  # nationality labels
   geom_text(aes(x = x, y = nationality, label = nationality, hjust = hjust), stat = "unique", family = f1, size = 3) +
+  # title and annotations
   geom_text(data = annot, aes(x = g_diff, y = nationality, label = label, hjust = hjust, vjust = vjust, color = color, size = size, family = family), lineheight = 0.8) +
   scale_color_identity() +
-  scale_fill_identity() +
   scale_size_identity() +
   scale_x_time(labels = format_hm, breaks = seq(-3600, 3600, 60)) +
   coord_cartesian(clip = "off", xlim = c(-340, 340)) +
@@ -75,7 +87,7 @@ p1 <- ggplot(ultra_d) +
     panel.grid.major.y = element_blank()
   )
 
-# Runners by nationality for inset plot
+# Runners by nationality and gender for inset plot
 stats <- ultra_rankings %>% 
   left_join(race_d) %>% 
   filter(!is.na(nationality) & !is.na(time) & distance > 0 & !is.na(gender) & age > 0) %>% 
