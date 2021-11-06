@@ -15,14 +15,13 @@ ortho <- paste0('+proj=ortho +lat_0=', lat, ' +lon_0=', lon,
 
 circle <- st_point(x = c(0, 0)) %>%
       st_buffer(dist = 6371000) %>%
-      st_sfc(crs = ortho)
+      st_sfc(crs = ortho) 
 
 circle_longlat <- circle %>%
   st_transform(crs = 4326)
 
 world_ortho <- world %>%
-  st_transform(crs = ortho) %>% 
-  mutate(i = row_number())
+  st_transform(crs = ortho)
 
 f1 = "Porpora"
 
