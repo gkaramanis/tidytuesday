@@ -2,6 +2,7 @@ library(tidyverse)
 library(camcorder)
 library(spData)
 library(sf)
+library(ggfx)
 
 gg_record(dir = "temp", device = "png", width = 9, height = 10, units = "in", dpi = 320)
 
@@ -20,19 +21,17 @@ circle_longlat <- circle %>%
   st_transform(crs = 4326)
 
 world_ortho <- world %>%
-  sf::st_transform(crs = ortho) %>% 
+  st_transform(crs = ortho) %>% 
   mutate(i = row_number())
 
 f1 = "Porpora"
 
-library(ggfx)
-
 ggplot(world_ortho) +
-  with_blur(
-    geom_sf(data = circle, fill = "cornflowerblue", color = NA, size = 2),
-    sigma = unit(3, 'mm')
-  ) + 
-  geom_sf(data = circle, fill = "#06216E", color = "black", size = 0.3) +
+  # with_blur(
+  #   geom_sf(data = circle, fill = "cornflowerblue", color = NA, size = 2),
+  #   sigma = unit(3, 'mm')
+  # ) + 
+  # geom_sf(data = circle, fill = "#06216E", color = "black", size = 0.3) +
   geom_sf(aes(fill = lifeExp), size = 0.2, color = "#06216E") +
   scale_fill_fermenter(palette = "Purples", na.value = "#8c7d70") +
   labs(
