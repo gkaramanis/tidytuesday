@@ -18,6 +18,8 @@ afripop_df <- afripop2020 %>%
 f1 = "Porpora"
 f2 = "Publico Headline"
 
+pal <- c(viridis::turbo(10), "yellow")
+
 ggplot(afripop_df) +
   geom_tile(aes(x, y, fill = pop2)) +
   annotate("text", -6, -5, label = "Africa", family = f2, size = 20, fontface = "bold", color = "grey97") +
