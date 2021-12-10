@@ -65,7 +65,7 @@ ggplot(spiders_fam) +
   labs(
     caption = "<span style = 'font-size:30px;'>Taxonomic publications, 1757-2021</span><br>
     Publications by family and year <span style = 'color:purple;'>(purple circles)</span>and total publications by family <span style = 'color:darkorange;'>(orange circles and text)</span><br>
-     <span style = 'color:black;'>Source: World Spider Database - Graphic: Georgios Karamanis</span>"
+     <span style = 'color:black;'>Source: World Spider Catalog - Graphic: Georgios Karamanis</span>"
   ) +
   theme_void() +
   theme(
