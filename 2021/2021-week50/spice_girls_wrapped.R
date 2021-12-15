@@ -1,6 +1,5 @@
 library(tidyverse)
 library(camcorder)
-library(gridfont)
 library(hershey)
 
 gg_record(dir = "temp", device = "png", width = 7, height = 11, units = "in", dpi = 320)
