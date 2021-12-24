@@ -38,8 +38,7 @@ ggplot(caff) +
   annotate("text", x = 185, y = "Caramel Frappuccino Blended", label = "How much caffeine?", size = 10, family = f2, hjust = 0, fontface = "bold") +
   annotate("text", x = 185, y = "Caffè Vanilla Frappuccino Blended", label = "Caffeine, sugar and serving size of\nStarbucks Drinks (showing drinks that\ncontain at least 100 mg caffeine)", size = 5, family = f2, hjust = 0, vjust = 1) +
   annotate("text", x = 185, y = "Iced Green Tea Latte", label = "Source: Starbucks - Graphic: Georgios Karamanis", size = 3.5, family = f1, hjust = 0, vjust = 1) +
-  scale_size_continuous(range = c(0.5, 5.5), name = "Serving Size (ml)") +
-  # scale_color_stepsn(colors = pal, name = "Sugar (g)") +
+  scale_size_continuous(range = c(0.5, 5.5), name = "Serving Size (ml)", guide = guide_legend(override.aes = list(fill = pal[3]))) +
   scale_fill_stepsn(colors = pal, name = "Sugar (g)") +
   scale_x_continuous(sec.axis = dup_axis(), limits = c(0, 500)) +
   coord_cartesian(clip = "off") +
