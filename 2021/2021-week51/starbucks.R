@@ -8,7 +8,6 @@ starbucks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/
 
 caff <- starbucks %>% 
   distinct(product_name, size, serv_size_m_l, sugar_g, caffeine_mg) %>% 
-  # filter(str_detect(tolower(product_name), "tea|chai|refresher", negate = TRUE)) %>% 
   group_by(product_name) %>% 
   mutate(max_caff = max(caffeine_mg)) %>% 
   ungroup() %>% 
