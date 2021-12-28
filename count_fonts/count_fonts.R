@@ -57,7 +57,7 @@ png(here::here("count_fonts", "plots", "top_10_fonts.png"), units = "in", width 
 
 ggplot(top_10) +
   geom_col(aes(freq, i, fill = word(fam, 1)), width = 0.6) +
-  geom_text(aes(freq + 2, i, label = freq), size = 5, hjust = 0, family = "Atkinson Hyperlegible", color = c2) +
+  geom_text(aes(freq + 2, i, label = paste0(freq, "%")), size = 5, hjust = 0, family = "Atkinson Hyperlegible", color = c2) +
   geom_text(aes(-3, i, label = fam, family = fam, color = word(fam, 1)), hjust = 1, size = 6) +
   scale_x_continuous(breaks = c(0, 20, 40), limits = c(-60, 40)) +
   scale_color_manual(values = pal) +
