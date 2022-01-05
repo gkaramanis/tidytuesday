@@ -1,4 +1,5 @@
 library(grid)
+library(ggplot2)
 
 GeomHexagon <- ggproto("GeomHexagon", Stat,
                        compute_group = function(data, scales) {
