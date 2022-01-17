@@ -1,4 +1,4 @@
-https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2022-01-11
+https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-01-11
 
 ![](plots/bee_colonies-United%20States.png)  
 ![](plots/bee_colonies-Colorado.png)  

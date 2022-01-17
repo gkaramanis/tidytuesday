@@ -17,7 +17,7 @@ dir.create(file.path(paste0(folder, "/plots")), recursive = TRUE)
 readme <- paste0(folder, "/README.md")
 file.create(readme)
 readme_text <- paste0(
-  "https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/", next_tuesday, "\n\n![](plots/",
+  "https://github.com/rfordatascience/tidytuesday/tree/master/data/", which_year, "/", next_tuesday, "\n\n![](plots/",
   newscript,
   ".png)")
 write(as.character(readme_text), file(readme))
