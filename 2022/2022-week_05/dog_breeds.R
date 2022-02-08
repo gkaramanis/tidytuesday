@@ -1,7 +1,6 @@
 library(tidyverse)
 library(camcorder)
 library(ggimage)
-library(magick)
 library(ggtext)
 library(grid)
 
