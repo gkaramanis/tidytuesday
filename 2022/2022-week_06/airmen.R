@@ -59,7 +59,7 @@ ggplot(airmen_known) +
   geom_point(data = airmen_other_na, aes(x = col, y = row, size = n), color = "grey40", alpha = 0.8) +
   geom_richtext(data = airmen_other_na, aes(x = col, y = row + 0.025, label = paste0("**", state, "**<br><br><span style='font-size:10pt'>", n, "<span>")), size = 1.9, color = "grey97", family = f1, fill = NA, label.color = NA) +
   # Scale, themes and stuff
-  scale_size_continuous(range = c(15, 30)) +
+  scale_size_continuous(range = c(15, 28)) +
   scale_fill_manual(values = met.brewer("Greek", n = 15)[3:15]) +
   coord_cartesian(expand = FALSE) +
   xlim(0.25, 11.75) +
