@@ -1,7 +1,6 @@
 library(tidyverse)
 library(camcorder)
 library(lubridate)
-library(geofacet)
 library(countrycode)
 library(ggtext)
 
