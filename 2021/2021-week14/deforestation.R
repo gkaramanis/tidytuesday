@@ -25,7 +25,7 @@ areas <- read_csv(here::here("2021", "2021-week14", "data", "country_profile_var
   filter(country != "Vanuatu") # remove island country for legibility
 
 # icon mappings
-mapping <- read_csv(here::here("2020-week52", "data", "mapglyphs-mapping.csv"))
+mapping <- read_csv(here::here("2020", "2020-week52", "data", "mapglyphs-mapping.csv"))
 
 # match area to countries
 brz_areas <- brz %>% 
