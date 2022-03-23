@@ -40,7 +40,7 @@ ggplot(names_ratio) +
   annotate("curve", x = 1936, xend = 1932, y = 0.00047, yend = 0.0008, curvature = -0.3, size = 0.1, arrow = arrow(length = unit(0.01, "npc"))) +
   annotate("curve", x = 1964, xend = 1968, y = 0.00047, yend = 0.0008, curvature = 0.3, size = 0.1, arrow = arrow(length = unit(0.01, "npc"))) +
   # Middle, gender neutral
-  annotate("text", x = c(1925, 2003), y = 1, label = c("More gender neutral\nnames", "A lot more\ngender neutral names"), color = "grey97", size = 4, lineheight = 0.9, family = f1) +
+  annotate("text", x = c(1925, 2003), y = 1, label = c("More gender-neutral\nnames", "A lot more\ngender-neutral names"), color = "grey97", size = 4, lineheight = 0.9, family = f1) +
   scale_x_continuous(breaks = seq(1880, 2020, 10), expand = c(0.015, 0), sec.axis = dup_axis()) +
   scale_y_log10(breaks = c(0.01, 0.1, 1, 10, 100), labels = c("100 times\nmore boys", "10 times\nmore boys", "Same number of\ngirls and boys", "10 times\nmore girls", "100 times\nmore girls")) +
   labs(
