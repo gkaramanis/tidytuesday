@@ -29,7 +29,7 @@ script_text <- paste0(
   'library(tidyverse)', '\n',
   'library(camcorder)',
   '\n\n',
-  'gg_record(dir = "temp", device = "png", width = 10, height = 8, units = "in", dpi = 320)',
+  'gg_record(dir = "tidytuesday-temp", device = "png", width = 10, height = 8, units = "in", dpi = 320)',
   '\n\n'
 
 )
