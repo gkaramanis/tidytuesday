@@ -6,7 +6,7 @@ library(scico)
 gg_record(dir = "2021/temp", device = "png", width = 10, height = 10, units = "in", dpi = 320)
 
 afripop_df <- afripop2020 %>% 
-  as.data.frame(xy = TRUE) %>% 
+  raster::as.data.frame(xy = TRUE) %>% 
   rename(pop = 3) %>% 
   filter(!is.na(pop))
 
