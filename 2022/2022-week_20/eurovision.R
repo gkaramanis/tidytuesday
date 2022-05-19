@@ -10,13 +10,16 @@ gg_record(dir = "tidytuesday-temp", device = "png", width = 11, height = 8.8, un
 
 eurovision <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-17/eurovision.csv')
 
+# For the background of the bars
 rect_gr <- grid.rect(gp = gpar(col = NA, fill = linearGradient(colours = c("#161125", "#6A2D37"), x1 = 0.501, y1 = 0.2, x2 = 0.508, y2 = 1.05)))
 
+# For the background of the plot
 circle_gr <- grid.circle(gp = gpar(col = NA, fill = radialGradient(colours = c("#701016", NA))))
 
 circles <- data.frame(x = c(19, 0.25), y = c(9, 5)) %>% 
   mutate(grob = list(circle_gr))
 
+# Filter 2022 results, assign x, y, country code and background grob
 euro22 <- eurovision %>% 
   filter(year == 2022 & section == "grand-final") %>% 
   arrange(rank) %>% 
@@ -27,6 +30,7 @@ euro22 <- eurovision %>%
     grob = list(rect_gr)
     )
 
+# Create data frame with position of countries and assign the flag mask
 masks <- euro22 %>% 
   select(x, y) %>% 
   mutate(mask = as.raster(matrix("black")))
