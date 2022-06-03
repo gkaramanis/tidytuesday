@@ -1,0 +1,266 @@
+---
+title: "The 2022 Axios Harris Poll 100 reputation rankings"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+library(reactablefmtr)
+library(htmltools)
+library(crosstalk)
+
+# Function to convert score to color
+return_color <- function(number){
+  if (is.na(number)) {
+    return('#FAFAFA')
+  } else if (number > 80) {
+    return('#9E84F7')
+  } else if (number > 75) {
+    return('#80C7FA')
+  }  else if (number > 70) {
+    return('#87DFA9')
+  }  else if (number > 65) {
+    return('#F8D473')
+  }  else if (number > 55) {
+    return('#F19882')
+  }  else if (number > 50) {
+    return('#DB5773')
+  } else if (number > 0) {
+    return('#8c1308')
+  }
+}
+
+# Read in datasets
+poll <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/poll.csv')
+
+reputation <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-31/reputation.csv')
+
+
+# Create dataframe with company and industry
+industries <- reputation %>% 
+  distinct(company, industry)
+
+ranks <- poll %>% 
+  rowwise() %>% 
+  # get colors for previous years' scores
+  mutate(rq_colors = list(return_color(rq))) %>% 
+  ungroup() %>% 
+  group_by(company) %>% 
+  # make lists of previous scores and colors
+  mutate(
+    trends = list(rq),
+    rq_colors = list(rq_colors)
+  ) %>% 
+  ungroup() %>% 
+  select(`2022_rank`, company, trends, `2022_rq`, rq_colors, change) %>% 
+  distinct() %>% 
+  # combine with industries
+  left_join(industries) %>% 
+  rowwise() %>% 
+  # get colors for 2022 scores
+  mutate(col = return_color(`2022_rq`)) %>% 
+  ungroup()
+
+rep <- reputation %>% 
+  rowwise() %>% 
+  mutate(name = str_to_sentence(name),
+         col = return_color(score)) %>% 
+  ungroup()
+
+
+# create shared dataset for crosstalk
+crosstalk_data <- SharedData$new(ranks)
+
+# crosstalk industry filter
+industry_filter <- filter_select(
+  id = "industry",
+  label = "FILTER BY",
+  sharedData = crosstalk_data,
+  group = ~ industry,
+  multiple = TRUE
+)
+
+
+# Table
+t <- reactable(
+  crosstalk_data, 
+  pagination = FALSE,
+  width = 800,
+  defaultColDef = colDef(
+    headerVAlign = "bottom",
+    align = "center",
+    headerStyle = list(fontWeight = "normal", fontSize = "14px")),
+  
+  # Theme
+  theme = reactableTheme(style = list(fontFamily = "Fira Sans", fontSize = "14px")),
+  
+  # Columns
+  columns = list(
+    # 2022 rank
+    `2022_rank` = colDef(name = "2022<br>RANK",
+                         minWidth = 40,
+                         html = TRUE,
+                         style = JS(
+                           "function(rowInfo) {
+                           var col = rowInfo.row[`col`]
+                        
+                              return {borderLeft:'8px solid', borderLeftColor: col, fontFamily:'JetBrains Mono', fontSize:'14px'}
+                            }"),
+                         align = "left",
+                         cell = function(value) {
+                           paste0("#", value)
+                         }),
+    # 2022 score
+    `2022_rq` = colDef(name = "2022<br>SCORE",
+                       html = TRUE,
+                        style = JS(
+                           "function(rowInfo) {
+                           var col = rowInfo.row[`col`]
+                        
+                              return {color: col, fontFamily:'JetBrains Mono', fontSize:'14px'}
+                            }"),
+                       minWidth = 60,
+                       cell = function(value) {
+                         sprintf("%3.1f", value)
+                       }
+                       ),
+    
+    # Change in rank
+    change = colDef(name = "CHANGE<br>IN RANK",
+                    html = TRUE,
+                    style = list(fontFamily = "JetBrains Mono", fontSize = 14),
+                    align = "center",
+                    minWidth = 60,
+                    cell = function(value) {
+                      case_when(
+                        is.na(value) ~ "-",
+                        value < 0 ~ str_replace(value, "-", "↘︎ "),
+                        value > 0 ~ paste0("↖︎︎ ", value),
+                        value == 0 ~ "0"
+                      )
+                    }),
+    
+    trends = colDef(name = "TREND<br>2017-22", 
+                    html = TRUE,
+                    # create trends chart with SVG
+                    cell = JS(
+          "function(rowInfo) {
+            var scores = rowInfo.row[`trends`]
+            var colors = rowInfo.row[`rq_colors`]
+          
+          return '<svg width=60 height=20>' +
+          '<rect x=10 y=' + scores[0]/5 + ' width=10 height=4 fill=' + colors[0] + '></rect>' +
+          '<rect x=20 y=' + scores[1]/5 + ' width=10 height=4 fill=' + colors[1] + '></rect>' +
+          '<rect x=30 y=' + scores[2]/5 + ' width=10 height=4 fill=' + colors[2] + '></rect>' +
+          '<rect x=40 y=' + scores[3]/5 + ' width=10 height=4 fill=' + colors[3] + '></rect>' +
+          '<rect x=50 y=' + scores[4]/5 + ' width=10 height=4 fill=' + colors[4] + '></rect>' +
+          '</svg>'
+          
+          }")
+    ),
+                    
+    # Hide industry, col, rq_colors
+    industry = colDef(show = FALSE),
+    col = colDef(show = FALSE),
+    rq_colors = colDef(show = FALSE),
+    
+    # Company
+    company = colDef(name = "COMPANY",
+                     align = "left",
+                     minWidth = 160
+    )
+  ),
+  
+  # Details (nested tables)
+  details = function(index) {
+    company_data <- rep[rep$company == ranks$company[index], ]
+    
+    htmltools::div("Category score for ", company_data$company[index],
+                   style = "padding: 20px; padding-left: 60px; padding-right: 140px; background-color: #FAFAFA; font-size: 14px; color: #757575",
+                   
+                   company_data %>% 
+                     mutate(bars = score) %>% 
+                     select(rank, name, bars, score, col) %>% 
+                     reactable(
+                       sortable = FALSE,
+                       theme = reactableTheme(
+                         style = list(backgroundColor = "#FAFAFA", fontFamily = "JetBrains Mono", fontSize = 14)
+                         ),
+                       defaultColDef = colDef(
+                         headerStyle = list(display = "none"),
+                         style = list(fontSize = "14px")
+                       ),
+                       columns = list(
+                         # Category
+                         name = colDef(
+                           style = list(color = "black")
+                         ),
+                         # Category ranks
+                         rank = colDef(
+                           minWidth = 30,
+                           align = "left",
+                           cell = function(value) {
+                             paste0("#", value)
+                           }
+                           ),
+                         
+                         # Hide col
+                         col = colDef(show = FALSE), 
+                         # Score bars
+                         bars = colDef(
+                           cell = data_bars(., text_position = "none", fill_color_ref = "col", max_value = 100)
+                         ),
+                         
+                         # Category scores
+                         score = colDef(
+                           cell = function(value) {
+                             sprintf("%3.1f", value)
+                           },
+                           minWidth = 40,
+                           html = TRUE,
+                           style = JS(
+                           "function(rowInfo) {
+                           var col = rowInfo.row[`col`]
+                        
+                              return {color: col}
+                            }")
+                         )
+                       ),
+                       
+                       borderless = TRUE
+                     )
+    )
+  }
+)
+
+
+# Display filter and legend
+div(bscols(
+  widths = c(8, 4),
+  # Legend
+    a(HTML("<span style='font-size: 14px'>GUIDE TO SCORES<br><span style='font-family: JetBrains Mono'><span style='color: #9E84F7; font-size: 20px'>■</span>&#8239;Excellent <span style='color: #80C7FA; font-size: 20px'>■</span>&#8239;Very good <span style='color: #87DFA9; font-size: 20px'>■</span>&#8239;Good <br><span style='color: #F8D473; font-size: 20px'>■</span>&#8239;Fair <span style='color: #F19882; font-size: 20px'>■</span>&#8239;Poor <span style='color: #DB5773; font-size: 20px'>■</span>&#8239;Very poor</span></span>")),
+  # Filter
+    industry_filter
+    )
+)
+
+# Display table
+div(t)
+
+tags$link(href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap", rel="stylesheet")
+tags$link(href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=JetBrains+Mono&display=swap", rel="stylesheet")
+```
+
+```{css, echo=FALSE}
+.trends {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#industry {
+  font-size: 14px;
+}
+```
