@@ -2,16 +2,17 @@ library(tidyverse)
 library(camcorder)
 library(scico)
 
-gg_record(dir = "tidytuesday-temp", device = "png", width = 16, height = 9, units = "in", dpi = 320)
+gg_record(dir = "tidytuesday-temp", device = "png", width = 16, height = 10, units = "in", dpi = 320)
 
 # Read in drought data
 drought_fips <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-14/drought-fips.csv')
 
 # Shapefile from https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
-us <- sf::read_sf(here::here("2022/2022-week_25/data/cb_2018_us_county_20m/cb_2018_us_county_20m.shp")) %>% 
+us <- sf::read_sf(here::here("2022/2022-week_24/data/cb_2018_us_county_20m/cb_2018_us_county_20m.shp")) %>% 
   janitor::clean_names() %>% 
   filter(!statefp %in% c("02", "15", "72")) %>% 
-  mutate(fips = paste0(statefp, countyfp))
+  mutate(fips = paste0(statefp, countyfp)) %>% 
+  sf::st_transform(crs = 2163)
 
 # Calculate mean DCSI by year and month, filter > 2012
 month_fips <- drought_fips %>% 
@@ -45,6 +46,7 @@ ggplot(fips_us) +
   geom_sf(aes(fill = mean_dsci, geometry = geometry), color = NA) +
   geom_sf(data = us_outline, aes(geometry = geometry), fill = NA, size = 0.25) +
   scale_fill_scico(palette = "bilbao") +
+  coord_sf(crs = 2163) +
   facet_grid(vars(year), vars(month)) +
   labs(
     title = "Drought Severity and Coverage Index",
