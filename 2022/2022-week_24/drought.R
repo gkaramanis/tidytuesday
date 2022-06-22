@@ -28,7 +28,8 @@ month_fips <- drought_fips %>%
 
 # Combine with shapefile
 fips_us <- us %>% 
-  right_join(month_fips)
+  right_join(month_fips) %>% 
+  filter(!is.na(statefp))
 
 # Create US outline and combine with years and months
 ym <- month_fips %>% 
@@ -36,7 +37,7 @@ ym <- month_fips %>%
 
 us_outline <- sf::st_union(us) %>% 
   as.data.frame() %>% 
-  bind_cols(ym)
+  bind_cols(ym) 
 
 # Fonts
 f1 <- "Outfit"
