@@ -44,4 +44,4 @@ ggplot(decade_routes) +
     plot.margin = margin(20, 20, 20, 20)
   ) 
 
-ggsave(here::here("2020-week25", "plots", "slavery.png")), dpi = 320)
+ggsave(here::here("2020-week25", "plots", "slavery.png"), dpi = 320)
