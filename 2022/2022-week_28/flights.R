@@ -57,12 +57,14 @@ arr_y1_all <- sum(arr_y1$arr_month)
 tot_arr_y2 <- arr_y2 %>% 
   group_by(month) %>% 
   summarise(arr_tot = sum(arr_month), month_mon) %>% 
-  ungroup()
+  ungroup() %>% 
+  distinct()
 
 tot_arr_y1 <- arr_y1 %>% 
   group_by(month) %>% 
   summarise(arr_tot = sum(arr_month), month_mon) %>% 
-  ungroup()
+  ungroup() %>% 
+  distinct()
 
 # Fonts
 f1 <- "Input Mono Narrow"
@@ -88,12 +90,15 @@ ggplot(arr_y1) +
   annotate("text", x = 14.5, y = 42.7, label = "ARRIVALS", size = 5.5, fontface = "bold", family = f2) +
   annotate("text", x = 14.5, y = 42.2, label = y2, size = 10, fontface = "bold", family = f2) +
   annotate("text", x = 14.5, y = 41.65, label = "GREECE", size = 6.3, fontface = "bold", family = f2) +
-  annotate("text", x = 13, y = 41.2, label = str_wrap(paste0("Arrivals to Greek airports in 2022 are at pre-pandemic levels. From January to April 2022 a total of ", scales::number(arr_y2_all), " flights arrived to Greece, compared to ", scales::number(arr_y1_all), " flights during the same period in 2019."), 29), size = 3,  family = f3, lineheight = 0.95, hjust = 0, vjust = 1, color = "grey20") +
+  annotate("text", x = 13, y = 41.2, label = str_wrap(paste0("Arrivals to Greek airports in 2022 are at pre-pandemic levels. From January to May 2022 a total of ", scales::number(arr_y2_all), " flights arrived to Greece, compared to ", scales::number(arr_y1_all), " flights during the same period in 2019."), 29), size = 3,  family = f3, lineheight = 0.95, hjust = 0, vjust = 1, color = "grey20") +
   # All arrivals chart below subtitle
   geom_text(data = tot_arr_y2, aes(x = 13, y = 39 - month/4, label = month_mon), hjust = 0, size = 2.5, family = f1, color = "grey25") +
   geom_segment(data = tot_arr_y2, aes(x = 13.45, y = 39 - month/4, xend = 13 + arr_tot/8000, yend = 39 - month/4), size = 0.5, color = "grey25") +
+  # Grid and axis
+  annotate("tile", x = 13.45 + seq(5e3, 20e3, 5e3)/8000, y = 38.25, height = 1.1, width = 0.01, fill = "grey97") +
+  annotate("text", x = 13.45 + seq(5e3, 20e3, 5e3)/8000, y = 37.6, label = scales::number(seq(5e3, 20e3, 5e3)), size = 1.5) +
   geom_tile(data = tot_arr_y1, aes(x = 13 + arr_tot/8000, y = 39 - month/4, width = 0.04, height = 0.1), fill = "grey25") +
-  annotate("text", x = 13, y = 37.2, label = "Arrivals to all Greek airports\nin 2022 (horizontal lines) and\n2019 (vertical lines)", hjust = 0, vjust = 1, family = f3, size = 2.5, lineheight = 0.95) +
+  annotate("text", x = 13, y = 37.2, label = "Monthly arrivals to all Greek airports\nin 2022 (horizontal lines) and 2019\n(vertical lines)", hjust = 0, vjust = 1, family = f3, size = 2.5, lineheight = 0.95, color = "grey20") +
   # Caption
   annotate("text", x = 13, y = 34.4, label = "Source: Eurocontrol · Graphic: Georgios Karamanis", hjust = 0, vjust = 1, family = f3, size = 2, color = "grey40") +
   # Scales, etc
