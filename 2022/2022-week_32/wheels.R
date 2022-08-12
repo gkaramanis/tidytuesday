@@ -63,8 +63,8 @@ p <- ggplot(wheels_chart) +
   geom_text(aes(x, y - 0.45, label = str_wrap(wheel_label, 20)), size = 2, vjust = 0, lineheight = 0.9, family = f2) +
   # Title, subtitle, caption
   annotate("text", -1.65, 9.45, label = "Ferris\nWheels", hjust = 0, vjust = 1, size = 11, family = f1, fontface = "bold", lineheight = 0.9, color = "purple4") +
-  annotate("text", -1.65, 8.3, label = str_wrap("Country, diameter, status and type of the 73 ferris wheels in the ferriswheels package. 'Planned', 'design/finance', 'under construction', 'delayed' and 'SBNO' statuses were incorporated into 'In development'. 'Moved' status was included in 'Relocated'.", 23), hjust = 0, vjust = 1, size = 4, family = f1, lineheight = 1, color = "grey20") +
-  annotate("text", -1.6, 0.55, label = "Source: ferriswheels package\nGraphic: Georgios Karamanis", hjust = 0, vjust = 0, size = 2.8, family = f1, color = "grey30") +
+  annotate("text", -1.65, 8.3, label = str_wrap("Country, diameter, status and type of the 73 Ferris wheels in the ferriswheels package. 'Planned', 'design/finance', 'under construction', 'delayed' and 'SBNO' statuses were incorporated into 'In development'. 'Moved' status was included in 'Relocated'.", 23), hjust = 0, vjust = 1, size = 4, family = f1, lineheight = 1, color = "grey20") +
+  annotate("text", -1.6, 0.55, label = "Source: ferriswheels R package\nGraphic: Georgios Karamanis", hjust = 0, vjust = 0, size = 2.8, family = f1, color = "grey30") +
   # Extra legend
   geom_regon(data = NULL, aes(x0 = -1.5, y0 = 1.3, r = 0.09, sides = 5, angle = 0), fill = NA, color = "grey40", size = 0.4) +
   annotate("text", -1.33, 1.35, label = "Unknown diameter", hjust = 0, vjust = 1, size = 3, family = f1, color = "grey20") +
