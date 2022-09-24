@@ -46,7 +46,7 @@ ggplot() +
   facet_wrap(vars(name)) +
   labs(
     title = "Bigfoot or Bear?",
-    subtitle = str_wrap("Locations of more than 4,000 geocoded Bigfoot sighting reports from 1869 to 2021, broken down by the name that appears in the report. The shaded area shows the known  range of the American black bear (USGS, 2001).", 110),
+    subtitle = str_wrap("Locations of more than 4,000 geocoded Bigfoot sighting reports from 1869 to 2021, broken down by the name that appears in the report. The shaded area shows the known range of the American black bear (USGS, 2001).", 110),
     caption = "Source: Bigfoot Field Researchers Organization & USGS · Graphic: Georgios Karamanis"
   ) +
   theme_void(base_family = f1) +
