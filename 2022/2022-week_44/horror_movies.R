@@ -20,7 +20,7 @@ zombie_highl <- zombie %>%
       original_title == "Shaun of the Dead"
          )
 
-# Nathan Wright
+# cottonbro studio
 # https://www.pexels.com/photo/zombies-behind-shabby-door-5435562/
 img <- "https://images.pexels.com/photos/5435562/pexels-photo-5435562.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=3"
 
