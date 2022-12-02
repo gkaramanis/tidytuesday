@@ -5,7 +5,7 @@ library(cowplot)
 
 big_mac <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-12-22/big-mac.csv')
 
-mapping <- read_csv(here::here("2020-week52", "data", "mapglyphs-mapping.csv"))
+mapping <- read_csv(here::here("2020/2020-week52", "data", "mapglyphs-mapping.csv"))
 
 big_dotplot <- big_mac %>% 
   filter(date == min(date) | date == max(date)) %>% 
