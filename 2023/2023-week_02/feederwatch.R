@@ -68,7 +68,7 @@ w / s +
   plot_layout(guides = "collect") +
   plot_annotation(
     title = "Observations of common grackle",
-    subtitle = "Gi* value for cells with p-value ≥ 0.05",
+    subtitle = "Gi* value for cells with p-value < 0.05",
     caption = "Source: Project FeederWatch ܍ Photo: Tina Nord ܍ Graphic: Georgios Karamanis",
     theme = theme(
       plot.margin = margin(10, 40, 10, 40),
