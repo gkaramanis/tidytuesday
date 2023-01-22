@@ -19,8 +19,8 @@ bmi <- olympics %>%
   summarise(
     # sport = sport,
     bmi_m = mean(bmi, na.rm = TRUE),
-    weight_m = median(weight, na.rm = TRUE),
-    height_m = median(height, na.rm = TRUE),
+    weight_m = mean(weight, na.rm = TRUE),
+    height_m = mean(height, na.rm = TRUE),
     bmi_sd = sd(bmi, na.rm = TRUE),
     weight_sd = sd(weight, na.rm = TRUE),
     height_sd = sd(height, na.rm = TRUE)
