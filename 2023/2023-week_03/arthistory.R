@@ -33,10 +33,10 @@ ggplot(art) +
   MetBrewer::scale_color_met_c("Tam", direction = 1) +
   annotate("text", x = 40, y = -1, label = "Equal number of exhibitions", family = f1, color = "steelblue") +
   annotate("text", x = 22, y = 24.5, label = "Exhibitions held only\nby The Whitney", family = f1, angle = 45, lineheight = 0.9, color = "steelblue") +
-  annotate("text", x = 37, y = -39.5, label = "Exhibitions held\nonly by MoMa", family = f1, angle = -45, lineheight = 0.9, color = "steelblue") +
+  annotate("text", x = 37, y = -39.5, label = "Exhibitions held\nonly by MoMA", family = f1, angle = -45, lineheight = 0.9, color = "steelblue") +
   annotate("text", x = 30, y = -6, label = "More exhibitions in total →", family = f1, fontface = "bold", color = "steelblue", size = 5) +
   annotate("text", x = 30, y = 3, label = "⬉\nEvolution of exhibitions\nthrough the years", family = f1, color = "grey70", lineheight = 0.9, hjust = 0) +
-  annotate("text", x = -5, y = -30, label = "Exhibitions held by\nThe Whitney and MoMa", hjust = 0, size = 8.5, family = f2, fontface = "bold", lineheight = 1) +
+  annotate("text", x = -5, y = -30, label = "Exhibitions held by\nThe Whitney and MoMA", hjust = 0, size = 8.5, family = f2, fontface = "bold", lineheight = 1) +
   annotate("text", x = -5, y = -37, label = "For artists in Janson’s History of Art\nand Gardner’s Art Through the Ages\n1926—2020", hjust = 0, size = 5, family = f1, lineheight = 1.1, color = "grey20") +
   annotate("text", x = -5, y = -45, label = "Source: Lemus S, Stam H (2022). arthistory: Art History Textbook Data\nGraphic: Georgios Karamanis", hjust = 0, family = f1, color = "grey50", lineheight = 1) +
   scale_shape_manual(values = c(4, 18, 3)) +
