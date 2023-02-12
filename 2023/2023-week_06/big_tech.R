@@ -22,12 +22,13 @@ stock <- big_tech_stock_prices %>%
       TRUE ~ simple_name
     ),
     path = here::here("2023/2023-week_06/img", paste0(simple_name, ".png"))
-    )
+    )  %>% 
+  mutate(path = fct_rev(path))
 
 pal <- MetBrewer::met.brewer("Tam", direction = -1)[1:8]
 f1 <- "Outfit"
 
-annot_y = "/Users/georgios/SynologyDrive/R/tidytuesday/2023/2023-week_06/img/salesforce.png"
+annot_y = "/Users/georgios/SynologyDrive/R/tidytuesday/2023/2023-week_06/img/cisco.png"
 
 ggplot(stock) +
   geom_raster(aes(x = date, y = path, fill = adj_close)) +
