@@ -35,7 +35,7 @@ ggplot(us_cc %>% filter(study_year > 2009)) +
   geom_sf(aes(fill = cc_pc_inc, color = cc_pc_inc), linewidth = 0.05) +
   coord_sf(xlim = c(-2500000, 2500000), ylim = c(-2300000,  730000)) +
   scale_color_gradientn(colours = cet_pal(5, name = "l18"), na.value = "grey60", guide = "none") +
-  scale_fill_gradientn(colours = cet_pal(5, name = "l18"), na.value = "grey60", guide = guide_colorbar(title.position = "top")) +
+  scale_fill_gradientn(colours = cet_pal(5, name = "l18"), na.value = "grey60", guide = guide_colorbar(title.position = "top"), labels = scales::percent) +
   facet_wrap(vars(study_year)) +
   labs(
     title = "Childcare Prices as a Share of Median Family Income, 2010-2018",
