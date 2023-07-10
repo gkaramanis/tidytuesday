@@ -61,7 +61,7 @@ p <- ggplot(markers_proj) +
 
 t <- ggplot() +
   geom_text(aes(0, 0, label = "U.S. Historical Markers"), family = f2, size = 9.5, hjust = 0, fontface = "bold") +
-  geom_text(aes(0, -0.55, label = "Location of historical markers in The Historical Marker\nDatabase by decade erected. The 3 states with the most\nmarkers are shown for each decade."), family = f2, size = 4, hjust = 0, lineheight = 0.9) +
+  geom_text(aes(0, -0.55, label = "Location of new historical markers in The Historical Marker\nDatabase by decade erected. The 3 states with the most\nnew markers are shown for each decade."), family = f2, size = 4, hjust = 0, lineheight = 0.9) +
   geom_text(aes(0, -1, label = "Source: The Historical Marker Database · Graphic: Georgios Karamanis"), family = f1, size = 3, hjust = 0) +
   scale_x_continuous(limits = c(0, 15)) +
   scale_y_continuous(limits = c(-1, 0.5)) +
