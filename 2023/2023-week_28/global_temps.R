@@ -21,7 +21,7 @@ f2 <- "Ruda"
 
 ggplot(glob_temp_l) +
   geom_tile(aes(month, Year, fill = value, color = value)) +
-  shadowtext::geom_shadowtext(data = annot, aes(x = x, y = y, label = y), family = f2, bg.color = alpha("white", 1), fontface = "bold", color = "black", size = 3.5) +
+  shadowtext::geom_shadowtext(data = annot, aes(x = x, y = y, label = paste0("·\n", y)), family = f2, bg.color = alpha("white", 1), fontface = "bold", color = "black", size = 3.5, vjust = 0.8, lineheight = 0.9) +
   scale_fill_gradientn(colors = pal, rescaler = ~ scales::rescale_mid(.x, mid = 0)) +
   scale_color_gradientn(colors = pal, rescaler = ~ scales::rescale_mid(.x, mid = 0)) +
   scale_y_continuous(limits = c(1875, 2023)) +
