@@ -30,15 +30,16 @@ largest <- states_same %>%
 all_cities <- bind_rows(capitals, largest) %>% 
   distinct()
 
-cities_distance <- bind_cols(capitals %>% select(state, capital = name, lon1 = longitude, lat1 = latitude), 
-                             largest %>% select(largest = name, lon2 = longitude, lat2 = latitude)) %>%
+cities_distance <- bind_cols(capitals %>% select(state, capital = name, lon1 = longitude, lat1 = latitude), largest %>% select(largest = name, lon2 = longitude, lat2 = latitude)) %>%
   rowwise() %>% 
   mutate(
     distance = geosphere::distHaversine(c(lon1, lat1), c(lon2, lat2)),
     x = lon1 + (lon1 - lon2)/2,
     y = min(c(lat1, lat2)) - 1,
     dist_km = if_else(distance != 0, paste(round(distance/1000), "km"), ""),
-    dist_label = paste0(state, if_else(distance > 0, ", ", ""), dist_km)
+    dist_mi = if_else(distance != 0, paste(round(distance/1000 * 0.621371), "mi"), ""),
+    dist_label = paste0(state, if_else(distance > 0, ", ", ""), dist_km),
+    dist_label_mi = paste0(state, if_else(distance > 0, ", ", ""), dist_mi)
   )
 
 us <- rgeoboundaries::gb_adm1("usa")
@@ -62,6 +63,8 @@ p <- function(state_p) {
     coord_sf(crs = "+proj=laea +lat_0=30 +lat_1=40 +lon_0=-100 +datum=WGS84 +units=m +no_defs", default_crs = sf::st_crs(4326), clip = "off") +
     labs(
       title = cities_distance[cities_distance$state == state_p, ]$dist_label
+      # Miles:
+      # title = cities_distance[cities_distance$state == state_p, ]$dist_label_mi
     ) +
     theme_minimal() +
     theme(
