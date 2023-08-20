@@ -55,8 +55,8 @@ ggplot(sp, aes(x = x, y = y)) +
   scale_x_continuous(limits = c(-620, 620)) +
   coord_fixed() +
   labs(
-    title = "Tornados, 1950-2022",
-    subtitle = str_wrap("The size of point represents the number of tornadoes recorded per day, and the color the highest magnitude* for that day"),
+    title = "US Tornadoes, 1950-2022",
+    subtitle = str_wrap("The size of each point represents the number of tornadoes recorded per day, and its color the highest magnitude* for that day"),
     caption = "Source: Storm Prediction Center · Graphic: Georgios Karamanis"
   ) +
   theme_void(base_family = f1) +
