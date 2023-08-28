@@ -37,7 +37,7 @@ ref_top <- ref_eu_year %>%
   summarise(total = sum(total)) %>% 
   ungroup() %>% 
   arrange(-total) %>% 
-  filter(total > 1e5) 
+  filter(total >= 1e5) 
 
 # Annotations for highlighted regions
 annot <- tribble(
