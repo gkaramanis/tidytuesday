@@ -4,7 +4,7 @@ library(camcorder)
 
 gg_record(dir = "tidytuesday-temp", device = "png", width = 8, height = 8, units = "in", dpi = 320)
 
-country_regions <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-12/country_regions.csv')
+all_countries <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-12/all_countries.csv')
 
 eu <- country_regions %>% 
   filter(country_iso2 %in% europe_countries_grid1$code) %>% 
@@ -50,8 +50,8 @@ ggplot(eu_spiral) +
   shadowtext::geom_shadowtext(aes(0, 0, label = paste0(country_name, "\n", round(hours_per_day_combined * 60), "'")), family = f1, lineheight = 0.9, stat = "unique", size = 3, color = "#37434C", bg.color = "grey99", bg.r = 0.2) +
   scale_color_stepsn(colors = viridisLite::turbo(5), breaks = seq(60, 150, 15), limits = c(60, 150), guide = guide_colorsteps(title.hjust = 0.5, title.position = "top", show.limits = TRUE)) +
   labs(
-    color = "Average daily time\nspent on meals (minutes)",
-    caption = "Source: The Human Chronome Project · Graphic: Georgios Karamanis"
+    color = "Average daily time\nspent on meals* (minutes)",
+    caption = paste0("Source: The Human Chronome Project · Graphic: Georgios Karamanis\n", str_wrap("*Activities centred on eating and drinking, including associated socializing. Eating and drinking. Eating meals/snacks. Pubs and restaurants. Coffee, refreshments. Meals associated with work. Visits to restaurant, café, bar.", width = 120))
   ) +
   coord_fixed(clip = "off") +
   facet_geo(vars(country_iso2), grid = "europe_countries_grid1") +
