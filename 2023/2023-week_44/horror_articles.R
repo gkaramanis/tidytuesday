@@ -8,8 +8,10 @@ gg_record(dir = "tidytuesday-temp", device = "png", width = 8, height = 8, units
 
 horror_articles <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-10-31/horror_articles.csv')
 
-udpipe_model <- udpipe_download_model(language = "english") %>%
-  udpipe_load_model()
+# Uncomment to download model
+# udpipe_download_model(language = "english")
+
+udpipe_model <- udpipe_load_model(here::here("english-ewt-ud-2.5-191206.udpipe"))
 
 horror_annot <- udpipe_annotate(udpipe_model, x = horror_articles$claim) %>% 
   as.data.frame()
