@@ -36,7 +36,7 @@ ggplot() +
   coord_sf(expand = FALSE) +
   labs(
     title = "US House Election Results 2022",
-    subtitle = "Party of the candidate with the most votes for each congressional district",
+    subtitle = "Party with the most votes by congressional district",
     caption = "Source: MIT Election Data and Science Lab · Shapefiles by Daniel Donner · Graphic: Georgios Karamanis"
   ) +
   theme_void(base_family = f1) +
