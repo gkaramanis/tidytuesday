@@ -23,6 +23,11 @@ states <- sf::read_sf(here::here("2023/2023-week_45/data/HexSTv30wm/"))
 
 states_lab <- states %>% 
   janitor::clean_names() %>% 
+  mutate(
+    i = row_number(),
+    statename = if_else(i == 21, "Indiana", statename),
+    stateab = if_else(i == 21, "IN", stateab)
+    ) %>% 
   sf::st_centroid()
 
 f1 <- "Founders Grotesk Condensed"
