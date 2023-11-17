@@ -10,21 +10,25 @@
 # 
 # montage -density 300 -tile 9x0 -border 0 -background lightgrey *.png year.png
 
+
+Change year folder!
+  
+  
 library(dplyr)
 library(stringr)
 
-plots <- list.files(c("2021", "2022"), pattern = "png", recursive = TRUE, full.names = TRUE) %>% 
+plots <- list.files(c("2022", "2023"), pattern = "png", recursive = TRUE, full.names = TRUE) %>% 
   as_tibble() %>% 
   rename("from" = "value") %>% 
   filter(str_detect(from, "plots")) %>% 
-  mutate(to = paste0("yearly-roundup/third-year/", str_replace_all(from, "/", "_")))
+  mutate(to = paste0("yearly-roundup/fourth-year/", str_replace_all(from, "/", "_")))
 
 file.copy(plots$from, plots$to)
 
-dir.create("yearly-roundup/third-year/resized/")
+dir.create("yearly-roundup/fourth-year/resized/")
 
 # Remove unneeded images before next step
 
-system('sips -Z 800 yearly-roundup/third-year/*.png --out \"yearly-roundup/third-year/resized/\"')
+system('sips -Z 800 yearly-roundup/fourth-year/*.png --out \"yearly-roundup/fourth-year/resized/\"')
 
-system('/opt/homebrew/bin//montage -density 300 -tile 9x0 -geometry 400x400+10+10 -border 0 -background lightgrey yearly-roundup/third-year/resized/*.png yearly-roundup/third-year/third-year.png')
+system('/opt/homebrew/bin//montage -density 300 -tile 9x0 -geometry 400x400+10+10 -border 0 -background lightgrey yearly-roundup/fourth-year/resized/*.png yearly-roundup/fourth-year/fourth-year.png')
