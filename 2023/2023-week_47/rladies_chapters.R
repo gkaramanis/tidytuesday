@@ -144,4 +144,4 @@ for(i in 2:gif_l-1){
 }
 
 # Write final animation
-image_write_video(final_gif, framerate = 8, path = here::here("2023/2023-week_47/plots/rladies.mp4"))
+image_write_video(final_gif, framerate = 8, path = here::here("2023/2023-week_47/plots/rladies_chapters.mp4"))
