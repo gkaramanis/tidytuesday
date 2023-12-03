@@ -54,15 +54,15 @@ ggraph(drwho_graph, layout = "fabric") +
   coord_cartesian(clip = "off") +
   labs(
     title = "DOCTOR WHO",
-    subtitle = "<span style='color:purple4; font-family:Movement'>directors</span> and <span style='color:orange4; font-family:Sharpie'>WRITERS</span><br>that have collaborated<br>3 times or more<br>(2005-2022)",
+    subtitle = "Pairs of <span style='color:purple4; font-family:Movement'>directors</span> and <span style='color:orange4; font-family:Sharpie'>WRITERS</span><br>that have collaborated with<br>each other 3 times or more<br>(2005–2022)",
     caption = "Source: Wikipedia · Graphic: Georgios Karamanis"
   ) +
   theme_void(base_family = f3) +
   theme(
     legend.position = "none",
-    plot.background = element_rect(fill = "grey99", color = NA),
+    plot.background = element_rect(fill = "#F5F8FB", color = NA),
     plot.margin = margin(10, 30, 10, 40),
-    plot.title = shadowtext::element_shadowtext(face = "bold", size = 36, hjust = 1, margin = margin(10, 0, 30, 0), color = "white"),
-    plot.subtitle = element_markdown(face = "bold", size = 20, hjust = 1, lineheight = 1.2, margin = margin(5, 0, -95, 0)),
-    plot.caption = element_text(hjust = 0, face = "bold")
+    plot.title = shadowtext::element_shadowtext(face = "bold", size = 40, hjust = 1, margin = margin(10, 0, 30, 0), color = "white"),
+    plot.subtitle = element_markdown(face = "bold", size = 19, hjust = 1, lineheight = 1.2, margin = margin(5, 0, -95, 0), color = "#00203c"),
+    plot.caption = element_text(hjust = 0, face = "bold", color = "#00203c")
   )
