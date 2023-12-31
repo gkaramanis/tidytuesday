@@ -26,7 +26,7 @@ ggplot(holiday_episodes_sel) +
   MetBrewer::scale_color_met_c("Hokusai1", direction = -1) +
   coord_fixed() +
   labs(
-    title = "How well do holiday TV episodes perform?",
+    title = "How well do holiday TV episodes of comedies perform?",
     subtitle = str_wrap("Weighted average IMDb ratings of holiday episodes compared to the series overall. Episodes with the most significant deviation from the series rating are labeled.", 90),
     caption = "Source: IMDb · Graphic: Georgios Karamanis",
     x = "Average rating of series",
