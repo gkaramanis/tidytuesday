@@ -13,7 +13,7 @@ full_paths <- data.frame(
     year = parse_number(path)
   )
 
-geoms <- read_dir(path = here::here(), pattern = "\\.R", recursive = TRUE) %>% 
+geoms <- read_dir(path = here::here(), pattern = "\\.R$", recursive = TRUE) %>% 
   left_join(full_paths) %>% 
   mutate(geom = str_extract(content, "geom_\\w+")) %>% # assumes one geom per line
   filter(!is.na(geom)) %>% 
