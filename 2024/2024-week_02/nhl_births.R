@@ -50,7 +50,7 @@ pb <- ggplot_build(p) %>%
 
 # Final plot
 ggplot(pb) +
-  # backgroud for flags
+  # Outline for flags
   geom_point(aes(x, y), size = 7, color = "#010101") +
   # flags
   geom_flag(aes(x, y, country = label), size = 5.4) +
