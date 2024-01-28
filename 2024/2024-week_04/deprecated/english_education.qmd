@@ -1,0 +1,103 @@
+---
+title: "english_education"
+author: "Georgios Karamanis"
+format: html
+editor: visual
+execute:
+  echo: false
+---
+
+```{r}
+# Credits:
+# https://www.ons.gov.uk/peoplepopulationandcommunity/educationandchildcare/articles/whydochildrenandyoungpeopleinsmallertownsdobetteracademicallythanthoseinlargertowns/2023-07-25
+# https://observablehq.com/@fil/experimental-plot-beeswarm
+```
+
+```{ojs}
+data = d3.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-01-23/english_education.csv")
+```
+
+```{ojs}
+viewof town = Inputs.select(data.map(d => d.ttwa11nm), {label: "Town", sort: true, unique: true})
+```
+
+```{ojs}
+Plot.plot({
+  facet: {data: data, y: "size_flag"},
+  x: { grid: true, label: "Educational attainment index score", domain: ["-12", "12"] },
+  y: { axis: null },
+  marks: [
+    beeswarmX(data, { 
+      x: (d) => "education_score", 
+      y: () => 0, 
+      fill: "white",
+      stroke: "black",
+      xStrength: 0.05,
+      yStrength: 1,
+      gap: 2,
+      ticks: 10
+    }),
+    Plot.ruleX(
+      data,
+      Plot.groupZ({ x: "median" }, { x: "education_score", stroke: "red" })
+    )
+  ]})
+  
+
+function beeswarmX(data, options = {}) {
+  return beeswarm(data, { ...options, direction: "x" });
+}
+
+function beeswarmY(data, options = {}) {
+  return beeswarm(data, { ...options, direction: "y" });
+}
+
+function beeswarm(
+  data,
+  { gap = 1, ticks = 50, dynamic, direction, xStrength = 0.8, yStrength = 0.05, ...options }
+) {
+  const dots = Plot.dot(data, options);
+  const { render } = dots;
+
+  dots.render = function () {
+    const g = render.apply(this, arguments);
+    const circles = d3.select(g).selectAll("circle");
+
+    const nodes = [];
+    const [cx, cy, x, y, forceX, forceY] =
+      direction === "x"
+        ? ["cx", "cy", "x", "y", d3.forceX, d3.forceY]
+        : ["cy", "cx", "y", "x", d3.forceY, d3.forceX];
+    for (const c of circles) {
+      const node = {
+        x: +c.getAttribute(cx),
+        y: +c.getAttribute(cy),
+        r: +c.getAttribute("r")
+      };
+      nodes.push(node);
+    }
+    const force = d3
+      .forceSimulation(nodes)
+      .force("x", forceX((d) => d[x]).strength(xStrength))
+      .force("y", forceY((d) => d[y]).strength(yStrength))
+      .force(
+        "collide",
+        d3
+          .forceCollide()
+          .radius((d) => d.r + gap)
+          .iterations(3)
+      )
+      .tick(ticks)
+      .stop();
+    update();
+    if (dynamic) force.on("tick", update).restart();
+    return g;
+
+    function update() {
+      circles.attr(cx, (_, i) => nodes[i].x).attr(cy, (_, i) => nodes[i].y);
+    }
+  };
+
+  return dots;
+}
+```
