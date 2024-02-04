@@ -59,4 +59,4 @@ groundhogs %>%
     early ~ px(120)
   ) %>% 
   tab_source_note(source_note = "Source: groundhog-day.com · Table: Georgios Karamanis") %>% 
-  gtsave_extra(here::here("2024/2024-week_05/plots/groundhogs.png"))
+  gtsave_extra(here::here("2024/2024-week_05/plots/groundhogs_full.png"))
