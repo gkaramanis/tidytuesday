@@ -30,7 +30,7 @@ beer_hex <- beer_production %>%
   select(n, starts_with("type")) %>% 
   set_names(c("n", paste0("year_", 2008:2019)))
 
-beer_glass <- read_csv(here::here("2020-week14", "data", "beer.csv")) %>% 
+beer_glass <- read_csv(here::here("2020/2020-week14", "data", "beer.csv")) %>% 
   mutate(
     x = round(x),
     y = round(400 - y)
