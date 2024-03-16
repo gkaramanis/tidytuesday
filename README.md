@@ -28,7 +28,7 @@ Code and plots of the submissions to the [#tidytuesday](https://github.com/rford
   <div class="column">
 	<a href="2021/2021-week8"><img src="2021/2021-week8/plots/employed.png"></a>
 	<a href="2022/2022-week_12"><img src="2022/2022-week_12/plots/babynames-VC.png"></a>
-	<a href="2021/2021-week36"><img src="2021/2021-week36/plots/formula1.png"></a>
+	<a href="2022/2022-week20"><img src="2022/2022-week_20/plots/eurovision.png"></a>
   	<a href="2020/2020-week31"><img src="2020/2020-week31/plots/penguins.png"></a>
 	<a href="2020/2020-week15"><img src="2020/2020-week15/plots/tour-de-france.png"></a>
 	<a href="2023/2023-week_45"><img src="2023/2023-week_45/plots/house.png"></a>
