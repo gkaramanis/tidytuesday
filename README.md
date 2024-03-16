@@ -34,7 +34,7 @@ Code and plots of the submissions to the [#tidytuesday](https://github.com/rford
 	<a href="2023/2023-week_45"><img src="2023/2023-week_45/plots/house.png"></a>
   	<a href="2020/2020-week08"><img src="2020/2020-week08/plots/food-consumption.png"></a>
 	<a href="2019/2019-week-51"><img src="2019/2019-week-51/plots/dog-friendliness.png"></a>
-	<a href="2023/2023-week_20"><img src="2023/2023-week_20/tornados.png"></a>
+	<a href="2023/2023-week_20"><img src="2023/2023-week_20/plots/tornados.png"></a>
 	<a href="2019/2019-week-33"><img src="2019/2019-week-33/emperors_table.png"></a>
 	<a href="2019/2019-week-32"><img src="2019/2019-week-32/bob_ross.png"></a>
 	<a href="2019/2019-week-23"><img src="2019/2019-week-23/ramen.png"></a>
