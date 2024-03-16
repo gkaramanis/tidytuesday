@@ -31,10 +31,10 @@ Code and plots of the submissions to the [#tidytuesday](https://github.com/rford
 	<a href="2021/2021-week36"><img src="2021/2021-week36/plots/formula1.png"></a>
   	<a href="2020/2020-week31"><img src="2020/2020-week31/plots/penguins.png"></a>
 	<a href="2020/2020-week15"><img src="2020/2020-week15/plots/tour-de-france.png"></a>
-	<a href="2021/2021-week1"><img src="2021/2023-week45/plots/house.png"></a>
+	<a href="2023/2023-week45"><img src="2023/2023-week45/plots/house.png"></a>
   	<a href="2020/2020-week08"><img src="2020/2020-week08/plots/food-consumption.png"></a>
 	<a href="2019/2019-week-51"><img src="2019/2019-week-51/plots/dog-friendliness.png"></a>
-	<a href="2019/2019-week-40"><img src="2023/2023-week-20/tornados.png"></a>
+	<a href="2023/2023-week-20"><img src="2023/2023-week-20/tornados.png"></a>
 	<a href="2019/2019-week-33"><img src="2019/2019-week-33/emperors_table.png"></a>
 	<a href="2019/2019-week-32"><img src="2019/2019-week-32/bob_ross.png"></a>
 	<a href="2019/2019-week-23"><img src="2019/2019-week-23/ramen.png"></a>
