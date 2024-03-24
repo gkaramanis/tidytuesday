@@ -1,7 +1,7 @@
 library(tidyverse)
 library(ggforce)
 
-source("/Users/georgios/Documents/Projects/R/ggembed/ggembed-functions.R")
+# source("/Users/georgios/Documents/Projects/R/ggembed/ggembed-functions.R")
 
 penguins.csv <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv')
 
@@ -21,13 +21,13 @@ med <- penguins.csv %>%
   mutate(species_n = 4 - cur_group_id()) %>% 
   ungroup()
 
-head_points <- read_csv(here::here("2020-week31", "data", "head.csv")) %>% 
+head_points <- read_csv(here::here("2020", "2020-week31", "data", "head.csv")) %>% 
   mutate(y = 400 - y,
          y = round(y / 5.5) - 32,
          x = round(x / 5.5) - 90,
          h = row_number()) 
 
-flipper_points <- read_csv(here::here("2020-week31", "data", "flipper.csv")) %>% 
+flipper_points <- read_csv(here::here("2020", "2020-week31", "data", "flipper.csv")) %>% 
   mutate(
     x = round(x / 1.61) - 370,
     y = (200 - round(y / 1.61)) - 200,
@@ -50,7 +50,7 @@ penguin <- head_points %>%
   ungroup() %>% 
   mutate(y = if_else(h > 1 & h < 7 & species == "Adelie", y * 1.4, y, missing = y))
 
-whites <- read_csv(here::here("2020-week31", "data", "whites.csv")) %>% 
+whites <- read_csv(here::here("2020", "2020-week31", "data", "whites.csv")) %>% 
   group_by(species_n) %>% 
   mutate(w = row_number())
 
@@ -107,4 +107,4 @@ ggplot(penguin) +
     plot.caption = element_text(family = fam2l, size = 7, hjust = 0.5, margin = margin(10, 0, -15, 0))
   ) 
 
-ggsave(here::here("2020-week31", "plots", "penguins-ggembed.png"), dpi = 320, height = 8, width = 8)
+# ggsave(here::here("2020-week31", "plots", "penguins-ggembed.png"), dpi = 320, height = 8, width = 8)
