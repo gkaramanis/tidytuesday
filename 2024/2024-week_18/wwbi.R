@@ -9,6 +9,9 @@ wwbi_series <- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
 
 wwbi_country <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-04-30/wwbi_country.csv')
 
+# Idea 
+#   https://www.cgdev.org/blog/three-lessons-world-banks-new-worldwide-bureaucracy-indicators-database
+
 income_gr_order <- c("Low", "Lower middle", "Upper middle", "High") 
 
 wwbi_pub <- wwbi_data %>% 
@@ -48,7 +51,7 @@ ggplot(wwbi_pub, aes(x = value, y = income_gr)) +
   colorspace::scale_fill_binned_sequential(palette = "Purples", guide = guide_colorsteps(show.limits = TRUE, title = "")) +
   facet_wrap(vars(indicator_name), ncol = 1) +
   labs(
-    title = "Public sector growth tied to income",
+    title = "Public sector size tied to income",
     subtitle = str_wrap("The data suggests that the size of the public sector is indeed linked to income level, despite significant variations among countries within income groups. The chart shows the most recent data available for each country, covering the period from 2001 to 2020. The orange-colored lines show where the 50%, 80%, and 95% of the values in each group fall.", 135),
     caption = "Source: Worldwide Bureaucracy Indicators (World Bank) · Graphic: Georgios Karamanis"
   ) +
@@ -68,7 +71,3 @@ ggplot(wwbi_pub, aes(x = value, y = income_gr)) +
     plot.subtitle = element_text(size = 12, margin = margin(0, 0, 10, 0)),
     plot.caption = element_text(margin = margin(10, 0, 0, 0))
   )
-  
-
-# Tag author and wwbi!
-#   https://www.cgdev.org/blog/three-lessons-world-banks-new-worldwide-bureaucracy-indicators-database
