@@ -8,7 +8,6 @@ gg_record(dir = "tidytuesday-temp", device = "png", width = 11, height = 8, unit
 # proposed_federal_holidays <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-06-18/proposed_federal_holidays.csv')
 
 ## Get public holidays from Nager.Date and write a CSV
-# holidays_2024 <- jsonlite::fromJSON("https://date.nager.at/api/v2/PublicHolidays/2024/US")
 # 
 # holidays <- function(year) {
 #   url <- paste0("https://date.nager.at/api/v3/PublicHolidays/", year, "/US")
