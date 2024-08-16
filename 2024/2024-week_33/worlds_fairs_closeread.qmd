@@ -114,6 +114,9 @@ From the Crystal Palace of 1851 to the futuristic pavilions of recent expos, the
 
 Data source: Wikipedia's [List of world expositions](https://en.wikipedia.org/wiki/List_of_world_expositions), via [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-08-13)
 \
+Images: Wikipedia & NASA
+\
 Map and charts: [Georgios Karamanis](https://karaman.is)
 \
-Images: Wikipedia & NASA
+\
+Made with [Closeread](https://closeread.netlify.app) · Code available on [GitHub](https://github.com/gkaramanis/tidytuesday/tree/master/2024/2024-week_33)

@@ -1,0 +1,4 @@
+- source: worlds_fairs_closeread.qmd
+  quarto-pub:
+    - id: d5cf6a36-c6ac-4c02-8d2f-f9ff9f0fdc67
+      url: 'https://georgios.quarto.pub/a-visual-journey-through-world-exhibitions'
