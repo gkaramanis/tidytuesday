@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+/* CSS adapted from https://github.com/edwardtufte/tufte-css */
+
+/*
+   Import ET Book styles
+   adapted from https://github.com/edwardtufte/et-book/blob/gh-pages/et-book.css */
+
+@font-face {
+    font-family: "et-book";
+    src: url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot");
+    src: url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.ttf") format("truetype"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.svg#etbookromanosf") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "et-book";
+    src: url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot");
+    src: url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.ttf") format("truetype"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.svg#etbookromanosf") format("svg");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "et-book";
+    src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot");
+    src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.ttf") format("truetype"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.svg#etbookromanosf") format("svg");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "et-book-roman-old-style";
+    src: url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot");
+    src: url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff"), url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.ttf") format("truetype"), url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.svg#etbookromanosf") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Closeread CSS styles */
+
+.cr-section.sticky-col.sticky-col-stack {
+  transition:
+    transform 3s ease-in-out !important;
+}
+
+.cr-section .narrative-col {
+  padding-left: 30px;
+}
+
+.cr-section .sticky-col {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#quarto-content .cr-section .narrative-col .trigger {
+  padding-top: 0;
+  padding-bottom: 85svh;
+}
+
+/* A small subset of the official Tufte CSS styles */
+
+#quarto-content {
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antqua", Georgia, serif;
+  background-color: #fffff8;
+  color: #111;
+  counter-reset: sidenote-counter;
+}
+
+#quarto-content main#quarto-document-content {
+  /*font-size: 1.2rem;*/
+}
+
+#quarto-content main#quarto-document-content h1 {
+    font-weight: 400;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    font-size: 3.2rem;
+    line-height: 1;
+}
+
+#quarto-content main#quarto-document-content h2 {
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 2.1rem;
+    margin-bottom: 1.4rem;
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+#quarto-content main#quarto-document-content h3 {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.7rem;
+    margin-top: 2rem;
+    margin-bottom: 1.4rem;
+    line-height: 1;
+}
+
+#quarto-content main#quarto-document-content hr {
+    display: block;
+    height: 1px;
+    width: 55%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+#quarto-content main#quarto-document-content p.subtitle {
+    font-style: italic;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    display: block;
+    line-height: 1;
+}
+
+#quarto-content main#quarto-document-content .numeral {
+    font-family: et-book-roman-old-style;
+}
+
+#quarto-content main#quarto-document-content .danger {
+    color: red;
+}
+
+#quarto-content main#quarto-document-content article {
+    padding: 5rem 0rem;
+}
+
+#quarto-content main#quarto-document-content section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#quarto-content main#quarto-document-content p,
+#quarto-content main#quarto-document-content dl,
+#quarto-content main#quarto-document-content ol,
+#quarto-content main#quarto-document-content ul {
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+
+#quarto-content main#quarto-document-content p {
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    padding-right: 0;
+    vertical-align: baseline;
+}
+
+/* Chapter Epigraphs 
+#quarto-content main#quarto-document-content div.epigraph {
+    margin: 5em 0;
+}
+*/
+
+#quarto-content main#quarto-document-content div.epigraph > blockquote {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+#quarto-content main#quarto-document-content div.epigraph > blockquote,
+#quarto-content main#quarto-document-content div.epigraph > blockquote > p {
+    font-style: italic;
+}
+
+#quarto-content main#quarto-document-content div.epigraph > blockquote > footer {
+    font-style: normal;
+}
+
+#quarto-content main#quarto-document-content div.epigraph > blockquote > footer > cite {
+    font-style: italic;
+}
+
+#quarto-content main#quarto-document-content a:link::selection,
+#quarto-content main#quarto-document-content a:link::-moz-selection {
+    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
+    background: #b4d5fe;
+}
+
+
+#quarto-content main#quarto-document-content code, 
+#quarto-content main#quarto-document-content pre > code {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 1.0rem;
+    line-height: 1.42;
+    -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. See https://github.com/edwardtufte/tufte-css/issues/81#issuecomment-261953409 */
+}
+
+#quarto-content main#quarto-document-content .sans > code {
+    font-size: 1.2rem;
+}
+
+#quarto-content main#quarto-document-content h1 > code,
+#quarto-content main#quarto-document-content h2 > code,
+#quarto-content main#quarto-document-content h3 > code {
+    font-size: 0.80em;
+}
+
+#quarto-content main#quarto-document-content pre > code {
+    font-size: 0.9rem;
+    width: 52.5%;
+    margin-left: 2.5%;
+    overflow-x: auto;
+    display: block;
+}
+

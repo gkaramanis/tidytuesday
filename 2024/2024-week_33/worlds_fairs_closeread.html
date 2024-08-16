@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Your Name">
+<meta name="description" content="Exploring the rich history of World Expos through data visualization">
+
+<title>A Visual Journey Through World Exhibitions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="worlds_fairs_closeread_files/libs/clipboard/clipboard.min.js"></script>
+<script src="worlds_fairs_closeread_files/libs/quarto-html/quarto.js"></script>
+<script src="worlds_fairs_closeread_files/libs/quarto-html/popper.min.js"></script>
+<script src="worlds_fairs_closeread_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="worlds_fairs_closeread_files/libs/quarto-html/anchor.min.js"></script>
+<link href="worlds_fairs_closeread_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="worlds_fairs_closeread_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="worlds_fairs_closeread_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="worlds_fairs_closeread_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="worlds_fairs_closeread_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="worlds_fairs_closeread_files/libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="worlds_fairs_closeread_files/libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="worlds_fairs_closeread_files/libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="true">
+
+
+<link rel="stylesheet" href="_extensions/qmd-lab/closeread/closeread.css">
+<link rel="stylesheet" href="cr-tufte.css">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+
+<main class="content page-columns page-full column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">A Visual Journey Through World Exhibitions</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+<div>
+  <div class="description">
+    Exploring the rich history of World Expos through data visualization
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Your Name </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="epigraph">
+<blockquote class="blockquote">
+<p>The designation “World Exposition” refers to a class of the largest, general scope exhibitions of up to <a href="https://www.bie-paris.org/site/en/about-world-expos">6 months’ duration</a>. The Bureau International des Expositions (BIE) sanctions world expositions. Some have been recognised retrospectively because they took place before the BIE came into existence.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>This exploration encompasses a rich tapestry of human achievement and cultural exchange spanning over 170 years, excluding BIE-recognised International Horticultural Exhibitions.</p>
+</blockquote>
+</div>
+<section id="the-grand-narrative-of-world-exhibitions" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-grand-narrative-of-world-exhibitions">The Grand Narrative of World Exhibitions</h2>
+<p>World Exhibitions, also known as World Expos, have long served as global stages for nations to showcase their achievements, exchange ideas, and glimpse into the future. These grand events have not only reflected the zeitgeist of their times but have also shaped the course of progress in art, science, and technology.</p>
+<div class="cr-section column-screen sidebar-left">
+<div class="narrative-col">
+<div class="trigger" style="padding-block: 20svh">
+<div class="narrative">
+
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-map">
+<div class="narrative">
+<p>Each point on this map represents a moment where the world came together to marvel at the heights of human achievement and to dream of what might come next.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="20%,80%" data-focus-on="cr-map" data-scale-by="5">
+<div class="narrative">
+<p>The journey begins in 1851 with The Great Exhibition, held in London’s Hyde Park.<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/The_Crystal_Palace_in_Hyde_Park_for_Grand_International_Exhibition_of_1851.jpg/600px-The_Crystal_Palace_in_Hyde_Park_for_Grand_International_Exhibition_of_1851.jpg" class="img-fluid"><br>
+<br>
+This pioneering event attracted six million visitors and showcased the industrial might of the British Empire alongside innovations from around the world.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="15%,75%" data-focus-on="cr-map" data-scale-by="5">
+<div class="narrative">
+<p>The Eiffel Tower, now synonymous with Paris, was originally built as the entrance arch for the 1889 World’s Fair. It was intended to be dismantled after 20 years but fortunately survived to become one of the world’s most recognizable landmarks.<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Paris_1889_plakat.jpg/440px-Paris_1889_plakat.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-map">
+<div class="narrative">
+<p>Over the span of 173 years, World Expos have graced 51 cities across four continents, each event a unique snapshot of its era’s dreams, achievements, and anxieties.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="20%,-50%" data-focus-on="cr-map" data-scale-by="2">
+<div class="narrative">
+<p>Despite their global nature, World Expos have never been hosted in Africa or South America.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="120%,35%" data-focus-on="cr-map" data-scale-by="4">
+<div class="narrative">
+<p>The 1893 World’s Columbian Exposition in Chicago introduced several innovations that are now commonplace. It was the first expo to have a dedicated amusement area, the Midway Plaisance, which became the model for modern amusement parks. It also debuted the Ferris Wheel, created as America’s answer to the Eiffel Tower.<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Ferris-wheel.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-map">
+<div class="narrative">
+<p>The size of the circles on the map indicates the number of times each city has hosted a World Expo. Paris has organized an impressive seven events between 1855 and 1937.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="-180%,40%" data-focus-on="cr-map" data-scale-by="5">
+<div class="narrative">
+<p>The 1970 Osaka Expo in Japan was the first to be held in Asia. It showcased the world’s first IMAX film and featured a moon rock brought back by the Apollo 11 mission just a year earlier.<br>
+<br>
+<img src="https://www.nasa.gov/wp-content/uploads/2020/03/expo_70_lunar_sample_container_feb_27_1970_s70-29255.jpg" class="img-fluid"> </p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-map">
+<div class="narrative">
+<p>World Expos have often coincided with significant historical milestones. The 1876 Centennial Exposition in Philadelphia celebrated the 100th anniversary of American independence, while Expo 67 in Montreal marked Canada’s centennial year.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="10%,65%" data-focus-on="cr-map" data-scale-by="5">
+<div class="narrative">
+<p>The 1958 Brussels World’s Fair introduced the world to the Atomium, a giant model of an iron crystal magnified 165 billion times. Originally intended to be demolished after the expo, it remains standing today as a museum and iconic symbol of Brussels.<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Ev._Pavillon_auf_der_EXPO_in_Brüssel_%2827751784452%29.jpg" class="img-fluid"> </p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-map">
+<div class="narrative">
+<p>The number of countries participating in World Expos has grown significantly over time. The 1851 Great Exhibition hosted 25 countries, while Expo 2010 in Shanghai and Expo 2020 in Dubai saw participation from 192 nations.<br>
+<br>
+<img src="plots/worlds_fairs_countries.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="-180%,50%" data-focus-on="cr-map" data-scale-by="5">
+<div class="narrative">
+<p>Speaking of Expo 2010 in Shanghai, it holds the record for the most visited World Expo in history, attracting an astounding 73 million visitors over its six-month run.<br>
+<br>
+<img src="plots/worlds_fairs_visitors.png" class="img-fluid"> </p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="125%,60%" data-focus-on="cr-map" data-scale-by="5">
+<div class="narrative">
+<p>World Expos have often been platforms for introducing new technologies to the public. The telephone was demonstrated at the 1876 Philadelphia Expo, while the videophone debuted at the 1964 New York World’s Fair.<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Actor_portraying_Alexander_Graham_Bell_in_an_AT%26T_promotional_film_%281926%29.jpg" class="img-fluid"> </p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="120%,60%" data-focus-on="cr-map" data-scale-by="5">
+<div class="narrative">
+<p>The 1939-40 New York World’s Fair, with its theme “The World of Tomorrow,” offered a optimistic vision of the future just as the world was on the brink of World War II. It introduced television to the American public and showcased a curious attraction called Futurama, which predicted the highway systems that would transform America in the coming decades.<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Futurama_diorama_detail.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-map">
+<div class="narrative">
+<p>Some World Expos have left lasting impacts on their host cities’ infrastructure. The Montreal Metro system was inaugurated just before Expo 67, while the Shanghai Expo in 2010 led to major urban renewal projects.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="-80%,30%" data-focus-on="cr-map" data-scale-by="6">
+<div class="narrative">
+<p>The most recent World Expo, Expo 2020 Dubai (held in 2021-22 due to the pandemic), became the first to be held in the Middle East, Africa, and South Asia region. Despite global challenges, it attracted over 24 million visitors.<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/15_11_2021_Expo_Dubai_2020_%2851683230783%29.jpg/500px-15_11_2021_Expo_Dubai_2020_%2851683230783%29.jpg" class="img-fluid"> </p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-map">
+<div class="narrative">
+<p>As we look at our map, we can see the shift of World Expos from predominantly Western locations in the 19th and early 20th centuries to a more global distribution in recent decades, reflecting changing geopolitical and economic realities.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="-180%,40%" data-focus-on="cr-map" data-scale-by="5">
+<div class="narrative">
+<p>The upcoming Expo 2025 in Osaka, Japan, will focus on designing future society for our lives, showcasing how World Expos continue to evolve and address contemporary global challenges.<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Expo_2025_logo-en.svg/1280px-Expo_2025_logo-en.svg.png" class="img-fluid"> </p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-map">
+<div class="narrative">
+<p>From the Crystal Palace of 1851 to the futuristic pavilions of recent expos, these events have consistently pushed the boundaries of architecture and design, leaving behind iconic structures that often become symbols of their host cities.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-map" class="sticky">
+<p><img src="plots/worlds_fairs.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+<p>Data source: Wikipedia’s <a href="https://en.wikipedia.org/wiki/List_of_world_expositions">List of world expositions</a>, via <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-08-13">TidyTuesday</a><br>
+Map and charts: <a href="https://karaman.is">Georgios Karamanis</a><br>
+Images: Wikipedia &amp; NASA</p>
+<!-- -->
+
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "A Visual Journey Through World Exhibitions"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> [Your Name]</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  closeread-html:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    css: cr-tufte.css</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    remove-header-space: true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    image: "plots/worlds_fairs.png"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    description: Exploring the rich history of World Expos through data visualization</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>:::{.epigraph}</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The designation "World Exposition" refers to a class of the largest, general scope exhibitions of up to </span><span class="co">[</span><span class="ot">6 months' duration</span><span class="co">](https://www.bie-paris.org/site/en/about-world-expos)</span><span class="at">. The Bureau International des Expositions (BIE) sanctions world expositions. Some have been recognised retrospectively because they took place before the BIE came into existence.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; This exploration encompasses a rich tapestry of human achievement and cultural exchange spanning over 170 years, excluding BIE-recognised International Horticultural Exhibitions.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Grand Narrative of World Exhibitions</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>World Exhibitions, also known as World Expos, have long served as global stages for nations to showcase their achievements, exchange ideas, and glimpse into the future. These grand events have not only reflected the zeitgeist of their times but have also shaped the course of progress in art, science, and technology.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>:::{.cr-section}</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>:::{style="padding-block: 20svh"}</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Each point on this map represents a moment where the world came together to marvel at the heights of human achievement and to dream of what might come next. <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>:::{#cr-map}</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="al">![](plots/worlds_fairs.png)</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>The journey begins in 1851 with The Great Exhibition, held in London's Hyde Park.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/The_Crystal_Palace_in_Hyde_Park_for_Grand_International_Exhibition_of_1851.jpg/600px-The_Crystal_Palace_in_Hyde_Park_for_Grand_International_Exhibition_of_1851.jpg)</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>This pioneering event attracted six million visitors and showcased the industrial might of the British Empire alongside innovations from around the world.<span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="20%,80%" scale-by="5"}</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>The Eiffel Tower, now synonymous with Paris, was originally built as the entrance arch for the 1889 World's Fair. It was intended to be dismantled after 20 years but fortunately survived to become one of the world's most recognizable landmarks.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Paris_1889_plakat.jpg/440px-Paris_1889_plakat.jpg)</span> <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="15%,75%" scale-by="5"}</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>Over the span of 173 years, World Expos have graced 51 cities across four continents, each event a unique snapshot of its era's dreams, achievements, and anxieties. <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>Despite their global nature, World Expos have never been hosted in Africa or South America. <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="20%,-50%" scale-by="2"}</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>The 1893 World's Columbian Exposition in Chicago introduced several innovations that are now commonplace. It was the first expo to have a dedicated amusement area, the Midway Plaisance, which became the model for modern amusement parks. It also debuted the Ferris Wheel, created as America's answer to the Eiffel Tower.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/d/de/Ferris-wheel.jpg)</span> <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="120%,35%" scale-by="4"}</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>The size of the circles on the map indicates the number of times each city has hosted a World Expo. Paris has organized an impressive seven events between 1855 and 1937. <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>The 1970 Osaka Expo in Japan was the first to be held in Asia. It showcased the world's first IMAX film and featured a moon rock brought back by the Apollo 11 mission just a year earlier.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://www.nasa.gov/wp-content/uploads/2020/03/expo_70_lunar_sample_container_feb_27_1970_s70-29255.jpg)</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="-180%,40%" scale-by="5"}</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>World Expos have often coincided with significant historical milestones. The 1876 Centennial Exposition in Philadelphia celebrated the 100th anniversary of American independence, while Expo 67 in Montreal marked Canada's centennial year. <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>The 1958 Brussels World's Fair introduced the world to the Atomium, a giant model of an iron crystal magnified 165 billion times. Originally intended to be demolished after the expo, it remains standing today as a museum and iconic symbol of Brussels. </span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/4/47/Ev._Pavillon_auf_der_EXPO_in_Brüssel_%2827751784452%29.jpg)</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="10%,65%" scale-by="5"}</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>The number of countries participating in World Expos has grown significantly over time. The 1851 Great Exhibition hosted 25 countries, while Expo 2010 in Shanghai and Expo 2020 in Dubai saw participation from 192 nations.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="al">![](plots/worlds_fairs_countries.png)</span><span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>Speaking of Expo 2010 in Shanghai, it holds the record for the most visited World Expo in history, attracting an astounding 73 million visitors over its six-month run.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="al">![](plots/worlds_fairs_visitors.png)</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a> <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="-180%,50%" scale-by="5"}</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>World Expos have often been platforms for introducing new technologies to the public. The telephone was demonstrated at the 1876 Philadelphia Expo, while the videophone debuted at the 1964 New York World's Fair.</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/f/f4/Actor_portraying_Alexander_Graham_Bell_in_an_AT%26T_promotional_film_%281926%29.jpg)</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="125%,60%" scale-by="5"}</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>The 1939-40 New York World's Fair, with its theme "The World of Tomorrow," offered a optimistic vision of the future just as the world was on the brink of World War II. It introduced television to the American public and showcased a curious attraction called Futurama, which predicted the highway systems that would transform America in the coming decades.</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/f/f5/Futurama_diorama_detail.jpg)</span> <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="120%,60%" scale-by="5"}</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>Some World Expos have left lasting impacts on their host cities' infrastructure. The Montreal Metro system was inaugurated just before Expo 67, while the Shanghai Expo in 2010 led to major urban renewal projects. <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>The most recent World Expo, Expo 2020 Dubai (held in 2021-22 due to the pandemic), became the first to be held in the Middle East, Africa, and South Asia region. Despite global challenges, it attracted over 24 million visitors.</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/15_11_2021_Expo_Dubai_2020_%2851683230783%29.jpg/500px-15_11_2021_Expo_Dubai_2020_%2851683230783%29.jpg)</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="-80%,30%" scale-by="6"}</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>As we look at our map, we can see the shift of World Expos from predominantly Western locations in the 19th and early 20th centuries to a more global distribution in recent decades, reflecting changing geopolitical and economic realities. <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>The upcoming Expo 2025 in Osaka, Japan, will focus on designing future society for our lives, showcasing how World Expos continue to evolve and address contemporary global challenges.</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Expo_2025_logo-en.svg/1280px-Expo_2025_logo-en.svg.png)</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span>{pan-to="-180%,40%" scale-by="5"}</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>From the Crystal Palace of 1851 to the futuristic pavilions of recent expos, these events have consistently pushed the boundaries of architecture and design, leaving behind iconic structures that often become symbols of their host cities. <span class="co">[</span><span class="ot">@cr-map</span><span class="co">]</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>Data source: Wikipedia's <span class="co">[</span><span class="ot">List of world expositions</span><span class="co">](https://en.wikipedia.org/wiki/List_of_world_expositions)</span>, via <span class="co">[</span><span class="ot">TidyTuesday</span><span class="co">](https://github.com/rfordatascience/tidytuesday/tree/master/data/2024/2024-08-13)</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>Map and charts: <span class="co">[</span><span class="ot">Georgios Karamanis</span><span class="co">](https://karaman.is)</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>Images: Wikipedia &amp; NASA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
