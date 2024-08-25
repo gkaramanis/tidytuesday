@@ -5,6 +5,7 @@ gg_record(dir = "tidytuesday-temp", device = "png", width = 9, height = 8, units
 
 english_monarchs_marriages_df <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-08-20/english_monarchs_marriages_df.csv')
 
+# Some variables used for deprecated plots
 marriages <- english_monarchs_marriages_df %>% 
   mutate(
     year_m = parse_number(year_of_marriage),
@@ -31,8 +32,42 @@ f1 <- "Graphik"
 f1b <- "Graphik Compact"
 f2 <- "Publico Headline"
 
-col1 <- "#e89c7b"
-col2 <- "purple4"
+ggplot(marriages) +
+  geom_col(aes(x = age_diff, y = king_name, fill = king_name), position = position_dodge2()) +
+  geom_vline(xintercept = 0, color = "grey99", size = 7) +
+  # Ages
+  geom_text(aes(x = 0, y = king_name, label = monarch_a, color = king_name), position = position_dodge2(width = 0.9), family = f1b, size = 3) +
+  geom_text(aes(x = age_diff - ((age_diff < 0) - 0.5) * 1.5, y = king_name, label = consort_a), position = position_dodge2(width = 0.9, reverse = TRUE), family = f1b, size = 3) +
+  # Names
+  geom_text(data = . %>% filter(king_name != "Henry II"), aes(x = -2, y = king_name, label = king_name, color = king_name), hjust = 1, family = f2, size = 6, stat = "unique", fontface = "bold") +
+  geom_text(data = . %>% filter(king_name == "Henry II"), aes(x = 2, y = king_name, label = king_name, color = king_name), hjust = 0, family = f2, size = 6, stat = "unique", fontface = "bold") +
+  MetBrewer::scale_color_met_d("Redon") +
+  MetBrewer::scale_fill_met_d("Redon") +
+  scale_x_continuous(breaks = seq(-10, 30, 10), labels = c("10 years\nyounger", "", "10 years\nolder", "20 years\nolder", "30 years\nolder")) +
+  coord_cartesian(clip = "off") +
+  labs(
+    title = "Mind the age gap: the Henrys' marriages through the centuries",
+    subtitle = str_wrap("Age gaps and marital ages of the English kings named Henry and their consorts, from the 12th to the 16th century.", 90),
+    caption = "Source: Ian Visits · Graphic: Georgios Karamanis"
+  ) +
+  theme_minimal(base_family = f2) +
+  theme(
+    legend.position = "none",
+    plot.background = element_rect(fill = "grey99", color = NA),
+    axis.title = element_blank(),
+    axis.text.y = element_blank(),
+    axis.text.x = element_text(size = 12),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.margin = margin(10, 10, 10, 70),
+    plot.title.position = "plot",
+    plot.title = element_text(size = 16, face = "bold"),
+    plot.subtitle = element_text(family = f1, margin = margin(0, 0, 15, 0)),
+    plot.caption = element_text(margin = margin(15, 0, 0, 0))
+  )
+
+
+# Deprecated plots:
 
 # ggplot(marriages, aes(y = y)) +
 #   # Monarch name
@@ -110,37 +145,3 @@ col2 <- "purple4"
 #     panel.grid.minor.y = element_line(linewidth = 0.15),
 #     plot.margin = margin(10, 20, 10, 10)
 #   )
-
-ggplot(marriages) +
-  geom_col(aes(x = age_diff, y = king_name, fill = king_name), position = position_dodge2()) +
-  geom_vline(xintercept = 0, color = "grey99", size = 7) +
-  # Ages
-  geom_text(aes(x = 0, y = king_name, label = monarch_a, color = king_name), position = position_dodge2(width = 0.9), family = f1b, size = 3) +
-  geom_text(aes(x = age_diff - ((age_diff < 0) - 0.5) * 1.5, y = king_name, label = consort_a), position = position_dodge2(width = 0.9, reverse = TRUE), family = f1b, size = 3) +
-  # Names
-  geom_text(data = . %>% filter(king_name != "Henry II"), aes(x = -2, y = king_name, label = king_name, color = king_name), hjust = 1, family = f2, size = 6, stat = "unique", fontface = "bold") +
-  geom_text(data = . %>% filter(king_name == "Henry II"), aes(x = 2, y = king_name, label = king_name, color = king_name), hjust = 0, family = f2, size = 6, stat = "unique", fontface = "bold") +
-  MetBrewer::scale_color_met_d("Redon") +
-  MetBrewer::scale_fill_met_d("Redon") +
-  scale_x_continuous(breaks = seq(-10, 30, 10), labels = c("10 years\nyounger", "", "10 years\nolder", "20 years\nolder", "30 years\nolder")) +
-  coord_cartesian(clip = "off") +
-  labs(
-    title = "Mind the age gap: the Henrys' marriages through the centuries",
-    subtitle = str_wrap("Age gaps and marital ages of the English kings named Henry and their consorts, from the 12th to the 16th century.", 90),
-    caption = "Source: Ian Visits · Graphic: Georgios Karamanis"
-  ) +
-  theme_minimal(base_family = f2) +
-  theme(
-    legend.position = "none",
-    plot.background = element_rect(fill = "grey99", color = NA),
-    axis.title = element_blank(),
-    axis.text.y = element_blank(),
-    axis.text.x = element_text(size = 12),
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor.y = element_blank(),
-    plot.margin = margin(10, 10, 10, 70),
-    plot.title.position = "plot",
-    plot.title = element_text(size = 16, face = "bold"),
-    plot.subtitle = element_text(family = f1, margin = margin(0, 0, 15, 0)),
-    plot.caption = element_text(margin = margin(15, 0, 0, 0))
-  )
