@@ -78,6 +78,6 @@ ggplot(rj_sentiment_char, aes(x = line_number)) +
     strip.background = element_rect(fill = col3),
     panel.background = element_rect(fill = col4),
     plot.title = element_markdown(family = f2, size = 25),
-    plot.subtitle = element_markdown(family = f1, size = 12, lineheight = 1.1),
+    plot.subtitle = element_markdown(family = f1, size = 12, lineheight = 1.1, margin = margin(0, 0, 10, 0)),
     plot.caption = element_text(hjust = 0)
   )
