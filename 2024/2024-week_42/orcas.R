@@ -19,11 +19,10 @@ orcas_with_bearing <- orcas %>%
       month %in% c(6, 7, 8) ~ "Summer",
       month %in% c(9, 10, 11) ~ "Fall",
       month %in% c(12, 1, 2) ~ "Winter"
-    ),
-    season = fct_rev(fct_inorder(season))
+    )
   ) %>% 
   filter(!is.na(begin_longitude) & !is.na(begin_latitude) &  !is.na(end_longitude) & !is.na(end_latitude)) %>%
-  mutate(bearing = bearing(cbind(begin_longitude, begin_latitude), cbind(end_longitude, end_latitude)))
+  mutate(bearing = bearing(cbind(begin_longitude, begin_latitude), cbind(end_longitude, end_latitude))) 
 
 us_ca_map <- rgeoboundaries::gb_adm0(country = c("USA", "Canada")) %>% 
   rmapshaper::ms_simplify(0.5)
@@ -51,7 +50,7 @@ create_circular_histogram <- function(season) {
 
 # Create a data frame for histograms
 histograms <- data.frame(
-  season = c("Spring", "Summer", "Fall", "Winter"),
+  season = c("Winter", "Spring", "Summer", "Fall"),
   x = -125.55,
   y = 47.65
 ) %>% 
@@ -69,7 +68,7 @@ p <- ggplot() +
   geom_plot(data = histograms, aes(x = x, y = y, label = plot), vp.width = 0.35, vp.height = 0.35) +
   MetBrewer::scale_color_met_c("Ingres") +
   coord_sf(crs = proj, default_crs = 4326, xlim = c(st_bbox(orcas_sf)$xmin, st_bbox(orcas_sf)$xmax + 0.3), ylim = c(st_bbox(orcas_sf)$ymin, st_bbox(orcas_sf)$ymax - 0.8)) +
-  facet_wrap(vars(season)) +
+  facet_wrap(vars(factor(season, levels = c("Winter", "Spring", "Summer", "Fall")))) +
   labs(
     title = "Seasonal Orca movements in the Salish Sea",
     subtitle = str_wrap("The map shows orca movements in the Salish Sea across four seasons (2017-2024). Arrows connect start and end points of sightings, with colors indicating travel direction. Circular histograms display directional distribution per season.", 120),
