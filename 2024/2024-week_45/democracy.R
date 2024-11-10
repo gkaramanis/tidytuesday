@@ -1,4 +1,5 @@
 library(tidyverse)
+library(ggtext)
 library(camcorder)
 
 gg_record(dir = "tidytuesday-temp", device = "png", width = 10, height = 8, units = "in", dpi = 320)
@@ -43,8 +44,6 @@ dd <- layer_data(p) %>%
   )
   
 f1 <- "Graphik Compact"
-
-library(ggtext)
 
 ggplot(dd) +
   annotate("segment", x = c(1950, 2020), xend = c(1950, 2020), y = 0, yend = c(88, 103), color = "black", linetype = "dotted", linewidth = 0.7) +
