@@ -6,11 +6,7 @@ gg_record(dir = "tidytuesday-temp", device = "png", width = 10, height = 8, unit
 
 democracy_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-11-05/democracy_data.csv')
 
-world <- rnaturalearthdata::countries110 %>% 
-  select(country_code = adm0_a3, continent)
-
 world_democracy <- democracy_data %>% 
-  left_join(world) %>% 
   count(year, regime_category_index) %>% 
   filter(!is.na(regime_category_index)) 
 
@@ -49,8 +45,8 @@ ggplot(dd) +
   annotate("segment", x = c(1950, 2020), xend = c(1950, 2020), y = 0, yend = c(88, 103), color = "black", linetype = "dotted", linewidth = 0.7) +
   geom_rect(aes(xmin = x - 0.4, xmax = x + 0.4, ymin = ymin, ymax = ymax, fill = color), color = "black", linewidth = 0.15) +
   annotate("segment", x = 1949.5, xend = 2020.5, y = 0, color = "white", alpha = 0.5) +
-  annotate("richtext", x = 1949.2, y = 100, label = "**1950**<br>39 democracies<br>52 dictatorships", family = f1b, hjust = 0, label.size = 0, fill = alpha("white", 0.5)) +
-  annotate("richtext", x = 2020.7, y = 115, label = "**2020**<br>116 democracies<br>76 dictatorships", family = f1b, hjust = 1, label.size = 0, fill = alpha("white", 0.5)) +
+  annotate("richtext", x = 1949.2, y = 100, label = "**1950**<br>39 democracies<br>52 dictatorships", family = f1, hjust = 0, label.size = 0, fill = alpha("white", 0.5)) +
+  annotate("richtext", x = 2020.7, y = 115, label = "**2020**<br>116 democracies<br>76 dictatorships", family = f1, hjust = 1, label.size = 0, fill = alpha("white", 0.5)) +
   scale_fill_identity(guide = guide_legend(byrow = TRUE, nrow = 2), labels = paste(regime_categories$regime_type, regime_categories$regime_category)) +
   labs(
     title = "Seven decades of political change: democracy becomes the dominant system",
