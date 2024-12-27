@@ -72,7 +72,7 @@ ggplot(domestic_international) +
   facet_wrap(vars(country_label)) +
   labs(
     title = "Up in the air: local or global?",
-    subtitle = str_wrap("Heatmaps show monthly ratios of domestic to international flights across nine countries (2011-2019). Purple indicates more international flights, while green shows more domestic flights. Country labels display the average ratio during the period 2011-2019 - for example, '3 times more domestic' means that country had three domestic flights for every international one.", 130),
+    subtitle = str_wrap("Heatmaps show monthly ratios of domestic to international flights across nine countries (2011-2019). Purple indicates more international flights, while green shows more domestic flights. Country labels display the average ratio during the entire 2011-2019 period - for example, '3 times more domestic' means that country had three domestic flights for every international one.", 130),
     caption = "Source: Lai S., Sorichetta A. and WorldPop (2020) · Graphic: Georgios Karamanis",
     fill = ""
   ) +
