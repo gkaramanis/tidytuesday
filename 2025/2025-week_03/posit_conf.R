@@ -84,4 +84,3 @@ p + inset_element(d, 0.4, 0.45, 0.6, 0.6) &
   theme(
     plot.background = element_rect(fill = "#9BC4C6", color = NA)
   )
-
