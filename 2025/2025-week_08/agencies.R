@@ -82,3 +82,5 @@ ggplot(agencies_density_all) +
     plot.subtitle = element_text(family = f1, size = 13, margin = margin(6, 0, 10, 0)),
     strip.text = element_text(margin = margin(0, 0, 5, 0))
   )
+
+
