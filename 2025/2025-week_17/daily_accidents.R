@@ -68,7 +68,7 @@ ggplot(acc_points, aes(x = fatalities_count, y = fatalities_compare)) +
   facet_wrap(vars(weekday), nrow = 2) +
   labs(
     title = "Fatal accidents peak on weekends",
-    subtitle = str_wrap("Each point represents a day between 2010 and 2023. Fridays, Saturdays, and Sundays show higher fatality counts (x-axis) and are also generally higher compared to their respective 60-day rolling averages (y-axis). The horizontal line marks a ratio of 1 (daily fatalities equal the rolling average), while the dashed vertical line indicates the overall median daily fatalities.", 125),
+    subtitle = str_wrap("Each point represents a day between 1992 and 2016. Fridays, Saturdays, and Sundays show higher fatality counts (x-axis) and are also generally higher compared to their respective 60-day rolling averages (y-axis). The horizontal line marks a ratio of 1 (daily fatalities equal the rolling average), while the dashed vertical line indicates the overall median daily fatalities.", 125),
     caption = "Source: Fatality Analysis Reporting System (NHTSA) · Graphic: Georgios Karamanis",
     x = "Fatalities per day",
     y = "Fatalities vs 60-day average (log scale)"
