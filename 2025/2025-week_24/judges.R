@@ -42,6 +42,8 @@ judges_court <- judges_appdem |>
 f1 <- "Apple SD Gothic Neo"
 f2 <- "JetBrains Mono"
 
+# https://www.pewresearch.org/short-reads/2025/01/09/how-biden-compares-with-other-recent-presidents-in-appointing-federal-judges/
+
 # By court type
 ggplot(judges_court, aes(x = appointing_president, y = n, alpha = court_type, label = n, fill = party_of_appointing_president)) +
   geom_bar(stat = "identity", position = position_stack(reverse = TRUE), width = 0.75) +
