@@ -1,0 +1,13 @@
+name: New_Yorks_Underground_Gallery
+title: New_Yorks_Underground_Gallery
+username: karamanis
+account: karamanis
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15131343
+bundleId: 10686220
+url: https://karamanis.shinyapps.io/New_Yorks_Underground_Gallery/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: deprecated/mta_art_ggplot2_deprecated.R|deprecated/mta_art_shiny_app_deprecated.R|plots/mta_art.png|README.md
