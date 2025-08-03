@@ -1,0 +1,741 @@
+---
+title: "Build Your Netflix Night"
+author: "Georgios Karamanis"
+format: dashboard
+---
+
+```{r}
+#| include: false
+library(htmltools)
+library(dplyr)
+library(stringr)
+
+movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-07-29/movies.csv')
+shows <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-07-29/shows.csv')
+
+# Filter to use only 2025Jan-Jun report and process data
+all_content <- bind_rows(
+  movies |> mutate(type = "Movie"),
+  shows |> mutate(type = "Show")
+) |>
+  filter(report == "2025Jan-Jun") |>  # Use only the most recent report
+  mutate(
+    # Parse runtime components using regex
+    runtime_h = as.numeric(str_extract(runtime, "\\d+(?=H)")) * 60,  # Convert hours to minutes
+    runtime_m = as.numeric(str_extract(runtime, "\\d+(?=M)")),       # Minutes
+    runtime_s = as.numeric(str_extract(runtime, "\\d+(?=S)")) / 60,  # Convert seconds to minutes
+    # Sum all components
+    runtime_minutes = rowSums(cbind(runtime_h, runtime_m, runtime_s), na.rm = TRUE),
+    # Set to NA if all components were missing
+    runtime_minutes = ifelse(runtime_minutes == 0, NA_real_, runtime_minutes),
+    # Calculate popularity score (1-5 scale based on hours_viewed quantiles)
+    pop_score = case_when(
+      hours_viewed >= quantile(hours_viewed, 0.9, na.rm = TRUE) ~ 5,
+      hours_viewed >= quantile(hours_viewed, 0.7, na.rm = TRUE) ~ 4,
+      hours_viewed >= quantile(hours_viewed, 0.5, na.rm = TRUE) ~ 3,
+      hours_viewed >= quantile(hours_viewed, 0.3, na.rm = TRUE) ~ 2,
+      TRUE ~ 1
+    ),
+    # Format runtime for display
+    runtime_display = case_when(
+      is.na(runtime_minutes) ~ "Unknown",
+      runtime_minutes < 60 ~ paste0(round(runtime_minutes), "M"),
+      runtime_minutes %% 60 == 0 ~ paste0(floor(runtime_minutes / 60), "H"),
+      TRUE ~ paste0(floor(runtime_minutes / 60), "H ", round(runtime_minutes %% 60), "M")
+    ),
+    # Global availability
+    global = if_else(available_globally == "Yes", "Global", "Regional")
+  ) |>
+  select(-runtime_h, -runtime_m, -runtime_s) |>  # Remove intermediate columns
+  arrange(desc(hours_viewed))
+```
+
+## {.sidebar}
+
+### Content Library
+
+```{r}
+#| echo: false
+tags$div(
+  class = "content-filters",
+  tags$h4("Filters"),
+  tags$div(
+    tags$button("Movies", class = "filter-btn", id = "movies-btn"),
+    tags$button("Shows", class = "filter-btn", id = "shows-btn"),
+    tags$button("All", class = "filter-btn active", id = "all-btn")
+  ),
+  tags$br(),
+  tags$div(
+    tags$label("Search:", `for` = "search-box"),
+    tags$input(type = "text", id = "search-box", placeholder = "Find content...")
+  ),
+  tags$br(),
+  tags$div(
+    tags$label("Runtime:"),
+    tags$div(
+      class = "runtime-filters",
+      tags$button("All", class = "filter-btn runtime-btn active", id = "runtime-all"),
+      tags$button("< 1H", class = "filter-btn runtime-btn", id = "runtime-short"),
+      tags$button("1-2H", class = "filter-btn runtime-btn", id = "runtime-medium"),
+      tags$button("2H+", class = "filter-btn runtime-btn", id = "runtime-long")
+    )
+  ),
+  tags$br(),
+  tags$div(
+    tags$label(
+      tags$input(type = "checkbox", id = "global-only"),
+      "Global only"
+    )
+  )
+)
+```
+
+### Available Content
+
+```{r}
+#| echo: false
+# Use top 100 most viewed content for full library
+sample_content <- all_content |>
+  filter(!is.na(runtime_minutes)) |> # Only include content with valid runtime
+  slice_head(n = 100) |>
+  mutate(
+    stars = strrep("★", pop_score)
+  )
+
+content_cards <- lapply(1:nrow(sample_content), function(i) {
+  tags$div(
+    class = "content-card",
+    draggable = "true",
+    `data-title` = sample_content$title[i],
+    `data-runtime` = sample_content$runtime_display[i],
+    `data-runtime-minutes` = sample_content$runtime_minutes[i],
+    `data-type` = sample_content$type[i],
+    `data-global` = sample_content$global[i],
+    `data-popularity` = sample_content$pop_score[i],
+    `data-index` = i - 1,  # Add index for virtual scrolling
+    tags$div(class = "card-header", sample_content$title[i]),
+    tags$div(class = "card-info",
+      tags$span(class = "content-type", sample_content$type[i]),
+      tags$span(class = "runtime", sample_content$runtime_display[i])
+    ),
+    tags$div(class = "card-meta",
+      tags$span(class = "popularity", sample_content$stars[i]),
+      tags$span(class = "availability", sample_content$global[i])
+    )
+  )
+})
+
+# Virtual scrolling controls
+tags$div(
+  class = "content-container",
+  tags$div(
+    class = "pagination-controls",
+    tags$button("◀", class = "page-btn", id = "prev-btn", disabled = TRUE),
+    tags$span(class = "page-info", id = "page-info", "1 of 5"),
+    tags$button("▶", class = "page-btn", id = "next-btn")
+  ),
+  tags$div(class = "content-library", content_cards)
+)
+```
+
+## Column {.tabset}
+
+### Your Netflix Night
+
+```{r}
+#| echo: false
+tags$div(
+  class = "main-content",
+  
+  # Two column layout
+  tags$div(
+    class = "planner-layout",
+    
+    # Left column - Night Planner
+    tags$div(
+      class = "planner-column",
+      
+      # Session Stats Header
+      tags$div(
+        class = "session-stats",
+        tags$div(class = "stat-box",
+          tags$h4("Total Runtime"),
+          tags$div(class = "stat-value", id = "total-runtime", "0H 0M")
+        ),
+        tags$div(class = "stat-box",
+          tags$h4("Content Count"),
+          tags$div(class = "stat-value", id = "content-count", "0")
+        ),
+        tags$div(class = "stat-box", 
+          tags$h4("Popularity Score"),
+          tags$div(class = "stat-value", id = "popularity-score", "0")
+        ),
+        tags$div(class = "stat-box",
+          tags$h4("Global %"),
+          tags$div(class = "stat-value", id = "global-percent", "0%")
+        )
+      ),
+      
+      # Drop Zone
+      tags$div(
+        class = "drop-zone",
+        id = "night-playlist",
+        tags$div(
+          class = "drop-message",
+          tags$h3("Drop content here to build your night"),
+          tags$p("Drag titles from the library to plan your perfect Netflix session")
+        )
+      ),
+      
+      # Action Buttons
+      tags$div(
+        class = "action-buttons",
+        tags$button("Surprise Me", class = "action-btn", id = "surprise-btn"),
+        tags$button("Clear All", class = "action-btn clear-btn", id = "clear-btn"),
+        tags$button("Save Night", class = "action-btn", id = "save-btn")
+      )
+    ),
+    
+    # Right column - Challenges
+    tags$div(
+      class = "challenge-column",
+      tags$div(
+        class = "challenge-section",
+        tags$h4("Tonight's Challenges"),
+        tags$div(
+          class = "challenges",
+          tags$div(class = "challenge-card",
+            tags$h5("Perfect 3-Hour Night"),
+            tags$p("Build exactly 3 hours of content"),
+            tags$div(class = "challenge-progress", "Progress: 0/3 hours")
+          ),
+          tags$div(class = "challenge-card",
+            tags$h5("Global Citizen"), 
+            tags$p("Only globally available content"),
+            tags$div(class = "challenge-progress", "Progress: 0% global")
+          ),
+          tags$div(class = "challenge-card",
+            tags$h5("Balanced Blend"),
+            tags$p("Equal mix of movies and shows"),
+            tags$div(class = "challenge-progress", "Progress: 0% balanced")
+          ),
+          tags$div(class = "challenge-card",
+            tags$h5("Hidden Gem Hunter"),
+            tags$p("Use only 1-2 star popularity content"),
+            tags$div(class = "challenge-progress", "Progress: 0% gems")
+          )
+        )
+      )
+    )
+  )
+)
+```
+
+### About & Data
+
+```{r}
+#| echo: false
+tags$div(
+  class = "info-content",
+  tags$div(
+    class = "info-section",
+    tags$h3("About Build Your Netflix Night"),
+    tags$p("This interactive dashboard helps you plan the perfect Netflix viewing session. Drag and drop content from the library to build your night, track your progress with fun challenges, and export your curated playlist."),
+    
+    tags$h4("How to Use"),
+    tags$ul(
+      tags$li("Use the filters in the sidebar to find content by type, runtime, or search"),
+      tags$li("Drag content cards from the library to the planner area"),
+      tags$li("Watch your session stats update in real-time"),
+      tags$li("Complete challenges for a gamified experience"),
+      tags$li("Export your final playlist as a text file")
+    ),
+    
+    tags$h4("Features"),
+    tags$ul(
+      tags$li("Interactive drag-and-drop interface"),
+      tags$li("Real-time statistics tracking"),
+      tags$li("Challenge system with completion tracking"),
+      tags$li("Advanced filtering and search capabilities"),
+      tags$li("Session export functionality")
+    )
+  ),
+  
+  tags$div(
+    class = "data-section",
+    tags$h3("Data Source"),
+    tags$p("This dashboard uses Netflix's official 'What We Watched' engagement report for January-June 2025. The dataset includes viewing hours, availability information, and content metadata for thousands of titles."),
+    
+    tags$h4("Dataset Details"),
+    tags$ul(
+      tags$li("Period: January-June 2025 reporting period"),
+      tags$li("Metrics: Total viewing hours, global availability"),
+      tags$li("Content: Movies and TV shows available on Netflix"),
+      tags$li("Sample: Top 100 most-viewed titles for optimal performance")
+    ),
+    
+    tags$h4("Popularity Scoring"),
+    tags$p("Content popularity is rated on a 1-5 star scale based on viewing hour quantiles:"),
+    tags$ul(
+      tags$li("5 stars: Top 10% most viewed"),
+      tags$li("4 stars: 70th-90th percentile"),
+      tags$li("3 stars: 50th-70th percentile"),
+      tags$li("2 stars: 30th-50th percentile"),
+      tags$li("1 star: Bottom 30%")
+    ),
+    
+    tags$div(
+      class = "data-attribution",
+      tags$p("Built with R, Quarto, and htmlwidgets for TidyTuesday 2025 Week 31"),
+      tags$p("Original data: Netflix 'What We Watched' engagement reports")
+    )
+  )
+)
+```
+
+```{css}
+#| echo: false
+@import url("netflix_styles.css");
+```
+
+```{js}
+#| echo: false
+// Netflix Night Planner JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  let playlist = [];
+  
+  // Virtual scrolling variables
+  const ITEMS_PER_PAGE = 20;
+  let currentPage = 1;
+  let allCards = [];
+  let filteredCards = [];
+  
+  // Initialize virtual scrolling
+  function initializeVirtualScrolling() {
+    allCards = Array.from(document.querySelectorAll('.content-card'));
+    filteredCards = [...allCards];
+    updatePagination();
+    showCurrentPage();
+  }
+  
+  // Update pagination controls
+  function updatePagination() {
+    const totalPages = Math.ceil(filteredCards.length / ITEMS_PER_PAGE);
+    const pageInfo = document.getElementById('page-info');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    pageInfo.textContent = `${currentPage} of ${totalPages}`;
+    prevBtn.disabled = currentPage <= 1;
+    nextBtn.disabled = currentPage >= totalPages;
+  }
+  
+  // Show current page items
+  function showCurrentPage() {
+    // Hide all cards first
+    allCards.forEach(card => card.style.display = 'none');
+    
+    // Calculate range for current page
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, filteredCards.length);
+    
+    // Show cards for current page
+    for (let i = startIndex; i < endIndex; i++) {
+      if (filteredCards[i]) {
+        filteredCards[i].style.display = 'block';
+      }
+    }
+  }
+  
+  // Navigation event listeners
+  document.getElementById('prev-btn').addEventListener('click', function() {
+    if (currentPage > 1) {
+      currentPage--;
+      updatePagination();
+      showCurrentPage();
+    }
+  });
+  
+  document.getElementById('next-btn').addEventListener('click', function() {
+    const totalPages = Math.ceil(filteredCards.length / ITEMS_PER_PAGE);
+    if (currentPage < totalPages) {
+      currentPage++;
+      updatePagination();
+      showCurrentPage();
+    }
+  });
+  
+  // Parse runtime to minutes (now using data attribute)
+  function parseRuntime(runtimeMinutes) {
+    return parseFloat(runtimeMinutes) || 0;
+  }
+  
+  // Format minutes to display
+  function formatRuntime(minutes) {
+    if (minutes === 0) return "0H 0M";
+    const hours = Math.floor(minutes / 60);
+    const mins = Math.round(minutes % 60);
+    
+    if (hours === 0) {
+      return `${mins}M`;
+    } else if (mins === 0) {
+      return `${hours}H`;
+    } else {
+      return `${hours}H ${mins}M`;
+    }
+  }
+  
+  // Update session stats
+  function updateStats() {
+    const totalMinutes = playlist.reduce((sum, item) => sum + item.runtime, 0);
+    const contentCount = playlist.length;
+    const avgPopularity = playlist.length > 0 ? 
+      (playlist.reduce((sum, item) => sum + item.popularity, 0) / playlist.length).toFixed(1) : 0;
+    const globalCount = playlist.filter(item => item.global === 'Global').length;
+    const globalPercent = playlist.length > 0 ? Math.round((globalCount / playlist.length) * 100) : 0;
+    
+    document.getElementById('total-runtime').textContent = formatRuntime(totalMinutes);
+    document.getElementById('content-count').textContent = contentCount;
+    document.getElementById('popularity-score').textContent = avgPopularity;
+    document.getElementById('global-percent').textContent = `${globalPercent}%`;
+    
+    updateChallenges(totalMinutes, globalPercent, contentCount);
+  }
+  
+  // Update challenge progress
+  function updateChallenges(totalMinutes, globalPercent, contentCount) {
+    // Perfect 3-Hour Night
+    const targetMinutes = 180;
+    const hourCard = document.querySelector('.challenge-card:nth-child(1)');
+    const hourProgressText = hourCard.querySelector('.challenge-progress');
+    hourProgressText.textContent = `Progress: ${formatRuntime(totalMinutes)}/3H 0M`;
+    
+    if (Math.abs(totalMinutes - targetMinutes) <= 15) {
+      hourCard.classList.add('completed');
+      hourProgressText.textContent = 'Completed! Perfect timing!';
+    } else {
+      hourCard.classList.remove('completed');
+    }
+    
+    // Global Citizen
+    const globalCard = document.querySelector('.challenge-card:nth-child(2)');
+    const globalProgressText = globalCard.querySelector('.challenge-progress');
+    globalProgressText.textContent = `Progress: ${globalPercent}% global`;
+    
+    if (globalPercent === 100 && contentCount > 0) {
+      globalCard.classList.add('completed');
+      globalProgressText.textContent = 'Completed! All global content!';
+    } else {
+      globalCard.classList.remove('completed');
+    }
+    
+    // Balanced Blend
+    const movieCount = playlist.filter(item => item.type === 'Movie').length;
+    const showCount = playlist.filter(item => item.type === 'Show').length;
+    const isBalanced = Math.abs(movieCount - showCount) <= 1 && contentCount > 1;
+    const balanceCard = document.querySelector('.challenge-card:nth-child(3)');
+    const balanceProgressText = balanceCard.querySelector('.challenge-progress');
+    balanceProgressText.textContent = `Progress: ${movieCount} movies, ${showCount} shows`;
+    
+    if (isBalanced) {
+      balanceCard.classList.add('completed');
+      balanceProgressText.textContent = 'Completed! Perfect balance!';
+    } else {
+      balanceCard.classList.remove('completed');
+    }
+    
+    // Hidden Gem Hunter
+    const lowPopCount = playlist.filter(item => item.popularity <= 2).length;
+    const gemPercent = playlist.length > 0 ? Math.round((lowPopCount / playlist.length) * 100) : 0;
+    const gemCard = document.querySelector('.challenge-card:nth-child(4)');
+    const gemProgressText = gemCard.querySelector('.challenge-progress');
+    gemProgressText.textContent = `Progress: ${gemPercent}% hidden gems`;
+    
+    if (gemPercent === 100 && contentCount > 0) {
+      gemCard.classList.add('completed');
+      gemProgressText.textContent = 'Completed! All hidden gems!';
+    } else {
+      gemCard.classList.remove('completed');
+    }
+  }
+  
+  // Render playlist
+  function renderPlaylist() {
+    const dropZone = document.getElementById('night-playlist');
+    
+    if (playlist.length === 0) {
+      dropZone.innerHTML = `
+        <div class="drop-message">
+          <h3>Drop content here to build your night</h3>
+          <p>Drag titles from the library to plan your Netflix session</p>
+        </div>
+      `;
+    } else {
+      const playlistHTML = playlist.map((item, index) => `
+        <div class="playlist-item">
+          <div class="playlist-item-info">
+            <div class="playlist-item-title">${item.title}</div>
+            <div class="playlist-item-meta">
+              ${item.type} • ${item.runtime_display} • ${'★'.repeat(item.popularity)} • ${item.global}
+            </div>
+          </div>
+          <button class="remove-btn" onclick="removeFromPlaylist(${index})">×</button>
+        </div>
+      `).join('');
+      
+      dropZone.innerHTML = playlistHTML;
+    }
+  }
+  
+  // Add to playlist
+  function addToPlaylist(contentData) {
+    const item = {
+      title: contentData.title,
+      runtime: parseRuntime(contentData.runtimeMinutes),
+      runtime_display: contentData.runtime,
+      type: contentData.type,
+      global: contentData.global,
+      popularity: parseInt(contentData.popularity)
+    };
+    
+    playlist.push(item);
+    updateStats();
+    renderPlaylist();
+  }
+  
+  // Remove from playlist
+  window.removeFromPlaylist = function(index) {
+    playlist.splice(index, 1);
+    updateStats();
+    renderPlaylist();
+  };
+  
+  // Clear playlist
+  document.getElementById('clear-btn').addEventListener('click', function() {
+    playlist = [];
+    updateStats();
+    renderPlaylist();
+  });
+  
+  // Surprise Me button
+  document.getElementById('surprise-btn').addEventListener('click', function() {
+    // Use filteredCards instead of checking display style
+    const randomCards = [...filteredCards].sort(() => 0.5 - Math.random()).slice(0, 3);
+    
+    randomCards.forEach(card => {
+      const contentData = {
+        title: card.dataset.title,
+        runtime: card.dataset.runtime,
+        runtimeMinutes: card.dataset.runtimeMinutes,
+        type: card.dataset.type,
+        global: card.dataset.global,
+        popularity: card.dataset.popularity
+      };
+      
+      // Check if already in playlist
+      const exists = playlist.some(item => item.title === contentData.title);
+      if (!exists) {
+        addToPlaylist(contentData);
+      }
+    });
+  });
+  
+  // Save Night button - export as text
+  document.getElementById('save-btn').addEventListener('click', function() {
+    if (playlist.length === 0) {
+      alert('Add some content to your night first!');
+      return;
+    }
+    
+    const totalMinutes = playlist.reduce((sum, item) => sum + item.runtime, 0);
+    const totalRuntime = formatRuntime(totalMinutes);
+    const avgPopularity = (playlist.reduce((sum, item) => sum + item.popularity, 0) / playlist.length).toFixed(1);
+    const globalCount = playlist.filter(item => item.global === 'Global').length;
+    const globalPercent = Math.round((globalCount / playlist.length) * 100);
+    
+    let exportText = `MY NETFLIX NIGHT\n`;
+    exportText += `================\n\n`;
+    exportText += `Total Runtime: ${totalRuntime}\n`;
+    exportText += `Content Count: ${playlist.length}\n`;
+    exportText += `Popularity Score: ${avgPopularity}/5\n`;
+    exportText += `Global Availability: ${globalPercent}%\n\n`;
+    exportText += `PLAYLIST:\n`;
+    exportText += `---------\n`;
+    
+    playlist.forEach((item, index) => {
+      exportText += `${index + 1}. ${item.title}\n`;
+      exportText += `   ${item.type} • ${item.runtime_display} • ${'★'.repeat(item.popularity)} • ${item.global}\n\n`;
+    });
+    
+    exportText += `Generated from Build Your Netflix Night dashboard\n`;
+    exportText += `Data: Netflix "What We Watched" Jan-Jun 2025`;
+    
+    // Create and download text file
+    const blob = new Blob([exportText], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'my-netflix-night.txt';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  });
+  
+  // Drag and Drop functionality using event delegation
+  const contentLibrary = document.querySelector('.content-library');
+  const dropZone = document.getElementById('night-playlist');
+  
+  // Use event delegation for drag events
+  contentLibrary.addEventListener('dragstart', function(e) {
+    if (e.target.classList.contains('content-card')) {
+      e.target.classList.add('dragging');
+      
+      const contentData = {
+        title: e.target.dataset.title,
+        runtime: e.target.dataset.runtime,
+        runtimeMinutes: e.target.dataset.runtimeMinutes,
+        type: e.target.dataset.type,
+        global: e.target.dataset.global,
+        popularity: e.target.dataset.popularity
+      };
+      
+      e.dataTransfer.setData('application/json', JSON.stringify(contentData));
+    }
+  });
+  
+  contentLibrary.addEventListener('dragend', function(e) {
+    if (e.target.classList.contains('content-card')) {
+      e.target.classList.remove('dragging');
+    }
+  });
+  
+  dropZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    this.classList.add('drag-over');
+  });
+  
+  dropZone.addEventListener('dragleave', function(e) {
+    // Only remove drag-over if we're actually leaving the drop zone
+    if (!this.contains(e.relatedTarget)) {
+      this.classList.remove('drag-over');
+    }
+  });
+  
+  dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    this.classList.remove('drag-over');
+    
+    try {
+      const contentData = JSON.parse(e.dataTransfer.getData('application/json'));
+      
+      // Check if already in playlist
+      const exists = playlist.some(item => item.title === contentData.title);
+      if (!exists) {
+        addToPlaylist(contentData);
+      }
+    } catch (error) {
+      console.error('Error parsing dropped data:', error);
+    }
+  });
+  
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn:not(.runtime-btn)');
+  const runtimeBtns = document.querySelectorAll('.runtime-btn');
+  const searchBox = document.getElementById('search-box');
+  const globalCheckbox = document.getElementById('global-only');
+  
+  function filterContent() {
+    const activeFilter = document.querySelector('.filter-btn.active:not(.runtime-btn)');
+    const activeRuntimeFilter = document.querySelector('.runtime-btn.active');
+    const activeFilterId = activeFilter ? activeFilter.id : 'all-btn';
+    const activeRuntimeId = activeRuntimeFilter ? activeRuntimeFilter.id : 'runtime-all';
+    const searchTerm = searchBox.value.toLowerCase().trim();
+    const globalOnly = globalCheckbox.checked;
+    
+    // Filter the cards array instead of directly manipulating display
+    filteredCards = allCards.filter(card => {
+      let show = true;
+      
+      // Type filter
+      if (activeFilterId === 'movies-btn' && card.dataset.type !== 'Movie') show = false;
+      if (activeFilterId === 'shows-btn' && card.dataset.type !== 'Show') show = false;
+      
+      // Search filter
+      if (searchTerm && !card.dataset.title.toLowerCase().includes(searchTerm)) show = false;
+      
+      // Runtime filter
+      if (activeRuntimeId !== 'runtime-all') {
+        const runtimeMinutes = parseFloat(card.dataset.runtimeMinutes) || 0;
+        if (activeRuntimeId === 'runtime-short' && runtimeMinutes >= 60) show = false;
+        if (activeRuntimeId === 'runtime-medium' && (runtimeMinutes < 60 || runtimeMinutes > 120)) show = false;
+        if (activeRuntimeId === 'runtime-long' && runtimeMinutes <= 120) show = false;
+      }
+      
+      // Global filter
+      if (globalOnly && card.dataset.global !== 'Global') show = false;
+      
+      return show;
+    });
+    
+    // Reset to first page and update display
+    currentPage = 1;
+    updatePagination();
+    showCurrentPage();
+  }
+  
+  // Reset all filters
+  function resetFilters() {
+    // Reset filter buttons
+    filterBtns.forEach(btn => btn.classList.remove('active'));
+    document.getElementById('all-btn').classList.add('active');
+    
+    // Reset runtime buttons
+    runtimeBtns.forEach(btn => btn.classList.remove('active'));
+    document.getElementById('runtime-all').classList.add('active');
+    
+    // Reset form elements
+    searchBox.value = '';
+    globalCheckbox.checked = false;
+    
+    // Reset filtered cards to all cards
+    filteredCards = [...allCards];
+    currentPage = 1;
+    updatePagination();
+    showCurrentPage();
+  }
+  
+  // Filter event listeners
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      filterContent();
+    });
+  });
+  
+  // Runtime filter event listeners
+  runtimeBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      runtimeBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      filterContent();
+    });
+  });
+  
+  searchBox.addEventListener('input', filterContent);
+  globalCheckbox.addEventListener('change', filterContent);
+  
+  // Add a reset button functionality (if you want to add one later)
+  window.resetFilters = resetFilters;
+  
+  // Initialize
+  updateStats();
+  renderPlaylist();
+  initializeVirtualScrolling();
+  
+  // Set up initial filter state
+  document.getElementById('all-btn').classList.add('active');
+  document.getElementById('runtime-all').classList.add('active');
+});
+
