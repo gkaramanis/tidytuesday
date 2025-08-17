@@ -35,7 +35,7 @@ studies_long <- attribution_studies |>
 as_n <- studies_long |> count(iso_country_code, sort = TRUE)
 
 # Load world map data
-world <- read_sf("/Users/georgios/Documents/R/30daymapchallenge/2022/data/world.geo.json") |> 
+world <- read_sf("world.geo.json") |> 
   select(sovereignt, adm0_a3) |> 
   left_join(as_n, by = c("adm0_a3" = "iso_country_code"))
 
