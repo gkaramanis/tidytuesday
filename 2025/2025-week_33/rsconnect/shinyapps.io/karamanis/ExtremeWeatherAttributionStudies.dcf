@@ -1,0 +1,13 @@
+name: ExtremeWeatherAttributionStudies
+title: ExtremeWeatherAttributionStudies
+username: karamanis
+account: karamanis
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15216456
+bundleId: 10782303
+url: https://karamanis.shinyapps.io/ExtremeWeatherAttributionStudies/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: deprecated/attribution_studies-deprecated.R|plots/attribution_studies.png|README.md
