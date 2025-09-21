@@ -2,13 +2,22 @@ library(lubridate)
 
 newscript <- readline(prompt = "Name of script: ")
 
+readline(prompt = "Name of script: ")
+
 # Get date of next Tuesday
 i = wday(Sys.Date(), week_start = 1)
-next_tuesday <- Sys.Date() + (7 - i + 2) %% 7
+
+choose_week <- menu(choices = c("Next week", "This week"))
+
+if (choose_week == 1) {
+  tuesday <- Sys.Date() + (7 - i + 2) %% 7
+} else if (choose_week == 2) {
+  tuesday <- Sys.Date() + (7 - i + 2) %% 7 - 7
+}
 
 # Get ISO week, create new week folder and plot subfolder
-which_week <- isoweek(next_tuesday)
-which_year <- isoyear(next_tuesday)
+which_week <- isoweek(tuesday)
+which_year <- isoyear(tuesday)
 
 folder <- paste0(paste0(which_year, "/"), paste0(which_year, "-week_"), formatC(which_week, width = 2, flag = "0")) 
 dir.create(file.path(paste0(folder, "/plots")), recursive = TRUE)
@@ -17,7 +26,7 @@ dir.create(file.path(paste0(folder, "/plots")), recursive = TRUE)
 readme <- paste0(folder, "/README.md")
 file.create(readme)
 readme_text <- paste0(
-  "https://github.com/rfordatascience/tidytuesday/tree/master/data/", which_year, "/", next_tuesday, "\n\n![](plots/",
+  "https://github.com/rfordatascience/tidytuesday/tree/master/data/", which_year, "/", tuesday, "\n\n![](plots/",
   newscript,
   ".png)")
 write(as.character(readme_text), file(readme))
