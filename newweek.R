@@ -2,8 +2,6 @@ library(lubridate)
 
 newscript <- readline(prompt = "Name of script: ")
 
-readline(prompt = "Name of script: ")
-
 # Get date of next Tuesday
 i = wday(Sys.Date(), week_start = 1)
 
