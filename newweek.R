@@ -5,7 +5,7 @@ newscript <- readline(prompt = "Name of script: ")
 # Get date of next Tuesday
 i = wday(Sys.Date(), week_start = 1)
 
-choose_week <- menu(choices = c("Next week", "This week"))
+choose_week <- menu(choices = c("Today is before this week's Tuesday", "Today is after this week's Tuesday"), graphics = FALSE, title = "Choose week:")
 
 if (choose_week == 1) {
   tuesday <- Sys.Date() + (7 - i + 2) %% 7
