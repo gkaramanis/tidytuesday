@@ -70,7 +70,7 @@ ggplot(el_years) +
   geom_segment(data = el_names, aes(x = start - 0.5, xend = start -0.5, y = -0.5, yend = 0.5), color = "white", linewidth = 1) +
   geom_tile(aes(x = `Years runner-up`, y = 0), height = 1, width = 1, color = "white", fill = "grey88", stat = "unique") +
   geom_tile(aes(x = `Years won`, y = 0, fill = height), width = 1, color = "white", stat = "unique") +
-  scale_x_continuous(breaks = seq(1960, 2025, by = 5), expand = 0, sec.axis = dup_axis(guide = guide_axis_nested(regular_key = "auto", key = el_key, position = "top"), breaks = c(el_names$start, max(el_years$`Years won`)))) +
+  scale_x_continuous(breaks = seq(1960, 2024, by = 5), expand = 0, sec.axis = dup_axis(guide = guide_axis_nested(regular_key = "auto", key = el_key, position = "top"), breaks = c(el_names$start, max(el_years$`Years won`)))) +
   # scale_x_continuous(breaks = seq(1960, 2020, by = 10), expand = 0) +
   scale_y_reverse(expand = 0) +
   MetBrewer::scale_fill_met_c("Tam") +
@@ -79,7 +79,7 @@ ggplot(el_years) +
   theme_void(base_family = f1) +
   labs(
     title = "From FIBA European Champions Cup to EuroLeague",
-    subtitle = str_wrap("The top 10 clubs by championships across 67 years (1958–2025) and four formats: FIBA European Champions Cup (1958–1990), FIBA European League (1991–1995), FIBA EuroLeague (1996–1999), and EuroLeague (2000–present). Colored tiles mark wins, gray tiles mark finals losses. Darker shades show cumulative titles. Real Madrid leads with 11 titles and 10 runner-up finishes. CSKA Moscow has 8 titles across both its Soviet and Russian eras. Panathinaikos won 7 of its 8 finals appearances.", 166),
+    subtitle = str_wrap("The top 10 clubs by championships across 67 years (1958–2024) and four formats: FIBA European Champions Cup (1958–1990), FIBA European League (1991–1995), FIBA EuroLeague (1996–1999), and EuroLeague (2000–present). Colored tiles mark wins, gray tiles mark finals losses. Darker shades show cumulative titles. Real Madrid leads with 11 titles and 10 runner-up finishes. CSKA Moscow has 8 titles across both its Soviet and Russian eras. Panathinaikos won 7 of its 8 finals appearances.", 166),
     caption = "Source: Wikipedia · Graphic: Georgios Karamanis"
   ) +
   theme_guide(
