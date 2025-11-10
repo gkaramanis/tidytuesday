@@ -29,10 +29,10 @@ f1 <- "Inclusive Sans"
 f2 <- "Publico Headline"
 
 # Color palette
-col_danger <- "#FF5252"      # Bright pulsating red for points above 90th
-col_safe <- "#78909C"        # Lead-grey for below 90th percentile  
-col_threshold <- "#B0BEC5"   # Lead-grey for 15 ppb threshold area
-col_p90_line <- "#8B0000"    # Dark blood red for 90th percentile line   
+col_danger <- "#FF5252"
+col_safe <- "#78909C"
+col_threshold <- "#B0BEC5"   
+col_p90_line <- "#8B0000"
 
 ggplot(flint) +
   geom_rect(data = NULL, aes(xmin = Inf, xmax = 15, ymin = -Inf, ymax = Inf),  fill = col_threshold, alpha = 0.3) +
