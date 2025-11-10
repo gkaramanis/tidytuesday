@@ -62,5 +62,3 @@ ggplot(flint) +
   )
 
 record_polaroid()
-
-flint |> distinct(p90)
