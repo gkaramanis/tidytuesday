@@ -107,5 +107,9 @@ p23 <- p2 + p3 +
   plot_layout(widths = c(2, 1.25))
 
 p1 / p23 +
-  plot_layout(heights = c(2.6, 1))
-
+  plot_layout(heights = c(2.6, 1)) +
+  plot_annotation(
+    theme = theme(
+      plot.background = element_rect(fill = "grey99", color = NA),
+    )
+  )
