@@ -8,9 +8,10 @@ library(camcorder)
 
 gg_record(dir = "tidytuesday-temp", device = "png", width = 14, height = 9, units = "in", dpi = 320)
 
+# Use modified cleaning script
 source(here::here("2026/2026-week_03/afica-cleaning-script.R"))
 
-# function to shorten names
+# Function to shorten names
 shorten_names <- function(country) {
   country <- str_replace(country, "Democratic Republic", "DR")
   country <- str_replace(country, "Republic", "R.")
