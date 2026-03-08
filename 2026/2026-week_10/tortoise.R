@@ -67,7 +67,7 @@ ggplot(tort, aes(x = ratio, y = mean_bci)) +
   labs(
     title = "A male-biased sex ratio is driving a tortoise population to extinction",
     subtitle = str_wrap("Each point is a year of field surveys from 2008 to 2023 on the Golem Grad Island plateau in North Macedonia. Moving right means more males per female among individuals captured that year. Moving down means lower average female body condition, which measures body mass relative to body size. Point size shows how many females were captured. Male harassment drives up female mortality, which pushes the sex ratio further out of balance, which increases harassment in turn. The paper calls this an extinction vortex and predicts the last island female will die in 2083.", 115),
-    caption = str_wrap('Graphic: Georgios Karamanis · Source: Arsovski, D., X. Bonnet, A. Golubović, and L. Tomović. 2026. “ Sex Ratio Bias Triggers Demographic Suicide in a Dense Tortoise Population.” Ecology Letters 29, no. 1: e70296. https://doi.org/10.1111/ele.70296.', 130),
+    caption = '**Graphic:** Georgios Karamanis · **Source:** Arsovski, D., X. Bonnet, A. Golubović, and L. Tomović. 2026. “ Sex Ratio Bias Triggers Demographic Suicide in a Dense Tortoise Population.” Ecology Letters 29, no. 1: e70296. https://doi.org/10.1111/ele.70296.',
     x = "Males per female ratio from capture surveys",
     y = "Mean female BCI"
   ) +
@@ -78,8 +78,8 @@ ggplot(tort, aes(x = ratio, y = mean_bci)) +
     panel.grid.minor = element_blank(),
     panel.grid.major = element_line(color = "darkgreen", linewidth = 0.05),
     plot.title = element_text(family = f2),
-    plot.caption = element_text(hjust = 0, margin = margin(10, 0, 0, 0)),
-    plot.margin = margin(20, 20, 20, 20)
+    plot.caption = marquee::element_marquee(hjust = 0, margin = margin(10, 0, 0, 0), width = 0.85),
+    plot.margin = margin(10, 15, 10, 15)
   )  
 
 record_polaroid()
