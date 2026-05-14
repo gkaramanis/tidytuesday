@@ -1,7 +1,5 @@
 https://github.com/rfordatascience/tidytuesday/tree/master/data/2026/2026-05-12
 
-[![](plots/twinned_cities_scrolly_1.png)](https://github.com/gkaramanis/tidytuesday/blob/master/2026/2026-week_20/plots/twinned_cities_scrolly.mov)
-
 <table>
   <tr>
     <td><img src="plots/twinned_cities_scrolly_1.png"></td>
