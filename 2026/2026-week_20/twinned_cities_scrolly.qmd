@@ -1,0 +1,481 @@
+---
+title: "Rio de Janeiro: City of Friendships"
+format:
+  closeread-html:
+    remove-header-space: true
+    cr-style:
+      section-background-color: "#0a1a1a"
+      narrative-text-color-overlay: "#f5e9c0"
+      narrative-background-color-overlay: "rgba(10,26,26,0.8)"
+      narrative-border-radius: "6px"
+      narrative-overlay-max-width: "clamp(240px, 28vw, 420px)"
+      narrative-font-size: "clamp(0.9rem, 1.3vw, 1.2rem)"
+      narrative-font-family: "'Bricolage Grotesque 96pt', sans-serif"
+---
+
+```{=html}
+<style>
+@font-face {
+  font-family: 'Bricolage Grotesque 96pt';
+  font-weight: 300;
+  font-style: normal;
+  src: url('fonts/BricolageGrotesque96pt-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bricolage Grotesque 96pt';
+  font-weight: 400;
+  font-style: normal;
+  src: url('fonts/BricolageGrotesque96pt-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bricolage Grotesque 96pt';
+  font-weight: 400;
+  font-style: italic;
+  src: url('fonts/BricolageGrotesque96pt-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bricolage Grotesque 96pt';
+  font-weight: 600;
+  font-style: normal;
+  src: url('fonts/BricolageGrotesque96pt-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bricolage Grotesque 96pt';
+  font-weight: 700;
+  font-style: normal;
+  src: url('fonts/BricolageGrotesque96pt-Bold.ttf') format('truetype');
+}
+html, body { background: #0a1a1a; }
+.cr-section { font-family: 'Bricolage Grotesque 96pt', sans-serif; }
+.cr-title-h1 { display: block; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300; color: #f5e9c0; line-height: 1.15; letter-spacing: 0.03em; margin-bottom: 0.6rem; }
+.cr-title-sub { display: block; color: #c9a84c; font-size: clamp(0.75rem, 1vw, 0.9rem); letter-spacing: 0.2em; text-transform: uppercase; }
+.cr-scroll-hint { display: block; color: rgba(201,168,76,0.55); font-size: 1.4rem; margin-top: 1.8rem; animation: cr-bounce 2.2s ease-in-out 1.2s infinite; }
+@keyframes cr-bounce { 0%, 100% { transform: translateY(0); opacity: 0.55; } 50% { transform: translateY(9px); opacity: 1; } }
+.cr-section a, .cr-section a:visited {
+  color: #c9a84c;
+  text-decoration: underline;
+  text-decoration-color: rgba(201,168,76,0.35);
+}
+.cr-section a:hover { color: #FFC04C; }
+small a, small a:visited { color: #888; }
+@media (max-width: 640px) {
+  #cr-map { padding-left: 0 !important; }
+}
+@media (min-width: 641px) and (max-width: 960px) {
+  #cr-map { padding-left: 40px !important; }
+}
+</style>
+```
+
+```{r}
+#| include: false
+library(tidyverse)
+library(geosphere)
+
+cities <- readr::read_csv(
+  "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-05-12/cities.csv",
+  show_col_types = FALSE
+)
+links <- readr::read_csv(
+  "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-05-12/links.csv",
+  show_col_types = FALSE
+)
+
+city_rio <- cities |>
+  filter(id == "Q8678") |>
+  left_join(links, by = c("id" = "target")) |>
+  left_join(cities, by = c("source" = "id")) |>
+  filter(!is.na(lng.y), !is.na(lat.y)) |>
+  filter(name.y != "Adelaide") |>  # not a Rio sister city; Wikidata error
+  mutate(
+    dist_km = distHaversine(
+      cbind(lng.x, lat.x),
+      cbind(lng.y, lat.y)
+    ) / 1000
+  ) |>
+  arrange(dist_km) |>
+  mutate(rank = row_number())
+
+n_twins      <- nrow(city_rio)
+rio_lng      <- city_rio$lng.x[1]
+rio_lat_val  <- city_rio$lat.x[1]
+nearest      <- city_rio |> slice_min(dist_km, n = 1, with_ties = FALSE)
+most_distant <- city_rio |> slice_max(dist_km, n = 1, with_ties = FALSE)
+northernmost <- city_rio |> slice_max(lat.y,   n = 1, with_ties = FALSE)
+southernmost <- city_rio |> slice_min(lat.y,   n = 1, with_ties = FALSE)
+total_dist   <- sum(city_rio$dist_km)
+earth_laps   <- round(total_dist / 40075, 1)
+
+gc_paths <- city_rio |>
+  select(rank, lng.x, lat.x, lng.y, lat.y, dist_km, continent.y) |>
+  pmap_dfr(function(rank, lng.x, lat.x, lng.y, lat.y, dist_km, continent.y) {
+    gcIntermediate(c(lng.x, lat.x), c(lng.y, lat.y), n = 40, addStartEnd = TRUE) |>
+      as.data.frame() |>
+      mutate(pair_id = rank, dist_km = dist_km, continent = continent.y)
+  })
+
+endpoints <- city_rio |>
+  select(rank, lng.y, lat.y, dist_km, continent.y, name.y) |>
+  rename(pair_id = rank, ep_lon = lng.y, ep_lat = lat.y, continent = continent.y, name = name.y)
+
+# All cities for the wide-shot layer (shuffled so they appear randomly across the map)
+all_cities_shuffled <- cities |>
+  filter(!is.na(lng), !is.na(lat)) |>
+  select(lng, lat) |>
+  slice_sample(prop = 1)
+
+ojs_define(
+  gc_data        = gc_paths |> select(pair_id, lon, lat, dist_km, continent),
+  endpoint_data  = endpoints,
+  all_cities     = all_cities_shuffled,
+  rio_lon        = rio_lng,
+  rio_lat        = rio_lat_val,
+  n_total        = n_twins
+)
+```
+
+:::{.cr-section layout="overlay-left"}
+
+:::{#cr-map style="width:100%; height:100svh; background:#0a1a1a; display:flex; align-items:center; padding-left:80px; box-sizing:border-box;"}
+```{ojs}
+//| echo: false
+topojson = require("topojson-client@3")
+
+world_topo = fetch(
+  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+).then(r => r.json())
+
+mapW = width || 960
+mapH = Math.round(mapW * 0.55)
+
+proj = d3.geoNaturalEarth1()
+  .scale(mapW / 6.3)
+  .translate([mapW / 2, mapH / 2])
+
+geoPath = d3.geoPath(proj)
+
+dpr = Math.min(window.devicePixelRatio || 1, 1.5)
+
+makeCanvas = () => {
+  const canvas = htl.html`<canvas width="${mapW * dpr}" height="${mapH * dpr}">`
+  canvas.style.cssText = `width:${mapW}px;height:${mapH}px;position:absolute;top:0;left:0;pointer-events:none`
+  const ctx = canvas.getContext("2d")
+  ctx.scale(dpr, dpr)
+  return {canvas, ctx}
+}
+
+gc  = transpose(gc_data)
+eps = transpose(endpoint_data)
+allCities = transpose(all_cities)
+
+// ---------- stable canvas layer: all cities, resettable draw animation ----------
+cityCanvas = {
+  const {canvas, ctx} = makeCanvas()
+  let timer = null
+
+  canvas._clear = () => {
+    if (timer) { clearTimeout(timer); timer = null }
+    ctx.clearRect(0, 0, mapW, mapH)
+    canvas._active = false
+  }
+
+  canvas._startDraw = () => {
+    if (canvas._active) return
+    canvas._active = true
+    ctx.fillStyle = "rgba(255,192,76,0.5)"
+    const total = allCities.length
+    const delay = 3000 / (total / 8)
+    let i = 0
+    const draw = () => {
+      const end = Math.min(i + 8, total)
+      for (; i < end; i++) {
+        const p = proj([allCities[i].lng, allCities[i].lat])
+        if (!p) continue
+        ctx.beginPath()
+        ctx.arc(p[0], p[1], 1.5, 0, Math.PI * 2)
+        ctx.fill()
+      }
+      if (i < total) timer = setTimeout(draw, delay)
+      else timer = null
+    }
+    draw()
+  }
+
+  return canvas
+}
+
+// ---------- stable land layer drawn once to canvas ----------
+landCanvas = {
+  const {canvas, ctx} = makeCanvas()
+  const land = topojson.feature(world_topo, world_topo.objects.countries)
+  const canvasPath = d3.geoPath(proj, ctx)
+  land.features.filter(f => +f.id !== 10).forEach(f => {
+    ctx.beginPath()
+    canvasPath(f)
+    ctx.fillStyle = "#0d3d3d"
+    ctx.fill()
+    ctx.strokeStyle = "#061212"
+    ctx.lineWidth = 0.3
+    ctx.stroke()
+  })
+  return canvas
+}
+
+// ---------- reactive SVG layer: connections + Rio pulse only ----------
+allFeatures = {
+  const byId = d3.group(gc, d => d.pair_id)
+  return [...byId.entries()]
+    .sort((a, b) => a[0] - b[0])
+    .map(([id, pts]) => ({
+      type: "Feature",
+      geometry: { type: "LineString", coordinates: pts.map(p => [p.lon, p.lat]) },
+      properties: { pair_id: id, dist_km: pts[0].dist_km, continent: pts[0].continent }
+    }))
+}
+
+// Continent reveal order per trigger.
+// null = show all; [] = show none (Rio only).
+continentSets = [
+  [],                                                              // 0: title
+  [],                                                              // 1: wide shot
+  [],                                                              // 2: Rio dot, no links
+  ["South America"],                                               // 3
+  ["South America", "Europe"],                                     // 4
+  ["South America", "Europe", "Africa"],                           // 5
+  ["South America", "Europe", "Africa", "North America"],          // 6
+  ["South America", "Europe", "Africa", "North America", "Asia"],  // 7
+  ["South America", "Europe", "Africa", "North America", "Asia"],  // 8: Asia continued
+  null,                                                            // 9: all
+  null                                                             // 10: stats
+]
+
+activeConts = continentSets[Math.min(crTriggerIndex, continentSets.length - 1)]
+
+// Tooltip — created once, removed only when cell is invalidated
+tipDiv = {
+  const tip = d3.select("body").append("div")
+    .style("position", "fixed")
+    .style("pointer-events", "none")
+    .style("background", "rgba(10,26,26,0.92)")
+    .style("color", "#f5e9c0")
+    .style("padding", "3px 8px")
+    .style("border-radius", "4px")
+    .style("font-size", "0.9rem")
+    .style("font-family", "'Bricolage Grotesque 96pt', sans-serif")
+    .style("font-weight", "bold")
+    .style("white-space", "nowrap")
+    .style("opacity", "0")
+    .style("transition", "opacity 0.1s")
+    .style("z-index", "99999")
+  invalidation.then(() => tip.remove())
+  return tip
+}
+
+// Stable SVG skeleton — created once, never rebuilt on scroll
+mapSvg = {
+  const svg = d3.create("svg")
+    .attr("width", mapW)
+    .attr("height", mapH)
+    .style("display", "block")
+    .style("position", "absolute")
+    .style("top", "0")
+    .style("left", "0")
+    .style("background", "transparent")
+  svg.append("g").attr("class", "lines")
+  svg.append("g").attr("class", "dots")
+  svg.append("g").attr("class", "hits")
+  svg.append("g").attr("class", "rio")
+  return svg.node()
+}
+
+// Side-effect: update SVG — per-continent <g> groups so overlapping lines don't compound opacity
+_updateMapSvg = {
+  const svg = d3.select(mapSvg)
+
+  if (crTriggerIndex < 2) {
+    svg.select(".lines").selectAll("*").remove()
+    svg.select(".dots").selectAll("*").remove()
+    svg.select(".hits").selectAll("*").remove()
+    svg.select(".rio").selectAll("*").remove()
+    return
+  }
+
+  const isFull = activeConts === null
+  const conts = isFull
+    ? [...new Set(allFeatures.map(f => f.properties.continent))]
+    : activeConts
+  const currentCont = isFull ? null : conts[conts.length - 1]
+  const gKey = c => "cg-" + c.replace(/[\s/]/g, "_")
+
+  // Remove groups for continents no longer active (backward scrolling)
+  const contSet = new Set(conts)
+  const removeStale = sel =>
+    svg.select(sel).selectAll("g")
+      .filter(function() { return !contSet.has(d3.select(this).attr("data-cont")) })
+      .remove()
+  removeStale(".lines")
+  removeStale(".dots")
+
+  // Visible endpoints with continent field for per-group assignment
+  const visibleEps = (isFull ? eps : eps.filter(d => conts.includes(d.continent)))
+    .map(d => { const p = proj([d.ep_lon, d.ep_lat]); return p ? { name: d.name, cont: d.continent, px: p[0], py: p[1] } : null })
+    .filter(Boolean)
+
+  // Per-continent groups — group-level opacity prevents stacking of overlapping lines/dots
+  conts.forEach(cont => {
+    const key = gKey(cont)
+    const isCurrent = isFull ? true : cont === currentCont
+    const lineOp = isFull ? 0.7 : (isCurrent ? 1 : 0.25)
+    const dotOp  = isFull ? 0.65 : (isCurrent ? 0.9 : 0.4)
+
+    // Lines group
+    let linesG = svg.select(".lines").select("." + key)
+    if (linesG.empty()) {
+      linesG = svg.select(".lines").append("g").attr("class", key).attr("data-cont", cont).attr("opacity", 0)
+      allFeatures.filter(f => f.properties.continent === cont).forEach((d, i) => {
+        const path = linesG.append("path")
+          .attr("d", geoPath(d))
+          .attr("fill", "none").attr("stroke", "#FFC04C")
+          .attr("stroke-width", 0.8).attr("stroke-opacity", 0.6)
+        const len = path.node().getTotalLength()
+        path.attr("stroke-dasharray", len + " " + len).attr("stroke-dashoffset", len)
+          .transition("draw").delay(i * 18).duration(500).ease(d3.easeLinear)
+          .attr("stroke-dashoffset", 0)
+      })
+    }
+    linesG.transition("dim").duration(400).attr("opacity", lineOp)
+
+    // Dots group
+    let dotsG = svg.select(".dots").select("." + key)
+    if (dotsG.empty()) {
+      dotsG = svg.select(".dots").append("g").attr("class", key).attr("data-cont", cont).attr("opacity", 0)
+      visibleEps.filter(e => e.cont === cont).forEach((d, i) => {
+        dotsG.append("circle")
+          .attr("cx", d.px).attr("cy", d.py).attr("r", 0)
+          .attr("fill", "#FFC04C").style("pointer-events", "none")
+          .transition("draw").delay(i * 18 + 250).duration(200).attr("r", 2)
+      })
+    }
+    dotsG.transition("dim").duration(400).attr("opacity", dotOp)
+  })
+
+  // Hit areas: flat, event handlers re-bound each update to keep visibleEps closure fresh
+  svg.select(".hits").selectAll("circle")
+    .data(visibleEps, d => d.name)
+    .join(
+      enter => enter.append("circle")
+        .attr("cx", d => d.px).attr("cy", d => d.py)
+        .attr("r", 5).attr("fill", "transparent").style("cursor", "pointer"),
+      update => update,
+      exit => exit.remove()
+    )
+    .on("mouseover", (event, d) => {
+      const nearby = visibleEps.filter(e => Math.hypot(e.px - d.px, e.py - d.py) <= 5)
+      tipDiv.html(nearby.map(e => e.name).join("<br>"))
+        .style("opacity", "1")
+        .style("left", (event.clientX + 12) + "px")
+        .style("top", (event.clientY - 10) + "px")
+    })
+    .on("mousemove", (event) => {
+      tipDiv.style("left", (event.clientX + 12) + "px")
+        .style("top", (event.clientY - 10) + "px")
+    })
+    .on("mouseout", () => tipDiv.style("opacity", "0"))
+
+  if (svg.select(".rio circle.rio-core").empty()) {
+    const [rx, ry] = proj([rio_lon, rio_lat])
+    const pulse = svg.select(".rio").append("circle")
+      .attr("cx", rx).attr("cy", ry)
+      .attr("r", 8).attr("fill", "none")
+      .attr("stroke", "#FFC04C").attr("stroke-width", 1.5)
+      .style("pointer-events", "none")
+    pulse.append("animate")
+      .attr("attributeName", "r").attr("values", "8;24")
+      .attr("dur", "2s").attr("repeatCount", "indefinite")
+    pulse.append("animate")
+      .attr("attributeName", "stroke-opacity").attr("values", "0.8;0")
+      .attr("dur", "2s").attr("repeatCount", "indefinite")
+    svg.select(".rio").append("circle")
+      .attr("class", "rio-core")
+      .attr("cx", rx).attr("cy", ry)
+      .attr("r", 5).attr("fill", "#FFC04C")
+      .style("pointer-events", "none")
+  }
+}
+
+// Side-effect: fade canvas — CSS transition for trigger boundaries, none during scroll
+_canvasFade = {
+  if (crTriggerIndex <= 0 || crTriggerIndex > 2) {
+    cityCanvas.style.transition = "opacity 0.6s ease"
+    cityCanvas.style.opacity = 0
+    return
+  }
+  if (crTriggerIndex === 1) {
+    cityCanvas.style.transition = "opacity 0.6s ease"
+    cityCanvas.style.opacity = 1
+    return
+  }
+  // trigger 2 (progress block): fade out cities as the block activates
+  cityCanvas.style.transition = "opacity 1.2s ease 0.4s"
+  cityCanvas.style.opacity = 0
+}
+
+// Side-effect: grey out land on title slide
+_mapTone = {
+  landCanvas.style.filter = crTriggerIndex === 0
+    ? "saturate(0) brightness(0.6)"
+    : ""
+}
+
+_startCityDraw = {
+  if (crTriggerIndex === 0) cityCanvas._clear()
+  else cityCanvas._startDraw()
+}
+
+chart = {
+  const wrap = htl.html`<div style="position:relative;width:${mapW}px;height:${mapH}px;background:#0a1a1a;">`
+  wrap.appendChild(landCanvas)
+  wrap.appendChild(cityCanvas)
+  wrap.appendChild(mapSvg)
+  return wrap
+}
+```
+:::
+
+<span class="cr-title-h1">Rio de Janeiro</span><span class="cr-title-sub">City of Friendships</span><span class="cr-scroll-hint">↓</span> [@cr-map]
+
+A sister city agreement, also called a twin city or twinning, is a formal bond between two cities: a commitment to cultural exchange, cooperation and goodwill across borders. According to Wikidata, `r nrow(all_cities_shuffled)` cities worldwide have signed at least one. Each dot here is one of them.<br><br>[Read more about the data](https://github.com/rfordatascience/tidytuesday/tree/main/data/2026/2026-05-12) [@cr-map]
+
+:::{.progress-block}
+**This is Rio de Janeiro.**<br><br>A city of nearly seven million on Brazil's Atlantic coast, once the capital of both Brazil and the Portuguese empire. Of all those cities on the map, Rio has more sister city agreements than any other. [@cr-map]
+:::
+
+The nearest connection is **Niterói**, just 11 km across Guanabara Bay. [For over a century](https://en.wikipedia.org/wiki/Niter%C3%B3i) it served as the capital of Rio de Janeiro state, governing the region from the opposite shore.<br><br>From there the lines spread south and west: **Asunción**, the landlocked capital of Paraguay; **Buenos Aires**, across the mouth of the Rio de la Plata; and **Cusco**, the [former capital of the Inca Empire](https://en.wikipedia.org/wiki/Cusco), high in the Peruvian Andes. [@cr-map]
+
+Europe holds 26 connections. In 1807, [Napoleon invaded Portugal and the royal court fled to Rio](https://en.wikipedia.org/wiki/Transfer_of_the_Portuguese_court_to_Brazil), making Rio the capital of the Portuguese empire for 13 years. That history is still visible on the map.<br><br>Of those 26 European connections, 14 are with Portuguese cities: **Lisbon**, **Porto**, **Braga**, **Coimbra**, **Guimarães** and **Fátima**, the pilgrimage town. [@cr-map]
+
+That colonial thread extends to Africa. **Praia**, **Luanda** and **Bissau** are all capitals of Portuguese-speaking nations born of the same colonial moment. [In 1648, a fleet sent from Rio retook Luanda from the Dutch](https://en.wikipedia.org/wiki/Angola%E2%80%93Brazil_relations), and Angola was briefly administered from Rio during the Portuguese court's years in Brazil.<br><br>**Lagos** tells the reverse: after abolition, [freed enslaved Brazilians of Yoruba origin returned to Nigeria](https://en.wikipedia.org/wiki/Aguda_people) and settled in the Aguda quarter. Fifteen African connections in all, from the Atlantic coast to **Johannesburg** and **Maputo** on the Indian Ocean. [@cr-map]
+
+Twelve North American connections, spread from the Caribbean to Canada. **Havana** and **Santo Domingo** sit closest to Brazil; the Central American capitals **San José** and **Managua**; and **Mexico City**. On the US coast, **Miami** and **Miami Beach**: Florida is home to more than 300 000 Brazilians.<br><br>**Atlanta** has been a partner since 1972: Mayor Sam Massell signed the agreement after a visit to Brazil, [encouraged by then-Governor Jimmy Carter](https://www.atlsistercities.com/rio), who *had become enchanted with the city*. [@cr-map]
+
+Six of the Asian connections are with cities in Israel and Palestine: **Tel Aviv**, **Jerusalem**, **Ra'anana**, **Hebron** and others. [Brazil has one of the largest Jewish communities outside Israel](https://en.wikipedia.org/wiki/History_of_the_Jews_in_Brazil).<br><br>Further into Asia: **Yerevan** in Armenia, **Dubai**, **Samarkand** in Uzbekistan, 13 000 km away. [@cr-map]
+
+And **Beijing**, a partner since 1986. On the eve of the 2016 Rio Games, [Beijing lit the Rio Olympic emblem at the National Stadium to mark 30 years of sisterhood](https://wb.beijing.gov.cn/en/express/202411/t20241119_3945942.html). Both cities have hosted the Summer Olympics.<br><br>South Korea adds **Seoul**, **Busan** and **Incheon**. The arc ends in Japan: **Kobe**, at nearly 19 000 km, is the most distant connection Rio has ever made. [@cr-map]
+
+:::{focus-on="cr-map"}
+**`r n_twins` sister cities** across 5 continents.
+<br><br>
+Nearest:<br>**`r nearest$name.y`**, `r format(round(nearest$dist_km), big.mark = " ")` km across the bay.
+<br><br>
+Most distant:<br>**`r most_distant$name.y`**, `r format(round(most_distant$dist_km), big.mark = " ")` km away.
+<br><br>
+Northernmost:<br>**`r northernmost$name.y`**, at `r round(northernmost$lat.y, 1)`°N.
+<br><br>
+Southernmost:<br>**`r southernmost$name.y`**, at `r abs(round(southernmost$lat.y, 1))`°S.
+<br><br>
+All lines combined: `r format(round(total_dist), big.mark = " ")` km, or `r earth_laps` times around Earth.
+<br><br>
+<small style="color:#888;">Data from Wikidata, collected by [Ahmad Barclay](https://ahmadbarclay.com) for the [Twin cities explorer](https://bothness.github.io/twin-cities/). Wikidata may contain errors and omissions. Made by [Georgios Karamanis](https://karaman.is) with [Closeread](https://closeread.netlify.app).</small>
+:::
+
+:::

@@ -1,0 +1,346 @@
+
+/*-- scss:defaults --*/
+
+
+/*-- scss:rules --*/
+
+/* global layout styles */
+
+/* helpful for docs with no header space
+.cr-section .narrative-col > *:first-child {
+  padding-block-start: 10svh !important;
+}
+*/
+
+.cr-section {
+  display: grid;
+  grid-template-rows: 1fr;
+  background-color: var(--cr-section-background-color);
+
+  // used to mimic quarto's layout class but exempt the section from some of the
+  // behaviours that come with quarto responding to that class
+  // see https://github.com/qmd-lab/closeread/issues/81
+  &.cr-column-screen {
+    grid-column: screen-start / screen-end !important;
+    z-index: 998;
+    opacity: .999;
+  }
+
+  .narrative-col {
+    grid-row: 1;
+
+    font-family: var(--cr-narrative-font-family);
+    font-size: var(--cr-narrative-font-size);
+
+    .trigger {
+      padding-block: 45svh;
+      padding-inline: 24px;
+
+      .narrative {
+
+        padding: 0.7em 0.75em;
+
+        // override bootstrap margin when using a single paragraph trigger
+        // (but not when wrapping multiple pars with a div)
+        > p {
+          margin-bottom: 0;
+        }
+      }
+      
+      &:has(.cr-spacer) {
+        visibility: hidden;
+        padding-block: 0;
+      }
+    }
+  }
+
+  .sticky-col {
+    grid-row: 1;
+
+    // using a grid to stack sticky elements on top of each other to then
+    // transition through (based on reveal's .r-stack)
+    .sticky-col-stack {
+      display: grid;
+      height: 100dvh;
+      position: sticky;
+      overflow: hidden;
+      top: 0;
+
+      .sticky {
+        grid-area: 1 / 1;
+        margin: auto;
+
+        // to be overruled when it is the active element
+        opacity: 0;
+
+        transition:
+          opacity linear 0.5s,
+          color .7s linear,
+          transform 1s ease-in-out,
+          transform-origin 1s ease-in-out;
+      }
+      
+      .sticky:has(.line-block) {
+        font-family: var(--cr-poem-font-family);
+        transition:
+          transform .8s ease-in-out;
+      }
+      
+      .sticky:has(.line-block) {
+        font-family: var(--cr-poem-font-family);
+        transition:
+          transform .8s ease-in-out,
+          font-size .8s ease-in-out;
+      }
+
+      div.sourceCode {
+        background-color: rgba(233, 236, 239, 1);
+      }
+
+      // show active stickies
+      .cr-active {
+        opacity: 1;
+        
+        // -- Code Blocks -- //
+        // if the code cell contains highlighted code, dim it
+        &.cr-hl-within .sourceCode span[id^="cb"] {
+          opacity: .3;
+          
+          transition:
+            opacity linear 0.3s;
+          
+          // while keeping the highlighted lines bright
+          &.cr-hl{
+            opacity: 1;
+            
+            transition:
+            opacity linear 0.3s;
+          }
+        }
+        
+        // -- Line Blocks -- //
+        // if the line block contains highlighted lines, lighten text
+        &.cr-hl-within div.line-block span[id^="lb"]{
+          color: rgba(0, 0, 0, 0.4);
+          
+          transition: color .7s linear;
+          
+          // while keeping the highlighted lines black
+          &.cr-hl{
+            color: rgba(0, 0, 0, 1);
+            
+            transition: color .7s linear;
+          }
+          
+          // as well as any spans
+          span.cr-hl{
+            color: rgba(0, 0, 0, 1);
+            
+            transition: color .7s linear;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* mobile sizing (bootstrap: xs) is always overlay-center */
+@media (max-width: 575.98px) {
+  .cr-section.sidebar-left,
+  .cr-section.sidebar-right,
+  .cr-section.overlay-left,
+  .cr-section.overlay-right,
+  .cr-section.overlay-center {
+    grid-template-columns: 1fr;
+    
+    .narrative-col {
+      grid-column: 1;
+      z-index: 1;
+      margin-inline: auto;
+      background-color: transparent;
+      
+      .narrative {
+        background-color: var(--cr-narrative-background-color-overlay);
+        color: var(--cr-narrative-text-color-overlay);
+        padding: 0.3em 0.5em;
+        border-radius: var(--cr-narrative-border-radius);
+      }
+    }
+
+    .sticky-col {
+      grid-column: 1;
+    }
+  }
+}
+
+// layouts for wider-than-mobile sizing
+
+// overlay layouts use one column...
+.overlay-left,
+.overlay-center,
+.overlay-right {
+  grid-template-columns: 1fr;
+
+  .narrative-col {
+    grid-column: 1;
+    z-index: 1;
+    transition: opacity 0.5s ease-in-out;
+    max-width: var(--cr-narrative-overlay-max-width);
+    min-width: var(--cr-narrative-overlay-min-width);
+    
+    .narrative {
+      background-color: var(--cr-narrative-background-color-overlay);
+      color: var(--cr-narrative-text-color-overlay);
+      border-radius: var(--cr-narrative-border-radius);
+    }
+  }
+
+  .sticky-col {
+    grid-column: 1;
+  }
+}
+
+// ... with inline margins set for narrative content depending on side
+.overlay-left {
+  .narrative-col {
+    justify-self: start;
+    margin-left: var(--cr-narrative-outer-margin);
+  }
+}
+.overlay-center {
+  .narrative-col {
+    justify-self: center;
+  }
+}
+.overlay-right {
+  .narrative-col {
+    justify-self: end;
+    margin-right: var(--cr-narrative-outer-margin);
+  }
+}
+
+
+// sidebar layouts use two columns
+.sidebar-left {
+  grid-template-columns: var(--cr-narrative-sidebar-width) 2fr;
+
+  .narrative-col {
+    grid-column: 1;
+    margin-inline: 0;
+    background-color: var(--cr-narrative-background-color-sidebar);
+
+    .narrative {
+      padding: 0 0.75em;
+      color: var(--cr-narrative-text-color-sidebar);
+    }
+  }
+
+  .sticky-col {
+    grid-column: 2;
+  }
+}
+.sidebar-right {
+  grid-template-columns: 2fr var(--cr-narrative-sidebar-width);
+
+  .narrative-col {
+    grid-column: 2;
+    margin-inline: 0;
+    background-color: var(--cr-narrative-background-color-sidebar);
+    
+    .narrative {
+      padding: 0 0.75em;
+      color: var(--cr-narrative-text-color-sidebar);
+    }
+  }
+
+  .sticky-col {
+    grid-column: 1;
+  }
+}
+
+// presentation-mode overrides layouts when its added alongside
+.presentation-mode.overlay-left,
+.presentation-mode.overlay-center,
+.presentation-mode.overlay-right,
+.presentation-mode.sidebar-left,
+.presentation-mode.sidebar-right {
+  grid-template-columns: 1fr !important;
+  
+  .narrative-col {
+    grid-column: 1 !important;
+    z-index: 1 !important;
+    margin-inline: 30% !important;
+    opacity: 0 !important;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .sticky-col {
+    grid-column: 1 !important;
+  }
+}
+
+/* debug styles */
+
+body.cr-debug {
+  
+  // give stickies borders
+  .cr-poem {
+    background-color: #ffff0099;
+    border: 1px solid orange;
+  }
+  
+  // make stickies slightly see-through
+  .sticky {
+    opacity: 0.8;
+  }
+
+  // narrative content and scroll zone debug styles
+  .narrative-col {
+    .trigger {
+      background: rgba(0, 208, 255, 0.5);
+      border: 1px solid orange;
+      border-radius: var(--cr-narrative-border-radius);
+      
+      &.new-trigger {
+        background: lightgreen;
+      }
+    }   
+  }
+
+}
+
+/* remove header option */
+
+body.cr-removeheaderspace {
+  #quarto-content {
+    main#quarto-document-content {
+      padding-top: 0;
+      margin-top: 0;
+  
+      .quarto-title-block {
+        display: none;
+      }
+    }
+  }
+
+}
+
+/* configurable style variables. use bootstrap variables where possible */
+
+:root {
+  --cr-narrative-background-color-overlay: #708090e1;
+  --cr-narrative-text-color-overlay: white;
+  --cr-narrative-background-color-sidebar: transparent;
+  --cr-narrative-text-color-sidebar: black;
+  --cr-narrative-border-radius: 1em;
+  --cr-narrative-overlay-max-width: 527.98px;
+  --cr-narrative-overlay-min-width: none;
+  --cr-narrative-outer-margin: 5%;
+  --cr-narrative-font-family: var(--bs-body-font-family);
+  --cr-narrative-font-size: 1.15rem;
+  --cr-poem-font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --cr-narrative-sidebar-width: 1fr;
+  --cr-section-background-color: lightgrey;
+}
+
