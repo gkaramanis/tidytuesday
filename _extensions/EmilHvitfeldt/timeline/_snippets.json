@@ -1,0 +1,42 @@
+{
+  "Timeline": {
+    "prefix": "tl",
+    "body": [
+      ":::: {.timeline}",
+      "::: {.event data-label=\"${1:Label}\"}",
+      "${2:Content}",
+      ":::",
+      "::: {.event data-label=\"${3:Label}\"}",
+      "${4:Content}",
+      ":::",
+      "::::",
+      "$0"
+    ],
+    "description": "Insert a basic horizontal timeline."
+  },
+  "Timeline Vertical": {
+    "prefix": "tl-vertical",
+    "body": [
+      ":::: {.timeline .vertical}",
+      "::: {.event data-label=\"${1:Label}\"}",
+      "${2:Content}",
+      ":::",
+      "::: {.event data-label=\"${3:Label}\"}",
+      "${4:Content}",
+      ":::",
+      "::::",
+      "$0"
+    ],
+    "description": "Insert a vertical timeline."
+  },
+  "Timeline Event": {
+    "prefix": "tl-event",
+    "body": [
+      "::: {.event data-label=\"${1:Label}\"}",
+      "${2:Content}",
+      ":::",
+      "$0"
+    ],
+    "description": "Insert a single timeline event."
+  }
+}
