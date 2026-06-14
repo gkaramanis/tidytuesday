@@ -1,0 +1,319 @@
+---
+format:
+  revealjs:
+    theme: simple
+    slide-number: false
+    width: 1200
+    height: 800
+    embed-resources: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+        <style>
+        html, body, .reveal-viewport, .reveal { overflow: hidden !important; }
+        .reveal .slides section { overflow: hidden; }
+        .reveal * { scrollbar-width: none; }
+        .reveal *::-webkit-scrollbar { display: none; }
+        body, .reveal, .reveal p, .reveal li {
+          font-family: 'IBM Plex Sans', sans-serif;
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+          font-family: 'Playfair 9pt', 'Playfair Display', serif;
+          font-weight: 700;
+        }
+        .reveal h2 { font-size: 1.3em; margin-bottom: 0.25em; }
+        .reveal h2:empty { display: none; }
+        .reveal .columns { align-items: flex-start; }
+        .slide-title {
+          font-family: 'Playfair 9pt', 'Playfair Display', serif;
+          font-weight: 700;
+          font-size: 1.1em;
+          line-height: 1.1;
+          margin-bottom: 0.5em;
+        }
+        .tl-stat {
+          font-family: 'IBM Plex Mono', monospace;
+        }
+        .timeline {
+          --tl-color-line: #c8a96e;
+          --tl-color-dot: #c8a96e;
+          --tl-color-label: #6b5d4d;
+        }
+        .timeline.horizontal { margin-top: 60px; }
+        .timeline.horizontal::before {
+          left: calc(20px + var(--tl-event-width) / 2);
+          right: calc(20px + var(--tl-event-width) / 2);
+        }
+        .timeline .event::before,
+        .timeline.horizontal .event::before {
+          top: calc(-82px - var(--tl-dot-size) / 2);
+        }
+        /* #3 motion: bars grow on reveal, RT bar fills, the gold line draws in */
+        .timeline .barfill { transition: width .9s cubic-bezier(.4, 0, .2, 1); }
+        .timeline .event.fragment:not(.visible) .barfill { width: 0 !important; }
+        .timeline .event:not(.fragment) .barfill {
+          animation: bar-grow .9s cubic-bezier(.4, 0, .2, 1) .3s both;
+        }
+        @keyframes bar-grow { from { width: 0; } to { width: var(--w); } }
+        .timeline .event.fragment { transition: opacity .5s ease, transform .5s ease; }
+        .timeline .event.fragment:not(.visible) { transform: translateY(10px); }
+        .timeline.horizontal::before {
+          transform-origin: left center;
+          animation: tl-draw 1.1s ease .15s both;
+        }
+        @keyframes tl-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        /* "Now showing" poster that tracks the current timeline card */
+        .now-showing { max-width: 230px; margin: 0 auto; }
+        .ns-frame { position: relative; width: 100%; aspect-ratio: 2 / 3; }
+        .ns-frame .ns-poster {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 4px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+          opacity: 0;
+          transition: opacity .35s ease;
+        }
+        .ns-frame .ns-poster.active { opacity: 1; }
+        </style>
+filters:
+  - timeline
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(htmltools)
+
+gf_path <- here::here("2026", "2026-week_24", "data", "game_films.csv")
+if (!file.exists(gf_path)) {
+  dir.create(dirname(gf_path), showWarnings = FALSE)
+  download.file(
+    "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-06-09/game_films.csv",
+    gf_path
+  )
+}
+game_films <- readr::read_csv(gf_path, show_col_types = FALSE)
+
+# Editorial metadata (quotes, sources) + Wikipedia poster URLs — see data/editorial.csv
+editorial <- readr::read_csv(
+  here::here("2026", "2026-week_24", "data", "editorial.csv"),
+  show_col_types = FALSE
+)
+
+events_df <- game_films |>
+  mutate(year = year(release_date)) |>
+  inner_join(editorial, by = c("title", "year")) |>
+  mutate(
+    bo      = round(worldwide_box_office / 1e6),
+    bo_lab  = if_else(
+      bo >= 1000,
+      paste0("$", sprintf("%.2f", bo / 1000), "B"),
+      paste0("$", bo, "M")
+    ),
+    bud_mid  = (budget_low + budget_high) / 2,
+    mult     = worldwide_box_office / bud_mid,
+    mult_lab = paste0(sprintf("%.1f", mult), "×"),
+    rt_tier = case_when(
+      rotten_tomatoes < 25  ~ "Rotten",
+      rotten_tomatoes < 60  ~ "Mixed",
+      TRUE                  ~ "Fresh"
+    )
+  ) |>
+  arrange(release_date) |>
+  select(year, title, bo, bo_lab, mult, mult_lab, rt = rotten_tomatoes, rt_tier, quote, src, poster)
+
+rt_cols <- c("Rotten" = "#b85050", "Mixed" = "#c09a40", "Fresh" = "#6b8c5a")
+bo_col  <- "#5d8199"
+
+events <- split(events_df, seq_len(nrow(events_df)))
+max_bo  <- max(events_df$bo, na.rm = TRUE)
+
+# px per year; event_w must be <= scale so 1-year gaps stay non-negative
+scale   <- 280L
+event_w <- 220L
+
+bar <- function(pct, color) {
+  tags$div(
+    style = "width:100%; height:3px; background:#e8dfd0; margin:2px 0 5px; border-radius:2px;",
+    tags$div(
+      class = "barfill",
+      style = paste0("--w:", round(pct), "%; width:var(--w); height:100%; background:", color, "; border-radius:2px;")
+    )
+  )
+}
+
+make_event <- function(ev, prev_year, is_first) {
+  margin <- if (is_first) 0L else max(0L, (ev$year - prev_year) * scale - event_w)
+
+  stats_block <- tags$div(
+    style = "margin-top:8px;",
+    tags$p(
+      class = "tl-stat",
+      style = "margin:0; font-size:0.55em; line-height:1.5;",
+      tags$span(style = paste0("color:", bo_col, ";"), ev$bo_lab),
+      tags$span(
+        style = paste0("color:", if (ev$mult < 1) "#b85050" else "#5f7a4f", "; font-weight:700;"),
+        paste0(" · ", ev$mult_lab)
+      )
+    ),
+    bar(ev$bo / max_bo * 100, bo_col),
+    tags$p(
+      class = "tl-stat",
+      style = paste0("margin:0; font-size:0.55em; color:", rt_cols[[ev$rt_tier]], "; line-height:1.5;"),
+      paste0("RT ", ev$rt, "%")
+    ),
+    bar(ev$rt, rt_cols[[ev$rt_tier]])
+  )
+
+  children <- list(
+    tags$p(
+      style = "margin:0; font-size:0.72em; font-weight:700; line-height:1.2; letter-spacing:0.01em; font-family:'IBM Plex Sans',sans-serif; color:#3a2e1e;",
+      ev$title
+    ),
+    stats_block
+  )
+
+  if (!is.na(ev$quote)) {
+    children <- c(children, list(
+      tags$p(
+        style = "margin:20px 0 0; font-size:0.44em; line-height:1.4; font-family:'IBM Plex Sans',sans-serif;",
+        tags$span(style = "font-style:italic; color:#6b5d4d;", ev$quote),
+        tags$span(style = "color:#9a8d7d;", paste0(" · ", ev$src))
+      )
+    ))
+  }
+
+  do.call(div, c(
+    list(
+      class = if (is_first) "event" else "event fragment",
+      `data-label` = as.character(ev$year),
+      `data-title` = ev$title,
+      style = paste0("margin-left:", margin, "px")
+    ),
+    children
+  ))
+}
+
+event_divs <- lapply(seq_along(events), function(i) {
+  prev_year <- if (i == 1L) events[[1L]]$year else events[[i - 1L]]$year
+  make_event(events[[i]], prev_year, i == 1L)
+})
+
+timeline <- do.call(div, c(
+  list(
+    class = "timeline horizontal fragment-slide",
+    style = paste0("--tl-event-width:", event_w, "px")
+  ),
+  event_divs
+))
+
+# "Now showing": all posters stacked (so all embed); JS crossfades to the current card
+ns_js <- "
+(function () {
+  function pick() {
+    var cur = null;
+    document.querySelectorAll('.timeline .event').forEach(function (e) {
+      if (!e.classList.contains('fragment') || e.classList.contains('visible')) cur = e;
+    });
+    return cur;
+  }
+  function update() {
+    var cur = pick(); if (!cur) return;
+    var title = cur.getAttribute('data-title');
+    document.querySelectorAll('.ns-frame .ns-poster').forEach(function (p) {
+      p.classList.toggle('active', p.getAttribute('data-title') === title);
+    });
+    document.querySelectorAll('.timeline .event').forEach(function (e) {
+      e.classList.toggle('tl-active', e === cur);
+    });
+  }
+  function attach() {
+    if (!window.Reveal || !Reveal.on) { setTimeout(attach, 100); return; }
+    ['fragmentshown', 'fragmenthidden', 'slidechanged', 'ready'].forEach(function (ev) {
+      Reveal.on(ev, update);
+    });
+    update();
+  }
+  attach();
+})();
+"
+
+now_showing <- div(
+  class = "now-showing",
+  div(
+    class = "ns-frame",
+    lapply(seq_len(nrow(events_df)), function(i) {
+      tags$img(
+        class = if (i == 1L) "ns-poster active" else "ns-poster",
+        `data-title` = events_df$title[i],
+        src = events_df$poster[i],
+        alt = events_df$title[i]
+      )
+    })
+  ),
+  tags$script(HTML(ns_js))
+)
+```
+
+## {background-color="#f5f0e8"}
+
+::::: {.columns}
+
+:::: {.column width="60%"}
+::: {.slide-title}
+Video Game Films, 1993–2025
+:::
+
+::: {style="font-size:0.48em; line-height:1.7; color:#6b5d4d; margin-bottom:0.3em;"}
+For thirty years, Hollywood kept making the same mistake. Strip out what made the game special, add generic action, rush the effects. None of it came cheap: the 1993 Mario never broke even, and Doom made back $56 million of a $60–70 million budget. The films that survived did so on a star turn (Angelina Jolie), a loyal fanbase (six Resident Evil films, $1.2 billion), or an overseas market that ignored critics (Warcraft in China). Then gaming stopped being a niche. And someone worked out that silly and animated beats gritty and serious, every time.
+:::
+
+::: {style="font-size:0.4em; color:#9a8d7d; line-height:1.5;"}
+Each film: worldwide gross and its multiple of the production budget · Rotten Tomatoes score. Below 1× a film lost money outright; marketing costs aren't included, the industry rule of thumb is a film needs roughly 2× budget to actually break even.
+:::
+::::
+
+:::: {.column width="40%"}
+```{r}
+#| echo: false
+now_showing
+```
+::::
+
+:::::
+
+```{r}
+#| echo: false
+timeline
+```
+
+---
+
+## Sources {background-color="#f5f0e8"}
+
+::: {style="font-size:0.5em; line-height:2.2; color:#6b5d4d;"}
+**Data**
+
+- Wikipedia · [List of films based on video games](https://en.wikipedia.org/wiki/List_of_films_based_on_video_games) · via TidyTuesday 2026-06-09
+
+**Historical analysis**
+
+- Ross Weaver · [A Brief History of Video Game Movies](https://film-cred.com/a-brief-history-of-video-game-movies-super-mario-bros/) · Film Cred
+- [The Tragic History of Video Game Movies Explained](https://www.svg.com/663380/the-tragic-history-of-video-game-movies-explained/) · SVG
+
+**Academic / industry analysis**
+
+- Jason Hawreliak (Brock University) · [Why Film Adaptations of Popular Video Games Often Fall Flat](https://theconversation.com/why-film-adaptations-of-popular-video-games-often-fall-flat-254882) · The Conversation
+- [From Niche to Mainstream: How Video Game Adaptations Are Taking Over](https://www.midiaresearch.com/blog/from-niche-to-mainstream-how-video-games-adaptations-are-taking-over-movies-and-television) · MIDiA Research
+
+**Posters**
+
+- Film posters via Wikipedia
+
+**Graphic:** Georgios Karamanis
+:::

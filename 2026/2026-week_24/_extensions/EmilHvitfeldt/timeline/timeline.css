@@ -1,0 +1,786 @@
+/* ============================================================
+   Timeline Extension
+   ============================================================ */
+
+/* ---- CSS Custom Properties --------------------------------- */
+.timeline {
+  --tl-color-accent:   initial;
+  --tl-color-line:     #222222;
+  --tl-color-dot:      #222222;
+  --tl-color-dot-bg:   #ffffff;
+  --tl-color-label:    #222222;
+  --tl-color-content:  currentColor;
+  --tl-color-card-bg:  #ffffff;
+  --tl-dot-size:       0.875rem;
+  --tl-dot-icon-color: currentColor;
+  --tl-line-width:     3px;
+  --tl-label-size:     0.8em;
+  --tl-content-size:   1em;
+  --tl-gap:            2rem;
+  --tl-event-width:    320px;
+  --tl-empty-height:   3rem;
+  --tl-panel-width:    90px;
+}
+
+/* ---- Shared base ------------------------------------------- */
+.timeline {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.timeline .event {
+  position: relative;
+  box-sizing: border-box;
+  font-size: var(--tl-content-size);
+}
+
+/* The line — shared, overridden per layout */
+.timeline::before {
+  content: '';
+  position: absolute;
+  background: var(--tl-color-line);
+}
+
+/* Label — shared, overridden per layout */
+.timeline .event::before {
+  content: attr(data-label);
+  font-size: var(--tl-label-size);
+  font-weight: bold;
+  color: var(--tl-color-accent, var(--tl-color-label));
+}
+
+/* Dot — shared, overridden per layout */
+.timeline .event::after {
+  content: '';
+  position: absolute;
+  width: var(--tl-dot-size);
+  height: var(--tl-dot-size);
+  background: var(--tl-color-dot-bg);
+  border: 3px solid var(--tl-color-accent, var(--tl-color-dot));
+  border-radius: 50%;
+}
+
+
+/* ============================================================
+   HORIZONTAL LAYOUT (default when no layout class given)
+
+   Gap from event top edge to line = 30px (80px padding - 50px line).
+   Dot offset:   calc(-30px - dot_half) so dot center = line ✓
+   Label offset: calc(-65px - dot_half) so label bottom stays ~28px
+                 above the line regardless of dot size ✓
+   ============================================================ */
+.timeline,
+.timeline.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 80px 20px 20px;
+  gap: 0;
+}
+
+/* Horizontal line */
+.timeline::before,
+.timeline.horizontal::before {
+  top: 50px;
+  left: 20px;
+  right: 20px;
+  height: var(--tl-line-width);
+  width: auto;
+  bottom: auto;
+}
+
+.timeline .event,
+.timeline.horizontal .event {
+  flex: 1;
+  text-align: center;
+  padding: 20px 10px 0;
+}
+
+/* Label: centered above the line */
+.timeline .event::before,
+.timeline.horizontal .event::before {
+  position: absolute;
+  top: calc(-65px - var(--tl-dot-size) / 2);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* Dot: centered on the line */
+.timeline .event::after,
+.timeline.horizontal .event::after {
+  top: calc(-30px - var(--tl-dot-size) / 2);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* ============================================================
+   VERTICAL LAYOUT
+
+   Gap from event left edge to line = 30px (70px padding - 40px line).
+   Dot offset: calc(-30px - dot_half) → center on line ✓
+   Label is in normal flow — no gutter overlap risk.
+   ============================================================ */
+.timeline.vertical {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 10px 20px 10px 70px;
+  gap: 0;
+}
+
+.timeline.vertical::before {
+  top: 0;
+  bottom: 0;
+  left: 40px;
+  right: auto;
+  width: var(--tl-line-width);
+  height: auto;
+}
+
+.timeline.vertical .event {
+  flex: none;
+  text-align: left;
+  padding: 0 0 var(--tl-gap) 0;
+}
+
+.timeline.vertical .event::before {
+  position: static;
+  display: block;
+  transform: none;
+  white-space: normal;
+  margin-bottom: 4px;
+}
+
+.timeline.vertical .event::after {
+  top: 4px;
+  left: calc(-30px - var(--tl-dot-size) / 2);
+  transform: none;
+}
+
+
+/* ============================================================
+   VERTICAL-RIGHT LAYOUT (mirror of vertical)
+   ============================================================ */
+.timeline.vertical-right {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 10px 70px 10px 20px;
+  gap: 0;
+}
+
+.timeline.vertical-right::before {
+  top: 0;
+  bottom: 0;
+  right: 40px;
+  left: auto;
+  width: var(--tl-line-width);
+  height: auto;
+}
+
+.timeline.vertical-right .event {
+  flex: none;
+  text-align: right;
+  padding: 0 0 var(--tl-gap) 0;
+}
+
+.timeline.vertical-right .event::before {
+  position: static;
+  display: block;
+  transform: none;
+  white-space: normal;
+  margin-bottom: 4px;
+}
+
+.timeline.vertical-right .event::after {
+  top: 4px;
+  left: auto;
+  right: calc(-30px - var(--tl-dot-size) / 2);
+  transform: none;
+}
+
+
+/* ============================================================
+   VERTICAL-ALT LAYOUT (alternating left/right)
+
+   Gap from each event edge to center line = 30px.
+   Dot offset: calc(-30px - dot_half) on appropriate side ✓
+   ============================================================ */
+.timeline.vertical-alt {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 20px;
+  gap: 0;
+}
+
+.timeline.vertical-alt::before {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: auto;
+  width: var(--tl-line-width);
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.timeline.vertical-alt .event {
+  flex: none;
+  width: calc(50% - 30px);
+  padding: 0 0 var(--tl-gap) 0;
+}
+
+.timeline.vertical-alt .event:nth-child(odd) {
+  align-self: flex-start;
+  text-align: right;
+  padding-right: 16px;
+}
+
+.timeline.vertical-alt .event:nth-child(even) {
+  align-self: flex-end;
+  text-align: left;
+  padding-left: 16px;
+}
+
+.timeline.vertical-alt .event::before {
+  position: static;
+  display: block;
+  transform: none;
+  white-space: normal;
+  margin-bottom: 4px;
+}
+
+.timeline.vertical-alt .event:nth-child(odd)::after {
+  top: 4px;
+  left: auto;
+  right: calc(-30px - var(--tl-dot-size) / 2);
+  transform: none;
+}
+
+.timeline.vertical-alt .event:nth-child(even)::after {
+  top: 4px;
+  left: calc(-30px - var(--tl-dot-size) / 2);
+  right: auto;
+  transform: none;
+}
+
+
+/* ============================================================
+   FRAGMENT PAN MODES (.fragment-slide, .fragment-conveyor)
+
+   JS applies translateX (horizontal) or translateY (vertical)
+   to pan the timeline strip. CSS provides the transition and
+   expands the timeline beyond the viewport on the pan axis.
+
+   Horizontal: width: max-content; events get a fixed width.
+   Vertical:   height: max-content; events keep natural height.
+   ============================================================ */
+
+/* Shared */
+.timeline.fragment-slide,
+.timeline.fragment-conveyor {
+  transition: transform 0.5s ease;
+  overflow: visible;
+}
+
+/* Horizontal pan (default layout and .horizontal) */
+.timeline.fragment-slide:not(.vertical):not(.vertical-right):not(.vertical-alt):not(.snake),
+.timeline.fragment-conveyor:not(.vertical):not(.vertical-right):not(.vertical-alt):not(.snake) {
+  width: max-content;
+  min-width: 100%;
+}
+
+.timeline.fragment-slide:not(.vertical):not(.vertical-right):not(.vertical-alt):not(.snake) .event,
+.timeline.fragment-conveyor:not(.vertical):not(.vertical-right):not(.vertical-alt):not(.snake) .event {
+  flex: 0 0 var(--tl-event-width);
+}
+
+/* Vertical pan (.vertical, .vertical-right, .vertical-alt, .snake) */
+.timeline.vertical.fragment-slide,
+.timeline.vertical.fragment-conveyor,
+.timeline.vertical-right.fragment-slide,
+.timeline.vertical-right.fragment-conveyor,
+.timeline.vertical-alt.fragment-slide,
+.timeline.vertical-alt.fragment-conveyor,
+.timeline.snake.fragment-slide,
+.timeline.snake.fragment-conveyor {
+  height: max-content;
+  min-height: 100%;
+}
+
+
+/* ============================================================
+   SNAKE LAYOUT (alternating serpentine path)
+
+   Each non-last event has a border-bottom (the horizontal
+   connecting segment). Odd events add border-right; even events
+   add border-left. border-bottom-right/left-radius creates clean
+   U-turns because both meeting borders are on the same element.
+
+   Padding (not margin) provides the visual offset so that
+   border-bottom always spans the full container width — no
+   double lines and no tapering at curve ends.
+   ============================================================ */
+.timeline.snake {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  gap: 0;
+  --tl-snake-radius: 1.875rem;
+}
+
+.timeline.snake::before {
+  display: none;
+}
+
+.timeline.snake .event {
+  flex: none;
+  padding: 30px;
+  text-align: left;
+}
+
+.timeline.snake .event:not(:last-child) {
+  border-bottom: var(--tl-line-width) solid var(--tl-color-line);
+}
+
+.timeline.snake .event:nth-child(odd) {
+  border-right: var(--tl-line-width) solid var(--tl-color-line);
+  border-bottom-right-radius: var(--tl-snake-radius);
+}
+
+.timeline.snake .event:nth-child(even) {
+  border-left: var(--tl-line-width) solid var(--tl-color-line);
+  border-bottom-left-radius: var(--tl-snake-radius);
+}
+
+.timeline.snake .event:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Label: above the entry point of the side border */
+.timeline.snake .event::before {
+  position: absolute;
+  white-space: nowrap;
+}
+
+.timeline.snake .event:nth-child(odd)::before {
+  top: 0;
+  right: 0;
+  left: auto;
+  transform: translateY(-100%);
+}
+
+.timeline.snake .event:nth-child(even)::before {
+  top: 0;
+  left: 0;
+  right: auto;
+  transform: translateY(-100%);
+}
+
+/* Dot: centered on the top edge of the side border */
+.timeline.snake .event::after {
+  top: calc(-1 * var(--tl-dot-size) / 2);
+  left: auto;
+  transform: none;
+}
+
+.timeline.snake .event:nth-child(odd)::after {
+  right: calc(-1 * var(--tl-dot-size) / 2 - var(--tl-line-width) / 2);
+}
+
+.timeline.snake .event:nth-child(even)::after {
+  left: calc(-1 * var(--tl-dot-size) / 2 - var(--tl-line-width) / 2);
+  right: auto;
+}
+
+/* Suppress snake borders on inner grouped events */
+.timeline.snake .tl-group .event {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 4px 6px;
+  text-align: inherit;
+}
+
+
+/* ============================================================
+   GROUPED EVENTS (.tl-group)
+
+   The .tl-group.event wrapper is injected by JS when consecutive
+   events share the same data-label. It receives the shared dot
+   and label via the inherited .event CSS. Inner .event children
+   have their dot and label suppressed.
+   ============================================================ */
+
+/* Suppress dot and label on inner events */
+.timeline .tl-group .event::before,
+.timeline .tl-group .event::after {
+  display: none;
+}
+
+/* Reset inner event padding (overrides layout-specific padding) */
+.timeline .tl-group .event {
+  padding: 4px 6px;
+}
+
+/* Subtle divider between entries in the same group */
+.timeline .tl-group .event + .event {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 4px;
+  padding-top: 8px;
+}
+
+/* Suppress divider when either side of the pair is empty */
+.timeline .tl-group .event.tl-empty + .event,
+.timeline .tl-group .event + .event.tl-empty {
+  border-top: none;
+  margin-top: 0;
+}
+
+/* Vertical layouts: inner events flow naturally */
+.timeline.vertical .tl-group .event,
+.timeline.vertical-right .tl-group .event {
+  padding: 0 0 4px;
+}
+
+/* Vertical-alt: inner events must fill the group width, not inherit
+   the half-width from .timeline.vertical-alt .event */
+.timeline.vertical-alt .tl-group .event {
+  width: 100%;
+  padding: 0 0 4px;
+  text-align: inherit;
+}
+
+
+/* ============================================================
+   MODIFIER CLASSES
+   ============================================================ */
+
+/* ---- Line style: .tl-dashed, .tl-dotted ------------------- */
+
+.timeline.tl-dashed:not(.vertical):not(.vertical-right):not(.vertical-alt):not(.snake)::before {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--tl-color-line) 0px, var(--tl-color-line) 8px,
+    transparent 8px, transparent 16px
+  );
+}
+
+.timeline.vertical.tl-dashed::before,
+.timeline.vertical-right.tl-dashed::before,
+.timeline.vertical-alt.tl-dashed::before {
+  background: repeating-linear-gradient(
+    180deg,
+    var(--tl-color-line) 0px, var(--tl-color-line) 8px,
+    transparent 8px, transparent 16px
+  );
+}
+
+.timeline.snake.tl-dashed .event:not(:last-child) { border-bottom-style: dashed; }
+.timeline.snake.tl-dashed .event:nth-child(odd)   { border-right-style:  dashed; }
+.timeline.snake.tl-dashed .event:nth-child(even)  { border-left-style:   dashed; }
+
+.timeline.tl-dotted:not(.vertical):not(.vertical-right):not(.vertical-alt):not(.snake)::before {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--tl-color-line) 0px, var(--tl-color-line) 4px,
+    transparent 4px, transparent 10px
+  );
+}
+
+.timeline.vertical.tl-dotted::before,
+.timeline.vertical-right.tl-dotted::before,
+.timeline.vertical-alt.tl-dotted::before {
+  background: repeating-linear-gradient(
+    180deg,
+    var(--tl-color-line) 0px, var(--tl-color-line) 4px,
+    transparent 4px, transparent 10px
+  );
+}
+
+.timeline.snake.tl-dotted .event:not(:last-child) { border-bottom-style: dotted; }
+.timeline.snake.tl-dotted .event:nth-child(odd)   { border-right-style:  dotted; }
+.timeline.snake.tl-dotted .event:nth-child(even)  { border-left-style:   dotted; }
+
+
+/* ---- Dot shape: .tl-square, .tl-diamond, .tl-none --------- */
+
+.timeline.tl-square .event::after {
+  border-radius: 0;
+}
+
+/* Diamond: horizontal (default + explicit) needs translateX preserved */
+.timeline.tl-diamond .event::after,
+.timeline.horizontal.tl-diamond .event::after {
+  border-radius: 0;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* Diamond: vertical layouts have no translateX on the dot */
+.timeline.vertical.tl-diamond .event::after,
+.timeline.vertical-right.tl-diamond .event::after,
+.timeline.vertical-alt.tl-diamond .event::after,
+.timeline.snake.tl-diamond .event::after {
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+.timeline.tl-none .event::after {
+  display: none;
+}
+
+
+/* ---- Dot vertical centering: .tl-dot-center --------------- */
+
+.timeline.vertical.tl-dot-center .event::after,
+.timeline.vertical-right.tl-dot-center .event::after {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline.vertical-alt.tl-dot-center .event:nth-child(odd)::after,
+.timeline.vertical-alt.tl-dot-center .event:nth-child(even)::after {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Preserve diamond rotation when centering */
+.timeline.vertical.tl-diamond.tl-dot-center .event::after,
+.timeline.vertical-right.tl-diamond.tl-dot-center .event::after,
+.timeline.vertical-alt.tl-diamond.tl-dot-center .event:nth-child(odd)::after,
+.timeline.vertical-alt.tl-diamond.tl-dot-center .event:nth-child(even)::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+
+/* ---- Density: .tl-compact, .tl-spacious ------------------- */
+
+.timeline.tl-compact {
+  --tl-gap:          1rem;
+  --tl-dot-size:     0.625rem;
+  --tl-label-size:   0.7em;
+  --tl-content-size: 0.85em;
+}
+
+.timeline.tl-spacious {
+  --tl-gap:          3.5rem;
+  --tl-dot-size:     1.125rem;
+  --tl-label-size:   0.9em;
+  --tl-content-size: 1.1em;
+}
+
+
+/* ---- Empty event height: --tl-empty-height ---------------- */
+/* Vertical empty events are naturally shorter than events with
+   content. Set --tl-empty-height on .timeline to add extra space
+   below the label, beyond the normal gap, keeping spacing
+   consistent with neighboring events. */
+
+.timeline.vertical .event.tl-empty,
+.timeline.vertical-right .event.tl-empty,
+.timeline.vertical-alt .event.tl-empty {
+  padding-bottom: calc(var(--tl-gap) + var(--tl-empty-height));
+}
+
+
+/* ---- Dot icon: data-dot attribute -------------------------- */
+
+.timeline .event[data-dot] {
+  --tl-dot-size: 2rem;
+}
+
+.timeline .event[data-dot]::after {
+  content: attr(data-dot);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--tl-dot-size) * 0.6);
+  line-height: 1;
+  overflow: hidden;
+  color: var(--tl-dot-icon-color);
+}
+
+
+/* ---- Label banner: .tl-label-banner ----------------------- */
+
+.timeline.tl-label-banner .event::before {
+  color: white;
+  background: var(--tl-color-accent, var(--tl-color-label));
+  padding: 0.4em 1em;
+  margin-bottom: 0.5rem;
+  border-radius: 2em;
+  white-space: nowrap;
+}
+
+
+/* ---- Label badge: .tl-label-badge ------------------------- */
+/* Compact rectangular badge, sized to the label text.
+   Unlike .tl-label-banner (full-width pill), this stays inline.
+   Dot color defaults to --tl-color-label so per-event colors apply. */
+
+.timeline.tl-label-badge {
+  --tl-color-dot: var(--tl-color-label);
+}
+
+.timeline.tl-label-badge .event::before {
+  display: inline-block;
+  color: white;
+  background: var(--tl-color-accent, var(--tl-color-label));
+  padding: 0.25em 0.6em;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  font-size: calc(var(--tl-label-size) * 0.9);
+  white-space: nowrap;
+}
+
+
+/* ---- Images and code-chunk output in events ---------------- */
+
+/* Prevent images from overflowing their event container */
+.timeline .event img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reset browser-default figure margins (typically 1em 40px) */
+.timeline .event figure {
+  margin: 0;
+}
+
+/* Quarto code-chunk output wrappers: remove default margins so
+   plots sit flush without adding extra vertical space */
+.timeline .event .cell,
+.timeline .event .cell-output-display {
+  margin: 0;
+}
+
+/* The <p> that Quarto wraps around plot <img> elements */
+.timeline .event figure p,
+.timeline .event .cell-output-display p {
+  margin: 0;
+}
+
+/* ---- Event card: .tl-card ---------------------------------- */
+
+.timeline .event.tl-card {
+  background: var(--tl-color-card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: 0.875rem 1rem;
+}
+
+/* Vertical layouts use padding-bottom for the gap; card overrides that
+   and uses margin-bottom instead so the card is visually bounded */
+.timeline.vertical .event.tl-card,
+.timeline.vertical-right .event.tl-card,
+.timeline.vertical-alt .event.tl-card {
+  padding-bottom: 0.875rem;
+  margin-bottom: var(--tl-gap);
+}
+
+
+/* ---- Label panel: .tl-label-panel ------------------------- */
+/* Converts the label (::before) into a full-height colored left panel
+   on .tl-card events. Only applies in vertical layouts.
+   Set --tl-panel-width on the timeline to adjust the panel width.
+   Dot color defaults to --tl-color-label so per-event colors apply. */
+
+.timeline.vertical.tl-label-panel {
+  --tl-color-dot: var(--tl-color-label);
+}
+
+.timeline.vertical.tl-label-panel .event.tl-card {
+  display: grid;
+  grid-template-columns: var(--tl-panel-width) 1fr;
+  padding: 0;
+  padding-bottom: 0;
+}
+
+.timeline.vertical.tl-label-panel .event.tl-card::before {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  background: var(--tl-color-accent, var(--tl-color-label));
+  color: #fff;
+  margin-bottom: 0;
+  padding: 1rem 0.5rem;
+  border-radius: 10px 0 0 10px;
+}
+
+.timeline.vertical.tl-label-panel .event.tl-card > * {
+  margin: 0;
+  padding: 0.4rem 1rem;
+}
+
+.timeline.vertical.tl-label-panel .event.tl-card > *:first-child {
+  padding-top: 0.75rem;
+}
+
+.timeline.vertical.tl-label-panel .event.tl-card > *:last-child {
+  padding-bottom: 0.75rem;
+}
+
+
+/* ---- Label opposite: .tl-label-opposite ------------------- */
+/* In vertical-alt, moves each event's label to the opposite side
+   of the center line from its card, vertically centered.
+   Pair with .tl-dot-center for consistent alignment. */
+
+.timeline.vertical-alt.tl-label-opposite .event::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.timeline.vertical-alt.tl-label-opposite .event:nth-child(odd)::before {
+  left: calc(100% + 30px + var(--tl-dot-size) * 3);
+  right: auto;
+  text-align: left;
+}
+
+.timeline.vertical-alt.tl-label-opposite .event:nth-child(even)::before {
+  right: calc(100% + 30px + var(--tl-dot-size) * 3);
+  left: auto;
+  text-align: right;
+}
+
+
+/* ---- Pill shape: .tl-pill --------------------------------- */
+/* In vertical-alt, rounds the inward-facing edge of each event
+   so cards curve toward the center line. */
+
+.timeline.vertical-alt.tl-pill .event:nth-child(odd) {
+  border-radius: 0 500px 500px 0;
+}
+
+.timeline.vertical-alt.tl-pill .event:nth-child(even) {
+  border-radius: 500px 0 0 500px;
+}
+
+
+/* ============================================================
+   DARK MODE DEFAULTS
+   ============================================================ */
+
+/* Quarto dark theme: Bootstrap data-bs-theme attribute */
+[data-bs-theme="dark"] .timeline {
+  --tl-color-line:    #aaaaaa;
+  --tl-color-dot:     #aaaaaa;
+  --tl-color-dot-bg:  var(--bs-body-bg, #212529);
+  --tl-color-label:   #cccccc;
+  --tl-color-card-bg: var(--bs-secondary-bg, #343a40);
+}
+
+[data-bs-theme="dark"] .timeline .tl-group .event + .event {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .timeline .event.tl-card {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+

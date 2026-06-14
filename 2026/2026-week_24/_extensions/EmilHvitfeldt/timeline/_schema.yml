@@ -1,0 +1,60 @@
+$schema: https://m.canouil.dev/quarto-wizard/assets/schema/v1/extension-schema.json
+
+classes:
+  # Timeline container
+  timeline:
+    description: "Container for a timeline layout."
+  horizontal:
+    description: "Lay out events left-to-right along a horizontal line (default when no layout class is given)."
+  vertical:
+    description: "Lay out events top-to-bottom along a vertical line on the left."
+  vertical-right:
+    description: "Lay out events top-to-bottom along a vertical line on the right."
+  vertical-alt:
+    description: "Lay out events alternating left and right of a center vertical line."
+  snake:
+    description: "Lay out events in a serpentine path, wrapping rows like a snake."
+  fragment-slide:
+    description: "Pan the timeline so the last visible fragment event is centered in the viewport (RevealJS only)."
+  fragment-conveyor:
+    description: "Pan the timeline just enough to keep the last visible fragment event in view (RevealJS only)."
+  tl-dashed:
+    description: "Render the timeline line as a dashed pattern."
+  tl-dotted:
+    description: "Render the timeline line as a dotted pattern."
+  tl-square:
+    description: "Use square dots instead of circles."
+  tl-diamond:
+    description: "Use diamond-shaped dots instead of circles."
+  tl-none:
+    description: "Hide the dots entirely."
+  tl-dot-center:
+    description: "Vertically center dots within each event block (vertical layouts only)."
+  tl-compact:
+    description: "Reduce gap, dot size, and font sizes for a denser timeline."
+  tl-spacious:
+    description: "Increase gap, dot size, and font sizes for a more open timeline."
+  tl-label-banner:
+    description: "Display each event's label as a pill-shaped banner."
+  tl-label-badge:
+    description: "Display each event's label as a compact rectangular badge."
+  tl-label-panel:
+    description: "Display each event's label as a full-height colored left panel (vertical left-line layout + tl-card only)."
+  tl-label-opposite:
+    description: "Move each event's label to the opposite side of the center line (vertical-alt layout only)."
+  tl-pill:
+    description: "Round the inward-facing edge of each event card (vertical-alt layout only)."
+  # Individual events
+  event:
+    description: "A single entry in the timeline."
+  tl-card:
+    description: "Render the event with a white card background and drop shadow."
+
+attributes:
+  event:
+    data-label:
+      type: string
+      description: "Text label shown above or beside the dot (e.g. a year, date, or category)."
+    data-dot:
+      type: string
+      description: "Emoji or single character displayed inside the dot marker; automatically enlarges the dot to 2rem to accommodate the icon."
