@@ -1,0 +1,926 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mdb:MD_Metadata xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0" xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0" xmlns:fcc="http://standards.iso.org/iso/19110/fcc/1.0" xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0" xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0" xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0" xmlns:gfc="http://standards.iso.org/iso/19110/gfc/1.1" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0" xmlns:mac="http://standards.iso.org/iso/19115/-3/mac/2.0" xmlns:mas="http://standards.iso.org/iso/19115/-3/mas/1.0" xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0" xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0" xmlns:mda="http://standards.iso.org/iso/19115/-3/mda/1.0" xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0" xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq/1.0" xmlns:mds="http://standards.iso.org/iso/19115/-3/mds/2.0" xmlns:mdt="http://standards.iso.org/iso/19115/-3/mdt/2.0" xmlns:mex="http://standards.iso.org/iso/19115/-3/mex/1.0" xmlns:mmi="http://standards.iso.org/iso/19115/-3/mmi/1.0" xmlns:mpc="http://standards.iso.org/iso/19115/-3/mpc/1.0" xmlns:mrc="http://standards.iso.org/iso/19115/-3/mrc/2.0" xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0" xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0" xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/2.0" xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0" xmlns:msr="http://standards.iso.org/iso/19115/-3/msr/2.0" xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.iso.org/iso/19115/-3/mdb/2.0 http://standards.iso.org/iso/19115/-3/mdb/2.0/mdb.xsd http://standards.iso.org/iso/19115/-3/gco/1.0 http://standards.iso.org/iso/19115/-3/gco/1.0/gco.xsd http://standards.iso.org/iso/19110/gfc/1.1 http://standards.iso.org/iso/19110/gfc/1.1/gfc.xsd http://standards.iso.org/iso/19115/-3/mco/1.0 http://standards.iso.org/iso/19115/-3/mco/1.0/mco.xsd http://standards.iso.org/iso/19115/-3/mmi/1.0 http://standards.iso.org/iso/19115/-3/mmi/1.0/mmi.xsd http://standards.iso.org/iso/19115/-3/mrc/2.0 http://standards.iso.org/iso/19115/-3/mrc/2.0/mrc.xsd http://standards.iso.org/iso/19115/-3/mrd/1.0 http://standards.iso.org/iso/19115/-3/mrd/1.0/mrd.xsd http://standards.iso.org/iso/19115/-3/mrl/2.0 http://standards.iso.org/iso/19115/-3/mrl/2.0/mrl.xsd http://standards.iso.org/iso/19115/-3/mrs/1.0 http://standards.iso.org/iso/19115/-3/mrs/1.0/mrs.xsd http://standards.iso.org/iso/19157/-2/mdq/1.0 http://standards.iso.org/iso/19157/-2/mdq/1.0/mdq.xsd">
+  <!-- Conditional or optional sections of metadata will not be generated unless required -->
+  <mdb:metadataIdentifier>
+    <!-- Auto-generated on load in GeoNetwork in format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -->
+    <mcc:MD_Identifier>
+      <mcc:code>
+        <gco:CharacterString>40283e58-db0f-4cfb-a6c1-63b23cff79c5</gco:CharacterString>
+      </mcc:code>
+      <mcc:codeSpace>
+        <gco:CharacterString>urn:uuid</gco:CharacterString>
+      </mcc:codeSpace>
+    </mcc:MD_Identifier>
+  </mdb:metadataIdentifier>
+  <mdb:defaultLocale>
+    <lan:PT_Locale id="EN">
+      <lan:language>
+        <lan:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng"></lan:LanguageCode>
+      </lan:language>
+      <lan:country>
+        <lan:CountryCode codeList="https://www.iso.org/iso-3166-country-codes.html" codeListValue="Australia"></lan:CountryCode>
+      </lan:country>
+      <lan:characterEncoding>
+        <lan:MD_CharacterSetCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_CharacterSetCode" codeListValue="utf8"></lan:MD_CharacterSetCode>
+      </lan:characterEncoding>
+    </lan:PT_Locale>
+  </mdb:defaultLocale>
+  <mdb:metadataScope>
+    <mdb:MD_MetadataScope>
+      <mdb:resourceScope>
+        <mcc:MD_ScopeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode" codeListValue="dataset"></mcc:MD_ScopeCode>
+      </mdb:resourceScope>
+      <mdb:name gco:nilReason="missing">
+        <gco:CharacterString></gco:CharacterString>
+      </mdb:name>
+    </mdb:MD_MetadataScope>
+  </mdb:metadataScope>
+  <mdb:contact>
+    <cit:CI_Responsibility>
+      <cit:role>
+        <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="pointOfContact"></cit:CI_RoleCode>
+      </cit:role>
+      <cit:party>
+        <cit:CI_Organisation>
+          <cit:name>
+            <gco:CharacterString>Location Infrastructure Branch, Australian Bureau of Statistics</gco:CharacterString>
+          </cit:name>
+          <cit:contactInfo>
+            <cit:CI_Contact>
+              <cit:address>
+                <cit:CI_Address>
+                  <cit:electronicMailAddress>
+                    <gco:CharacterString>geography@abs.gov.au</gco:CharacterString>
+                  </cit:electronicMailAddress>
+                </cit:CI_Address>
+              </cit:address>
+            </cit:CI_Contact>
+          </cit:contactInfo>
+        </cit:CI_Organisation>
+      </cit:party>
+    </cit:CI_Responsibility>
+  </mdb:contact>
+  <mdb:dateInfo>
+    <cit:CI_Date>
+      <cit:date>
+        <gco:DateTime>2026-07-01T11:44:50
+        </gco:DateTime>
+      </cit:date>
+      <cit:dateType>
+        <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode" codeListValue="creation"></cit:CI_DateTypeCode>
+      </cit:dateType>
+    </cit:CI_Date>
+  </mdb:dateInfo>
+  <mdb:metadataLinkage>
+    <cit:CI_OnlineResource>
+      <cit:linkage>
+        <gco:CharacterString>https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-4-july-2026-june-2031/access-and-downloads/digital-boundary-files#metadata-for-digital-boundary-files</gco:CharacterString>
+      </cit:linkage>
+    </cit:CI_OnlineResource>
+  </mdb:metadataLinkage>
+  <mdb:referenceSystemInfo>
+    <mrs:MD_ReferenceSystem>
+      <mrs:referenceSystemIdentifier>
+        <mcc:MD_Identifier>
+          <mcc:code>
+            <gco:CharacterString>7844</gco:CharacterString>
+          </mcc:code>
+          <mcc:codeSpace>
+            <gco:CharacterString>EPSG</gco:CharacterString>
+          </mcc:codeSpace>
+          <mcc:version>
+            <gco:CharacterString>11.031</gco:CharacterString>
+          </mcc:version>
+        </mcc:MD_Identifier>
+      </mrs:referenceSystemIdentifier>
+    </mrs:MD_ReferenceSystem>
+  </mdb:referenceSystemInfo>
+  <mdb:identificationInfo>
+    <mri:MD_DataIdentification>
+      <mri:citation>
+        <cit:CI_Citation>
+          <cit:title>
+            <gco:CharacterString>GCCSA_2026_AUST_GDA2020</gco:CharacterString>
+          </cit:title>
+          <cit:alternateTitle>
+            <gco:CharacterString>Greater Capital City Statistical Area 2026</gco:CharacterString>
+          </cit:alternateTitle>
+          <cit:date>
+            <cit:CI_Date>
+              <cit:date>
+                <gco:Date>2026-07-22</gco:Date>
+              </cit:date>
+              <cit:dateType>
+                <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode" codeListValue="creation"></cit:CI_DateTypeCode>
+              </cit:dateType>
+            </cit:CI_Date>
+          </cit:date>
+          <cit:date>
+            <cit:CI_Date>
+              <cit:date>
+                <gco:Date>2026-07-22</gco:Date>
+              </cit:date>
+              <cit:dateType>
+                <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode" codeListValue="publication"></cit:CI_DateTypeCode>
+              </cit:dateType>
+            </cit:CI_Date>
+          </cit:date>
+          <cit:identifier>
+            <mcc:MD_Identifier>
+              <mcc:code>
+                <gco:CharacterString>GCCSA_2026_AUST_GDA2020</gco:CharacterString>
+              </mcc:code>
+            </mcc:MD_Identifier>
+          </cit:identifier>
+          <cit:citedResponsibleParty>
+            <cit:CI_Responsibility>
+              <cit:role>
+                <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="author"></cit:CI_RoleCode>
+              </cit:role>
+              <cit:party>
+                <cit:CI_Organisation>
+                  <cit:name>
+                    <gco:CharacterString>Location Infrastructure Branch, Australian Bureau of Statistics</gco:CharacterString>
+                  </cit:name>
+                </cit:CI_Organisation>
+              </cit:party>
+            </cit:CI_Responsibility>
+          </cit:citedResponsibleParty>
+          <cit:onlineResource>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-4-july-2026-june-2031</gco:CharacterString>
+              </cit:linkage>
+            </cit:CI_OnlineResource>
+          </cit:onlineResource>
+        </cit:CI_Citation>
+      </mri:citation>
+      <mri:abstract>
+        <gco:CharacterString>Greater Capital City Statistical Areas (GCCSA) are geographical areas built from Statistical Areas Level 4 (SA4).  </gco:CharacterString>
+      </mri:abstract>
+      <mri:purpose>
+        <gco:CharacterString>Greater Capital City Statistical Areas (GCCSA) represent labour markets and the functional extent of Australian capital cities respectively. They are designed with an emphasis on stability over time to support the time series of statistical releases such as the Quarterly Labour Force publication. The labour market is sometimes used as a defacto measure of the functional extent of a city as it contains the majority of the commuting population. GCCSAs do not define the built up edge of the city. They provide a stable definition for these cities and are designed for the output of a range of social and economic survey data. Within each State and Territory, the area not defined as being part of the Greater Capital City Statistical Area is represented by a Rest of State region. GCCSAs are not bound by a minimum population size criterion. The ASGS is constructed on the principle that it must fulfil user needs for geospatially enabled statistics, while also conforming to general classification principles. The ASGS is designed to meet user needs for social, demographic and economic statistics. The regions of the ASGS below the State and Territory level are designed such that they are, useful and relevant for data dissemination, flexible for aggregation into larger units, useful building blocks for user defined regions.</gco:CharacterString>
+      </mri:purpose>
+      <mri:credit>
+        <gco:CharacterString>Australian Bureau of Statistics (ABS)</gco:CharacterString>
+      </mri:credit>
+      <mri:pointOfContact>
+        <cit:CI_Responsibility>
+          <cit:role>
+            <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="pointOfContact"></cit:CI_RoleCode>
+          </cit:role>
+          <cit:party>
+            <cit:CI_Organisation>
+              <cit:name>
+                <gco:CharacterString>Location Infrastructure Branch, Australian Bureau of Statistics</gco:CharacterString>
+              </cit:name>
+              <cit:contactInfo>
+                <cit:CI_Contact>
+                  <cit:address>
+                    <cit:CI_Address>
+                      <cit:electronicMailAddress>
+                        <gco:CharacterString>geography@abs.gov.au</gco:CharacterString>
+                      </cit:electronicMailAddress>
+                    </cit:CI_Address>
+                  </cit:address>
+                </cit:CI_Contact>
+              </cit:contactInfo>
+            </cit:CI_Organisation>
+          </cit:party>
+        </cit:CI_Responsibility>
+      </mri:pointOfContact>
+      <mri:spatialRepresentationType>
+        <mcc:MD_SpatialRepresentationTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="vector"></mcc:MD_SpatialRepresentationTypeCode>
+      </mri:spatialRepresentationType>
+      <mri:spatialResolution>
+        <mri:MD_Resolution>
+          <mri:equivalentScale>
+            <mri:MD_RepresentativeFraction>
+              <mri:denominator>
+                <gco:Integer>50000</gco:Integer>
+              </mri:denominator>
+            </mri:MD_RepresentativeFraction>
+          </mri:equivalentScale>
+        </mri:MD_Resolution>
+      </mri:spatialResolution>
+      <mri:topicCategory>
+        <mri:MD_TopicCategoryCode>boundaries</mri:MD_TopicCategoryCode>
+      </mri:topicCategory>
+      <mri:extent>
+        <gex:EX_Extent>
+          <gex:geographicElement>
+            <gex:EX_GeographicBoundingBox>
+              <gex:extentTypeCode>
+                <gco:Boolean>true</gco:Boolean>
+              </gex:extentTypeCode>
+              <gex:westBoundLongitude>
+                <gco:Decimal>96</gco:Decimal>
+              </gex:westBoundLongitude>
+              <gex:eastBoundLongitude>
+                <gco:Decimal>169</gco:Decimal>
+              </gex:eastBoundLongitude>
+              <gex:southBoundLatitude>
+                <gco:Decimal>-45</gco:Decimal>
+              </gex:southBoundLatitude>
+              <gex:northBoundLatitude>
+                <gco:Decimal>-8</gco:Decimal>
+              </gex:northBoundLatitude>
+            </gex:EX_GeographicBoundingBox>
+          </gex:geographicElement>
+        </gex:EX_Extent>
+      </mri:extent>
+      <mri:resourceMaintenance>
+        <mmi:MD_MaintenanceInformation>
+          <mmi:maintenanceAndUpdateFrequency>
+            <mmi:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_MaintenanceFrequencyCode" codeListValue="periodic"></mmi:MD_MaintenanceFrequencyCode>
+          </mmi:maintenanceAndUpdateFrequency>
+          <mmi:maintenanceDate>
+            <cit:CI_Date>
+              <cit:date>
+                <gco:Date>2026-07-22</gco:Date>
+              </cit:date>
+              <cit:dateType>
+                <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode" codeListValue="lastUpdate"></cit:CI_DateTypeCode>
+              </cit:dateType>
+            </cit:CI_Date>
+          </mmi:maintenanceDate>
+        </mmi:MD_MaintenanceInformation>
+      </mri:resourceMaintenance>
+      <mri:resourceFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>mapDigital</gco:CharacterString>
+              </cit:title>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+        </mrd:MD_Format>
+      </mri:resourceFormat>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gco:CharacterString>ABS</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>Australian Bureau of Statistics</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>ASGS</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>GCCSA</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>Greater Capital City Statistical Areas</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>Boundaries</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>Structures</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>Statistical Geography</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>2026</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>Edition 4</gco:CharacterString>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="https://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode" codeListValue="stratum"></mri:MD_KeywordTypeCode>
+          </mri:type>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:resourceConstraints>
+        <mco:MD_Constraints>
+          <mco:useLimitation>
+            <gco:CharacterString>ASGS hierarchical boundaries are consistent within the same release edition only - combine releases with extreme care</gco:CharacterString>
+          </mco:useLimitation>
+          <mco:reference>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>Use Limitation Reference</gco:CharacterString>
+              </cit:title>
+              <cit:onlineResource>
+                <cit:CI_OnlineResource>
+                  <cit:linkage>
+                    <gco:CharacterString>https://creativecommons.org/licenses/by-sa/4.0/</gco:CharacterString>
+                  </cit:linkage>
+                </cit:CI_OnlineResource>
+              </cit:onlineResource>
+            </cit:CI_Citation>
+          </mco:reference>
+        </mco:MD_Constraints>
+      </mri:resourceConstraints>
+      <mri:resourceConstraints>
+        <mco:MD_LegalConstraints>
+          <mco:reference>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>CC by SA</gco:CharacterString>
+              </cit:title>
+              <cit:onlineResource>
+                <cit:CI_OnlineResource>
+                  <cit:linkage>
+                    <gco:CharacterString>https://creativecommons.org/licenses/by-sa/4.0/</gco:CharacterString>
+                  </cit:linkage>
+                  <cit:protocol>
+                    <gco:CharacterString>https</gco:CharacterString>
+                  </cit:protocol>
+                  <cit:name>
+                    <gco:CharacterString>Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</gco:CharacterString>
+                  </cit:name>
+                  <cit:description>
+                    <gco:CharacterString>Details of Creative Commons by ShareAlike</gco:CharacterString>
+                  </cit:description>
+                  <cit:function>
+                    <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="browsing"></cit:CI_OnLineFunctionCode>
+                  </cit:function>
+                </cit:CI_OnlineResource>
+              </cit:onlineResource>
+            </cit:CI_Citation>
+          </mco:reference>
+          <mco:accessConstraints>
+            <mco:MD_RestrictionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode" codeListValue="unrestricted"></mco:MD_RestrictionCode>
+          </mco:accessConstraints>
+          <mco:useConstraints>
+            <mco:MD_RestrictionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode" codeListValue="unrestricted"></mco:MD_RestrictionCode>
+          </mco:useConstraints>
+        </mco:MD_LegalConstraints>
+      </mri:resourceConstraints>
+      <mri:resourceConstraints>
+        <mco:MD_SecurityConstraints>
+          <mco:classification>
+            <mco:MD_ClassificationCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ClassificationCode" codeListValue="UNOFFICIAL"></mco:MD_ClassificationCode>
+          </mco:classification>
+        </mco:MD_SecurityConstraints>
+      </mri:resourceConstraints>
+      <mri:defaultLocale>
+        <lan:PT_Locale>
+          <lan:language>
+            <lan:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng"></lan:LanguageCode>
+          </lan:language>
+          <lan:characterEncoding>
+            <lan:MD_CharacterSetCode codeList="https://www.iana.org/assignments/character-sets/character-sets.xml" codeListValue="utf8"></lan:MD_CharacterSetCode>
+          </lan:characterEncoding>
+        </lan:PT_Locale>
+      </mri:defaultLocale>
+    </mri:MD_DataIdentification>
+  </mdb:identificationInfo>
+  <mdb:contentInfo>
+    <mrc:MD_FeatureCatalogue>
+      <mrc:featureCatalogue>
+        <gfc:FC_FeatureCatalogue id="FC_GCCSA_2026_AUST_GDA2020">
+          <cat:name>
+            <gco:CharacterString>Feature Catalogue for GCCSA_2026_AUST_GDA2020</gco:CharacterString>
+          </cat:name>
+          <cat:scope>
+            <gco:CharacterString>Statistical geospatial boundaries</gco:CharacterString>
+          </cat:scope>
+          <cat:versionNumber>
+            <gco:CharacterString>1.0</gco:CharacterString>
+          </cat:versionNumber>
+          <cat:versionDate>
+            <gco:DateTime>2026-07-01T11:44:50
+            </gco:DateTime>
+          </cat:versionDate>
+          <gfc:producer>
+            <cit:CI_Responsibility>
+              <cit:role>
+                <cit:CI_RoleCode codeList="standards.iso.org" codeListValue="publisher"></cit:CI_RoleCode>
+              </cit:role>
+              <cit:party>
+                <cit:CI_Organisation>
+                  <cit:name>
+                    <gco:CharacterString>Australian Bureau of Statistics</gco:CharacterString>
+                  </cit:name>
+                </cit:CI_Organisation>
+              </cit:party>
+            </cit:CI_Responsibility>
+          </gfc:producer>
+          <gfc:featureType>
+            <gfc:FC_FeatureType id="FT1">
+              <gfc:typeName>GCCSA_2026_AUST_GDA2020</gfc:typeName>
+              <gfc:definition>
+                <gco:CharacterString>Shapefile dataset</gco:CharacterString>
+              </gfc:definition>
+              <gfc:code>
+                <gco:CharacterString>GCCSA_2026_AUST_GDA2020</gco:CharacterString>
+              </gfc:code>
+              <gfc:isAbstract>
+                <gco:Boolean>false</gco:Boolean>
+              </gfc:isAbstract>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: 5</gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>GCC_CODE26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>2026 Greater Capital City Statistical Area (GCCSA) codes from the Australian Statistical Geography Standard (ASGS), Edition 4. GCCSAs represent the functional area of each of the eight state and territory capital cities. </gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>Greater Capital City Statistical Area 2026 code</gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: 50</gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>GCC_NAME26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>2026 Greater Capital City Statistical Area (GCCSA) names from the Australian Statistical Geography Standard (ASGS), Edition 4. GCCSAs represent the functional area of each of the eight state and territory capital cities. </gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>Greater Capital City Statistical Area 2026 name</gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: 1</gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>CHG_FLAG26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>2026 change flag code from the ASGS to denote boundary changes compared to 2021 ASGS.  </gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>Change flag 2026 code</gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: 11</gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>CHG_LBL26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>2026 change label name from the ASGS  to denote boundary changes compared to 2021 ASGS.  </gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>Change label 2026 name</gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: 1</gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>STE_CODE26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>2026 State and Territory codes from the Australian Statistical Geography Standard (ASGS), Edition 4. States and Territories are a cartographic representation of legally designated state and territory boundaries.</gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>State and Territory 2026 code</gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: 50</gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>STE_NAME26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>2026 State and Territory names from the Australian Statistical Geography Standard (ASGS), Edition 4. States and Territories are a cartographic representation of legally designated state and territory boundaries.</gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>State and Territory 2026 name</gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: 3</gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>AUS_CODE26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>2026 Australia code from the Australian Statistical Geography Standard (ASGS), Edition 4. This is the largest region in the ASGS and represents the geographic extent of Australia.</gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>Australia 2026 code</gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: 50</gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>AUS_NAME26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>2026 Australia name from the Australian Statistical Geography Standard (ASGS), Edition 4. This is the largest region in the ASGS and represents the geographic extent of Australia.</gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>Australia 2026 name </gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:carrierOfCharacteristics>
+                <gfc:FC_FeatureAttribute>
+                  <gfc:featureType xlink:href="#FT1"></gfc:featureType>
+                  <gfc:constrainedBy>
+                    <gfc:FC_Constraint>
+                      <gfc:description>
+                        <gco:CharacterString>Width: </gco:CharacterString>
+                      </gfc:description>
+                    </gfc:FC_Constraint>
+                  </gfc:constrainedBy>
+                  <gfc:memberName>AREASQKM26</gfc:memberName>
+                  <gfc:definition>
+                    <gco:CharacterString>The area of a region in square kilometres, based on the Albers equal area conic projection.</gco:CharacterString>
+                  </gfc:definition>
+                  <gfc:cardinality>
+                    <gco:CharacterString>1..1</gco:CharacterString>
+                  </gfc:cardinality>
+                  <gfc:designation>
+                    <gco:CharacterString>Area in square kilometres</gco:CharacterString>
+                  </gfc:designation>
+                  <gfc:valueType>
+                    <gco:TypeName>
+                      <gco:aName>
+                        <gco:CharacterString>CharacterString</gco:CharacterString>
+                      </gco:aName>
+                    </gco:TypeName>
+                  </gfc:valueType>
+                </gfc:FC_FeatureAttribute>
+              </gfc:carrierOfCharacteristics>
+              <gfc:definitionReference>
+                <gfc:FC_DefinitionReference>
+                  <gfc:definitionSource>
+                    <gfc:FC_DefinitionSource>
+                      <gfc:source>
+                        <cit:CI_Citation>
+                          <cit:title>
+                            <gco:CharacterString>Australian Bureau of Statistics</gco:CharacterString>
+                          </cit:title>
+                          <cit:date>
+                            <cit:CI_Date>
+                              <cit:date>
+                                <gco:DateTime>2026-02-04T09:49:28</gco:DateTime>
+                              </cit:date>
+                              <cit:dateType>
+                                <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_DateTypeCode" codeListValue="created"></cit:CI_DateTypeCode>
+                              </cit:dateType>
+                            </cit:CI_Date>
+                          </cit:date>
+                          <cit:otherCitationDetails>
+                            <gco:CharacterString>Australian Statistical Geography Standard (ASGS) Edition 4 Greater Capital City Statistical Area</gco:CharacterString>
+                          </cit:otherCitationDetails>
+                        </cit:CI_Citation>
+                      </gfc:source>
+                    </gfc:FC_DefinitionSource>
+                  </gfc:definitionSource>
+                </gfc:FC_DefinitionReference>
+              </gfc:definitionReference>
+              <gfc:featureCatalogue xlink:href="#FC_GCCSA_2026_AUST_GDA2020"></gfc:featureCatalogue>
+            </gfc:FC_FeatureType>
+          </gfc:featureType>
+        </gfc:FC_FeatureCatalogue>
+      </mrc:featureCatalogue>
+    </mrc:MD_FeatureCatalogue>
+  </mdb:contentInfo>
+  <mdb:distributionInfo>
+    <mrd:MD_Distribution>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>Shapefile</gco:CharacterString>
+              </cit:title>
+              <cit:edition>
+                <gco:CharacterString>4</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributor>
+        <mrd:MD_Distributor>
+          <mrd:distributorContact>
+            <cit:CI_Responsibility>
+              <cit:role>
+                <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="distributor"></cit:CI_RoleCode>
+              </cit:role>
+              <cit:party>
+                <cit:CI_Organisation>
+                  <cit:name>
+                    <gco:CharacterString>Location Infrastructure Branch, Australian Bureau of Statistics</gco:CharacterString>
+                  </cit:name>
+                </cit:CI_Organisation>
+              </cit:party>
+            </cit:CI_Responsibility>
+          </mrd:distributorContact>
+        </mrd:MD_Distributor>
+      </mrd:distributor>
+    </mrd:MD_Distribution>
+  </mdb:distributionInfo>
+  <!-- Summary Reports all have the same date stamp in this release -->
+  <mdb:dataQualityInfo xlink:type="simple">
+    <mdq:DQ_DataQuality>
+      <mdq:scope xlink:type="simple">
+        <mcc:MD_Scope>
+          <mcc:level>
+            <mcc:MD_ScopeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode" codeListValue="dataset"></mcc:MD_ScopeCode>
+          </mcc:level>
+          <mcc:extent xlink:type="simple"></mcc:extent>
+          <mcc:levelDescription xlink:type="simple"></mcc:levelDescription>
+        </mcc:MD_Scope>
+      </mdq:scope>
+      <mdq:report xlink:type="simple">
+        <mdq:DQ_CompletenessOmission>
+          <mdq:result xlink:type="simple">
+            <mdq:DQ_DescriptiveResult>
+              <mdq:dateTime>
+                <gco:DateTime>2026-07-22T12:00:00</gco:DateTime>
+              </mdq:dateTime>
+              <mdq:statement>
+                <gco:CharacterString>Complete</gco:CharacterString>
+              </mdq:statement>
+            </mdq:DQ_DescriptiveResult>
+          </mdq:result>
+        </mdq:DQ_CompletenessOmission>
+      </mdq:report>
+    </mdq:DQ_DataQuality>
+  </mdb:dataQualityInfo>
+  <mdb:dataQualityInfo xlink:type="simple">
+    <mdq:DQ_DataQuality>
+      <mdq:scope xlink:type="simple">
+        <mcc:MD_Scope>
+          <mcc:level>
+            <mcc:MD_ScopeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode" codeListValue="dataset"></mcc:MD_ScopeCode>
+          </mcc:level>
+          <mcc:extent xlink:type="simple"></mcc:extent>
+          <mcc:levelDescription xlink:type="simple"></mcc:levelDescription>
+        </mcc:MD_Scope>
+      </mdq:scope>
+      <mdq:report xlink:type="simple">
+        <mdq:DQ_ConceptualConsistency>
+          <mdq:result xlink:type="simple">
+            <mdq:DQ_DescriptiveResult>
+              <mdq:dateTime>
+                <gco:DateTime>2026-07-22T12:00:00</gco:DateTime>
+              </mdq:dateTime>
+              <mdq:statement>
+                <gco:CharacterString>Consistent</gco:CharacterString>
+              </mdq:statement>
+            </mdq:DQ_DescriptiveResult>
+          </mdq:result>
+        </mdq:DQ_ConceptualConsistency>
+      </mdq:report>
+    </mdq:DQ_DataQuality>
+  </mdb:dataQualityInfo>
+  <mdb:dataQualityInfo xlink:type="simple">
+    <mdq:DQ_DataQuality>
+      <mdq:scope xlink:type="simple">
+        <mcc:MD_Scope>
+          <mcc:level>
+            <mcc:MD_ScopeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode" codeListValue="dataset"></mcc:MD_ScopeCode>
+          </mcc:level>
+          <mcc:extent xlink:type="simple"></mcc:extent>
+          <mcc:levelDescription xlink:type="simple"></mcc:levelDescription>
+        </mcc:MD_Scope>
+      </mdq:scope>
+      <mdq:report xlink:type="simple">
+        <mdq:DQ_TopologicalConsistency>
+          <mdq:result xlink:type="simple">
+            <mdq:DQ_DescriptiveResult>
+              <mdq:dateTime>
+                <gco:DateTime>2026-07-22T12:00:00</gco:DateTime>
+              </mdq:dateTime>
+              <mdq:statement>
+                <gco:CharacterString>Consistent</gco:CharacterString>
+              </mdq:statement>
+            </mdq:DQ_DescriptiveResult>
+          </mdq:result>
+        </mdq:DQ_TopologicalConsistency>
+      </mdq:report>
+    </mdq:DQ_DataQuality>
+  </mdb:dataQualityInfo>
+  <mdb:resourceLineage>
+    <mrl:LI_Lineage>
+      <mrl:statement>
+        <gco:CharacterString>Greater Capital City Statistical Areas (GCCSA) boundaries were created using various public and commercial sources. The ASGS is a cartographic representation of Australia for the purpose of representing statistics. 
+          Positional accuracy is an assessment of the closeness of the location of the spatial objects in relation to their true positions on the earth's surface. Positional accuracy for ABS boundaries is dependent on the accuracy of the features they have been aligned to. 
+          ABS boundaries are aligned to a number of layers including Geoscape. Boundary coordinates have been rounded to 8 decimal places, equivalent to 1.1132mm at the equator. All ABS boundaries have been generalised to 5cm with a 7.5cm shared boundary tolerance. 
+          No "shift" of data as a means of "cartographic enhancement" to facilitate presentation has been employed for any real world feature. </gco:CharacterString>
+      </mrl:statement>
+      <mrl:source>
+        <mrl:LI_Source>
+          <mrl:description>
+            <gco:CharacterString>ASGS 2021 Edition 3</gco:CharacterString>
+          </mrl:description>
+        </mrl:LI_Source>
+      </mrl:source>
+    </mrl:LI_Lineage>
+  </mdb:resourceLineage>
+  <mdb:metadataConstraints>
+    <mco:MD_LegalConstraints>
+      <mco:reference>
+        <cit:CI_Citation>
+          <cit:title>
+            <gco:CharacterString>CC by SA</gco:CharacterString>
+          </cit:title>
+          <cit:onlineResource>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://creativecommons.org/licenses/by-sa/4.0/</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>https</gco:CharacterString>
+              </cit:protocol>
+              <cit:name>
+                <gco:CharacterString>Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Human readable summary of CC BY-SA</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="browsing"></cit:CI_OnLineFunctionCode>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </cit:onlineResource>
+        </cit:CI_Citation>
+      </mco:reference>
+      <mco:accessConstraints>
+        <mco:MD_RestrictionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode" codeListValue="unrestricted"></mco:MD_RestrictionCode>
+      </mco:accessConstraints>
+      <mco:useConstraints>
+        <mco:MD_RestrictionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode" codeListValue="unrestricted"></mco:MD_RestrictionCode>
+      </mco:useConstraints>
+    </mco:MD_LegalConstraints>
+  </mdb:metadataConstraints>
+  <mdb:metadataConstraints>
+    <mco:MD_SecurityConstraints>
+      <mco:reference>
+        <cit:CI_Citation>
+          <cit:title>
+            <gco:CharacterString>Protective Security Policy Framework</gco:CharacterString>
+          </cit:title>
+          <cit:onlineResource>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://www.protectivesecurity.gov.au/</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>https</gco:CharacterString>
+              </cit:protocol>
+              <cit:name gco:nilReason="missing">
+                <gco:CharacterString></gco:CharacterString>
+              </cit:name>
+              <cit:description gco:nilReason="missing">
+                <gco:CharacterString></gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="browsing"></cit:CI_OnLineFunctionCode>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </cit:onlineResource>
+        </cit:CI_Citation>
+      </mco:reference>
+      <mco:classification>
+        <mco:MD_ClassificationCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ClassificationCode" codeListValue="UNOFFICIAL"></mco:MD_ClassificationCode>
+      </mco:classification>
+      <mco:classificationSystem>
+        <gco:CharacterString>Protective Security Policy Framework</gco:CharacterString>
+      </mco:classificationSystem>
+    </mco:MD_SecurityConstraints>
+  </mdb:metadataConstraints>
+  <mdb:metadataMaintenance>
+    <mmi:MD_MaintenanceInformation>
+      <mmi:maintenanceAndUpdateFrequency>
+        <mmi:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_MaintenanceFrequencyCode" codeListValue="asNeeded"></mmi:MD_MaintenanceFrequencyCode>
+      </mmi:maintenanceAndUpdateFrequency>
+    </mmi:MD_MaintenanceInformation>
+  </mdb:metadataMaintenance>
+</mdb:MD_Metadata>
