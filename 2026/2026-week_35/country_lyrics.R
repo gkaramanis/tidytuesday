@@ -73,9 +73,9 @@ StatBump$setup_data <- function(data, params) {
 f1 <- "Familjen Grotesk"
 f2 <- "Montagu Slab 144pt"
 
-ggplot(top_words, aes(x = entered_top_30_in, y = rank, group = word, color = col, size = pct)) +
-  geom_bump(alpha = 0.8) +
-  geom_point() +
+ggplot(top_words, aes(x = entered_top_30_in, y = rank, group = word, color = col)) +
+  geom_bump(size = 2, alpha = 0.8) +
+  geom_point(size = 3) +
   shadowtext::geom_shadowtext(aes(label = word, x = x_max, y = y_max), hjust = 0, nudge_x = 0.08, family = f2, size = 4.5, bg.color = "white") +
   scale_y_reverse(breaks = 10:1) +
   scale_x_continuous(breaks = 2013:2019) +
