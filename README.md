@@ -22,6 +22,14 @@ Code and plots of the submissions to the [#tidytuesday](https://github.com/rford
 ---
 ![](yearly-roundup/fifth-year/fifth-year.png)  
 
+### Sixth year (March 2024 - March 2025)
+---
+![](yearly-roundup/sixth-year/sixth-year.png)  
+
+### Seventh year (March 2025 - March 2026)
+---
+![](yearly-roundup/seventh-year/seventh-year.png)  
+
 ### Highlights (click on image to go to code): <br>
 ---
 <div class="row"> 
