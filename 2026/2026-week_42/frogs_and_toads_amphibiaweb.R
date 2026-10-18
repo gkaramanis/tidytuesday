@@ -1,79 +1,51 @@
 library(tidyverse)
 library(camcorder)
 
-gg_record(dir = "tidytuesday-temp", device = "png", width = 10, height = 8, units = "in", dpi = 320)
+gg_record(dir = "tidytuesday-temp", device = "png", width = 8, height = 8, units = "in", dpi = 320)
 
-frogs_and_toads_amphibiaweb <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-10-13/frogs_and_toads_amphibiaweb.csv')
+frogs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-10-13/frogs_and_toads_amphibiaweb.csv')
 
 # African bullfrog (Pyxicephalus adspersus) by Jose Carlos Arenas-Monroy, PhyloPic, CC0
-silhouette_url <- "https://images.phylopic.org/images/23212ae3-9163-44c3-8ee5-a8040e91f0ff/raster/1536x1069.png"
-silhouette_file <- tempfile(fileext = ".png")
-download.file(silhouette_url, silhouette_file, mode = "wb", quiet = TRUE)
-silhouette <- png::readPNG(silhouette_file)
-n_channels <- dim(silhouette)[3]
+silhouette <- png::readPNG(curl::curl_fetch_memory("https://images.phylopic.org/images/23212ae3-9163-44c3-8ee5-a8040e91f0ff/raster/1536x1069.png")$content)
+frog_mask <- silhouette[, , dim(silhouette)[3]] > 0.5
 
-# Alpha channel if there is one (grey + alpha or RGBA), otherwise dark pixels
-frog_mask <- if (n_channels %in% c(2, 4)) {
-  silhouette[, , n_channels] > 0.5
-} else {
-  silhouette[, , 1] < 0.5
-}
-
-n_species <- nrow(frogs_and_toads_amphibiaweb)
+species_per_dot <- 5
+n_species <- nrow(frogs)
+n_dots <- ceiling(n_species / species_per_dot)
 
 # Hexagonal grid of candidate dot positions, in pixel coordinates
-hex_grid <- function(mask, spacing) {
-  row_step <- spacing * sqrt(3) / 2
-  rows <- seq(1, nrow(mask), by = row_step)
-
-  map(seq_along(rows), \(i) {
-    tibble(
-      x = seq(1 + (i %% 2) * spacing / 2, ncol(mask), by = spacing),
-      row = rows[i]
-    )
-  }) |>
-    list_rbind() |>
-    filter(mask[cbind(round(row), round(x))]) |>
-    mutate(y = nrow(mask) - row)
+hex_grid <- function(spacing) {
+  expand_grid(i = 0:(nrow(frog_mask) %/% (spacing * sqrt(3) / 2)), j = 0:(ncol(frog_mask) %/% spacing)) |>
+    mutate(row = 1 + i * spacing * sqrt(3) / 2, x = 1 + j * spacing + ((i + 1) %% 2) * spacing / 2) |>
+    filter(row <= nrow(frog_mask), x <= ncol(frog_mask)) |>
+    filter(frog_mask[cbind(round(row), round(x))]) |>
+    mutate(y = nrow(frog_mask) - row)
 }
 
-# Widest spacing that still fits one dot per species
-spacings <- seq(20, 5, by = -0.05)
-dot_counts <- map_int(spacings, \(s) nrow(hex_grid(frog_mask, s)))
-dot_spacing <- spacings[which(dot_counts >= n_species)[1]]
+# Widest spacing that still fits all the dots
+dot_spacing <- detect(seq(60, 10, by = -0.05), \(s) nrow(hex_grid(s)) >= n_dots)
 
-set.seed(42)
-dots <- hex_grid(frog_mask, dot_spacing) |>
-  slice_sample(n = n_species) |>
+# Trim the surplus from the outline, so the inside has no gaps
+dots <- hex_grid(dot_spacing) |>
+  mutate(neighbours = rowSums(as.matrix(dist(pick(x, y))) < dot_spacing * 1.1)) |>
+  slice_max(neighbours, n = n_dots, with_ties = FALSE) |>
   arrange(x, y)
 
-top_families <- frogs_and_toads_amphibiaweb |>
-  count(family, sort = TRUE) |>
-  slice_head(n = 6)
-
-n_other_families <- n_distinct(frogs_and_toads_amphibiaweb$family) - nrow(top_families)
-other_label <- str_glue("{n_other_families} other families")
+other_label <- str_c(n_distinct(frogs$family) - 6, " other families")
 
 # Smallest families at the rump, largest at the head
-family_order <- c(other_label, rev(top_families$family))
-
-species <- frogs_and_toads_amphibiaweb |>
-  mutate(
-    family_group = if_else(family %in% top_families$family, family, other_label),
-    family_group = factor(family_group, levels = family_order)
-  ) |>
+species <- frogs |>
+  mutate(family_group = fct_lump_n(family, 6, other_level = other_label) |> fct_infreq() |> fct_rev() |> fct_relevel(other_label)) |>
   arrange(family_group, genus, specificepithet)
 
-frog_dots <- bind_cols(dots, select(species, family_group, genus))
+# Each dot takes the family of every 5th species in the sorted list
+frog_dots <- dots |>
+  mutate(family_group = species$family_group[seq(1, n_species, by = species_per_dot)])
 
 # Brackets under each stripe, labels staggered on two rows
 family_labels <- frog_dots |>
-  summarise(
-    xmin = min(x) + dot_spacing / 2,
-    xmax = max(x) - dot_spacing / 2,
-    n = n(),
-    .by = family_group
-  ) |>
+  summarise(xmin = min(x) + dot_spacing / 2, xmax = max(x) - dot_spacing / 2, .by = family_group) |>
+  left_join(count(species, family_group), by = join_by(family_group)) |>
   mutate(
     x = (xmin + xmax) / 2,
     y = if_else(row_number() %% 2 == 0, -150, -50),
@@ -81,45 +53,25 @@ family_labels <- frog_dots |>
     label = str_glue("{family_group}\n{scales::comma(n)}")
   )
 
-pal <- c(
-  "#C9C3B6",
-  "#1E9E95", "#2F6DB5", "#D9612B", "#9C4A7C", "#C98E12", "#3B8A4F"
-) |>
-  set_names(family_order)
-
-top_share <- sum(top_families$n) / n_species
-pristimantis_n <- sum(frogs_and_toads_amphibiaweb$genus == "Pristimantis")
+top_share <- mean(species$family_group != other_label)
+pristimantis_n <- sum(frogs$genus == "Pristimantis")
 
 f1 <- "Proxima Nova"
 f2 <- "Iosevka Charon"
 f3 <- "Canela"
 
-bg <- "#F4F0E6"
-
-ggplot(frog_dots, aes(x, y)) +
-  geom_point(aes(color = family_group), size = 1.1, stroke = 0) +
-  geom_segment(
-    data = family_labels,
-    aes(x = xmin, xend = xmax, y = -20, yend = -20, color = family_group),
-    linewidth = 1.2, lineend = "round"
-  ) +
-  geom_segment(
-    data = family_labels,
-    aes(x = x, xend = x, y = -20, yend = y + 10),
-    linewidth = 0.25, color = "grey45"
-  ) +
-  geom_text(
-    data = family_labels,
-    aes(x = x, y = y, label = label, hjust = hjust),
-    family = f2, size = 3.2, lineheight = 0.95, vjust = 1, color = "grey20"
-  ) +
-  scale_color_manual(values = pal) +
-  scale_y_continuous(expand = expansion(mult = c(0.2, 0.02))) +
+ggplot() +
+  geom_point(data = frog_dots, aes(x, y, color = family_group), size = dot_spacing * 0.13, stroke = 0) +
+  geom_segment(data = family_labels, aes(x = xmin, xend = xmax, y = -45, yend = -45, color = family_group), linewidth = 1.5, lineend = "round") +
+  geom_segment(data = family_labels, aes(x = x, xend = x, y = -50, yend = y - 15), linewidth = 0.25, color = "grey45") +
+  geom_text(data = family_labels, aes(x, y - 30, label = label, hjust = hjust), family = f2, size = 3.2, lineheight = 0.95, vjust = 1, color = "grey20") +
+  scale_color_manual(values = c("#C9C3B6", "#1E9E95", "#2F6DB5", "#D9612B", "#9C4A7C", "#C98E12", "#3B8A4F")) +
+  scale_y_continuous(expand = expansion(mult = c(0.1, 0.01))) +
   coord_fixed(clip = "off") +
   labs(
-    title = "One frog, 8,018 species",
+    title = str_glue("One frog, {scales::comma(n_species)} species"),
     subtitle = str_glue(
-      "Each dot is one species of frog or toad in AmphibiaWeb, grouped by family. ",
+      "Each dot is {species_per_dot} species of frog or toad in AmphibiaWeb, grouped by family. ",
       "The six largest families hold {scales::percent(top_share)} of all species, ",
       "and a single genus of rain frogs, *Pristimantis*, accounts for {pristimantis_n} of them."
     ),
@@ -128,10 +80,11 @@ ggplot(frog_dots, aes(x, y)) +
   theme_void(base_family = f1) +
   theme(
     legend.position = "none",
-    plot.background = element_rect(fill = bg, color = NA),
-    plot.margin = margin(20, 30, 15, 30),
-    plot.title = element_text(family = f3, size = 30, margin = margin(0, 0, 6, 0)),
-    plot.subtitle = marquee::element_marquee(size = 13, width = 0.95, lineheight = 1.15, margin = margin(0, 0, 10, 0)),
+    plot.title.position = "plot",
+    plot.background = element_rect(fill = "#F4F0E6", color = NA),
+    plot.margin = margin(10, 10, 10, 10),
+    plot.title = element_text(family = f3, size = 26, margin = margin(0, 0, 6, 0)),
+    plot.subtitle = marquee::element_marquee(size = 13, width = 0.98, lineheight = 1.15, margin = margin(0, 0, 30, 0)),
     plot.caption = element_text(size = 9, color = "grey35", hjust = 0, margin = margin(15, 0, 0, 0))
   )
 
