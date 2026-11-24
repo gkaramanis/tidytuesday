@@ -12,3 +12,7 @@ temp-times/
 CLAUDE.md
 .claude/
 POSIT_ASSISTANT_INSTRUCTIONS.md
+
+# Rendered scrolly outputs (shipped via Blot, not git)
+2026/2026-week_48/filming_locations_scrolly.html
+2026/2026-week_48/filming_locations_scrolly_files/

@@ -3,51 +3,104 @@ title: "The center of film"
 format:
   closeread-html:
     remove-header-space: true
+    embed-resources: true
     cr-style:
       section-background-color: "#DCDFE2"
       narrative-text-color-overlay: "#1E1E1E"
-      narrative-background-color-overlay: "rgba(240,242,243,0.96)"
-      narrative-border-radius: "3px"
       narrative-overlay-max-width: "clamp(240px, 26vw, 380px)"
       narrative-font-size: "clamp(0.9rem, 1.2vw, 1.1rem)"
-      narrative-font-family: "'IBM Plex Sans', sans-serif"
+      narrative-font-family: "'Newsreader', Georgia, serif"
 ---
 
 ```{=html}
 <style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@300;400;600&display=swap');
+
 :root {
-  --film-base: #DCDFE2;
-  --film-rail: #2B2D30;
-  --film-hole: #DCDFE2;
-  --edge-print: #2457C5;
+  --base: #DCDFE2;
+  --card: rgba(240, 242, 243, 0.96);
+  --pencil: #4A4E53;
+  --accent: #C8102E;
   --ink: #1E1E1E;
   --muted: #5E6368;
+  --mono: 'IBM Plex Mono', monospace;
 }
-html, body { background: var(--film-base); }
-.cr-section { font-family: 'IBM Plex Sans', sans-serif; }
 
-/* Sprocket rail down the left edge of each narrative card */
-.cr-section .narrative { position: relative; padding-left: 30px !important; }
-.cr-section .narrative::before {
+html, body { background: var(--base); }
+
+/* Hand-drawn frames: each box sits on a pseudo-element bent by one of the wobble filters below */
+.cr-section .narrative-col .narrative {
+  position: relative;
+  isolation: isolate;
+  background: transparent !important;
+  padding: 0.6em 0.8em !important;
+}
+.cr-section .narrative-col .narrative::before,
+.top-panel::before {
   content: "";
-  position: absolute; left: 0; top: 0; bottom: 0; width: 18px;
-  background:
-    repeating-linear-gradient(to bottom, transparent 0 6px, var(--film-hole) 6px 14px, transparent 14px 20px) center / 8px 100% no-repeat,
-    var(--film-rail);
-  border-radius: 3px 0 0 3px;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--card);
+  border: 1.6px solid var(--pencil);
+  border-radius: 4px;
+  filter: url(#wobble-1);
 }
+.cr-section .narrative-col > :nth-child(3n + 2) .narrative::before,
+.top-panel::before { filter: url(#wobble-2); }
+.cr-section .narrative-col > :nth-child(3n) .narrative::before { filter: url(#wobble-3); }
 
-/* Edge-print type: monospace, uppercase, spaced like the codes on film stock */
-.cr-title-h1 { display: block; font-family: 'IBM Plex Mono', monospace; font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 300; text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.15; margin-bottom: 0.6rem; }
-.cr-title-sub, .cr-hint, .cr-period, .cr-stop { display: block; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.12em; }
-.cr-title-sub { color: var(--edge-print); font-size: clamp(0.7rem, 0.9vw, 0.85rem); }
+/* Labels in monospace capitals */
+.cr-title-h1, .cr-title-sub, .cr-hint, .cr-period, .cr-stop {
+  display: block;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.cr-title-h1 { font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 300; line-height: 1.15; margin-bottom: 0.6rem; }
+.cr-title-sub { color: var(--accent); font-size: clamp(0.7rem, 0.9vw, 0.85rem); }
 .cr-hint { color: var(--muted); font-size: 0.7rem; margin-top: 1.4rem; }
-.cr-period { color: var(--edge-print); font-size: 0.8em; margin-bottom: 0.5rem; }
+.cr-period { color: var(--accent); font-size: 0.8em; margin-bottom: 0.5rem; }
 .cr-stop { color: var(--muted); font-size: 0.75em; margin-bottom: 0.5rem; }
-.cr-section a, .cr-section a:visited { color: var(--edge-print); }
-.edge-strip { opacity: 0.8 !important; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--edge-print); opacity: 0.6; text-align: center; white-space: nowrap; overflow: hidden; }
+
+/* Card body */
+.cr-section a, .cr-section a:visited { color: var(--accent); }
+.cr-p { display: block; height: 0.7em; }
+.cr-photo { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; margin: 0.2rem 0 0.25rem; filter: grayscale(0.25); }
+.cr-credit, .cr-colophon { display: block; color: var(--muted); }
+.cr-credit { font-size: 0.65rem; margin-bottom: 0.6rem; }
+.cr-colophon { font-size: 0.95em; }
+.cr-credit a, .cr-credit a:visited { color: var(--muted); }
+
+/* Top places panel, fixed at the lower right */
+.top-panel {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 0;
+  isolation: isolate;
+  width: clamp(220px, 22vw, 320px);
+  padding: 0.7rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.top-panel.show { opacity: 1; }
+.tp-title { text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-size: 0.66rem; margin-bottom: 0.45rem; }
+.tp-row { display: grid; grid-template-columns: 9.5em 1fr 2.8em; align-items: center; gap: 0.5em; margin: 0.2rem 0; }
+.tp-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tp-bar { display: block; height: 8px; }
+.tp-n { text-align: right; }
 </style>
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+  <filter id="wobble-1" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+  <filter id="wobble-2" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="11"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+  <filter id="wobble-3" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="27"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+</svg>
 ```
 
 ```{r}
@@ -55,9 +108,11 @@ html, body { background: var(--film-base); }
 library(tidyverse)
 
 base_url <- "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-11-24/"
-locations <- read_csv(paste0(base_url, "locations.csv"), show_col_types = FALSE)
-production_locations <- read_csv(paste0(base_url, "production_locations.csv"), show_col_types = FALSE)
-productions <- read_csv(paste0(base_url, "productions.csv"), show_col_types = FALSE)
+read_tt <- \(file) read_csv(str_c(base_url, file, ".csv"), show_col_types = FALSE)
+
+locations <- read_tt("locations")
+production_locations <- read_tt("production_locations")
+productions <- read_tt("productions")
 
 periods <- tibble(
   period = 1:7,
@@ -65,9 +120,10 @@ periods <- tibble(
   start = c(-Inf, 1920, 1946, 1960, 1976, 2000, 2013)
 )
 
+# One row per title and filming location
 links <- production_locations |>
-  left_join(productions, by = "production_id") |>
-  left_join(locations, by = "location_id") |>
+  left_join(productions, by = join_by(production_id)) |>
+  left_join(locations, by = join_by(location_id)) |>
   filter(!is.na(year)) |>
   mutate(
     period = findInterval(year, periods$start),
@@ -76,8 +132,8 @@ links <- production_locations |>
     other = !(country_code %in% c("US", "CA") | continent %in% "Europe")
   )
 
-# Spherical mean: average the 3D unit vectors, then project back to lon/lat
-sph_mean <- function(df, by) {
+# Average on the globe: mean of the 3D unit vectors, projected back to lon/lat
+spherical_mean <- function(df, by) {
   rad <- pi / 180
   df |>
     mutate(
@@ -85,21 +141,23 @@ sph_mean <- function(df, by) {
       y = cos(latitude * rad) * sin(longitude * rad),
       z = sin(latitude * rad)
     ) |>
-    summarise(n = n(), across(c(x, y, z), mean), .by = {{ by }}) |>
-    mutate(lat = atan2(z, sqrt(x^2 + y^2)) / rad, lon = atan2(y, x) / rad)
+    summarise(across(c(x, y, z), mean), .by = {{ by }}) |>
+    mutate(lon = atan2(y, x) / rad, lat = atan2(z, sqrt(x^2 + y^2)) / rad) |>
+    select({{ by }}, lon, lat) |>
+    arrange({{ by }})
 }
 
 centroids <- links |>
-  sph_mean(period) |>
-  left_join(periods, by = "period") |>
-  arrange(period)
+  spherical_mean(period) |>
+  left_join(periods, by = join_by(period))
 
-decades <- links |>
-  sph_mean(decade) |>
-  arrange(decade)
+decades <- spherical_mean(links, decade)
 
-places <- links |>
-  count(period, location_id, other, lon = longitude, lat = latitude)
+places <- count(links, period, location_id, other, lon = longitude, lat = latitude)
+
+top_places <- links |>
+  count(period, name, other) |>
+  slice_max(n, n = 5, by = period, with_ties = FALSE)
 
 # Stops outside North America and Europe, keyed by Wikidata ID
 stops <- tribble(
@@ -111,30 +169,53 @@ stops <- tribble(
   "wadi_rum",  "Q40729",     7,
   "istanbul",  "Q406",       7
 ) |>
-  left_join(select(locations, location_id, name, lon = longitude, lat = latitude), by = "location_id") |>
-  left_join(count(links, location_id, period), by = c("location_id", "period"))
+  left_join(
+    select(locations, location_id, name, lon = longitude, lat = latitude),
+    by = join_by(location_id)
+  ) |>
+  left_join(count(links, location_id, period), by = join_by(location_id, period))
 
-# Share of links outside the US, Canada and Europe
-other_share <- links |>
-  summarise(share = mean(other), .by = period) |>
-  left_join(periods, by = "period") |>
-  arrange(period)
-
-istanbul_tv <- links |>
-  filter(location_id == "Q406", period == 7) |>
-  summarise(share = mean(kind == "tv")) |>
-  pull(share)
+# Numbers quoted in the text
+n_titles <- n_distinct(links$production_id)
+titles_by_period <- links |> distinct(period, production_id) |> count(period) |> pull(n)
+share_other <- links |> summarise(share = mean(other), .by = period) |> arrange(period) |> pull(share)
+istanbul_tv <- links |> filter(location_id == "Q406", period == 7) |> summarise(mean(kind == "tv")) |> pull()
 
 fmt <- \(x) format(x, big.mark = ",")
-pct <- \(x) paste0(round(100 * x), "%")
-n_links <- \(p) fmt(centroids$n[p])
+pct <- \(x) str_c(round(100 * x), "%")
 n_stop <- \(s) stops$n[stops$id == s]
 
+# Card photos from Wikimedia Commons, with credits
+commons <- \(file, license) str_glue("[{license}](https://commons.wikimedia.org/wiki/File:{file})")
+
+photos <- tribble(
+  ~id,            ~file,                     ~credit,
+  "fort_lee",     "p1_fort_lee.jpg",         "Selznick Studio, Fort Lee, 1920. Public domain",
+  "baku",         "baku.jpg",                "Still from *The Oil Gush in Balakhany* (1898), Alexandre Michon. Public domain",
+  "hollywood",    "p2_hollywood.jpg",        "Hollywood studios from the air, 1922. Public domain",
+  "pinewood",     "p3_pinewood.jpg",         str_c("Pinewood Studios. Photo: Shazz, ", commons("Entrance_to_Pinewood_Studios_-_geograph.org.uk_-_3470583.jpg", "CC BY-SA 2.0")),
+  "pinewood_lot", "p4_pinewood_backlot.jpg", str_c("A set on the Pinewood back lot. Photo: Alexander P Kapp, ", commons("Back-lot_in_Pinewood_Studios_-_geograph.org.uk_-_3195288.jpg", "CC BY-SA 2.0")),
+  "new_york",     "p5_new_york.jpg",         "Queensboro Bridge, New York, 1974. Photo: Danny Lyon, Documerica. Public domain",
+  "hong_kong",    "hong_kong.jpg",           str_c("Photo: Mustang Joe, ", commons("Hong_Kong_from_Victoria_Peak1.jpg", "CC0")),
+  "ooty",         "ooty.jpg",                str_c("Photo: Hemant meena, ", commons("Ooty_aerial_view.JPG", "CC BY-SA 3.0")),
+  "la_hills",     "p6_los_angeles.jpg",      str_c("Los Angeles from the Hollywood Hills. Photo: Blake Everett, ", commons("Hollywood,_Los_Angeles,_CA_03.JPG", "CC0")),
+  "sydney",       "sydney.jpg",              str_c("Photo: W. Bulach, ", commons("00_3178_Sydney,_Australia.jpg", "CC BY-SA 4.0")),
+  "la_night",     "p7_los_angeles.jpg",      str_c("Downtown Los Angeles. Photo: Sevan Seviant, ", commons("Hot_Nights_Bright_Lights_The_Sunsets_In_Los_Angeles_(41335116).jpeg", "CC BY 3.0")),
+  "wadi_rum",     "wadi_rum.jpg",            str_c("Photo: Raya Sharbain, ", commons("Wadi_Rum_in_December.jpg", "CC BY-SA 4.0")),
+  "istanbul",     "istanbul.jpg",            str_c("Photo: Hunanuk, ", commons("Historical_peninsula_and_modern_skyline_of_Istanbul.jpg", "CC0"))
+)
+
+photo <- function(id) {
+  p <- photos[photos$id == id, ]
+  str_glue('<img class="cr-photo" src="images/{p$file}" alt=""><span class="cr-credit">{p$credit}</span>')
+}
+
 ojs_define(
-  places_data = places |> select(period, other, lon, lat, n),
-  decade_data = decades |> select(decade, lon, lat, n),
-  centroid_data = centroids |> select(period, label, lon, lat, n),
-  stop_data = stops |> select(id, name, lon, lat)
+  places_data = places,
+  centroid_data = select(centroids, period, label, lon, lat),
+  decade_data = decades,
+  stop_data = select(stops, id, name, lon, lat),
+  top_data = top_places
 )
 ```
 
@@ -144,15 +225,18 @@ ojs_define(
 ```{ojs}
 //| echo: false
 topojson = require("topojson-client@3")
-
 world = fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json").then(r => r.json())
 land = topojson.feature(world, world.objects.land)
 
-accent = "#2457C5"
+// Palette and type
+accent = "#C8102E"          // averages, trails and stop rings
+placeColor = "#1B6E80"      // filming locations
+elsewhereColor = "#D4930D"  // locations outside North America and Europe
 ink = "#1E1E1E"
 paper = "#ECEEF0"
 graphite = "#4A4E53"
-dotColor = "#3A3D41"
+mono = "'IBM Plex Mono', monospace"
+
 size = Math.min(width || 800, 860)
 home = [-40, 50]
 moveMs = 1400
@@ -166,6 +250,7 @@ geoPath = d3.geoPath(proj)
 places = transpose(places_data)
 cents = transpose(centroid_data)
 decs = transpose(decade_data)
+tops = transpose(top_data)
 stopsById = new Map(transpose(stop_data).map(s => [s.id, s]))
 
 // One entry per trigger in the section, in document order
@@ -190,26 +275,41 @@ steps = [
   {kind: "end"}
 ]
 
-idx = Math.min(crTriggerIndex ?? 0, steps.length - 1)
-stepInfo = steps[idx]
-period = stepInfo.period ?? null
-stop = stepInfo.stop ? stopsById.get(stepInfo.stop) : null
+step = steps[Math.min(crTriggerIndex ?? 0, steps.length - 1)]
+period = step.period ?? null
+stop = step.stop ? stopsById.get(step.stop) : null
 
-// Where the moving average sits, kept across steps so an interrupted move resumes from there
-view = ({pos: null})
+// State kept across steps: where the moving average sits, and the running comet
+view = ({pos: null, comet: null})
 
-targetOf = s => s.center ?? (s.stop ? [stopsById.get(s.stop).lon, stopsById.get(s.stop).lat] : home)
+lonLat = d => [d.lon, d.lat]
+line = coordinates => geoPath({type: "LineString", coordinates})
+targetOf = s => s.center ?? (s.stop ? lonLat(stopsById.get(s.stop)) : home)
+radius = d3.scaleSqrt().domain([1, d3.max(places, d => d.n)]).range([2, 12])
 
-radius = d3.scaleSqrt().domain([1, d3.max(places, d => d.n)]).range([1, 10])
+front = d => {
+  const [lambda, phi] = proj.rotate()
+  return d3.geoDistance(lonLat(d), [-lambda, -phi]) < Math.PI / 2
+}
+
+// Move marks to their projected position and hide those on the far side
+pin = sel => sel
+  .attr("transform", d => `translate(${proj(lonLat(d))})`)
+  .attr("display", d => front(d) ? null : "none")
+
+// Map labels in monospace with a paper halo
+halo = sel => sel
+  .attr("font-family", mono).attr("fill", ink)
+  .attr("paint-order", "stroke").attr("stroke", paper).attr("stroke-width", 3)
 
 mapSvg = {
   const svg = d3.create("svg").attr("width", size).attr("height", size).style("display", "block")
-
   const defs = svg.append("defs")
 
   // Pencil wobble: strong on the base map, light on trails and rings
   const wobble = (id, scale) => {
-    const f = defs.append("filter").attr("id", id).attr("x", "-5%").attr("y", "-5%").attr("width", "110%").attr("height", "110%")
+    const f = defs.append("filter").attr("id", id)
+      .attr("x", "-5%").attr("y", "-5%").attr("width", "110%").attr("height", "110%")
     f.append("feTurbulence").attr("type", "fractalNoise").attr("baseFrequency", 0.03).attr("numOctaves", 2).attr("seed", 1)
     f.append("feDisplacementMap").attr("in", "SourceGraphic").attr("scale", scale)
   }
@@ -219,7 +319,7 @@ mapSvg = {
   // Diagonal pencil hatching for land
   defs.append("pattern").attr("id", "hatch").attr("width", 5).attr("height", 5)
     .attr("patternUnits", "userSpaceOnUse").attr("patternTransform", "rotate(40)")
-    .append("line").attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 5)
+    .append("line").attr("x2", 0).attr("y2", 5)
     .attr("stroke", graphite).attr("stroke-width", 0.9).attr("stroke-opacity", 0.55)
 
   const base = svg.append("g").attr("filter", "url(#boil)")
@@ -229,117 +329,98 @@ mapSvg = {
     .attr("fill", "none").attr("stroke", graphite).attr("stroke-width", 0.4).attr("stroke-opacity", 0.35)
   base.append("path").attr("class", "geo").datum(land)
     .attr("fill", "url(#hatch)").attr("stroke", graphite).attr("stroke-width", 1)
+
+  // Layers, bottom to top
   svg.append("g").attr("class", "places")
   svg.append("path").attr("class", "trail").attr("filter", "url(#sketch)")
     .attr("fill", "none").attr("stroke", accent).attr("stroke-width", 2).attr("stroke-linecap", "round")
   svg.append("path").attr("class", "dec-trail").attr("filter", "url(#sketch)")
     .attr("fill", "none").attr("stroke", accent).attr("stroke-width", 1.5).attr("stroke-linecap", "round")
+  svg.append("g").attr("class", "comet").attr("filter", "url(#sketch)")
   svg.append("g").attr("class", "decs")
   svg.append("g").attr("class", "cents")
   svg.append("g").attr("class", "stops")
   return svg.node()
 }
 
-// Line boil: a new noise seed about twice a second
+// Line boil: a new noise seed every 300 ms
 _boil = {
   const turb = d3.select(mapSvg).selectAll("feTurbulence")
   const timer = d3.interval(() => turb.attr("seed", () => 1 + Math.floor(Math.random() * 1000)), 300)
   invalidation.then(() => timer.stop())
 }
 
-front = d => {
-  const r = proj.rotate()
-  return d3.geoDistance([d.lon, d.lat], [-r[0], -r[1]]) < Math.PI / 2
-}
-
-positionPlaces = () => {
-  d3.select(mapSvg).selectAll(".places circle")
-    .attr("cx", d => proj([d.lon, d.lat])[0])
-    .attr("cy", d => proj([d.lon, d.lat])[1])
-    .attr("display", d => front(d) ? null : "none")
-}
-
-// Places change with the step only
+// Filming locations change with the step only
 _places = {
-  const kind = stepInfo.kind
+  const kind = step.kind
   const shown = kind === "intro" ? places
     : kind === "elsewhere" ? places.filter(d => d.other)
     : period ? places.filter(d => d.period === period) : []
   d3.select(mapSvg).select(".places").selectAll("circle")
-    .data(shown, d => `${d.period}|${d.lon}|${d.lat}`)
+    .data(shown, d => `${d.period}|${d.location_id}`)
     .join(
       enter => enter.append("circle")
-        .attr("r", 0).attr("fill-opacity", 0.35)
+        .attr("r", 0).attr("fill-opacity", 0.6)
         .call(e => e.transition().duration(500).attr("r", d => radius(d.n))),
       update => update,
       exit => exit.call(e => e.transition().duration(300).attr("r", 0).remove())
     )
-    .attr("fill", kind === "elsewhere" ? accent : dotColor)
-  positionPlaces()
+    .attr("fill", kind === "elsewhere" ? elsewhereColor : placeColor)
+    .call(pin)
 }
 
 // Each step turns the globe and slides the average over moveMs, whatever the scroll speed
 _view = {
   const svg = d3.select(mapSvg)
-  const kind = stepInfo.kind
-  const done = kind === "end"
+  const trail = svg.select("path.trail")
+  const done = step.kind === "end"
   const p = done ? cents.length : (period ?? 0)
   const past = cents.filter(c => c.period < p)
-  const goal = p >= 1 ? [cents[p - 1].lon, cents[p - 1].lat] : null
+  const goal = p >= 1 ? lonLat(cents[p - 1]) : null
   const from = view.pos ?? goal
   const posAt = from && goal ? d3.geoInterpolate(from, goal) : () => goal
 
   // Turn the shorter way round
   const r0 = proj.rotate().slice(0, 2)
-  const to = targetOf(stepInfo)
-  const r1 = [-to[0], -to[1]]
-  r1[0] = r0[0] + ((((r1[0] - r0[0]) % 360) + 540) % 360) - 180
+  const to = targetOf(step)
+  const r1 = [r0[0] + ((((-to[0] - r0[0]) % 360) + 540) % 360) - 180, -to[1]]
   const rotAt = d3.interpolate(r0, r1)
 
   const draw = k => {
     proj.rotate(rotAt(k))
     svg.selectAll("path.geo").attr("d", geoPath)
-    positionPlaces()
+    svg.selectAll(".places circle").call(pin)
 
-    const pos = posAt(k)
-    view.pos = pos
+    const pos = view.pos = posAt(k)
+    trail.attr("d", pos ? line([...past.map(lonLat), pos]) : null)
 
-    svg.select("path.trail")
-      .attr("d", pos ? geoPath({type: "LineString", coordinates: [...past.map(c => [c.lon, c.lat]), pos]}) : null)
-
+    // Period averages: past ones small, the current one large and labelled
     const marks = [
       ...past.map(c => ({...c, current: false})),
       ...(pos ? [{...cents[p - 1], lon: pos[0], lat: pos[1], current: !done}] : [])
     ]
-
     svg.select(".cents").selectAll("g.cent")
       .data(marks, d => d.period)
       .join(enter => {
         const g = enter.append("g").attr("class", "cent")
         g.append("circle").attr("stroke", accent).attr("stroke-width", 1.5)
-        g.append("text")
-          .attr("x", 12).attr("y", 4)
-          .attr("font-family", "'IBM Plex Mono', monospace")
-          .attr("fill", ink)
-          .attr("paint-order", "stroke").attr("stroke", paper).attr("stroke-width", 3)
+        g.append("text").attr("x", 12).attr("y", 4).call(halo)
         return g
       })
-      .attr("transform", d => `translate(${proj([d.lon, d.lat])})`)
-      .attr("display", d => front(d) ? null : "none")
+      .call(pin)
       .each(function(d) {
-        const s = d3.select(this)
-        s.select("circle").attr("r", d.current ? 8 : 4).attr("fill", d.current ? accent : paper)
-        s.select("text")
+        const g = d3.select(this)
+        g.select("circle").attr("r", d.current ? 8 : 4).attr("fill", d.current ? accent : paper)
+        g.select("text")
           .text(d.current || done ? d.label : "")
           .attr("font-size", d.current ? 15 : 11)
           .attr("font-weight", d.current ? 600 : 400)
       })
 
     // Decade averages, drawn one after another
-    const shownDecs = kind === "decades" ? decs.slice(0, Math.ceil(k * decs.length)) : []
-    svg.select("path.dec-trail")
-      .attr("d", shownDecs.length > 1 ? geoPath({type: "LineString", coordinates: shownDecs.map(d => [d.lon, d.lat])}) : null)
+    const shownDecs = step.kind === "decades" ? decs.slice(0, Math.ceil(k * decs.length)) : []
     const labelled = new Set([1900, 1910, 1960, 1990, 2020])
+    svg.select("path.dec-trail").attr("d", shownDecs.length > 1 ? line(shownDecs.map(lonLat)) : null)
     svg.select(".decs").selectAll("g.dec")
       .data(shownDecs, d => d.decade)
       .join(enter => {
@@ -347,86 +428,138 @@ _view = {
         g.append("circle").attr("r", 3.5).attr("fill", paper).attr("stroke", accent).attr("stroke-width", 1.2)
         g.append("text")
           .text(d => labelled.has(d.decade) ? `${d.decade}s` : "")
-          .attr("x", 8).attr("y", 4)
-          .attr("font-family", "'IBM Plex Mono', monospace").attr("font-size", 12).attr("fill", ink)
-          .attr("paint-order", "stroke").attr("stroke", paper).attr("stroke-width", 3)
+          .attr("x", 8).attr("y", 4).attr("font-size", 12).call(halo)
         return g
       })
-      .attr("transform", d => `translate(${proj([d.lon, d.lat])})`)
-      .attr("display", d => front(d) ? null : "none")
+      .call(pin)
 
-    // Stop marker fades in as the globe arrives
+    // Stop ring fades in as the globe arrives
     svg.select(".stops").selectAll("g.stop")
       .data(stop ? [stop] : [], d => d.id)
       .join(enter => {
         const g = enter.append("g").attr("class", "stop")
-        g.append("circle").attr("r", 15).attr("fill", "none").attr("stroke", accent).attr("stroke-width", 2.2).attr("filter", "url(#sketch)")
-        g.append("text")
-          .text(d => d.name)
-          .attr("x", 20).attr("y", 5)
-          .attr("font-family", "'IBM Plex Mono', monospace")
-          .attr("font-size", 15).attr("font-weight", 600).attr("fill", ink)
-          .attr("paint-order", "stroke").attr("stroke", paper).attr("stroke-width", 3)
+        g.append("circle").attr("r", 15).attr("fill", "none")
+          .attr("stroke", accent).attr("stroke-width", 2.2).attr("filter", "url(#sketch)")
+        g.append("text").text(d => d.name)
+          .attr("x", 20).attr("y", 5).attr("font-size", 15).attr("font-weight", 600).call(halo)
         return g
       })
-      .attr("transform", d => `translate(${proj([d.lon, d.lat])})`)
-      .attr("display", d => front(d) ? null : "none")
+      .call(pin)
       .attr("opacity", k)
   }
 
+  // Clear the comet from the final step
+  view.comet?.stop()
+  svg.select(".comet").selectAll("path").remove()
+  svg.select(".cents").selectAll("g.cent").attr("opacity", null)
+  trail.attr("stroke-opacity", null)
+
   svg.interrupt("move")
   draw(0)
-  svg.transition("move").duration(moveMs).ease(d3.easeCubicInOut).tween("move", () => draw)
+  const move = svg.transition("move").duration(moveMs).ease(d3.easeCubicInOut).tween("move", () => draw)
+
+  // Final step: a comet runs along the dimmed trail at a steady speed and repeats.
+  // Ten stacked dashes of growing length end at the head, so overlap is densest there.
+  if (done) move.on("end", () => {
+    const len = trail.node().getTotalLength()
+    const tail = len * 0.35
+    const dur = 7000
+    const pause = 900
+    trail.attr("stroke-opacity", 0.25)
+
+    const comet = svg.select(".comet").selectAll("path")
+      .data(d3.range(1, 11).map(i => i / 10))
+      .join("path")
+      .attr("d", trail.attr("d"))
+      .attr("fill", "none").attr("stroke", accent).attr("stroke-width", 3)
+      .attr("stroke-linecap", "round").attr("stroke-opacity", 0.2)
+      .attr("stroke-dasharray", f => `${tail * f} ${len + tail}`)
+
+    // Distance along the trail to each period's average, measured on prefixes of the same line
+    const pts = cents.map(lonLat)
+    const probe = svg.append("path")
+    const at = pts.map((_, i) => i === 0 ? 0 : probe.attr("d", line(pts.slice(0, i + 1))).node().getTotalLength())
+    probe.remove()
+
+    // Each period lights up as the head reaches it and fades with the tail
+    const marks = svg.select(".cents").selectAll("g.cent")
+    const glow = k => k < 0 || k > tail ? 0.25 : 1 - 0.75 * k / tail
+
+    view.comet = d3.timer(elapsed => {
+      const head = Math.min((elapsed % (dur + pause)) / dur, 1) * (len + tail)
+      comet.attr("stroke-dashoffset", f => tail * f - head)
+      marks.attr("opacity", d => glow(head - at[d.period - 1]))
+    })
+  })
 }
 
-chart = {
-  const nLinks = d3.sum(places, d => d.n).toLocaleString("en-US")
-  const wrap = htl.html`<div style="position:relative;width:${size}px;">`
-  wrap.appendChild(mapSvg)
-  wrap.appendChild(htl.html`<div class="edge-strip">▸ The center of film ▸ Wikidata P915 ▸ ${nLinks} links ▸ 1887–2028 ▸</div>`)
-  return wrap
+// Top five places for the current period, in a fixed panel at the lower right
+topPanel = {
+  const el = htl.html`<div class="top-panel" aria-live="polite"></div>`
+  document.body.appendChild(el)
+  invalidation.then(() => el.remove())
+  return {el}
 }
+
+_top = {
+  const el = topPanel.el
+  if (!period) return el.classList.remove("show")
+  const rows = tops.filter(d => d.period === period)
+  const max = d3.max(rows, d => d.n)
+  el.replaceChildren(
+    htl.html`<div class="tp-title">Most titles ▸ ${cents[period - 1].label}</div>`,
+    ...rows.map(d => htl.html`<div class="tp-row">
+      <span class="tp-name">${d.name}</span>
+      <span><span class="tp-bar" style="width: ${100 * d.n / max}%; background: ${d.other ? elsewhereColor : placeColor}"></span></span>
+      <span class="tp-n">${d.n.toLocaleString("en-US")}</span>
+    </div>`)
+  )
+  el.classList.add("show")
+}
+
+// Display the map
+chart = mapSvg
 ```
 :::
 
-<span class="cr-title-h1">The center of film</span><span class="cr-title-sub">Where films and series were shot, period by period</span><span class="cr-hint">Scroll, or press p and use the arrow keys</span> [@cr-map]
+<span class="cr-title-h1">The<br>**center**<br>of<br>film</span><span class="cr-title-sub">Following the average filming location since 1887</span><span class="cr-hint">Scroll, or use the arrow keys</span> [@cr-map]
 
-Wikidata links `r fmt(nrow(links))` films and series to the places they were shot. The blue dot is the average of each period's locations, measured on the globe. [@cr-map]
+Wikidata knows where `r fmt(n_titles)` movies and TV shows were filmed. [@cr-map]
 
-<span class="cr-period">01 ▸ Before 1920 ▸ `r n_links(1)` links</span>Fort Lee, New Jersey, has more links than any other place, ahead of New York. Hollywood comes later. [@cr-map]
+<span class="cr-period">01 ▸ Before 1920 ▸ `r fmt(titles_by_period[1])` titles</span>`r photo("fort_lee")`The red dot is the average of each period's locations, measured on the globe.<span class="cr-p"></span>Fort Lee, New Jersey, just across the Hudson, beats New York. Hollywood comes later. [@cr-map]
 
-<span class="cr-stop">Stop ▸ Baku, Azerbaijan</span>`r n_stop("baku")` links before 1920, more than anywhere else outside North America and Europe. Two are 1898 films of oil gushers. [@cr-map]
+<span class="cr-stop">Stop ▸ Baku, Azerbaijan</span>`r photo("baku")`Nowhere outside North America and Europe has more early films. Two of its `r n_stop("baku")`, both from 1898, show oil gushers. [@cr-map]
 
-<span class="cr-period">02 ▸ 1920–1945 ▸ `r n_links(2)` links</span>Los Angeles takes over, but European studios keep the average out over the ocean. [@cr-map]
+<span class="cr-period">02 ▸ 1920–1945 ▸ `r fmt(titles_by_period[2])` titles</span>`r photo("hollywood")`Los Angeles takes over. Studios near London and in Berlin pull the average north-east, over Greenland. [@cr-map]
 
-<span class="cr-period">03 ▸ 1946–1959 ▸ `r n_links(3)` links</span>Pinewood Studios, west of London, now has more links than any city. [@cr-map]
+<span class="cr-period">03 ▸ 1946–1959 ▸ `r fmt(titles_by_period[3])` titles</span>`r photo("pinewood")`Pinewood Studios, west of London, beats every city. [@cr-map]
 
-<span class="cr-period">04 ▸ 1960–1975 ▸ `r n_links(4)` links</span>Pinewood, home of the early Bond films, still leads. The average reaches its easternmost point, just north of Ireland. [@cr-map]
+<span class="cr-period">04 ▸ 1960–1975 ▸ `r fmt(titles_by_period[4])` titles</span>`r photo("pinewood_lot")`Pinewood, home of the early Bond films, still leads.<span class="cr-p"></span>The average reaches its easternmost point, just north of Ireland. [@cr-map]
 
-<span class="cr-period">05 ▸ 1976–1999 ▸ `r n_links(5)` links</span>Los Angeles and New York lead again, and the average moves back west. [@cr-map]
+<span class="cr-period">05 ▸ 1976–1999 ▸ `r fmt(titles_by_period[5])` titles</span>`r photo("new_york")`Los Angeles and New York lead again, and the average moves back west. [@cr-map]
 
-<span class="cr-stop">Stop ▸ Hong Kong</span>`r n_stop("hong_kong")` links in these years, the most outside North America and Europe. Among them are *Police Story* and *Chungking Express*. [@cr-map]
+<span class="cr-stop">Stop ▸ Hong Kong</span>`r photo("hong_kong")`*Police Story*, *Chungking Express* and `r n_stop("hong_kong") - 2` more. [@cr-map]
 
-<span class="cr-stop">Stop ▸ Ooty, India</span>A hill station in Tamil Nadu. Its `r n_stop("ooty")` links include *Roja* and *Kuch Kuch Hota Hai*. [@cr-map]
+<span class="cr-stop">Stop ▸ Ooty, India</span>`r photo("ooty")`A hill station in Tamil Nadu, and a favorite of Indian cinema. *Roja* and *Kuch Kuch Hota Hai* were both shot here. [@cr-map]
 
-<span class="cr-period">06 ▸ 2000–2012 ▸ `r n_links(6)` links</span>Los Angeles still leads, and the average barely moves. [@cr-map]
+<span class="cr-period">06 ▸ 2000–2012 ▸ `r fmt(titles_by_period[6])` titles</span>`r photo("la_hills")`Los Angeles still leads, and the average barely moves. [@cr-map]
 
-<span class="cr-stop">Stop ▸ Sydney, Australia</span>Two Star Wars prequels and both Matrix sequels were shot here. `r n_stop("sydney")` links in these years. [@cr-map]
+<span class="cr-stop">Stop ▸ Sydney, Australia</span>`r photo("sydney")`Two Star Wars prequels and both Matrix sequels were shot here. [@cr-map]
 
-<span class="cr-period">07 ▸ 2013– ▸ `r n_links(7)` links</span>The average moves east again, to a point south of Iceland. Los Angeles still has the most links. [@cr-map]
+<span class="cr-period">07 ▸ 2013– ▸ `r fmt(titles_by_period[7])` titles</span>`r photo("la_night")`The average moves east again, to a point south of Iceland. Los Angeles is still on top. [@cr-map]
 
-<span class="cr-stop">Stop ▸ Wadi Rum, Jordan</span>The desert stood in for Mars in *The Martian* and for Arrakis in *Dune*. [@cr-map]
+<span class="cr-stop">Stop ▸ Wadi Rum, Jordan</span>`r photo("wadi_rum")`The desert stood in for Mars in *The Martian* and for Arrakis in *Dune*. [@cr-map]
 
-<span class="cr-stop">Stop ▸ Istanbul, Turkey</span>`r n_stop("istanbul")` links since 2013, the most outside North America and Europe. `r pct(istanbul_tv)` of them are TV series. [@cr-map]
+<span class="cr-stop">Stop ▸ Istanbul, Turkey</span>`r photo("istanbul")`Turkish TV drama is watched from Latin America to the Middle East, and much of it is shot here.<span class="cr-p"></span>`r pct(istanbul_tv)` of Istanbul's `r n_stop("istanbul")` titles since 2013 are series. [@cr-map]
 
 Split by decade, the average goes west in the 1910s, east by the 1960s, west again in the 1990s and back east since. [@cr-map]
 
-Every place outside North America and Europe, all periods together. Their share of links grew from `r pct(other_share$share[1])` before 1920 to `r pct(other_share$share[7])` since 2013, not enough to pull the average off the North Atlantic. [@cr-map]
+Every place outside North America and Europe, all periods together.<span class="cr-p"></span>Their share of locations grew from `r pct(share_other[1])` before 1920 to `r pct(share_other[7])` since 2013, not enough to pull the average off the North Atlantic. [@cr-map]
 
 :::{focus-on="cr-map"}
 All seven averages together.
-<br><br>
-<small style="color:#5E6368;">Places on the far side of the globe are hidden but count toward each average. Data from Wikidata via [Movie Scene Map](https://moviescenemap.com/data/). Made by [Georgios Karamanis](https://karaman.is) with [Closeread](https://closeread.netlify.app).</small>
+
+<span class="cr-colophon">Places on the far side of the globe are hidden but count toward each average.<span class="cr-p"></span>Data from Wikidata via [Movie Scene Map](https://moviescenemap.com/data/).<span class="cr-p"></span>Made by [Georgios Karamanis](https://karaman.is) with [Closeread](https://closeread.netlify.app).</span>
 :::
 
 :::
